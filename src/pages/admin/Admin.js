@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { loadTokenFromLocalStorage, removeTokenFromLocalStorage } from "../../util/HandleToken";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import { useAuth } from "../../util/AuthContext";
 
 const Admin = () => {
+  const { authState, updateAuthState } = useAuth();
+
   const [resultData, setresultData] = useState(null);
   const itemsPerPage = 10;
 
@@ -33,18 +36,24 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="container my-10">
-      <h1 className="my-10">신청들</h1>
-      {resultData ? (
-        <Pagination
-          data={resultData}
-          itemsPerPage={itemsPerPage}
-          handleNavLinkClick={handleNavLinkClick}
-        />
+    <>
+      {!authState.isAdmin ? (
+        <Navigate to="/" />
       ) : (
-        <LoadingSpinner />
+        <div className="container my-10">
+          <h1 className="my-10">신청들</h1>
+          {resultData ? (
+            <Pagination
+              data={resultData}
+              itemsPerPage={itemsPerPage}
+              handleNavLinkClick={handleNavLinkClick}
+            />
+          ) : (
+            <LoadingSpinner />
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

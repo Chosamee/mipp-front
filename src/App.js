@@ -12,26 +12,32 @@ import Detail from "./pages/Detail";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./util/AuthContext";
 import Admin from "./pages/admin/Admin";
+import { Provider } from "react-redux";
+import store from "./util/Store.js";
 
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
-        <div className="flex flex-col min-h-screen">
-          <div className="h-20"></div>
-          <Navbar />
-          <Routes className="flex-grow">
-            <Route path="*" element={<Navigate to={"/"} replace />} />
-            <Route path="/" element={<Index />} />
-            <Route path="/home" element={<ProtectedRoute component={Home} />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/result" element={<ProtectedRoute component={Result} />} />
-            <Route path="/detail/:id" element={<ProtectedRoute component={Detail} />} />
-            <Route path="/admin" element={<ProtectedRoute component={Admin} />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <div className="flex flex-col min-h-screen">
+            <div className="h-20"></div>
+            <Navbar />
+            <Routes className="flex-grow">
+              <Route path="*" element={<Navigate to={"/"} replace />} />
+              <Route path="/" element={<Index />} />
+              <Route path="/home" element={<ProtectedRoute component={Home} />} />
+              <Route path="/login" element={<Login />} />
+
+              <Route path="/result" element={<ProtectedRoute component={Result} />} />
+
+              <Route path="/detail/:id" element={<ProtectedRoute component={Detail} />} />
+              <Route path="/admin" element={<ProtectedRoute component={Admin} />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     </AuthProvider>
   );
 };

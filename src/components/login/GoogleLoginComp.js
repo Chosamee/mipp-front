@@ -41,7 +41,6 @@ const GoogleLoginComp = (props) => {
   return (
     <GoogleLogin
       clientId={GOOGLE_CLIENT_ID}
-      buttonText="Google로 로그인"
       onSuccess={handleLoginSuccess}
       onFailure={handleLoginFailure}
       cookiePolicy={"single_host_origin"}

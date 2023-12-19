@@ -21,7 +21,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
           updateAuthState({ ...authState, isLoggedIn: true, isVerified: true });
         })
         .catch((error) => {
-          console.error(error.response.data);
+          console.error(error);
           updateAuthState({ ...authState, isLoggedIn: false, isVerified: false });
         })
         .finally(() => {

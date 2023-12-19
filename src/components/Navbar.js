@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeTokenFromLocalStorage } from "../util/HandleToken";
 import { useAuth } from "../util/AuthContext";
+import logo from "../logo.svg";
 
 const NavBar = () => {
   const { authState, updateAuthState } = useAuth();
@@ -36,11 +37,12 @@ const NavBar = () => {
   return (
     <nav
       className={`bg-blue-600 text-white px-4 py-2 flex justify-between items-center h-20 
-      fixed w-full top-0 left-0
+      fixed w-full top-0 left-0 z-30
       transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}>
-      <div onClick={() => handleNavLinkClick("/")}>
-        <img src="logo192.png" alt="Company Logo" className="h-10" />
-      </div>
+      <button onClick={() => handleNavLinkClick("/")} className="flex items-center">
+        <img src={logo} alt="MIPP Logo" className="h-7" />
+        <span className="self-center ml-6 text-3xl font-bold">MIPP</span>
+      </button>
       <div className="flex items-center">
         <label htmlFor="language-select" className="mr-2">
           언어선택
@@ -49,7 +51,7 @@ const NavBar = () => {
           id="language-select"
           className="bg-blue-700 text-white py-1 px-2 rounded focus:outline-none">
           <option value="ko">KO</option>
-          <option value="ko">ENG</option>
+          <option value="ko">EN</option>
         </select>
       </div>
       <div className="flex items-center">

@@ -32,6 +32,7 @@ const YoutubeLinkComp = (props) => {
       })
       .catch((error) => {
         console.error("서버 요청 오류:", error);
+        navigate("/home");
       });
   };
 
@@ -41,12 +42,12 @@ const YoutubeLinkComp = (props) => {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
-        className="p-1 mx-2 rounded-lg"
+        placeholder="주소 입력"
+        className="w-full px-4 py-2 border rounded-md mb-4"
       />
       <button
         onClick={handleSubmit}
-        className="p-1 mt-4  rounded-lg
-        bg-blue-300 hover:bg-blue-500">
+        className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
         서버에 전송
       </button>
     </div>

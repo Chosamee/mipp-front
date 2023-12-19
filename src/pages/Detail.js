@@ -3,6 +3,7 @@ import React from "react";
 import { loadTokenFromLocalStorage } from "../util/HandleToken";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Detail = () => {
   const { id } = useParams();
@@ -64,7 +65,7 @@ const Detail = () => {
           </div>
         ))
       ) : (
-        <p>정보를 불러오는 중...</p>
+        <LoadingSpinner />
       )}
     </div>
   );
