@@ -7,7 +7,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { useAuth } from "../../util/AuthContext";
 
 const Admin = () => {
-  const { authState, updateAuthState } = useAuth();
+  const { authState } = useAuth();
 
   const [resultData, setresultData] = useState(null);
   const itemsPerPage = 10;

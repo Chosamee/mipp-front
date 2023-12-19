@@ -23,6 +23,7 @@ const Detail = () => {
       .catch((error) => {
         console.error("Error: 유효하지 않은 토큰. 로그인 후 사용해주세요", error);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 파일 다운로드

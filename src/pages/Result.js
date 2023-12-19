@@ -34,6 +34,7 @@ const Mypage = () => {
         console.error("Error: 잘못된 접근", error);
         removeTokenFromLocalStorage();
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 검색 기능
@@ -43,16 +44,18 @@ const Mypage = () => {
 
   const filteredData = searchKeyword
     ? inst
-      ? resultData?.filter(
+      ? resultData.filter(
           (item) =>
             item[searchType] &&
             item[searchType].toLowerCase().includes(searchKeyword.toLowerCase()) &&
             item["inst"] === inst
         )
-      : resultData?.filter(
+      : resultData.filter(
           (item) =>
             item[searchType] && item[searchType].toLowerCase().includes(searchKeyword.toLowerCase())
         )
+    : inst
+    ? resultData.filter((item) => item[searchType] && item["inst"] === inst)
     : resultData;
 
   return (
@@ -110,7 +113,6 @@ const Mypage = () => {
           onChange={(e) => setSearchType(e.target.value)}
           value={searchType}>
           <option value="title">제목</option>
-          <option value="artist">가수</option>
         </select>
       </div>
     </div>

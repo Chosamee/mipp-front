@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FileUploadComp from "../components/upload/FileUploadComp";
 import YoutubeLinkComp from "../components/upload/YoutubeLinkComp";
-import { useAuth } from "../util/AuthContext";
 
 const Home = () => {
   const apiUrl = process.env.REACT_APP_MIPP_API_URL + "/classify";
   // 탭 선택
   const [activeTab, setActiveTab] = useState("upload");
   const [inst, setInst] = useState("vocal");
-  const { authState } = useAuth();
 
   return (
     <div className="p-6 flex flex-col items-center justify-center">
