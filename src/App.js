@@ -1,43 +1,64 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavbarComponent from "./components/NavbarComp";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ResultPage from "./pages/Result";
-import LoginPage from "./pages/Login";
-import { useState } from "react";
-const About = () => <h2>About</h2>;
-const Contact = () => <h2>Contact</h2>;
+// import LoginPage from "./pages/Login";
+// import { useState } from "react";
+import { loadTokenFromLocalStorage } from "./util/HandleToken";
+import Index from "./pages/Index";
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Result from "./pages/Result";
+import Detail from "./pages/Detail";
+import AuthProvider from "./util/AuthProvider";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [user, setUser] = useState(null);
 
-  // 로그인 상태에 따라 isAuthenticated 업데이트
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
+  // useEffect(() => {
+  //   // 구글 OAuth 로그인 후 반환된 토큰을 localStorage에서 가져옵니다.
+  //   const token = localStorage.getItem("googleToken");
 
-  // 로그아웃 상태에 따라 isAuthenticated 업데이트
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:8000/user", {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  //       setUser(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching data: ", error);
+  //     }
+  //   };
 
+  //   fetchData();
+  // }, []);
   return (
-    <Router>
-      <NavbarComponent />
-      <div className="container mt-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/result"
-            element={<ResultPage />}
-            isAuthenticated={isAuthenticated}
-          />
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <div className="h-20"></div>
+          <Navbar />
+          <Routes className="flex-grow">
+            <Route path="/" element={<Index />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/result" element={<ResultPage />} />
+            <Route path="*" element={<Navigate to={"/"} replace />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/result" element={<Result />} />
+            <Route path="/detail/:id" element={<Detail />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 

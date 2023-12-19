@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { loadTokenFromLocalStorage } from "../../util/HandleToken";
 
 const YoutubeLinkComp = (props) => {
+  const token = loadTokenFromLocalStorage();
   const apiUrl = props.apiUrl;
   // 유튜브 링크 값 입력 인식
   const [inputValue, setInputValue] = useState("");
@@ -18,6 +20,8 @@ const YoutubeLinkComp = (props) => {
   const handleSubmit = async () => {
     const formData = new FormData();
     formData.append("url", inputValue);
+    formData.append("token", token);
+    formData.append("inst", props.inst);
     await axios
       .post(apiUrl, formData)
       .then((response) => {
@@ -32,12 +36,19 @@ const YoutubeLinkComp = (props) => {
   };
 
   return (
-    <div>
-      <label>
-        입력값:
-        <input type="text" value={inputValue} onChange={handleInputChange} />
-      </label>
-      <button onClick={handleSubmit}>서버에 전송</button>
+    <div className="flex flex-col mx-auto">
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        className="p-1 mx-2 rounded-lg"
+      />
+      <button
+        onClick={handleSubmit}
+        className="p-1 mt-4  rounded-lg
+        bg-blue-300 hover:bg-blue-500">
+        서버에 전송
+      </button>
     </div>
   );
 };
