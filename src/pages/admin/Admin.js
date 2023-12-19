@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { loadTokenFromLocalStorage, removeTokenFromLocalStorage } from "../util/HandleToken";
+import { loadTokenFromLocalStorage, removeTokenFromLocalStorage } from "../../util/HandleToken";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/Pagination";
-import LoadingSpinner from "../components/LoadingSpinner";
+import Pagination from "../../components/Pagination";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
-const Mypage = () => {
+const Admin = () => {
   const [resultData, setresultData] = useState(null);
   const itemsPerPage = 10;
 
@@ -34,7 +34,7 @@ const Mypage = () => {
 
   return (
     <div className="container my-10">
-      <h1 className="my-10">내 정보</h1>
+      <h1 className="my-10">신청들</h1>
       {resultData ? (
         <Pagination
           data={resultData}
@@ -48,4 +48,4 @@ const Mypage = () => {
   );
 };
 
-export default Mypage;
+export default Admin;

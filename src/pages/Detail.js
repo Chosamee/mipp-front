@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import {
-  loadTokenFromLocalStorage,
-  removeTokenFromLocalStorage,
-} from "../util/HandleToken";
+import { loadTokenFromLocalStorage } from "../util/HandleToken";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -23,10 +20,7 @@ const Detail = () => {
         setresultData(response.data.results);
       })
       .catch((error) => {
-        console.error(
-          "Error: 유효하지 않은 토큰. 로그인 후 사용해주세요",
-          error
-        );
+        console.error("Error: 유효하지 않은 토큰. 로그인 후 사용해주세요", error);
       });
   }, []);
 
@@ -59,9 +53,7 @@ const Detail = () => {
       <h1 className="my-10">상세 정보</h1>
       {resultData ? (
         resultData.map((item, index) => (
-          <div
-            key={index}
-            className="text-lg container h-20 bg-blue-300 my-2 grid">
+          <div key={index} className="text-lg container h-20 bg-blue-300 my-2 grid">
             <button
               className=""
               onClick={() => {
