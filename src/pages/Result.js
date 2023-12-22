@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { loadTokenFromLocalStorage, removeTokenFromLocalStorage } from "../util/HandleToken";
+import { loadTokenFromLocalStorage } from "../util/HandleToken";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 
 const Mypage = () => {
   const dispatch = useDispatch();
-  const [resultData, setresultData] = useState(null);
+  const [resultData, setresultData] = useState([]);
   const itemsPerPage = 10;
 
   const navigate = useNavigate();

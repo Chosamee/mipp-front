@@ -1,6 +1,5 @@
 import React from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-// import NaverLoginComp from "../components/login/NaverLoginComp";
 import GoogleLoginComp from "../components/login/GoogleLoginComp";
 
 const Login = ({ onLogin }) => {

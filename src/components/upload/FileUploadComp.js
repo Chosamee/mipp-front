@@ -6,7 +6,7 @@ import fileImg from "../../img/file_select.png";
 
 const FileUploadComp = (props) => {
   const apiUrl = props.apiUrl;
-  const [uploadFile, setUploadFile] = useState();
+  const [uploadFile, setUploadFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
   const token = loadTokenFromLocalStorage();

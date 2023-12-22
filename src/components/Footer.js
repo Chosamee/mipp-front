@@ -1,5 +1,4 @@
 import React from "react";
-import youtube from "../img/youtube_social.svg";
 
 const Footer = () => {
   return (

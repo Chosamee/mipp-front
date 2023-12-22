@@ -8,7 +8,7 @@ import PDFViewer from "../components/PDFViewer";
 
 const Detail = () => {
   const { id } = useParams();
-  const [resultData, setresultData] = useState();
+  const [resultData, setresultData] = useState([]);
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_MIPP_API_URL + "/detail";
     const token = loadTokenFromLocalStorage();
