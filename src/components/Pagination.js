@@ -17,9 +17,10 @@ const Pagination = ({ data, itemsPerPage, handleNavLinkClick }) => {
       {/* 데이터 렌더링 부분 */}
       {currentPageData.map((item, index) => (
         <div key={index} className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
-          <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "75%" }}>
+          <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
             <span>{item.title}</span>
           </div>
+          <div style={{ flexBasis: "10%" }}></div>
           <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
             <span className="font-bold text-blue-800">{item.inst}</span>
           </div>

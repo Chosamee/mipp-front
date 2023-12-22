@@ -57,7 +57,7 @@ const NavBar = () => {
       <div className="flex items-center">
         <button className="flex items-center">
           <span className="ml-2" onClick={() => handleNavLinkClick("/home")}>
-            신청하기 유후
+            신청하기
           </span>
         </button>
       </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import FileUploadComp from "../components/upload/FileUploadComp";
 import YoutubeLinkComp from "../components/upload/YoutubeLinkComp";
 

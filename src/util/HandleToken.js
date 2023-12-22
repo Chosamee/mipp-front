@@ -32,8 +32,4 @@ console.log("Loaded Token:", loadedToken);
 // 토큰 삭제
 removeTokenFromLocalStorage();
 */
-export {
-  saveTokenToLocalStorage,
-  loadTokenFromLocalStorage,
-  removeTokenFromLocalStorage,
-};
+export { saveTokenToLocalStorage, loadTokenFromLocalStorage, removeTokenFromLocalStorage };

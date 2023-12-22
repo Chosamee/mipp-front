@@ -4,6 +4,7 @@ import { loadTokenFromLocalStorage } from "../util/HandleToken";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
+import PDFViewer from "../components/PDFViewer";
 
 const Detail = () => {
   const { id } = useParams();
@@ -27,43 +28,44 @@ const Detail = () => {
   }, []);
 
   // 파일 다운로드
-  const handleDownload = async (filepath) => {
-    const downUrl = process.env.REACT_APP_MIPP_API_URL + "/download";
-    const formData = new FormData();
-    formData.append("filepath", filepath);
-    axios
-      .post(downUrl, formData, {
-        responseType: "blob", // 중요: 서버의 응답을 Blob으로 처리',
-      })
-      .then((response) => {
-        // Blob 데이터를 이용하여 다운로드 링크 생성
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", filepath + ".ppt"); // 파일명 설정
-        document.body.appendChild(link);
-        link.click();
+  // const handleDownload = async (filepath) => {
+  //   const downUrl = process.env.REACT_APP_MIPP_API_URL + "/download";
+  //   const formData = new FormData();
+  //   formData.append("filepath", filepath);
+  //   axios
+  //     .post(downUrl, formData, {
+  //       responseType: "blob", // 중요: 서버의 응답을 Blob으로 처리',
+  //     })
+  //     .then((response) => {
+  //       // Blob 데이터를 이용하여 다운로드 링크 생성
+  //       const url = window.URL.createObjectURL(new Blob([response.data]));
+  //       const link = document.createElement("a");
+  //       link.href = url;
+  //       link.setAttribute("download", filepath + ".pdf"); // 파일명 설정
+  //       document.body.appendChild(link);
+  //       link.click();
 
-        // 사용 후 링크 제거 및 URL 해제
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      })
-      .catch((error) => console.error("Download error:", error));
-  };
+  //       // 사용 후 링크 제거 및 URL 해제
+  //       document.body.removeChild(link);
+  //       window.URL.revokeObjectURL(url);
+  //     })
+  //     .catch((error) => console.error("Download error:", error));
+  // };
   return (
     <div className="container my-10">
       <h1 className="my-10">상세 정보</h1>
       {resultData ? (
         resultData.map((item, index) => (
-          <div key={index} className="text-lg container h-20 bg-blue-300 my-2 grid">
-            <button
-              className=""
-              onClick={() => {
-                handleDownload(item.path);
-              }}>
-              {item.path}
-            </button>
-          </div>
+          // <div key={index} className="text-lg container h-20 bg-blue-300 my-2 grid">
+          //   <button
+          //     className=""
+          //     onClick={() => {
+          //       handleDownload(item.path);
+          //     }}>
+          //     {item.path}
+          //   </button>
+          // </div>
+          <PDFViewer filepath={item.path} />
         ))
       ) : (
         <LoadingSpinner />

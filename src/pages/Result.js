@@ -19,21 +19,27 @@ const Mypage = () => {
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_MIPP_API_URL + "/result";
-    const token = loadTokenFromLocalStorage();
-    const formData = new FormData();
-    formData.append("token", token);
-    axios
-      .post(apiUrl, formData)
-      .then((response) => {
-        console.log(response);
-        setresultData(response.data.index);
-        dispatch(setData(response.data.index));
-        console.log(response.data.index);
-      })
-      .catch((error) => {
-        console.error("Error: 잘못된 접근", error);
-        removeTokenFromLocalStorage();
-      });
+
+    const fetchData = () => {
+      const token = loadTokenFromLocalStorage();
+      const formData = new FormData();
+      formData.append("token", token);
+      axios
+        .post(apiUrl, formData)
+        .then((response) => {
+          console.log(response);
+          setresultData(response.data.index);
+          dispatch(setData(response.data.index));
+          console.log(response.data.index);
+        })
+        .catch((error) => {
+          console.error("Error: 잘못된 접근", error);
+        });
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 10000);
+    return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
