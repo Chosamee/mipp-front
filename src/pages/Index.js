@@ -7,11 +7,8 @@ import image1 from "../img/intro1.webp";
 import image2 from "../img/intro2.webp";
 import image3 from "../img/intro3.webp";
 import image4 from "../img/intro4.webp";
-import { useTranslation } from "react-i18next";
 
 const App = () => {
-  const { t } = useTranslation();
-
   const token = loadTokenFromLocalStorage();
   const navigate = useNavigate();
   const handleButtonClick = (path) => {
