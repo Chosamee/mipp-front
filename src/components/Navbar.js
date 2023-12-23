@@ -71,11 +71,18 @@ const NavBar = () => {
         ) : (
           <>
             {!authState.isAdmin ? (
-              <button className="flex items-center">
-                <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/result")}>
-                  내 신청 조회
-                </span>
-              </button>
+              <>
+                <button className="flex items-center">
+                  <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/board")}>
+                    문의글
+                  </span>
+                </button>
+                <button className="flex items-center">
+                  <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/result")}>
+                    내 신청 조회
+                  </span>
+                </button>
+              </>
             ) : (
               <button className="flex items-center">
                 <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/admin")}></span>

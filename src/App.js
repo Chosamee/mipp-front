@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Result from "./pages/Result";
 import Detail from "./pages/Detail";
+import Board from "./pages/Board.js";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./util/AuthContext";
 import Admin from "./pages/admin/Admin";
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/home" element={<ProtectedRoute component={Home} />} />
               <Route path="/login" element={<Login />} />
 
+              <Route path="/board" element={<Board />} />
               <Route path="/result" element={<ProtectedRoute component={Result} />} />
 
               <Route path="/detail/:id" element={<ProtectedRoute component={Detail} />} />
