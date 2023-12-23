@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { loadTokenFromLocalStorage } from "../../util/HandleToken";
+import { uploadMedia } from "../../api/uploadService";
 
 const YoutubeLinkComp = (props) => {
-  const token = loadTokenFromLocalStorage();
-  const apiUrl = props.apiUrl;
   // 유튜브 링크 값 입력 인식
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (event) => {
@@ -17,22 +14,13 @@ const YoutubeLinkComp = (props) => {
 
   // 서버에 전송하는 함수
   const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("url", inputValue);
-    formData.append("token", token);
-    formData.append("inst", props.inst);
-    await axios
-      .post(apiUrl, formData)
-      .then((response) => {
-        // 서버로부터의 응답 처리
-        console.log("서버 응답:", response.data);
-        // 결과 페이지로 라우팅하면서 state 전달
-        navigate("/result", { state: { result: response.data.result } });
-      })
-      .catch((error) => {
-        console.error("서버 요청 오류:", error);
-        navigate("/home");
-      });
+    try {
+      const response = await uploadMedia({ url: inputValue, inst: props.inst });
+      navigate("/result", { state: { result: response.data.result } });
+    } catch (error) {
+      console.log(error);
+      navigate("/home");
+    }
   };
 
   return (

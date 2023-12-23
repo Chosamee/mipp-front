@@ -1,51 +1,33 @@
 import React, { useState } from "react";
-import axios from "axios";
-
-// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import { downloadPDF } from "../api/pdfService";
 
 const PDFViewer = ({ filepath }) => {
   const [fileUrl, setfileUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDownload = async () => {
-    const downUrl = process.env.REACT_APP_MIPP_API_URL + "/download";
-    const formData = new FormData();
-    formData.append("filepath", filepath);
-    axios
-      .post(downUrl, formData, {
-        responseType: "blob", // 중요: 서버의 응답을 Blob으로 처리',
-      })
-      .then((response) => {
-        // Blob 데이터를 이용하여 다운로드 링크 생성
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", filepath + ".pdf"); // 파일명 설정
-        document.body.appendChild(link);
-        link.click();
-
-        // 사용 후 링크 제거 및 URL 해제
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      })
-      .catch((error) => console.error("Download error:", error));
+    try {
+      const url = await downloadPDF(filepath);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", filepath + ".pdf");
+      document.body.appendChild(link);
+      link.click();
+      // 사용 후 링크 제거 및 URL 해제
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download error:", error);
+    }
   };
 
   const handlePreview = async () => {
-    const downUrl = process.env.REACT_APP_MIPP_API_URL + "/download";
-    const formData = new FormData();
-    formData.append("filepath", filepath);
-    await axios
-      .post(downUrl, formData, {
-        responseType: "blob", // 중요: 서버의 응답을 Blob으로 처리',
-      })
-      .then((response) => {
-        const url = window.URL.createObjectURL(
-          new Blob([response.data], { type: "application/pdf" })
-        );
-        setfileUrl(url);
-      })
-      .catch((error) => console.error("Download error:", error));
+    try {
+      const url = await downloadPDF(filepath);
+      setfileUrl(url);
+    } catch (error) {
+      console.error("Download error:", error);
+    }
   };
 
   return (

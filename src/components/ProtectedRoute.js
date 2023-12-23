@@ -1,34 +1,21 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../util/AuthContext";
-import { loadTokenFromLocalStorage } from "../util/HandleToken";
 import LoadingSpinner from "./LoadingSpinner";
+import { verifyToken } from "../api/authService";
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { authState, updateAuthState } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const verifyToken = async () => {
+    const performVerification = async () => {
       setIsLoading(true);
-      const token = loadTokenFromLocalStorage();
-      const formData = new FormData();
-      formData.append("token", token);
-      await axios
-        .post(process.env.REACT_APP_MIPP_API_URL + "/verifyToken", formData)
-        .then((response) => {
-          updateAuthState({ ...authState, isLoggedIn: true, isVerified: true });
-        })
-        .catch((error) => {
-          console.error(error);
-          updateAuthState({ ...authState, isLoggedIn: false, isVerified: false });
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      const isTokenValid = await verifyToken();
+      updateAuthState({ ...authState, isLoggedIn: isTokenValid, isVerified: isTokenValid });
+      setIsLoading(false);
     };
-    verifyToken();
+    performVerification();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

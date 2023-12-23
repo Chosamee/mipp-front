@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { loadTokenFromLocalStorage } from "../../util/HandleToken";
 import fileImg from "../../img/file_select.png";
+import { uploadMedia } from "../../api/uploadService";
 
 const FileUploadComp = (props) => {
-  const apiUrl = props.apiUrl;
   const [uploadFile, setUploadFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
-  const token = loadTokenFromLocalStorage();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -30,22 +27,12 @@ const FileUploadComp = (props) => {
 
   const handleSubmit = async () => {
     if (uploadFile) {
-      // 업로드 준비
-      const formData = new FormData();
-      formData.append("file", uploadFile);
-      formData.append("token", token);
-      formData.append("inst", props.inst);
-      // 서버 엔드포인트에 파일 전송
-      await axios
-        .post(apiUrl, formData)
-        .then((response) => {
-          console.log(response.data);
-          navigate("/result", { state: { result: response.data.result } });
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error);
-          navigate("/home");
-        });
+      try {
+        const response = await uploadMedia({ file: uploadFile, inst: props.inst });
+        navigate("/result", { state: { result: response.result } });
+      } catch (error) {
+        navigate("/home");
+      }
     } else {
       alert("파일을 업로드해주세요");
       return;
