@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { loadTokenFromLocalStorage } from "../util/HandleToken";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { setData } from "../util/Store.js";
 import { useDispatch } from "react-redux";
+import { fetchResults } from "../api/resultService.js";
 
-const Mypage = () => {
+const Result = () => {
   const dispatch = useDispatch();
   const [resultData, setresultData] = useState([]);
   const itemsPerPage = 10;
@@ -18,23 +17,14 @@ const Mypage = () => {
   };
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_MIPP_API_URL + "/result";
-
-    const fetchData = () => {
-      const token = loadTokenFromLocalStorage();
-      const formData = new FormData();
-      formData.append("token", token);
-      axios
-        .post(apiUrl, formData)
-        .then((response) => {
-          console.log(response);
-          setresultData(response.data.index);
-          dispatch(setData(response.data.index));
-          console.log(response.data.index);
-        })
-        .catch((error) => {
-          console.error("Error: 잘못된 접근", error);
-        });
+    const fetchData = async () => {
+      try {
+        const data = await fetchResults();
+        setresultData(data);
+        dispatch(setData(data));
+      } catch (error) {
+        console.error("Error:", error);
+      }
     };
 
     fetchData();
@@ -103,6 +93,29 @@ const Mypage = () => {
           data={filteredData}
           itemsPerPage={itemsPerPage}
           handleNavLinkClick={handleNavLinkClick}
+          renderItem={(item, index) => (
+            <div
+              key={index}
+              className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
+              <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
+                <span>{item.title}</span>
+              </div>
+              <div style={{ flexBasis: "10%" }}></div>
+              <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
+                <span className="font-bold text-blue-800">{item.inst}</span>
+              </div>
+              <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
+                <span className="font-bold text-blue-800">{item.status}</span>
+              </div>
+              <button
+                onClick={() => handleNavLinkClick("/detail/" + item.id)}
+                className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
+                style={{ flexBasis: "10%" }}
+                disabled={item.status !== "완료"}>
+                상세결과
+              </button>
+            </div>
+          )}
         />
       ) : (
         <LoadingSpinner />
@@ -125,4 +138,4 @@ const Mypage = () => {
   );
 };
 
-export default Mypage;
+export default Result;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Pagination = ({ data, itemsPerPage, handleNavLinkClick }) => {
+const Pagination = ({ data, itemsPerPage, renderItem }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);
 
@@ -15,27 +15,7 @@ const Pagination = ({ data, itemsPerPage, handleNavLinkClick }) => {
   return (
     <div>
       {/* 데이터 렌더링 부분 */}
-      {currentPageData.map((item, index) => (
-        <div key={index} className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
-          <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
-            <span>{item.title}</span>
-          </div>
-          <div style={{ flexBasis: "10%" }}></div>
-          <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
-            <span className="font-bold text-blue-800">{item.inst}</span>
-          </div>
-          <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-            <span className="font-bold text-blue-800">{item.status}</span>
-          </div>
-          <button
-            onClick={() => handleNavLinkClick("/detail/" + item.id)}
-            className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
-            style={{ flexBasis: "10%" }}
-            disabled={item.status !== "완료"}>
-            상세결과
-          </button>
-        </div>
-      ))}
+      {currentPageData.map((item, index) => renderItem(item, index))}
 
       {/* 페이지네이션 부분 */}
       <div className="container mx-auto flex justify-center items-center bg-slate-300">

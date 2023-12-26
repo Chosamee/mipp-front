@@ -11,6 +11,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const handleNavLinkClick = (path) => {
     navigate(path);
+    setIsMenuOpen(false); // 메뉴 닫기
   };
 
   // 상단바 fadeout
@@ -25,12 +26,20 @@ const NavBar = () => {
     removeTokenFromLocalStorage();
     updateAuthState({ ...authState, isLoggedIn: false, isVerified: false });
     navigate("/");
+    setIsMenuOpen(false); // 메뉴 닫기
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // 햄버거 메뉴 상태 관리
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <nav
@@ -59,40 +68,40 @@ const NavBar = () => {
           </span>
         </button>
       </div>
-      <div className="flex items-center">
+      <button className="flex items-center">
+        <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/board")}>
+          공개 건의 게시판
+        </span>
+      </button>
+
+      {/* 햄버거 버튼 */}
+      <button onClick={toggleMenu} className=" flex flex-col justify-center gap-1">
+        <span className="block w-8 h-0.5 bg-white"></span>
+        <span className="block w-8 h-0.5 bg-white"></span>
+        <span className="block w-8 h-0.5 bg-white"></span>
+      </button>
+
+      {/* 드롭다운 메뉴 */}
+      <div
+        className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
+          isMenuOpen ? "block" : "hidden"
+        }`}>
         {!authState.isVerified ? (
-          <>
-            <button className="flex items-center">
-              <span className="ml-2" onClick={() => handleNavLinkClick("/login")}>
-                로그인
-              </span>
-            </button>
-          </>
+          <button onClick={() => handleNavLinkClick("/login")} className="block w-full text-left">
+            로그인
+          </button>
         ) : (
           <>
-            {!authState.isAdmin ? (
-              <>
-                <button className="flex items-center">
-                  <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/board")}>
-                    문의글
-                  </span>
-                </button>
-                <button className="flex items-center">
-                  <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/result")}>
-                    내 신청 조회
-                  </span>
-                </button>
-              </>
-            ) : (
-              <button className="flex items-center">
-                <span className="ml-2 mr-4" onClick={() => handleNavLinkClick("/admin")}></span>
-                관리자 페이지
-              </button>
-            )}
-            <button className="flex items-center">
-              <span className="ml-2" onClick={() => handleLogout()}>
-                로그아웃
-              </span>
+            <button onClick={() => handleNavLinkClick("/asks")} className="block w-full text-left">
+              문의글
+            </button>
+            <button
+              onClick={() => handleNavLinkClick("/result")}
+              className="block w-full text-left">
+              내 신청 조회
+            </button>
+            <button onClick={handleLogout} className="block w-full text-left">
+              로그아웃
             </button>
           </>
         )}

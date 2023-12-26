@@ -9,12 +9,13 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Result from "./pages/Result";
 import Detail from "./pages/Detail";
-import Board from "./pages/Board.js";
+import Suggestion from "./pages/Suggestion.js";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./util/AuthContext";
 import Admin from "./pages/admin/Admin";
 import { Provider } from "react-redux";
 import store from "./util/Store.js";
+import { Asks, AskDetail, AskCreate } from "./pages/ask";
 
 const App = () => {
   return (
@@ -30,8 +31,11 @@ const App = () => {
               <Route path="/home" element={<ProtectedRoute component={Home} />} />
               <Route path="/login" element={<Login />} />
 
-              <Route path="/board" element={<Board />} />
+              <Route path="/board" element={<ProtectedRoute component={Suggestion} />} />
               <Route path="/result" element={<ProtectedRoute component={Result} />} />
+              <Route path="/asks" element={<ProtectedRoute component={Asks} />} />
+              <Route path="/asks/detail/:id" element={<ProtectedRoute component={AskDetail} />} />
+              <Route path="/asks/create" element={<ProtectedRoute component={AskCreate} />} />
 
               <Route path="/detail/:id" element={<ProtectedRoute component={Detail} />} />
               <Route path="/admin" element={<ProtectedRoute component={Admin} />} />

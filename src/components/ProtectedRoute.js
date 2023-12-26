@@ -12,7 +12,12 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
     const performVerification = async () => {
       setIsLoading(true);
       const isTokenValid = await verifyToken();
-      updateAuthState({ ...authState, isLoggedIn: isTokenValid, isVerified: isTokenValid });
+      updateAuthState({
+        ...authState,
+        isLoggedIn: isTokenValid.isValid,
+        isVerified: isTokenValid.isValid,
+        userName: isTokenValid.userName,
+      });
       setIsLoading(false);
     };
     performVerification();
