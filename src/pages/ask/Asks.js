@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { addPosts, fetchPosts } from "../../api/suggestionService";
+import { fetchAsks } from "../../api/askService";
 
 export const Asks = () => {
   const [resultData, setResultData] = useState([]);
@@ -16,8 +16,8 @@ export const Asks = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPosts();
-        setResultData(data.posts);
+        const response = await fetchAsks();
+        setResultData(response);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -37,50 +37,40 @@ export const Asks = () => {
       )
     : resultData;
 
-  // 건의사항글 작성 인식
-  const [contents, setContents] = useState("");
-  const handleInputChange = (event) => {
-    setContents(event.target.value);
-  };
-  // 서버에 전송하는 함수
-  const handleSubmit = async () => {
-    const confirmSubmit = window.confirm("이 내용을 게시하시겠습니까?");
-    if (confirmSubmit) {
-      try {
-        const response = await addPosts(contents);
-        console.log(response);
-        window.location.reload();
-      } catch (error) {
-        console.log(error);
-        navigate("/home");
-      }
-    } else {
-      console.log("취소됨");
-    }
-  };
-
   return (
     <div className="container my-10">
-      <h1 className="my-10">건의사항s</h1>
+      <div className="flex justify-between">
+        <h1 className="my-10">내 문의 (My doors 아님)</h1>
+        <button
+          onClick={() => {
+            navigate("/asks/create");
+          }}>
+          문의하기
+        </button>
+      </div>
+
       {filteredData ? <div>총 {Object.keys(filteredData).length} 개</div> : <div></div>}
       {filteredData ? (
         <Pagination
           data={filteredData}
           itemsPerPage={itemsPerPage}
-          handleNavLinkClick={handleNavLinkClick}
           renderItem={(item, index) => (
             <div
               key={index}
               className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
-              <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
-                <span className="font-bold text-blue-800">{item.content}</span>
+              <div
+                onClick={() => {
+                  handleNavLinkClick(`/asks/detail/${item.id}`);
+                }}
+                className="flex-grow text-blue-800 items-center"
+                style={{ flexBasis: "60%" }}>
+                <span className="font-bold text-blue-800">{item.title}</span>
               </div>
-              <div style={{ flexBasis: "10%" }}></div>
-              <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
-                <span className="font-bold text-blue-800">{item.user_name}</span>
+              <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "15%" }}>
+                <span className="font-bold text-blue-800">{item.responsed}</span>
               </div>
-              <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-                <span className="font-bold text-blue-800">{item.created_at}</span>
+              <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "25%" }}>
+                <span className="font-bold text-blue-800">{item.requested_at}</span>
               </div>
             </div>
           )}
@@ -101,20 +91,6 @@ export const Asks = () => {
           value={searchType}>
           <option value="title">제목</option>
         </select>
-      </div>
-      <div className="flex flex-col mx-auto">
-        <input
-          type="text"
-          value={contents}
-          onChange={handleInputChange}
-          placeholder="문의글 작성"
-          className="w-full px-4 py-2 border rounded-md mb-4"
-        />
-        <button
-          onClick={handleSubmit}
-          className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
-          등록
-        </button>
       </div>
     </div>
   );

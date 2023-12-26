@@ -15,8 +15,8 @@ const YoutubeLinkComp = (props) => {
   // 서버에 전송하는 함수
   const handleSubmit = async () => {
     try {
-      const response = await uploadMedia({ url: inputValue, inst: props.inst });
-      navigate("/result", { state: { result: response.data.result } });
+      await uploadMedia({ url: inputValue, inst: props.inst });
+      navigate("/result");
     } catch (error) {
       console.log(error);
       navigate("/home");

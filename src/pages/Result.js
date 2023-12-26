@@ -92,7 +92,6 @@ const Result = () => {
         <Pagination
           data={filteredData}
           itemsPerPage={itemsPerPage}
-          handleNavLinkClick={handleNavLinkClick}
           renderItem={(item, index) => (
             <div
               key={index}
