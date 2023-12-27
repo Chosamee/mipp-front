@@ -10,12 +10,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.animated-background {
-  background-image: url("img/josh.gif");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .index-background {
   background-image: url("img/indexBg.png");
   background-size: cover;

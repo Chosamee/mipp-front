@@ -1,8 +1,8 @@
 import React from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleLoginComp from "../components/login/GoogleLoginComp";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   // Google Client ID
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   return (
@@ -10,7 +10,7 @@ const Login = ({ onLogin }) => {
       <div className="my-8 text-3xl text-gray-800 font-bold">Google 로그인하고 이용해주세요</div>
       <div className="flex justify-center items-center m-auto h-20">
         <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-          <GoogleLoginComp onLogin={onLogin} />
+          <GoogleLoginButton />
         </GoogleOAuthProvider>
       </div>
     </div>

@@ -4,7 +4,7 @@ import Pagination from "../../components/Pagination";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { fetchAsks } from "../../api/askService";
 
-export const Asks = () => {
+const Asks = () => {
   const [resultData, setResultData] = useState([]);
   const itemsPerPage = 10;
 
@@ -95,3 +95,5 @@ export const Asks = () => {
     </div>
   );
 };
+
+export default Asks;

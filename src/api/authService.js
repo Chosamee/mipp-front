@@ -1,30 +1,34 @@
 import axios from "axios";
-import { loadTokenFromLocalStorage, saveTokenToLocalStorage } from "../util/HandleToken";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
 export const verifyToken = async () => {
-  const token = loadTokenFromLocalStorage();
-  const formData = new FormData();
-  formData.append("token", token);
-
   try {
-    const response = await axios.post(`${API_BASE_URL}/verifyToken`, formData);
-    return { isValid: true, userName: response.data.user_name };
+    await axios.post(`${API_BASE_URL}/verifyToken`, null, { withCredentials: true });
+    return true;
   } catch (error) {
     console.error("Token verification error:", error);
-    return { isValid: false, userName: "" };
+    return false;
   }
 };
 
-export const handleGoogleLogin = async (googleData) => {
+export const handleLogout = async () => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/logout`, null, { withCredentials: true });
+    console.log("Logout Success:", response);
+  } catch (error) {
+    console.error("Logout api error:", error);
+    throw error;
+  }
+};
+
+export const handleGoogleLogin = async (reponse) => {
   const formData = new FormData();
-  formData.append("token", googleData.credential);
+  formData.append("token", reponse.credential);
 
   try {
     const response = await axios.post(`${API_BASE_URL}/google_token`, formData);
     console.log("Google Login Success:", response);
-    saveTokenToLocalStorage(googleData.credential);
   } catch (error) {
     console.error("Error during Google Login:", error);
     throw error;

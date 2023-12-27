@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../util/AuthContext";
+import { useAuth } from "../utils/AuthContext";
 import LoadingSpinner from "./LoadingSpinner";
 import { verifyToken } from "../api/authService";
 
@@ -14,9 +14,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
       const isTokenValid = await verifyToken();
       updateAuthState({
         ...authState,
-        isLoggedIn: isTokenValid.isValid,
-        isVerified: isTokenValid.isValid,
-        userName: isTokenValid.userName,
+        isLoggedIn: isTokenValid,
       });
       setIsLoading(false);
     };

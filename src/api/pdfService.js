@@ -10,6 +10,7 @@ export const downloadPDF = async (filepath) => {
   try {
     const response = await axios.post(url, formData, {
       responseType: "blob", // 중요: 서버의 응답을 Blob으로 처리',
+      withCredentials: true,
     });
     // Blob 데이터를 이용하여 다운로드 링크 생성
     return window.URL.createObjectURL(new Blob([response.data], { type: "application/pdf" }));

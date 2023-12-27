@@ -1,15 +1,15 @@
 // App.js
 import React, { useEffect, useState } from "react";
-import { loadTokenFromLocalStorage } from "../util/HandleToken";
 import { useNavigate } from "react-router-dom";
-import ImageSlider from "../components/Silde";
+import ImageSlider from "../components/Silder";
 import image1 from "../img/intro1.webp";
 import image2 from "../img/intro2.webp";
 import image3 from "../img/intro3.webp";
 import image4 from "../img/intro4.webp";
+import { useAuth } from "utils/AuthContext";
 
 const App = () => {
-  const token = loadTokenFromLocalStorage();
+  const { authState } = useAuth();
   const navigate = useNavigate();
   const handleButtonClick = (path) => {
     navigate(path);
@@ -33,14 +33,16 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-500  flex flex-col index-background">
       <main
-        className={`z-10 fixed text-white animated-background w-full h-screen flex-grow flex items-center justify-center flex-col p-8
+        className={`z-10 fixed text-white w-full h-screen flex-grow flex items-center justify-center flex-col p-8
       transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}>
         <h1 className="text-4xl font-bold mb-4">AI 음악 표절 검사</h1>
         <p className="mb-6 text-lg">악보를 받아 직접 검사할까요? 소리를 들려주세요</p>
         <button
           className="z-20 bg-black text-white py-2 px-4 rounded-full hover:bg-opacity-80 transition duration-300"
           onClick={() => {
-            token !== null ? handleButtonClick("/home") : handleButtonClick("/login");
+            authState.isLoggedIn !== null
+              ? handleButtonClick("/home")
+              : handleButtonClick("/login");
           }}>
           검사하기
         </button>

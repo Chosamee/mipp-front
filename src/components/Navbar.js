@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { removeTokenFromLocalStorage } from "../util/HandleToken";
-import { useAuth } from "../util/AuthContext";
+import { useAuth } from "../utils/AuthContext";
 import logo from "../logo.svg";
 
 const NavBar = () => {
@@ -23,10 +22,13 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    removeTokenFromLocalStorage();
-    updateAuthState({ ...authState, isLoggedIn: false, isVerified: false });
-    navigate("/");
-    setIsMenuOpen(false); // 메뉴 닫기
+    try {
+      updateAuthState({ ...authState, isLoggedIn: false, isVerified: false });
+      navigate("/");
+      setIsMenuOpen(false); // 메뉴 닫기
+    } catch (error) {
+      console.log("logout error: ", error);
+    }
   };
 
   useEffect(() => {
@@ -86,7 +88,7 @@ const NavBar = () => {
         className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
           isMenuOpen ? "block" : "hidden"
         }`}>
-        {!authState.isVerified ? (
+        {!authState.isLoggedIn ? (
           <button onClick={() => handleNavLinkClick("/login")} className="block w-full text-left">
             로그인
           </button>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchAsksDetail } from "../../api/askService";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
-export const AskDetail = () => {
+const AskDetail = () => {
   const { id } = useParams();
   const [ask, setAsk] = useState(null);
   useEffect(() => {
@@ -37,3 +37,5 @@ export const AskDetail = () => {
     </>
   );
 };
+
+export default AskDetail;

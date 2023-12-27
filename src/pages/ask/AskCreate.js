@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
 
-export const AskCreate = () => {
+const AskCreate = () => {
   const [inquiry, setInquiry] = useState({
     title: "",
     contents: "",
@@ -165,3 +165,5 @@ export const AskCreate = () => {
     </form>
   );
 };
+
+export default AskCreate;
