@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import logo from "../logo.svg";
+import { handleLogout } from "api/authService";
 
 const NavBar = () => {
   const { authState, updateAuthState } = useAuth();
@@ -21,9 +22,10 @@ const NavBar = () => {
     setVisible(currentScrollPos <= 200); // 80px 이상 스크롤되면 숨김
   };
 
-  const handleLogout = () => {
+  const handleLogoutClick = async () => {
     try {
-      updateAuthState({ ...authState, isLoggedIn: false, isVerified: false });
+      await handleLogout();
+      updateAuthState({ ...authState, isLoggedIn: false });
       navigate("/");
       setIsMenuOpen(false); // 메뉴 닫기
     } catch (error) {
@@ -102,7 +104,7 @@ const NavBar = () => {
               className="block w-full text-left">
               내 신청 조회
             </button>
-            <button onClick={handleLogout} className="block w-full text-left">
+            <button onClick={handleLogoutClick} className="block w-full text-left">
               로그아웃
             </button>
           </>
