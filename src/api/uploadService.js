@@ -14,7 +14,9 @@ export const uploadMedia = async ({ file, url, inst }) => {
   formData.append("inst", inst);
 
   try {
-    const response = await axios.post(`${API_BASE_URL}/classify`, formData);
+    const response = await axios.post(`${API_BASE_URL}/classify`, formData, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     console.error("Error uploading media:", error);

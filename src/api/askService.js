@@ -4,7 +4,7 @@ const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
 export const fetchAsks = async () => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/all_asks`, {
+    const response = await axios.post(`${API_BASE_URL}/all_asks`, null, {
       withCredentials: true,
     });
     console.log(response.data);
