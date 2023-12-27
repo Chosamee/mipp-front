@@ -28,7 +28,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         <div>
           <LoadingSpinner />
         </div>
-      ) : authState.isVerified ? (
+      ) : authState.isLoggedIn ? (
         <Component {...rest} />
       ) : (
         <Navigate to="/login" />

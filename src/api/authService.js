@@ -4,7 +4,10 @@ const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
 export const verifyToken = async () => {
   try {
-    await axios.post(`${API_BASE_URL}/verifyToken`, null, { withCredentials: true });
+    const response = await axios.post(`${API_BASE_URL}/verifyToken`, null, {
+      withCredentials: true,
+    });
+    console.log(response);
     return true;
   } catch (error) {
     console.error("Token verification error:", error);
