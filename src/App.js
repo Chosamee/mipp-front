@@ -24,9 +24,10 @@ const App = () => {
       <Provider store={store}>
         <Router>
           <ScrollToTop />
+          <CustomNavbar />
           <div className="font-['GowunDodum-Regular']">
             <div className="h-20"></div>
-            <CustomNavbar />
+
             <Routes className="flex-grow">
               <Route path="*" element={<Navigate to={"/"} replace />} />
               <Route path="/" element={<Index />} />
