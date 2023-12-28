@@ -16,12 +16,14 @@ import Asks from "pages/ask/Asks";
 import AskCreate from "pages/ask/AskCreate";
 import AskDetail from "pages/ask/AskDetail";
 import RegistrationForm from "pages/Regist";
+import ScrollToTop from "components/ScrollToTop";
 
 const App = () => {
   return (
     <AuthProvider>
       <Provider store={store}>
         <Router>
+          <ScrollToTop />
           <div className="flex flex-col min-h-screen font-['GowunDodum-Regular'] mx-auto">
             <div className="h-20"></div>
             <CustomNavbar />
