@@ -50,6 +50,7 @@ export const handleRegist = async (registForm) => {
       withCredentials: true,
     });
     console.log("Regist Success:", response);
+    return response;
   } catch (error) {
     console.error("Error Regist Api:", error);
     throw error;

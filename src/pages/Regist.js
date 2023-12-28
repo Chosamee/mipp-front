@@ -28,6 +28,7 @@ const RegistrationForm = () => {
     try {
       // 서버에 닉네임 중복 검사 요청
       const response = await handleCheckNicknameDuplicate(nickname);
+      console.log(typeof birthDate);
       if (response.isAvailable) {
         setNicknameError("사용 가능 합니다.");
         setIsNicknameValid(true);
