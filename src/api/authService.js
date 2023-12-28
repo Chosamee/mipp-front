@@ -57,6 +57,7 @@ export const handleRegist = async (registForm) => {
 };
 
 export const handleCheckNicknameDuplicate = async (nickname) => {
+  console.log(nickname);
   const formData = new FormData();
   formData.append("nickname", nickname);
   try {
