@@ -10,6 +10,15 @@ module.exports = {
         "index-gradient":
           "linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%)",
       },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-in-up": "fadeInUp 1s ease-out",
+      },
     },
   },
   plugins: [],

@@ -35,7 +35,7 @@ const App = () => {
         </video>
 
         {/* Overlay Content */}
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center fade-in-up">
           <div className=" p-4 bg-index-gradient w-full h-full flex justify-center items-center">
             <div className="text-center text-white p-4">
               <h1 className="text-4xl font-bold mb-2">표절 검사에오</h1>
@@ -81,6 +81,7 @@ const App = () => {
           <img src={indexContent1} alt="Description" className="w-given rounded" />
         </div>
       </div>
+
       <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
         style={{ backgroundImage: `url(${indexImg2})` }}>
@@ -114,6 +115,7 @@ const App = () => {
           </div>
         </div>
       </div>
+
       <div className="flex justify-center items-center">
         <div className="text-center">
           <div className="text-5xl font-bold mb-8 mt-8">고성현의 굉장한 앱</div>
@@ -134,7 +136,7 @@ const App = () => {
           style={{ backgroundColor: "#000000b0" }}>
           <div className="text-center text-white p-4">
             <h1 className="text-7xl font-bold mb-2">표절 검사다</h1>
-            <p className="text-2xl mt-8 mb-14">
+            <p className="text-2xl mt-8 mb-14 w-given">
               표절 검사를 하세요 <br />
               여러분들의 소리를 들려주세요 으악하하하 <br />
               열심히 일하자 하하하 으악하하하 하하하 정보가 피료해

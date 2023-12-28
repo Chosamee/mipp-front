@@ -25,3 +25,9 @@ code {
     font-family: "GowunDodum-Regular", sans-serif;
   }
 }
+
+@layer utilities {
+  .fade-in-up {
+    @apply animate-fade-in-up;
+  }
+}
