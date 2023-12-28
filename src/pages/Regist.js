@@ -60,14 +60,15 @@ const RegistrationForm = () => {
     }
     // 여기에 회원 가입 요청 로직 구현
     try {
-      const response = await handleRegist({
+      const registForm = {
         name: name,
         nickname: nickname,
         phone: phoneNumber,
         birthDate: birthDate,
         marketingConsent: marketingConsent,
         organization: organization,
-      });
+      };
+      const response = await handleRegist(registForm);
       console.log(response.data);
       navigate("/home");
     } catch (error) {
