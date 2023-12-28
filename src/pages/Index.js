@@ -35,8 +35,8 @@ const App = () => {
         </video>
 
         {/* Overlay Content */}
-        <div className="bg-index-gradient absolute top-0 left-0 right-0 h-full flex justify-center items-center fade-in-up">
-          <div className=" p-4  h-full flex justify-center items-center">
+        <div className="bg-index-gradient absolute top-0 left-0 right-0 h-full flex justify-center items-center">
+          <div className=" p-4  h-full flex justify-center items-center fade-in-up">
             <div className="text-center text-white p-4">
               <h1 className="text-4xl font-bold mb-2">표절 검사에오</h1>
               <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
@@ -88,7 +88,7 @@ const App = () => {
         <div className="flex justify-center items-center h-full bg-index-gradient">
           <div className="container mx-auto px-4 py-6 text-white rounded-lg  mb-20 w-[1000px] mt-5">
             <h1 className="mx-auto text-6xl font-bold mb-20">음악 IP 보호 및 관리 솔루션</h1>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div className="">
                 <p className="mb-5 text-4xl font-bold">01. AI 음악 분석 검사</p>
                 <p className="mb-10 text-xl">
