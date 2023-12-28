@@ -25,15 +25,16 @@ export const handleLogout = async () => {
   }
 };
 
-export const handleGoogleLogin = async (reponse) => {
+export const handleGoogleLogin = async (googleData) => {
   const formData = new FormData();
-  formData.append("token", reponse.credential);
+  formData.append("token", googleData.credential);
 
   try {
     const response = await axios.post(`${API_BASE_URL}/google_token`, formData, {
       withCredentials: true,
     });
     console.log("Google Login Success:", response);
+    return response.data;
   } catch (error) {
     console.error("Error during Google Login:", error);
     throw error;

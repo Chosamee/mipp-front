@@ -6,10 +6,13 @@ import { useNavigate } from "react-router-dom";
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
 
-  const handleLoginSuccess = async (reponse) => {
+  const handleLoginSuccess = async (googleData) => {
     try {
-      await handleGoogleLogin(reponse);
-      navigate("/home");
+      const response = await handleGoogleLogin(googleData);
+      if (response.message === "New User") navigate("/regist");
+      else if (response.message === "Additional Info Required") navigate("/regist");
+      else if (response.message === "login complete") navigate("/home");
+      else throw new expect();
     } catch (error) {
       console.log("Login Error Server response:", error);
     }
