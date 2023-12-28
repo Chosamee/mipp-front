@@ -61,6 +61,7 @@ const RegistrationForm = () => {
     // 여기에 회원 가입 요청 로직 구현
     try {
       const response = await handleRegist({
+        name: name,
         nickname: nickname,
         phone: phoneNumber,
         birthDate: birthDate,
@@ -68,7 +69,6 @@ const RegistrationForm = () => {
         organization: organization,
       });
       console.log(response.data);
-      // 회원 가입 성공 후 처리 (예: 로그인 페이지로 리다이렉션)
       navigate("/home");
     } catch (error) {
       console.error("Error submitting registration:", error);
