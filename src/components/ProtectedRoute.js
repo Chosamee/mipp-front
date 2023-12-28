@@ -17,7 +17,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         ...authState,
         isLoggedIn: isTokenValid.isValid,
       });
-      if (!isTokenValid.action) {
+      if (isTokenValid.isValid && !isTokenValid.action) {
         alert("추가정보를 입력해주세용");
       }
       setAction(isTokenValid.action);

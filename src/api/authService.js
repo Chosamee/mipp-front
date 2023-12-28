@@ -14,7 +14,10 @@ export const verifyToken = async () => {
     };
   } catch (error) {
     console.error("Token verification error:", error);
-    return false;
+    return {
+      isValid: false,
+      action: false,
+    };
   }
 };
 

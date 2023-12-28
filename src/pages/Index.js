@@ -12,6 +12,9 @@ import indexImg2 from "img/index2.jpg";
 import indexImg3 from "img/index3.jpg";
 import indexContent1 from "img/indexContent1.webp";
 import hwaza from "img/hwaza.mp4";
+import YouTubeVideo from "components/YouTubeVideo";
+import video1 from "img/index2.mp4";
+import videoWrapper from "img/videoWrapper.webp";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 const App = () => {
   const { authState } = useAuth();
@@ -24,7 +27,33 @@ const App = () => {
   const images = [image1, image2, image3, image4];
   return (
     <div className="min-h-screen flex flex-col">
-      <div
+      <div className="relative w-full h-[1000px] overflow-hidden">
+        <video autoPlay loop muted className="absolute w-full h-full object-cover">
+          <source src={video1} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay Content */}
+        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+          <div className=" p-4 bg-opacity-50 bg-black w-full h-full flex justify-center items-center">
+            <div className="text-center text-white p-4">
+              <h1 className="text-4xl font-bold mb-2">표절 검사다 이새기들아</h1>
+              <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => {
+                  authState.isLoggedIn !== null
+                    ? handleButtonClick("/home")
+                    : handleButtonClick("/login");
+                }}>
+                검사하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-full relative"
         style={{ backgroundImage: `url(${indexImg1})` }}>
         <div className="flex justify-center items-center h-full bg-opacity-50 bg-black">
@@ -42,7 +71,7 @@ const App = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* 흰색 */}
       <div className="container mx-auto bg-white rounded-lg  mb-20 mt-5 relative w-full flex justify-center items-center">
         <div className="h-fit text-center">
@@ -51,7 +80,6 @@ const App = () => {
           <img src={indexContent1} alt="Description" className="w-given rounded" />
         </div>
       </div>
-
       <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
         style={{ backgroundImage: `url(${indexImg2})` }}>
@@ -85,7 +113,6 @@ const App = () => {
           </div>
         </div>
       </div>
-
       <div className="flex justify-center items-center">
         <div className="text-center">
           <div className="text-5xl font-bold mb-8 mt-8">고성현의 굉장한 앱</div>
@@ -98,7 +125,6 @@ const App = () => {
           </video>
         </div>
       </div>
-
       <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
         style={{ backgroundImage: `url(${indexImg3})` }}>
@@ -116,6 +142,13 @@ const App = () => {
               검사하기
             </button>
           </div>
+        </div>
+      </div>
+      <div
+        className="flex justify-end items-center w-[1084px] h-[576px] mx-auto my-8 bg-no-repeat rounded-3xl"
+        style={{ backgroundImage: `url(${videoWrapper})` }}>
+        <div className="w-[1024px] h-full">
+          <YouTubeVideo videoId="xXgsdyXMUHE" />
         </div>
       </div>
     </div>
