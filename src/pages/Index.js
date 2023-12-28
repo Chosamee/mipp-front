@@ -116,7 +116,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-grow">
         <div className="text-center">
           <div className="text-5xl font-bold mb-8 mt-8">고성현의 굉장한 앱</div>
           <video
