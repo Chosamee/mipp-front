@@ -45,8 +45,10 @@ export const handleGoogleLogin = async (googleData) => {
 };
 
 export const handleRegist = async (registForm) => {
+  const formData = new FormData();
+  formData.append("AdditionalUserInfo", registForm);
   try {
-    const response = await axios.post(`${API_BASE_URL}/additional_info`, registForm, {
+    const response = await axios.post(`${API_BASE_URL}/additional_info`, formData, {
       withCredentials: true,
     });
     console.log("Regist Success:", response);

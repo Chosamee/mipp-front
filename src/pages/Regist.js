@@ -14,7 +14,7 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const validateNickname = (value) => {
     // 한글과 숫자만 포함, 2~8자, 공백 없음을 확인하는 정규식
-    const regex = /^[가-힣0-9]{2,8}$/;
+    const regex = /^[가-힣A-Za-z0-9]{2,8}$/;
     return regex.test(value);
   };
 
@@ -29,7 +29,7 @@ const RegistrationForm = () => {
       // 서버에 닉네임 중복 검사 요청
       const response = await handleCheckNicknameDuplicate(nickname);
       if (response.isAvailable) {
-        setNicknameError("");
+        setNicknameError("사용 가능 합니다.");
         setIsNicknameValid(true);
       } else {
         setNicknameError("이미 사용 중인 닉네임입니다.");
@@ -38,6 +38,17 @@ const RegistrationForm = () => {
     } catch (error) {
       console.error("Error checking nickname:", error);
       setNicknameError("닉네임 검사 중 오류가 발생했습니다.");
+    }
+  };
+
+  const handleNicknameChange = (e) => {
+    const value = e.target.value;
+    setNickname(value);
+    setIsNicknameValid(false);
+    if (!validateNickname(value)) {
+      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+    } else {
+      setNicknameError("");
     }
   };
 
@@ -102,7 +113,7 @@ const RegistrationForm = () => {
               type="text"
               placeholder="닉네임"
               value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
+              onChange={handleNicknameChange}
               required
             />
             <button
@@ -112,7 +123,11 @@ const RegistrationForm = () => {
               중복 검사
             </button>
           </div>
-          {nicknameError && <p className="text-red-500 text-xs italic">{nicknameError}</p>}
+          {nicknameError && (
+            <p className={`${isNicknameValid ? "text-blue-500" : "text-red-500"} text-xs italic`}>
+              {nicknameError}
+            </p>
+          )}
         </div>
 
         <div className="mb-4">
