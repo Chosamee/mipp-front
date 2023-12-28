@@ -29,14 +29,14 @@ const App = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="relative h-[1000px] overflow-hidden">
-        <video autoPlay loop muted className="absolute w-full h-full object-cover">
+        <video autoPlay loop muted className="absolute h-full object-cover">
           <source src={video1} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         {/* Overlay Content */}
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center fade-in-up">
-          <div className=" p-4 bg-index-gradient w-full h-full flex justify-center items-center">
+        <div className="bg-index-gradient absolute top-0 left-0 right-0 h-full flex justify-center items-center fade-in-up">
+          <div className=" p-4  h-full flex justify-center items-center">
             <div className="text-center text-white p-4">
               <h1 className="text-4xl font-bold mb-2">표절 검사에오</h1>
               <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
@@ -75,7 +75,7 @@ const App = () => {
       </div> */}
       {/* 흰색 */}
       <div className="container mx-auto bg-white rounded-lg  mb-20 mt-5 relative flex justify-center items-center">
-        <div className="h-fit text-center w-full">
+        <div className="h-fit text-center mx-auto">
           <div className="text-6xl font-bold mb-1 mt-3">사용 PROCESS</div>
 
           <img src={indexContent1} alt="Description" className="w-given rounded" />
@@ -85,7 +85,7 @@ const App = () => {
       <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover"
         style={{ backgroundImage: `url(${indexImg2})` }}>
-        <div className="flex justify-center items-center h-full bg-index-gradient w-full">
+        <div className="flex justify-center items-center h-full bg-index-gradient">
           <div className="container mx-auto px-4 py-6 text-white rounded-lg  mb-20 w-[1000px] mt-5">
             <h1 className="mx-auto text-6xl font-bold mb-20">음악 IP 보호 및 관리 솔루션</h1>
             <div className="grid md:grid-cols-2 gap-4">
@@ -132,7 +132,7 @@ const App = () => {
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover"
         style={{ backgroundImage: `url(${indexImg3})` }}>
         <div
-          className="flex justify-center items-center h-full  w-full"
+          className="flex justify-center items-center h-full"
           style={{ backgroundColor: "#000000b0" }}>
           <div className="text-center text-white p-4">
             <h1 className="text-7xl font-bold mb-2">표절 검사다</h1>
