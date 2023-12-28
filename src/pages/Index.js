@@ -27,7 +27,7 @@ const App = () => {
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col w-full">
       <div className="relative w-full h-[1000px] overflow-hidden">
         <video autoPlay loop muted className="absolute w-full h-full object-cover">
           <source src={video1} type="video/mp4" />
@@ -83,7 +83,7 @@ const App = () => {
       </div>
 
       <div
-        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-full"
         style={{ backgroundImage: `url(${indexImg2})` }}>
         <div className="flex justify-center items-center h-full bg-index-gradient ">
           <div className="container mx-auto px-4 py-6 text-white rounded-lg  mb-20 w-[1000px] mt-5">
@@ -122,14 +122,14 @@ const App = () => {
           <video
             src={hwaza}
             controls // 컨트롤러를 표시하려면 이 속성을 추가하세요.
-            className="max-w-full h-auto w-given my-4 rounded" // Tailwind CSS를 사용한 스타일링
+            className=" h-auto w-given my-4 rounded" // Tailwind CSS를 사용한 스타일링
           >
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
       <div
-        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-full"
         style={{ backgroundImage: `url(${indexImg3})` }}>
         <div
           className="flex justify-center items-center h-full"

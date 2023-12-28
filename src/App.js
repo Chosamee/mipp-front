@@ -24,7 +24,7 @@ const App = () => {
       <Provider store={store}>
         <Router>
           <ScrollToTop />
-          <div className="flex flex-col min-h-screen font-['GowunDodum-Regular'] mx-auto">
+          <div className="flex flex-col min-h-screen font-['GowunDodum-Regular']">
             <div className="h-20"></div>
             <CustomNavbar />
             <Routes className="flex-grow">
