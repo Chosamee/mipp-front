@@ -16,6 +16,7 @@ import YouTubeVideo from "components/YouTubeVideo";
 import video1 from "img/index2.mp4";
 import videoWrapper from "img/videoWrapper.webp";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
+// bg-opacity-50 bg-black
 const App = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
@@ -35,9 +36,9 @@ const App = () => {
 
         {/* Overlay Content */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-          <div className=" p-4 bg-opacity-50 bg-black w-full h-full flex justify-center items-center">
+          <div className=" p-4 bg-index-gradient w-full h-full flex justify-center items-center">
             <div className="text-center text-white p-4">
-              <h1 className="text-4xl font-bold mb-2">표절 검사다 이새기들아</h1>
+              <h1 className="text-4xl font-bold mb-2">표절 검사에오</h1>
               <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -83,7 +84,7 @@ const App = () => {
       <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
         style={{ backgroundImage: `url(${indexImg2})` }}>
-        <div className="flex justify-center items-center h-full bg-opacity-50 bg-black">
+        <div className="flex justify-center items-center h-full bg-index-gradient ">
           <div className="container mx-auto px-4 py-6 text-white rounded-lg  mb-20 w-[1000px] mt-5">
             <h1 className="mx-auto text-6xl font-bold mb-20">음악 IP 보호 및 관리 솔루션</h1>
             <div className="grid md:grid-cols-2 gap-4">
@@ -128,12 +129,18 @@ const App = () => {
       <div
         className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
         style={{ backgroundImage: `url(${indexImg3})` }}>
-        <div className="flex justify-center items-center h-full bg-opacity-50 bg-black">
+        <div
+          className="flex justify-center items-center h-full"
+          style={{ backgroundColor: "#000000b0" }}>
           <div className="text-center text-white p-4">
-            <h1 className="text-4xl font-bold mb-2">표절 검사다 이새기들아</h1>
-            <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
+            <h1 className="text-7xl font-bold mb-2">표절 검사다</h1>
+            <p className="text-2xl mt-8 mb-14">
+              표절 검사를 하세요 <br />
+              여러분들의 소리를 들려주세요 으악하하하 <br />
+              열심히 일하자 하하하 으악하하하 하하하 정보가 피료해
+            </p>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl w-[300px] h-[100px] text-4xl"
               onClick={() => {
                 authState.isLoggedIn !== null
                   ? handleButtonClick("/home")
@@ -151,6 +158,13 @@ const App = () => {
           <YouTubeVideo videoId="xXgsdyXMUHE" />
         </div>
       </div>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl w-[500px] h-[80px] text-4xl mx-auto mb-10"
+        onClick={() => {
+          authState.isLoggedIn !== null ? handleButtonClick("/home") : handleButtonClick("/login");
+        }}>
+        검사하기
+      </button>
     </div>
   );
 };
