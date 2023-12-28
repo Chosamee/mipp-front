@@ -58,7 +58,9 @@ export const handleRegist = async (registForm) => {
 
 export const handleCheckNicknameDuplicate = async (nickname) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/nickname_check`, nickname, {
+    const formData = new FormData();
+    formData.append("nickname", nickname);
+    const response = await axios.post(`${API_BASE_URL}/nickname_check`, formData, {
       withCredentials: true,
     });
     console.log("check Success:", response.data);
