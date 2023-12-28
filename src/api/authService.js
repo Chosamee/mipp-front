@@ -39,3 +39,28 @@ export const handleGoogleLogin = async (reponse) => {
     throw error;
   }
 };
+
+export const handleRegist = async (registForm) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/additional_info`, registForm, {
+      withCredentials: true,
+    });
+    console.log("Regist Success:", response);
+  } catch (error) {
+    console.error("Error Regist Api:", error);
+    throw error;
+  }
+};
+
+export const handleCheckNicknameDuplicate = async (nickname) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/nickname_check`, nickname, {
+      withCredentials: true,
+    });
+    console.log("check Success:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("check error Api:", error);
+    throw error;
+  }
+};
