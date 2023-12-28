@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="mt-auto ">
       <div id="wrapper" className="bg-blue-600 ">
-        <div className="text-white container mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="text-white container mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-4 w-given">
           <div className="flex md:justify-start justify-center">
             <span className="text-lg">이메일: aimipp@gmail.com</span>
             {/* <img src={youtube} alt="Youtube Social" width={30} height={30} className="ml-4" /> */}
@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto pb-2 px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="container mx-auto pb-2 px-4 grid grid-cols-1 md:grid-cols-3 gap-4 w-given">
         <div className="col-span-1 md:col-span-3 text-center text-xs mt-2">
           <span>©2023 BY POLY. PROUDLY CREATED WITH DoubleHCompany.</span>
         </div>

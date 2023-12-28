@@ -22,7 +22,7 @@ const App = () => {
     <AuthProvider>
       <Provider store={store}>
         <Router>
-          <div className="flex flex-col min-h-screen min-w-fit font-['GowunDodum-Regular'] w-1000 mx-auto">
+          <div className="flex flex-col min-h-screen font-['GowunDodum-Regular'] mx-auto">
             <div className="h-20"></div>
             <CustomNavbar />
             <Routes className="flex-grow">

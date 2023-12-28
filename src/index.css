@@ -10,12 +10,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.index-background {
-  background-image: url("img/indexBg.png");
-  background-size: cover;
-  background-repeat: repeat;
-}
-
 @font-face {
   font-family: "GowunDodum-Regular";
   src: url("font/GowunDodum-Regular.ttf") format("truetype");

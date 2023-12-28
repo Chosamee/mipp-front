@@ -1,13 +1,18 @@
 // App.js
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import ImageSlider from "../components/Silder";
-import image1 from "../img/intro1.webp";
-import image2 from "../img/intro2.webp";
-import image3 from "../img/intro3.webp";
-import image4 from "../img/intro4.webp";
+import image1 from "img/intro1.webp";
+import image2 from "img/intro2.webp";
+import image3 from "img/intro3.webp";
+import image4 from "img/intro4.webp";
 import { useAuth } from "utils/AuthContext";
-
+import indexImg1 from "img/index1.jpg";
+import indexImg2 from "img/index2.jpg";
+import indexImg3 from "img/index3.jpg";
+import indexContent1 from "img/indexContent1.webp";
+import hwaza from "img/hwaza.mp4";
+//style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 const App = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
@@ -15,43 +20,43 @@ const App = () => {
     navigate(path);
   };
 
-  // 메인화면 fadeout
-  const [visible, setVisible] = useState(true);
-
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setVisible(currentScrollPos <= 200); // 80px 이상 스크롤되면 숨김
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
   return (
-    <div className="min-h-screen bg-gray-500  flex flex-col index-background">
-      <main
-        className={`z-10 fixed text-white w-full h-screen flex-grow flex items-center justify-center flex-col p-8
-      transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}>
-        <h1 className="text-4xl font-bold mb-4">AI 음악 표절 검사</h1>
-        <p className="mb-6 text-lg">악보를 받아 직접 검사할까요? 소리를 들려주세요</p>
-        <button
-          className="z-20 bg-black text-white py-2 px-4 rounded-full hover:bg-opacity-80 transition duration-300"
-          onClick={() => {
-            authState.isLoggedIn !== null
-              ? handleButtonClick("/home")
-              : handleButtonClick("/login");
-          }}>
-          검사하기
-        </button>
-      </main>
-      <div className="h-40"></div>
-      <div className={`transition-opacity duration-500 ${!visible ? "opacity-100" : "opacity-0"}`}>
-        <div className="h-40"></div>
-        <div className="container mx-auto px-4 py-6 bg-white rounded-lg shadow mb-20">
-          <div className="p-5">
+    <div className="min-h-screen flex flex-col">
+      <div
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-full relative"
+        style={{ backgroundImage: `url(${indexImg1})` }}>
+        <div className="flex justify-center items-center h-full bg-opacity-50 bg-black">
+          <div className="text-center text-white p-4">
+            <h1 className="text-4xl font-bold mb-2">표절 검사다 이새기들아</h1>
+            <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => {
+                authState.isLoggedIn !== null
+                  ? handleButtonClick("/home")
+                  : handleButtonClick("/login");
+              }}>
+              검사하기
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* 흰색 */}
+      <div className="container mx-auto bg-white rounded-lg  mb-20 mt-5 relative w-full flex justify-center items-center">
+        <div className="h-fit text-center">
+          <div className="text-6xl font-bold mb-1 mt-3">사용 PROCESS</div>
+
+          <img src={indexContent1} alt="Description" className="w-given rounded" />
+        </div>
+      </div>
+
+      <div
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
+        style={{ backgroundImage: `url(${indexImg2})` }}>
+        <div className="flex justify-center items-center h-full bg-opacity-50 bg-black">
+          <div className="container mx-auto px-4 py-6 text-white rounded-lg  mb-20 w-[1000px] mt-5">
             <h1 className="mx-auto text-6xl font-bold mb-20">음악 IP 보호 및 관리 솔루션</h1>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="">
@@ -79,10 +84,37 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto px-4 py-6 bg-white rounded-lg shadow mb-20">
-          <div className="p-5">
-            <h1 className="mx-auto text-6xl font-bold mb-20">MIPP 검사 이용 방법</h1>
-            <div className="h-80"> 잘 모르게써용 </div>
+      </div>
+
+      <div className="flex justify-center items-center">
+        <div className="text-center">
+          <div className="text-5xl font-bold mb-8 mt-8">고성현의 굉장한 앱</div>
+          <video
+            src={hwaza}
+            controls // 컨트롤러를 표시하려면 이 속성을 추가하세요.
+            className="max-w-full h-auto w-given my-4 rounded" // Tailwind CSS를 사용한 스타일링
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-screen"
+        style={{ backgroundImage: `url(${indexImg3})` }}>
+        <div className="flex justify-center items-center h-full bg-opacity-50 bg-black">
+          <div className="text-center text-white p-4">
+            <h1 className="text-4xl font-bold mb-2">표절 검사다 이새기들아</h1>
+            <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => {
+                authState.isLoggedIn !== null
+                  ? handleButtonClick("/home")
+                  : handleButtonClick("/login");
+              }}>
+              검사하기
+            </button>
           </div>
         </div>
       </div>
