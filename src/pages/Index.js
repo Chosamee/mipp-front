@@ -27,8 +27,8 @@ const App = () => {
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
   return (
-    <div className="min-h-screen flex flex-col w-full">
-      <div className="relative w-full h-[1000px] overflow-hidden">
+    <div className="min-h-screen flex flex-col">
+      <div className="relative h-[1000px] overflow-hidden">
         <video autoPlay loop muted className="absolute w-full h-full object-cover">
           <source src={video1} type="video/mp4" />
           Your browser does not support the video tag.
@@ -74,8 +74,8 @@ const App = () => {
         </div>
       </div> */}
       {/* 흰색 */}
-      <div className="container mx-auto bg-white rounded-lg  mb-20 mt-5 relative w-full flex justify-center items-center">
-        <div className="h-fit text-center">
+      <div className="container mx-auto bg-white rounded-lg  mb-20 mt-5 relative flex justify-center items-center">
+        <div className="h-fit text-center w-full">
           <div className="text-6xl font-bold mb-1 mt-3">사용 PROCESS</div>
 
           <img src={indexContent1} alt="Description" className="w-given rounded" />
@@ -83,9 +83,9 @@ const App = () => {
       </div>
 
       <div
-        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-full"
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover"
         style={{ backgroundImage: `url(${indexImg2})` }}>
-        <div className="flex justify-center items-center h-full bg-index-gradient ">
+        <div className="flex justify-center items-center h-full bg-index-gradient w-full">
           <div className="container mx-auto px-4 py-6 text-white rounded-lg  mb-20 w-[1000px] mt-5">
             <h1 className="mx-auto text-6xl font-bold mb-20">음악 IP 보호 및 관리 솔루션</h1>
             <div className="grid md:grid-cols-2 gap-4">
@@ -129,10 +129,10 @@ const App = () => {
         </div>
       </div>
       <div
-        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover w-full"
+        className="bg-fixed bg-no-repeat bg-center h-[1000px] bg-cover"
         style={{ backgroundImage: `url(${indexImg3})` }}>
         <div
-          className="flex justify-center items-center h-full"
+          className="flex justify-center items-center h-full  w-full"
           style={{ backgroundColor: "#000000b0" }}>
           <div className="text-center text-white p-4">
             <h1 className="text-7xl font-bold mb-2">표절 검사다</h1>
