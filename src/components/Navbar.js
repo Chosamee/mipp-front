@@ -149,10 +149,11 @@ const NavBar = () => {
           {/* Hamburger Menu Button */}
           <button
             onClick={toggleMenu}
-            className="sm:hidden flex items-center px-3 py-2 border rounded">
-            <svg className="fill-current h-6 w-6" viewBox="0 0 20 20">
-              {/* SVG path for hamburger icon */}
-            </svg>
+            className="sm:hidden flex items-center px-3 py-2 border rounded flex-col justify-center gap-1">
+            {/* <svg className="fill-current h-6 w-6" viewBox="0 0 20 20"></svg>{" "} */}
+            <span className="block w-8 h-0.5 bg-white"></span>
+            <span className="block w-8 h-0.5 bg-white"></span>
+            <span className="block w-8 h-0.5 bg-white"></span>
           </button>
 
           {/* Dropdown Menu */}

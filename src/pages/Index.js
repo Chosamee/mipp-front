@@ -200,15 +200,13 @@ const App = () => {
       <div className="container mx-auto bg-white rounded-lg mb-20 mt-5 p-4 text-center">
         <h2 className="text-3xl font-bold mb-1 mt-3">사용 PROCESS</h2>
         {/* Assuming indexContent1 is imported correctly at the top */}
-        <img src={indexContent1} alt="Description" className="mx-auto rounded" />
+        <img src={indexContent1} alt="Description" className="mx-auto rounded w-3/4" />
       </div>
 
       {/* Other sections */}
       {/* ... */}
 
-      {/* YouTube Video Section */}
-      <div className="flex justify-center items-center w-full px-4 my-8">
-        {/* Assuming the videoId is valid */}
+      <div className="flex justify-center items-center px-4 my-8 pl-14 w-3/4 mx-auto">
         <YouTubeVideo videoId="xXgsdyXMUHE" />
       </div>
 

@@ -24,25 +24,28 @@ const App = () => {
       <Provider store={store}>
         <Router>
           <ScrollToTop />
-          <CustomNavbar />
+          <div className="flex flex-col min-h-screen">
+            <div className="h-20"></div>
+            <CustomNavbar />
+            <div className="flex-grow">
+              <Routes>
+                <Route path="*" element={<Navigate to={"/"} replace />} />
+                <Route path="/" element={<Index />} />
+                <Route path="/home" element={<ProtectedRoute component={Home} />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/regist" element={<RegistrationForm />} />
 
-          <Routes>
-            <Route path="*" element={<Navigate to={"/"} replace />} />
-            <Route path="/" element={<Index />} />
-            <Route path="/home" element={<ProtectedRoute component={Home} />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/regist" element={<RegistrationForm />} />
+                <Route path="/board" element={<ProtectedRoute component={Suggestion} />} />
+                <Route path="/result" element={<ProtectedRoute component={Result} />} />
+                <Route path="/asks" element={<ProtectedRoute component={Asks} />} />
+                <Route path="/asks/detail/:id" element={<ProtectedRoute component={AskDetail} />} />
+                <Route path="/asks/create" element={<ProtectedRoute component={AskCreate} />} />
 
-            <Route path="/board" element={<ProtectedRoute component={Suggestion} />} />
-            <Route path="/result" element={<ProtectedRoute component={Result} />} />
-            <Route path="/asks" element={<ProtectedRoute component={Asks} />} />
-            <Route path="/asks/detail/:id" element={<ProtectedRoute component={AskDetail} />} />
-            <Route path="/asks/create" element={<ProtectedRoute component={AskCreate} />} />
-
-            <Route path="/detail/:id" element={<ProtectedRoute component={Detail} />} />
-          </Routes>
-
-          <Footer />
+                <Route path="/detail/:id" element={<ProtectedRoute component={Detail} />} />
+              </Routes>
+            </div>
+            <Footer />
+          </div>
         </Router>
       </Provider>
     </AuthProvider>
