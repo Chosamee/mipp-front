@@ -8,7 +8,10 @@ export const verifyToken = async () => {
       withCredentials: true,
     });
     console.log(response);
-    return true;
+    return {
+      isValid: true,
+      action: response.data.action === "Additional_info_needed" ? false : true,
+    };
   } catch (error) {
     console.error("Token verification error:", error);
     return false;

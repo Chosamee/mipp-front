@@ -7,6 +7,7 @@ import { verifyToken } from "../api/authService";
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { authState, updateAuthState } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
+  const [action, setAction] = useState(true);
 
   useEffect(() => {
     const performVerification = async () => {
@@ -14,8 +15,9 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
       const isTokenValid = await verifyToken();
       updateAuthState({
         ...authState,
-        isLoggedIn: isTokenValid,
+        isLoggedIn: isTokenValid.isValid,
       });
+      setAction(isTokenValid.action);
       setIsLoading(false);
     };
     performVerification();
@@ -29,7 +31,11 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
           <LoadingSpinner />
         </div>
       ) : authState.isLoggedIn ? (
-        <Component {...rest} />
+        action ? (
+          <Component {...rest} />
+        ) : (
+          <Navigate to="/regist" />
+        )
       ) : (
         <Navigate to="/login" />
       )}

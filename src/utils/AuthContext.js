@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       const isTokenValid = await verifyToken();
       setAuthState({
         ...authState,
-        isLoggedIn: isTokenValid,
+        isLoggedIn: isTokenValid.isValid,
       });
     };
     checkTokenValidity();
