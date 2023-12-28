@@ -27,8 +27,8 @@ const App = () => {
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="relative h-[1000px] overflow-hidden">
+    <div className="min-h-screen flex flex-col flex-wrap">
+      <div className="relative h-[1000px] overflow-hidden flex-wrap">
         <video autoPlay loop muted className="absolute h-full object-cover">
           <source src={video1} type="video/mp4" />
           Your browser does not support the video tag.
