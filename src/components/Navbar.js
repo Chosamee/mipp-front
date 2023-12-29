@@ -116,7 +116,6 @@ const NavBar = () => {
             <img src={logo} alt="MIPP Logo" className="h-7" />
             <span className="self-center text-3xl font-bold whitespace-nowrap pl-4">MIPP</span>
           </button>
-
           {/* Navigation Links and Language Select */}
           <div className="hidden sm:flex items-center space-x-4">
             {/* Language Select */}
@@ -144,56 +143,53 @@ const NavBar = () => {
               </span>
             </button>
           </div>
-
-          {/* Hamburger Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className=" flex items-center px-3 py-2 border rounded flex-col justify-center gap-1">
-            {/* <svg className="fill-current h-6 w-6" viewBox="0 0 20 20"></svg>{" "} */}
-            <span className="block w-8 h-0.5 bg-white"></span>
-            <span className="block w-8 h-0.5 bg-white"></span>
-            <span className="block w-8 h-0.5 bg-white"></span>
-          </button>
-
-          {/* Dropdown Menu */}
-          {/* <div
+          <div className="relative">
+            {/* Hamburger Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className="text-white px-4 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
+              메뉴
+            </button>
+            {/* Dropdown Menu */}
+            {/* <div
             className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
               isMenuOpen ? "block" : "hidden"
             } sm:hidden`}>
           </div> */}
-          {/* 드롭다운 메뉴 */}
-          <div
-            className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
-              isMenuOpen ? "block" : "hidden"
-            }`}>
-            {!authState.isLoggedIn ? (
-              <button
-                onClick={() => handleNavLinkClick("/login")}
-                className="block w-full text-left">
-                로그인
-              </button>
-            ) : (
-              <>
+            {/* 드롭다운 메뉴 */}
+            <div
+              className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg w-48 ${
+                isMenuOpen ? "block" : "hidden"
+              }`}>
+              {!authState.isLoggedIn ? (
                 <button
-                  onClick={() => handleNavLinkClick("/asks")}
+                  onClick={() => handleNavLinkClick("/login")}
                   className="block w-full text-left">
-                  문의글
+                  로그인
                 </button>
-                <button
-                  onClick={() => handleNavLinkClick("/result")}
-                  className="block w-full text-left">
-                  내 신청 조회
-                </button>
-                <button
-                  onClick={() => handleNavLinkClick("/mypage")}
-                  className="block w-full text-left">
-                  마이페이지
-                </button>
-                <button onClick={handleLogoutClick} className="block w-full text-left">
-                  로그아웃
-                </button>
-              </>
-            )}
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleNavLinkClick("/asks")}
+                    className="block w-full text-left">
+                    문의글
+                  </button>
+                  <button
+                    onClick={() => handleNavLinkClick("/result")}
+                    className="block w-full text-left">
+                    내 신청 조회
+                  </button>
+                  <button
+                    onClick={() => handleNavLinkClick("/mypage")}
+                    className="block w-full text-left">
+                    마이페이지
+                  </button>
+                  <button onClick={handleLogoutClick} className="block w-full text-left">
+                    로그아웃
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
