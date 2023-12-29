@@ -38,6 +38,7 @@ export const fetchAsksDetail = async (id) => {
     const response = await axios.post(`${API_BASE_URL}/ask_detail`, formData, {
       withCredentials: true,
     });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetch detail asks:", error);

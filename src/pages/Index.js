@@ -136,29 +136,43 @@ const App = () => {
 
         {/* Overlay Content */}
         <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-          <div className="text-center text-white p-4">
+          <div className="grid grid-cols-2 max-w-7xl text-center text-white p-4">
             <FadeInComp
-              data={<h1 className="text-2xl md:text-4xl font-bold mb-2 ">표절 검사에오</h1>}
+              data={
+                <div className="text-2xl md:text-9xl font-bold mb-2">
+                  <div className="text-9xl my-8">표절 검사</div>
+                  <div className="text-7xl my-8">검은 사막</div>
+                  <div className="my-8">나도 한다</div>
+                </div>
+              }
               animate={"fade-in-up-delay-1"}
             />
-            <FadeInComp
-              data={
-                <p className="mb-4">표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하</p>
-              }
-              animate={"fade-in-up-delay-2"}
-            />
-            <FadeInComp
-              data={
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={() =>
-                    authState.isLoggedIn ? handleButtonClick("/home") : handleButtonClick("/login")
-                  }>
-                  검사하기
-                </button>
-              }
-              animate={"fade-in-up-delay-3"}
-            />
+            <div className="flex flex-col justify-center">
+              <FadeInComp
+                data={
+                  <p className="mb-4">
+                    표절 검사를 하세요 여러분들의 소리를 들려주세요 으악하하하
+                    <br />
+                    하라면 하세요 텍스트를 넣을게 없어요 어떡해야할까요
+                  </p>
+                }
+                animate={"fade-in-up-delay-2"}
+              />
+              <FadeInComp
+                data={
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() =>
+                      authState.isLoggedIn
+                        ? handleButtonClick("/home")
+                        : handleButtonClick("/login")
+                    }>
+                    검사하기
+                  </button>
+                }
+                animate={"fade-in-up-delay-3"}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -176,7 +190,7 @@ const App = () => {
       <div
         className="bg-fixed bg-no-repeat bg-center md:h-[1000px] h-[1700px] bg-cover"
         style={{ backgroundImage: `url(${indexImg2})` }}>
-        <div className="flex justify-center items-center h-full bg-index-gradient">
+        <div className="flex justify-center items-center h-full bg-blue-600 bg-opacity-75">
           <div className="container mx-auto px-4 py-6 text-white rounded-lg mb-20 mt-5 max-w-6xl">
             <FadeInComp
               data={

@@ -7,9 +7,9 @@ const RegistrationForm = () => {
   const [nickname, setNickname] = useState("");
   const [nicknameError, setNicknameError] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [organization, setOrganization] = useState("");
-  const [marketingConsent, setMarketingConsent] = useState(false);
+  const [marketingconsent, setMarketingconsent] = useState(false);
   const [isNicknameValid, setIsNicknameValid] = useState(false);
   const navigate = useNavigate();
   const validateNickname = (value) => {
@@ -28,7 +28,6 @@ const RegistrationForm = () => {
     try {
       // 서버에 닉네임 중복 검사 요청
       const response = await handleCheckNicknameDuplicate(nickname);
-      console.log(typeof birthDate);
       if (response.isAvailable) {
         setNicknameError("사용 가능 합니다.");
         setIsNicknameValid(true);
@@ -65,8 +64,8 @@ const RegistrationForm = () => {
         name: name,
         nickname: nickname,
         phone: phoneNumber,
-        birthDate: birthDate,
-        marketingConsent: marketingConsent,
+        birthdate: birthdate,
+        marketingconsent: marketingconsent,
         organization: organization,
       };
       const response = await handleRegist(registForm);
@@ -153,10 +152,10 @@ const RegistrationForm = () => {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="birthDate"
+            id="birthdate"
             type="date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
             required
           />
         </div>
@@ -180,8 +179,8 @@ const RegistrationForm = () => {
             <input
               type="checkbox"
               className="form-checkbox h-5 w-5 text-blue-600"
-              checked={marketingConsent}
-              onChange={(e) => setMarketingConsent(e.target.checked)}
+              checked={marketingconsent}
+              onChange={(e) => setMarketingconsent(e.target.checked)}
             />
             <span className="ml-2 text-gray-700 text-sm">마케팅 정보 수신 동의</span>
           </label>

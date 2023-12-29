@@ -17,6 +17,7 @@ import AskCreate from "pages/ask/AskCreate";
 import AskDetail from "pages/ask/AskDetail";
 import RegistrationForm from "pages/Regist";
 import ScrollToTop from "components/ScrollToTop";
+import MyPage from "pages/MyPage";
 
 const App = () => {
   return (
@@ -34,6 +35,8 @@ const App = () => {
                 <Route path="/home" element={<ProtectedRoute component={Home} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/regist" element={<RegistrationForm />} />
+
+                <Route path="/mypage" element={<MyPage />} />
 
                 <Route path="/board" element={<ProtectedRoute component={Suggestion} />} />
                 <Route path="/result" element={<ProtectedRoute component={Result} />} />
