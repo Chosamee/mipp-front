@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen ">
       {/* Video Background Section */}
-      <div className="flex flex-col relative h-[500px] md:h-[1000px] overflow-hidden">
+      <div className="flex flex-col relative h-[500px] md:h-[700px] overflow-hidden">
         {/* Assuming video1 is imported correctly at the top */}
         <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover">
           <source src={video1} type="video/mp4" />
@@ -40,14 +40,14 @@ const App = () => {
 
         {/* Overlay Content */}
         <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center">
-          <div className="grid md:grid-cols-2 max-w-7xl text-center text-white py-4 px-10">
+          <div className="flex flex-row justify-between max-w-7xl text-center text-white py-4 px-10">
             <div className="hidden md:block">
               <FadeInComp
                 data={
-                  <div className="text-2xl md:text-9xl font-bold mb-2">
-                    <div className="text-9xl my-8">표절 검사</div>
-                    <div className="text-7xl my-8">검은 사막</div>
-                    <div className="text-8xl my-8">나도 (안) 한다</div>
+                  <div className=" font-bold mb-2">
+                    <div className="text-7xl my-8">표절 검사</div>
+                    <div className="text-5xl my-8">검은 사막</div>
+                    <div className="text-6xl my-8">안 한다</div>
                   </div>
                 }
                 animate={"fade-in-up-delay-1"}
