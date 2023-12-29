@@ -20,7 +20,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="container my-10">
+    <div className="container my-10 mx-auto">
       <h1 className="my-10">상세 정보</h1>
       {resultData ? (
         resultData.map((item, index) => <PDFViewer filepath={item.path} />)

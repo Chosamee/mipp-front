@@ -147,7 +147,7 @@ const NavBar = () => {
           {/* Hamburger Menu Button */}
           <button
             onClick={toggleMenu}
-            className="sm:hidden flex items-center px-3 py-2 border rounded flex-col justify-center gap-1">
+            className=" flex items-center px-3 py-2 border rounded flex-col justify-center gap-1">
             {/* <svg className="fill-current h-6 w-6" viewBox="0 0 20 20"></svg>{" "} */}
             <span className="block w-8 h-0.5 bg-white"></span>
             <span className="block w-8 h-0.5 bg-white"></span>
@@ -155,11 +155,39 @@ const NavBar = () => {
           </button>
 
           {/* Dropdown Menu */}
-          <div
+          {/* <div
             className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
               isMenuOpen ? "block" : "hidden"
             } sm:hidden`}>
-            {/* ... */}
+          </div> */}
+          {/* 드롭다운 메뉴 */}
+          <div
+            className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
+              isMenuOpen ? "block" : "hidden"
+            }`}>
+            {!authState.isLoggedIn ? (
+              <button
+                onClick={() => handleNavLinkClick("/login")}
+                className="block w-full text-left">
+                로그인
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={() => handleNavLinkClick("/asks")}
+                  className="block w-full text-left">
+                  문의글
+                </button>
+                <button
+                  onClick={() => handleNavLinkClick("/result")}
+                  className="block w-full text-left">
+                  내 신청 조회
+                </button>
+                <button onClick={handleLogoutClick} className="block w-full text-left">
+                  로그아웃
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

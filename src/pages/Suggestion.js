@@ -30,7 +30,7 @@ const Suggestion = () => {
 
   // 검색 기능
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [searchType, setSearchType] = useState("title");
+  const [searchType, setSearchType] = useState("content");
 
   const filteredData = searchKeyword
     ? resultData.filter(
@@ -70,7 +70,7 @@ const Suggestion = () => {
     }
   };
   return (
-    <div className="container my-10">
+    <div className="container my-10 mx-auto">
       <h1 className="my-10">건의사항s</h1>
       {filteredData ? <div>총 {Object.keys(filteredData).length} 개</div> : <div></div>}
       {filteredData ? (
@@ -87,7 +87,7 @@ const Suggestion = () => {
               </div>
               <div style={{ flexBasis: "10%" }}></div>
               <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
-                <span className="font-bold text-blue-800">{item.user_name}</span>
+                <span className="font-bold text-blue-800">{item.user_nickname}</span>
               </div>
               <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
                 <span className="font-bold text-blue-800">{item.created_at}</span>
@@ -114,7 +114,7 @@ const Suggestion = () => {
           className="p-2 border border-gray-300 rounded w-1/4"
           onChange={(e) => setSearchType(e.target.value)}
           value={searchType}>
-          <option value="title">제목</option>
+          <option value="content">제목</option>
         </select>
       </div>
       <div className="flex flex-col mx-auto">
