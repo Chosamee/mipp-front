@@ -40,7 +40,7 @@ const FileUploadComp = ({ inst, bpm }) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col mx-auto w-full">
       <label className="mb-6 mx-auto w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-blue-500">
         <img className="" src={fileImg} alt="Select File"></img>
         <span className="mt-2 text-base leading-normal">{fileName || "파일을 선택하세요"}</span>

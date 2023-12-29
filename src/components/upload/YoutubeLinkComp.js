@@ -24,13 +24,13 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col mx-auto w-full">
       <input
         type="text"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="주소 입력"
-        className="w-full px-4 py-2 border rounded-md mb-4"
+        className="px-4 py-2 border rounded-md mb-4 border-black"
       />
       <button
         onClick={handleSubmit}
