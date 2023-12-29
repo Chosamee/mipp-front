@@ -38,9 +38,9 @@ const Asks = () => {
     : resultData;
 
   return (
-    <div className="container my-10 mx-auto">
+    <div className="container mx-auto pt-40 max-w-7xl">
       <div className="flex justify-between">
-        <h1 className="my-10">내 문의 (My doors 아님)</h1>
+        <h1 className="mb-10">내 문의 (My doors 아님)</h1>
         <button
           onClick={() => {
             navigate("/asks/create");

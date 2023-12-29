@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import fileImg from "../../img/file_select.png";
 import { uploadMedia } from "../../api/uploadService";
 
-const FileUploadComp = (props) => {
+const FileUploadComp = ({ inst, bpm }) => {
   const [uploadFile, setUploadFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const FileUploadComp = (props) => {
   const handleSubmit = async () => {
     if (uploadFile) {
       try {
-        const response = await uploadMedia({ file: uploadFile, inst: props.inst });
+        const response = await uploadMedia({ file: uploadFile, inst: inst, bpm: bpm });
         navigate("/result", { state: { result: response.result } });
       } catch (error) {
         navigate("/home");

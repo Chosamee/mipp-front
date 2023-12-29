@@ -27,3 +27,16 @@ export const updateProfile = async (userInfo) => {
     throw error;
   }
 };
+
+export const deleteUser = async () => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/delete_user`, null, {
+      withCredentials: true,
+    });
+    console.log("fetchProfile Success:", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetchProfile Api:", error);
+    throw error;
+  }
+};

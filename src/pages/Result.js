@@ -55,8 +55,8 @@ const Result = () => {
     : resultData;
 
   return (
-    <div className="container my-10 mx-auto">
-      <h1 className="my-10">내 신청</h1>
+    <div className="container mx-auto pt-40 max-w-7xl">
+      <h1 className="mb-10">내 신청</h1>
       <div>
         <button
           onClick={() => {

@@ -76,3 +76,8 @@ code {
   animation: fadeInRight 1s ease-out forwards;
   animation-delay: 0.3s;
 }
+
+.fade-in-right-delay-2 {
+  animation: fadeInRight 1s ease-out forwards;
+  animation-delay: 0.6s;
+}

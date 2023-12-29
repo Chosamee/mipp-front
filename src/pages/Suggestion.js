@@ -70,8 +70,8 @@ const Suggestion = () => {
     }
   };
   return (
-    <div className="container my-10 mx-auto max-w-7xl px-5">
-      <h1 className="my-10">건의사항s</h1>
+    <div className="container my-10 mx-auto max-w-7xl px-5 pt-40">
+      <h1 className="mb-10">건의사항s</h1>
       {filteredData ? <div>총 {Object.keys(filteredData).length} 개</div> : <div></div>}
       {filteredData ? (
         <Pagination

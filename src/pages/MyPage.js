@@ -1,8 +1,10 @@
-import { fetchProfile, updateProfile } from "api/profileService";
+import { deleteUser, fetchProfile, updateProfile } from "api/profileService";
 import LoadingSpinner from "components/LoadingSpinner";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AccountPage = () => {
+  const navigate = useNavigate();
   // 가정: 사용자 정보가 state 또는 props를 통해 제공됩니다.
   const [formData, setFormData] = useState({
     name: "",
@@ -59,8 +61,13 @@ const AccountPage = () => {
     }
   };
 
+  const handleDelete = async () => {
+    await deleteUser();
+    navigate("/");
+  };
+
   return (
-    <div className="py-10 max-w-4xl mx-auto px-5 ">
+    <div className="py-10 max-w-4xl mx-auto px-5 pt-40">
       {profile ? (
         <div className="container mx-auto bg-gray-100 p-6 rounded-md shadow-lg border border-blue-600">
           <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">
@@ -147,7 +154,9 @@ const AccountPage = () => {
 
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-2">Security</h2>
-            <button className="text-red-600 hover:underline ml-4">Delete account</button>
+            <button className="text-red-600 hover:underline ml-4" onClick={handleDelete}>
+              Delete account
+            </button>
           </div>
         </div>
       ) : (

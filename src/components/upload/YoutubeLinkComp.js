@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { uploadMedia } from "../../api/uploadService";
 
-const YoutubeLinkComp = (props) => {
+const YoutubeLinkComp = ({ inst, bpm }) => {
   // 유튜브 링크 값 입력 인식
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (event) => {
@@ -15,7 +15,7 @@ const YoutubeLinkComp = (props) => {
   // 서버에 전송하는 함수
   const handleSubmit = async () => {
     try {
-      await uploadMedia({ url: inputValue, inst: props.inst });
+      await uploadMedia({ url: inputValue, inst: inst, bpm: bpm });
       navigate("/result");
     } catch (error) {
       console.log(error);

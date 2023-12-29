@@ -106,8 +106,9 @@ const NavBar = () => {
   //     </div>
   //   </nav>
   // );
+  //bg-gradient-to-r from-purple-500/50 to-blue-600/50
   return (
-    <nav className="bg-blue-600 text-white h-20 fixed top-0 left-0 right-0 z-30">
+    <nav className="bg-black bg-opacity-70 backdrop-blur-xl text-white h-20 fixed top-0 left-0 right-0 z-30">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo and title */}
@@ -182,6 +183,11 @@ const NavBar = () => {
                   onClick={() => handleNavLinkClick("/result")}
                   className="block w-full text-left">
                   내 신청 조회
+                </button>
+                <button
+                  onClick={() => handleNavLinkClick("/mypage")}
+                  className="block w-full text-left">
+                  마이페이지
                 </button>
                 <button onClick={handleLogoutClick} className="block w-full text-left">
                   로그아웃
