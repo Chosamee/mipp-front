@@ -60,11 +60,43 @@ const AccountPage = () => {
   };
 
   return (
-    <div className="py-10 max-w-4xl mx-auto px-5 ">
+    <div className="min-h-screen bg-gray-100 py-10">
       {profile ? (
-        <div className="container mx-auto bg-gray-100 p-6 rounded-md shadow-lg border border-blue-600">
-          <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">
+        <div className="container mx-auto bg-white p-6 rounded-md shadow-md">
+          <div className="border-b pb-4 mb-4">
             <h1 className="text-2xl font-semibold">Profile</h1>
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center space-x-4 mb-4 md:mb-0">
+              <div>
+                {editMode ? (
+                  <div className="mt-4">
+                    <input
+                      className="border p-2"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </div>
+                ) : (
+                  <h2 className="text-xl font-semibold">{formData.name}</h2>
+                )}
+                {editMode ? (
+                  <div className="mt-4">
+                    <input
+                      className="border p-2"
+                      name="nickname"
+                      value={formData.nickname}
+                      onChange={handleChange}
+                    />
+                  </div>
+                ) : (
+                  <h2 className="text-xl font-semibold">{formData.nickname}</h2>
+                )}
+                <h2 className="text-xl font-semibold">{formData.email}</h2>
+              </div>
+            </div>
             <div>
               {editMode ? (
                 <div className="mt-4">
@@ -85,7 +117,7 @@ const AccountPage = () => {
                 </div>
               ) : (
                 <button
-                  className="text-blue-600 hover:underline py-2 mt-4"
+                  className="text-blue-600 hover:underline"
                   onClick={() => {
                     setEditMode(true);
                   }}>
@@ -93,40 +125,6 @@ const AccountPage = () => {
                 </button>
               )}
             </div>
-          </div>
-
-          <div className="flex justify-between items-center mx-auto mb-10 min-[400px]:flex-row flex-col">
-            <div className="text-2xl font-bold">Name</div>
-            {editMode ? (
-              <input
-                className="border p-2 min-[400px]:text-right text-center"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            ) : (
-              <div className="text-lg p-2">{formData.name}</div>
-            )}
-          </div>
-
-          <div className="flex justify-between items-center mx-auto mb-10">
-            <div className="text-2xl font-bold">NickName</div>
-
-            {editMode ? (
-              <input
-                className="border p-2 text-right"
-                name="nickname"
-                value={formData.nickname}
-                onChange={handleChange}
-              />
-            ) : (
-              <div className="text-lg p-2">{formData.nickname}</div>
-            )}
-          </div>
-
-          <div className="flex justify-between items-center mx-auto mb-10">
-            <div className="text-2xl font-bold">Email</div>
-            <div className="text-lg">{formData.email}</div>
           </div>
 
           <div className="mt-4">
