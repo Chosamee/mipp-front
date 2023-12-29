@@ -113,9 +113,7 @@ const NavBar = () => {
           {/* Logo and title */}
           <button onClick={() => handleNavLinkClick("/")} className="flex items-center">
             <img src={logo} alt="MIPP Logo" className="h-7" />
-            <span className="self-center text-xl sm:text-3xl font-bold whitespace-nowrap">
-              MIPP
-            </span>
+            <span className="self-center text-3xl font-bold whitespace-nowrap pl-4">MIPP</span>
           </button>
 
           {/* Navigation Links and Language Select */}
