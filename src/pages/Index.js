@@ -16,6 +16,7 @@ import YouTubeVideo from "components/YouTubeVideo";
 import video1 from "img/index2.mp4";
 import videoWrapper from "img/videoWrapper.webp";
 import FadeInComp from "components/FadeInComp";
+import { useTranslation } from "react-i18next";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
   const handleButtonClick = (path) => {
     navigate(path);
   };
+  const { t } = useTranslation();
 
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
@@ -40,14 +42,12 @@ const App = () => {
 
         {/* Overlay Content */}
         <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center">
-          <div className="flex flex-row justify-between max-w-7xl text-center text-white py-4 px-10">
+          <div className="flex flex-col justify-between max-w-7xl text-center text-white py-4 px-10">
             <div className="hidden md:block">
               <FadeInComp
                 data={
                   <div className=" font-bold mb-2">
-                    <div className="text-7xl my-8">표절 검사</div>
-                    <div className="text-5xl my-8">검은 사막</div>
-                    <div className="text-6xl my-8">안 한다</div>
+                    <div className="text-7xl my-8">{t("index.mainTitle")}</div>
                   </div>
                 }
                 animate={"fade-in-up-delay-1"}
@@ -55,13 +55,7 @@ const App = () => {
             </div>
             <div className="flex flex-col justify-center">
               <FadeInComp
-                data={
-                  <p className="mb-4">
-                    표절 검사를 하세요 여러분들의 소리를 들려주세요
-                    <br />
-                    하라면 하세요 텍스트를 넣을게 없어요 어떡해야할까요
-                  </p>
-                }
+                data={<p className="mb-4">{t("index.mainIntro")}</p>}
                 animate={"fade-in-up-delay-2"}
               />
               <FadeInComp

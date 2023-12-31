@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import LoadingSpinner from "./LoadingSpinner";
 import { verifyToken } from "../api/authService";
+import { getLangUrl } from "locales/utils";
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { authState, updateAuthState } = useAuth();
@@ -17,10 +18,12 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         ...authState,
         isLoggedIn: isTokenValid.isValid,
       });
-      if (isTokenValid.isValid && !isTokenValid.action) {
-        alert("추가정보를 입력해주세용");
-      }
-      setAction(isTokenValid.action);
+      // 임시적으로 주석처리.
+      // 회원이지만 추가 정보를 입력하지 않았을 시에 작동
+      // if (isTokenValid.isValid && !isTokenValid.action) {
+      //   alert("추가정보를 입력해주세용");
+      // }
+      // setAction(isTokenValid.action);
       setIsLoading(false);
     };
     performVerification();
@@ -37,10 +40,10 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         action ? (
           <Component {...rest} />
         ) : (
-          <Navigate to="/regist" />
+          <Navigate to={getLangUrl("/home")} />
         )
       ) : (
-        <Navigate to="/login" />
+        <Navigate to={getLangUrl("/login")} />
       )}
     </>
   );
