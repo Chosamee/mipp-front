@@ -50,32 +50,21 @@ const NavBar = () => {
           {/* Navigation Links and Language Select */}
           <div className="hidden sm:flex items-center space-x-4">
             {/* Language Select */}
-            {/* <div className="flex items-center px-4">
-              <label htmlFor="language-select" className="mr-2">
-                언어선택
-              </label>
-              <select
-                id="language-select"
-                className="bg-blue-700 text-white py-1 px-2 rounded focus:outline-none">
-                <option value="ko">KO</option>
-                <option value="en">EN</option>
-              </select>
-            </div> */}
             <LanguageSwitcher />
             {/* Other Links */}
             <button className="flex items-center px-4">
               <span className="" onClick={() => handleNavLinkClick(getLangUrl("/info"))}>
-                {t("nav-intro")}
+                {t("nav.intro")}
               </span>
             </button>
             <button className="flex items-center px-4">
               <span className="" onClick={() => handleNavLinkClick(getLangUrl("/board"))}>
-                사용 방법
+                {t("nav.howToUse")}
               </span>
             </button>
             <button className="flex items-center px-4">
               <span className="" onClick={() => handleNavLinkClick(getLangUrl("/board"))}>
-                공개 건의 게시판
+                {t("nav.startChecking")}
               </span>
             </button>
             <button className="flex items-center px-4">

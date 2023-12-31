@@ -1,5 +1,4 @@
-// App.js
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import ImageSlider from "../components/Silder";
 import image1 from "img/intro1.webp";

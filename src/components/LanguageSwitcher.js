@@ -21,7 +21,7 @@ const LanguageSwitcher = () => {
   return (
     <select
       onChange={(e) => changeLanguage(e.target.value)}
-      defaultValue={i18n.language}
+      value={i18n.language}
       className="bg-blue-700 bg-opacity-0 text-white py-1 px-2 rounded focus:outline-none">
       <option value="en" className="bg-black">
         English
