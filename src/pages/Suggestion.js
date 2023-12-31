@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/Pagination";
-import LoadingSpinner from "../components/LoadingSpinner";
+import Pagination from "../components/views/Pagination";
+import LoadingSpinner from "../components/views/LoadingSpinner";
 import { addPosts, fetchPosts, deletePosts } from "../api/suggestionService";
 
 const Suggestion = () => {

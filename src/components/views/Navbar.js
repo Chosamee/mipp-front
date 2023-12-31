@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../utils/AuthContext";
-import logo from "../logo.svg";
+import { useAuth } from "components/auth/AuthContext";
+import logo from "logo.svg";
 import { handleLogout } from "api/authService";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "components/views/LanguageSwitcher";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 
@@ -69,7 +69,7 @@ const NavBar = () => {
             </button>
             <button className="flex items-center px-4">
               <span className="" onClick={() => handleNavLinkClick(getLangUrl("/home"))}>
-                신청하기
+                {t("nav.startChecking")}
               </span>
             </button>
             <button className="flex items-center px-4">

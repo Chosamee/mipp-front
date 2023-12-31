@@ -1,20 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ImageSlider from "../components/Silder";
+import ImageSlider from "components/views/Silder";
 import image1 from "img/intro1.webp";
 import image2 from "img/intro2.webp";
 import image3 from "img/intro3.webp";
 import image4 from "img/intro4.webp";
-import { useAuth } from "utils/AuthContext";
+import { useAuth } from "components/auth/AuthContext";
 import indexImg1 from "img/index1.jpg";
 import indexImg2 from "img/index2.jpg";
 import indexImg3 from "img/index3.jpg";
 import indexContent1 from "img/indexContent1.webp";
 import hwaza from "img/hwaza.mp4";
-import YouTubeVideo from "components/YouTubeVideo";
+import YouTubeVideo from "components/views/YouTubeVideo";
 import video1 from "img/index2.mp4";
 import videoWrapper from "img/videoWrapper.webp";
-import FadeInComp from "components/FadeInComp";
+import FadeInComp from "components/views/FadeInComp";
 import { useTranslation } from "react-i18next";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black

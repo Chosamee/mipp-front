@@ -1,5 +1,5 @@
 import { fetchProfile, updateProfile } from "api/profileService";
-import LoadingSpinner from "components/LoadingSpinner";
+import LoadingSpinner from "components/views/LoadingSpinner";
 import React, { useEffect, useState } from "react";
 
 const AccountPage = () => {

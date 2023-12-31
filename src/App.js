@@ -1,3 +1,4 @@
+// React 및 라우팅 관련 라이브러리
 import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -9,25 +10,35 @@ import {
   useParams,
   Outlet,
 } from "react-router-dom";
-import Navbar from "components/Navbar";
+
+// 컴포넌트: 네비게이션 바, 푸터 등 UI 요소
+import Navbar from "components/views/Navbar";
+import Footer from "components/views/Footer";
+import ScrollToTop from "components/utils/ScrollToTop";
+
+// 페이지: 애플리케이션의 각 페이지
 import Home from "pages/Home";
 import Index from "pages/Index";
-import Footer from "components/Footer";
 import Login from "pages/Login";
 import Result from "pages/Result";
 import Detail from "pages/Detail";
 import Suggestion from "pages/Suggestion.js";
-import ProtectedRoute from "components/ProtectedRoute";
-import { AuthProvider } from "utils/AuthContext";
-import { Provider } from "react-redux";
-import store from "utils/Store.js";
 import Asks from "pages/ask/Asks";
 import AskCreate from "pages/ask/AskCreate";
 import AskDetail from "pages/ask/AskDetail";
 import RegistrationForm from "pages/Regist";
-import ScrollToTop from "components/ScrollToTop";
 import MyPage from "pages/MyPage";
 import Test from "pages/test";
+
+// 인증 관련 컴포넌트: 보호된 라우트, 인증 컨텍스트
+import ProtectedRoute from "components/auth/ProtectedRoute";
+import { AuthProvider } from "components/auth/AuthContext";
+
+// Redux 관련
+import { Provider } from "react-redux";
+import store from "store/Store.js";
+
+// 국제화 및 번역 관련
 import "./i18n";
 import { useTranslation } from "react-i18next";
 

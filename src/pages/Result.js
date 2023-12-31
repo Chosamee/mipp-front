@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/Pagination";
-import LoadingSpinner from "../components/LoadingSpinner";
-import { setData } from "../utils/Store.js";
+import Pagination from "../components/views/Pagination";
+import LoadingSpinner from "../components/views/LoadingSpinner";
+import { setData } from "../store/Store.js";
 import { useDispatch } from "react-redux";
 import { fetchResults } from "../api/resultService.js";
 

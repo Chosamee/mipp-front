@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import { handleGoogleLogin } from "../api/authService"; // Google 로그인 함수 임포트
+import { handleGoogleLogin } from "../../api/authService"; // Google 로그인 함수 임포트
 import { useNavigate } from "react-router-dom";
 
 const GoogleLoginButton = () => {

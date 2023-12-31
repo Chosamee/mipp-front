@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAsksDetail } from "../../api/askService";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/views/LoadingSpinner";
 
 const AskDetail = () => {
   const { id } = useParams();

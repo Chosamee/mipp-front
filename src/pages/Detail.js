@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
-import LoadingSpinner from "../components/LoadingSpinner";
-import PDFViewer from "../components/PDFViewer";
+import LoadingSpinner from "../components/views/LoadingSpinner";
+import PDFViewer from "../components/views/PDFViewer";
 import { fetchDetail } from "api/resultService";
 
 const Detail = () => {

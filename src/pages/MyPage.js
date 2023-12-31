@@ -1,5 +1,5 @@
 import { deleteUser, fetchProfile, updateProfile } from "api/profileService";
-import LoadingSpinner from "components/LoadingSpinner";
+import LoadingSpinner from "components/views/LoadingSpinner";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../utils/AuthContext";
-import LoadingSpinner from "./LoadingSpinner";
-import { verifyToken } from "../api/authService";
+import { useAuth } from "./AuthContext";
+import LoadingSpinner from "../views/LoadingSpinner";
+import { verifyToken } from "../../api/authService";
 import { getLangUrl } from "locales/utils";
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {

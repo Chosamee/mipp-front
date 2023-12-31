@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { downloadPDF } from "../api/pdfService";
+import { downloadPDF } from "../../api/pdfService";
 
 const PDFViewer = ({ filepath }) => {
   const [fileUrl, setfileUrl] = useState("");
