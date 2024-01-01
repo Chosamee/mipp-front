@@ -17,7 +17,7 @@ const NavBar = () => {
     try {
       await handleLogout();
       updateAuthState({ ...authState, isLoggedIn: false });
-      navigate("/");
+      navigate(getLangUrl("/"));
       setIsMenuOpen(false); // 메뉴 닫기
     } catch (error) {
       console.log("logout error: ", error);
@@ -31,12 +31,16 @@ const NavBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   useEffect(() => {
+    console.log(location.pathname.split("/"));
     setIsMenuOpen(false);
   }, [location]);
 
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
-    <nav className="backdrop-blur-xl text-white bg-black bg-opacity-75 h-20 fixed top-0 left-0 right-0 z-30 ">
+    <nav
+      className={`backdrop-blur-xl text-white  h-20 fixed top-0 left-0 right-0 z-30 ${
+        !location.pathname.split("/")[2] ? "bg-black bg-opacity-75" : "bg-blue-500"
+      }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-20 justify-between">
           {/* Logo and title */}

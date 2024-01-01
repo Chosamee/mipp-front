@@ -18,7 +18,7 @@
     },
     "3": {
       "title": "Introduction",
-      "subtitle1": "Standard of the plagiarism test",
+      "subtitle1": "Plagiarism Test Standard",
       "content1": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
       "subtitle2": "Vision",
       "content2": "To protect creators' copyrights and intellectual property, and further to create a music ecosystem that maximizes the value of creativity.",
@@ -79,7 +79,7 @@
     "email": "Email"
   },
   "nav": {
-    "intro": "MIPP Intro",
+    "intro": "Introduce MIPP",
     "howToUse": "How To Use",
     "myAccount": "My Account",
     "request": "Request",
