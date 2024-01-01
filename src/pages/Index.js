@@ -10,7 +10,7 @@ import indexImg1 from "img/index1.jpg";
 import indexImg2 from "img/index2.jpg";
 import indexImg3 from "img/index3.jpg";
 import video1 from "img/index/main-video.mp4";
-import thumbnailImage from "img/index/main-video-thumbnail.png";
+import thumbnailImage from "img/index/main-video-thumbnail.jpg";
 import FadeInComp from "components/views/FadeInComp";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
