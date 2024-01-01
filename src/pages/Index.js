@@ -28,28 +28,17 @@ const App = () => {
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
 
-  const [playVideo, setPlayVideo] = useState(false);
-
   return (
     <div className="flex flex-col min-h-screen ">
       {/* Video Background Section */}
       <div className="flex flex-col relative h-[500px] md:h-[700px] overflow-hidden">
         {/* Assuming video1 is imported correctly at the top */}
-        {!playVideo && (
-          <img
-            src={thumbnailImage}
-            alt="Play Video"
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          />
-        )}
         <video
           autoPlay
           loop
           muted
           preload="auto"
-          onLoadedData={() => {
-            setPlayVideo(true);
-          }}
+          poster={thumbnailImage}
           className="absolute top-0 left-0 w-full h-full object-cover">
           <source src={video1} type="video/mp4" />
           Your browser does not support the video tag.
