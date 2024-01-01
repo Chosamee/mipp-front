@@ -33,7 +33,8 @@
     "intro": "MIPP Intro",
     "howToUse": "How To Use",
     "myAccount": "My Account",
-    "request": "Request"
+    "request": "Request",
+    "logout": "Logout"
   },
   "footer": {
     "email": "Email: aimipp@gmail.com",

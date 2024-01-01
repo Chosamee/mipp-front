@@ -71,6 +71,13 @@ const NavBar = () => {
                 {t("nav.myAccount")}
               </span>
             </button>
+            <button className="flex items-center px-4">
+              {authState.isLoggedIn && (
+                <span className="" onClick={handleLogoutClick}>
+                  {t("nav.logout")}
+                </span>
+              )}
+            </button>
           </div>
           <div className="relative md:hidden">
             {/* Hamburger Menu Button */}
@@ -91,18 +98,26 @@ const NavBar = () => {
                 isMenuOpen ? "block" : "hidden"
               }`}>
               {!authState.isLoggedIn ? (
-                <button onClick={() => navigate("/login")} className="block w-full text-left">
+                <button
+                  onClick={() => navigate(getLangUrl("/login"))}
+                  className="block w-full text-left">
                   로그인
                 </button>
               ) : (
                 <>
-                  <button onClick={() => navigate("/asks")} className="block w-full text-left">
+                  <button
+                    onClick={() => navigate(getLangUrl("/asks"))}
+                    className="block w-full text-left">
                     문의글
                   </button>
-                  <button onClick={() => navigate("/result")} className="block w-full text-left">
+                  <button
+                    onClick={() => navigate(getLangUrl("/result"))}
+                    className="block w-full text-left">
                     내 신청 조회
                   </button>
-                  <button onClick={() => navigate("/mypage")} className="block w-full text-left">
+                  <button
+                    onClick={() => navigate(getLangUrl("/mypage"))}
+                    className="block w-full text-left">
                     마이페이지
                   </button>
                   <button onClick={handleLogoutClick} className="block w-full text-left">

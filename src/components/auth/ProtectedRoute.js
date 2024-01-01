@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import LoadingSpinner from "../views/LoadingSpinner";
 import { verifyToken } from "../../api/authService";
@@ -9,7 +9,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { authState, updateAuthState } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [action, setAction] = useState(true);
-
+  const location = useLocation();
   useEffect(() => {
     const performVerification = async () => {
       setIsLoading(true);
@@ -28,7 +28,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
     };
     performVerification();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location]);
 
   return (
     <>

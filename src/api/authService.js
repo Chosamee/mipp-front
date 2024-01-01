@@ -7,7 +7,7 @@ export const verifyToken = async () => {
     const response = await axios.post(`${API_BASE_URL}/verifyToken`, null, {
       withCredentials: true,
     });
-    console.log(response);
+    console.log("verify: ", response);
     return {
       isValid: true,
       action: response.data.action === "Additional_info_needed" ? false : true,

@@ -2,19 +2,26 @@ import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { handleGoogleLogin } from "../../api/authService"; // Google 로그인 함수 임포트
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
+  const { authState, updateAuthState } = useAuth();
   const navigate = useNavigate();
 
   const handleLoginSuccess = async (googleData) => {
     try {
       const response = await handleGoogleLogin(googleData);
+      updateAuthState({
+        ...authState,
+        isLoggedIn: true,
+      });
       // 추가정보 입력 routing 함수. 임시 주석처리.
       // if (response.message === "New User") navigate("/regist");
       // else if (response.message === "Additional Info Required") navigate("/regist");
       // else if (response.message === "login complete") navigate("/home");
       // else throw new expect();
-      navigate("/home");
+      navigate(getLangUrl("/home"));
     } catch (error) {
       console.log("Login Error Server response:", error);
     }

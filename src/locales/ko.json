@@ -33,7 +33,8 @@
     "intro": "MIPP 소개",
     "howToUse": "사용 방법",
     "myAccount": "내 계정",
-    "request": "공개 건의 게시판"
+    "request": "공개 건의 게시판",
+    "logout": "로그아웃"
   },
   "footer": {
     "email": "이메일: aimipp@gmail.com",
