@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageSlider from "components/views/Silder";
 import image1 from "img/intro1.webp";
@@ -9,7 +9,8 @@ import { useAuth } from "components/auth/AuthContext";
 import indexImg1 from "img/index1.jpg";
 import indexImg2 from "img/index2.jpg";
 import indexImg3 from "img/index3.jpg";
-import video1 from "img/index2.mp4";
+import video1 from "img/index/main-video.mp4";
+import thumbnailImage from "img/index/main-video-thumbnail.png";
 import FadeInComp from "components/views/FadeInComp";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
@@ -27,16 +28,32 @@ const App = () => {
   // 이미지 slide를 위한 array
   const images = [image1, image2, image3, image4];
 
+  const [playVideo, setPlayVideo] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen ">
       {/* Video Background Section */}
       <div className="flex flex-col relative h-[500px] md:h-[700px] overflow-hidden">
         {/* Assuming video1 is imported correctly at the top */}
-        <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover">
+        {!playVideo && (
+          <img
+            src={thumbnailImage}
+            alt="Play Video"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+          />
+        )}
+        <video
+          autoPlay
+          loop
+          muted
+          preload="auto"
+          onLoadedData={() => {
+            setPlayVideo(true);
+          }}
+          className="absolute top-0 left-0 w-full h-full object-cover">
           <source src={video1} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-
         {/* Overlay Content */}
         <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center">
           <div className="flex flex-col justify-between max-w-7xl text-center text-white py-4 px-10">
