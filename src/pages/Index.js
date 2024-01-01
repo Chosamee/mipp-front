@@ -142,13 +142,13 @@ const App = () => {
         <div className="h-5 bg-gradient-to-t from-gray-100  to-black/75"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col">
-        <div className="text-4xl text-center my-10">{t("index.3.title")}</div>
-        <div className="grid grid-cols-3 ">
+      <div className="max-w-7xl mx-auto flex flex-col mb-10">
+        <div className="text-4xl text-start px-10 my-10">{t("index.3.title")}</div>
+        <div className="grid grid-cols-1 md:grid-cols-3">
           <div className="self-start">
             <FadeInComp
               data={
-                <div className="flex flex-col px-10 ">
+                <div className="flex flex-col px-10 mb-10">
                   <div className="text-2xl mb-5">{t("index.3.subtitle1")}</div>
                   <div className="text-lg">{t("index.3.content1")}</div>
                 </div>
@@ -159,7 +159,7 @@ const App = () => {
           <div className="self-start">
             <FadeInComp
               data={
-                <div className="flex flex-col px-10">
+                <div className="flex flex-col px-10 mb-10">
                   <div className="text-2xl mb-5">{t("index.3.subtitle2")}</div>
                   <div className="text-lg">{t("index.3.content2")}</div>
                 </div>
@@ -170,7 +170,7 @@ const App = () => {
           <div className="self-start">
             <FadeInComp
               data={
-                <div className="flex flex-col px-10">
+                <div className="flex flex-col px-10 mb-10">
                   <div className="text-2xl mb-5">{t("index.3.subtitle3")}</div>
                   <div className="text-lg">{t("index.3.content3")}</div>
                 </div>
@@ -181,20 +181,55 @@ const App = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center px-4 my-8 pl-14 w-3/4 mx-auto">
+      {/* <div className="flex justify-center items-center px-4 my-8 pl-14 w-3/4 mx-auto">
         <YouTubeVideo videoId="xXgsdyXMUHE" />
-      </div>
+      </div> */}
+      <div
+        className="flex flex-col bg-fixed bg-no-repeat bg-center h-[800px] bg-cover"
+        style={{ backgroundImage: `url(${indexImg3})` }}>
+        <div className="h-5 bg-gradient-to-b from-gray-100  to-black/75"></div>
+        <div className="flex justify-center items-center h-full bg-black bg-opacity-75 backdrop-blur-sm">
+          <div className="">
+            <div className="container mx-auto  py-6 text-white rounded-lg mb-20 mt-5 max-w-6xl px-10">
+              <FadeInComp
+                data={
+                  <div className="text-4xl md:text-6xl font-bold mb-20 text-center">
+                    <div className="leading-snug">
+                      {t("index.4.title")
+                        .split("\n")
+                        .map((line, index) => (
+                          <React.Fragment key={index}>
+                            {line}
+                            <br />
+                          </React.Fragment>
+                        ))}
+                    </div>
+                  </div>
+                }
+                animate={"fade-in-up-delay-1"}
+              />
 
-      {/* Call to Action Button */}
-      <div className="flex justify-center my-10">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl text-xl
+              <FadeInComp
+                data={<div className="text-lg md:text-xl text-center">{t("index.4.content")}</div>}
+                animate={"fade-in-right-delay-2"}
+              />
+            </div>
+
+            {/* Call to Action Button */}
+            <div className="flex justify-center my-10">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl text-xl
           fade-in-up-delay-3"
-          onClick={() =>
-            authState.isLoggedIn ? navigate(getLangUrl("/home")) : navigate(getLangUrl("/login"))
-          }>
-          {t("startChecking")}
-        </button>
+                onClick={() =>
+                  authState.isLoggedIn
+                    ? navigate(getLangUrl("/home"))
+                    : navigate(getLangUrl("/login"))
+                }>
+                {t("startChecking")}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

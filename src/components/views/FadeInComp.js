@@ -28,7 +28,7 @@ const FadeInComp = ({ data, animate }) => {
   }, [ref]);
 
   return (
-    <div ref={ref} className={`fade-in ${isVisible ? animate : ""} my-auto`}>
+    <div ref={ref} className={`fade-in ${isVisible ? animate : ""} `}>
       {data}
     </div>
   );
