@@ -37,6 +37,7 @@ const App = () => {
           autoPlay
           loop
           muted
+          preload="none"
           poster={thumbnailImage}
           className="absolute top-0 left-0 w-full h-full object-cover">
           <source src={video1} type="video/mp4" />
