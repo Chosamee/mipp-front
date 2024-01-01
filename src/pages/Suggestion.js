@@ -46,6 +46,11 @@ const Suggestion = () => {
   };
   // 서버에 전송하는 함수
   const handleSubmit = async () => {
+    if (!contents) {
+      alert("내용을 입력해주세요");
+      return;
+    }
+
     const confirmSubmit = window.confirm("이 내용을 게시하시겠습니까?");
     if (confirmSubmit) {
       try {
