@@ -106,13 +106,11 @@ const NavBar = () => {
             </button>
           </div>
           <div className="relative md:hidden  flex justify-end">
-            {/* Hamburger Menu Button */}
             <button
               onClick={toggleMenu}
               className="text-white px-4 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
-              메뉴
+              Menu
             </button>
-            {/* Dropdown Menu */}
             {/* <div
             className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg ${
               isMenuOpen ? "block" : "hidden"
@@ -124,8 +122,8 @@ const NavBar = () => {
                 isMenuOpen ? "block" : "hidden"
               }`}>
               {!authState.isLoggedIn ? (
-                <div className="flex flex-row justify-between">
-                  <div className="p-4">
+                <div className="grid grid-cols-2 ">
+                  <div className="p-4 ">
                     <button
                       onClick={() => navigate(getLangUrl("/intro"))}
                       className="block w-full text-left">
