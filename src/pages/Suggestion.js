@@ -77,6 +77,20 @@ const Suggestion = () => {
   return (
     <div className="container my-10 mx-auto max-w-7xl px-5 pt-40">
       <h1 className="mb-10">건의사항s</h1>
+      <div className="flex flex-col mx-auto">
+        <input
+          type="text"
+          value={contents}
+          onChange={handleInputChange}
+          placeholder="문의글 작성"
+          className="w-full px-4 py-2 border rounded-md mb-4"
+        />
+        <button
+          onClick={handleSubmit}
+          className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
+          등록
+        </button>
+      </div>
       {filteredData ? <div>총 {Object.keys(filteredData).length} 개</div> : <div></div>}
       {filteredData ? (
         <Pagination
@@ -121,20 +135,6 @@ const Suggestion = () => {
           value={searchType}>
           <option value="content">제목</option>
         </select>
-      </div>
-      <div className="flex flex-col mx-auto">
-        <input
-          type="text"
-          value={contents}
-          onChange={handleInputChange}
-          placeholder="문의글 작성"
-          className="w-full px-4 py-2 border rounded-md mb-4"
-        />
-        <button
-          onClick={handleSubmit}
-          className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
-          등록
-        </button>
       </div>
     </div>
   );

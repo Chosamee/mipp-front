@@ -68,6 +68,7 @@ const App = () => {
                   {/* 공통된 경로들을 여기에 배치합니다. */}
                   <Route index element={<Index />} />
                   <Route path="home" element={<ProtectedRoute component={Home} />} />
+
                   <Route path="login" element={<Login />} />
                   <Route path="regist" element={<ProtectedRoute component={RegistrationForm} />} />
                   <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />

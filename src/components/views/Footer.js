@@ -16,7 +16,7 @@ const Footer = () => {
             <span className="text-sm">주소, 서울특별시 영등포구 도림로 17길</span>
           </div>
           <div className="flex flex-row  items-center md:justify-end justify-center">
-            <label>언어 선택</label>
+            <label>{t("language")}</label>
             <LanguageSwitcher />
           </div>
         </div>

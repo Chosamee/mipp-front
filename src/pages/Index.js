@@ -9,11 +9,7 @@ import { useAuth } from "components/auth/AuthContext";
 import indexImg1 from "img/index1.jpg";
 import indexImg2 from "img/index2.jpg";
 import indexImg3 from "img/index3.jpg";
-import indexContent1 from "img/indexContent1.webp";
-import hwaza from "img/hwaza.mp4";
-import YouTubeVideo from "components/views/YouTubeVideo";
 import video1 from "img/index2.mp4";
-import videoWrapper from "img/videoWrapper.webp";
 import FadeInComp from "components/views/FadeInComp";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
@@ -134,7 +130,7 @@ const App = () => {
                     </div>
                   </div>
                 }
-                animate={"fade-in-right-delay-2"}
+                animate={"fade-in-left-delay-1"}
               />
             </div>
           </div>

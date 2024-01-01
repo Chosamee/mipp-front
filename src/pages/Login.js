@@ -10,13 +10,13 @@ const Login = () => {
   // Google Client ID
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const { t } = useTranslation();
-  const { authState, updateAuthState } = useAuth();
+  const { authState } = useAuth();
   return (
     <>
       {authState.isLoggedIn ? (
         <Navigate to={getLangUrl("/index")} />
       ) : (
-        <div className="flex h-full items-center justify-center bg-gray-100 my-auto w-max-7xl pt-20">
+        <div className="flex h-full items-center justify-center bg-gray-100 my-auto pt-20">
           <div className="flex flex-col pt-40">
             <div className="text-3xl text-gray-800 font-bold my-auto">
               {t("login.requiredLogin")}
