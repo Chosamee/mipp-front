@@ -72,7 +72,7 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white via-transparent to-black/50"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white via-transparent to-#0000008f"></div>
       </div>
 
       {/* Process Section */}
