@@ -176,7 +176,7 @@ const NavBar = () => {
                       {t("nav.request")}
                     </button>
                     <button
-                      onClick={() => navigate(getLangUrl("/ask"))}
+                      onClick={() => navigate(getLangUrl("/asks"))}
                       className="block w-full text-left">
                       {t("nav.ask")}
                     </button>
