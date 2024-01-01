@@ -16,7 +16,7 @@ const Login = () => {
       {authState.isLoggedIn ? (
         <Navigate to={getLangUrl("/index")} />
       ) : (
-        <div className="flex h-full items-center justify-center bg-gray-100 my-auto pt-20">
+        <div className="flex h-full items-center justify-center my-auto pt-20">
           <div className="flex flex-col pt-40">
             <div className="text-3xl text-gray-800 font-bold my-auto">
               {t("login.requiredLogin")}

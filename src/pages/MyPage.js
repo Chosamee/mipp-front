@@ -156,7 +156,7 @@ const AccountPage = () => {
   return (
     <div className="py-10 max-w-4xl mx-auto px-5 pt-40">
       {profile ? (
-        <div className="container mx-auto bg-gray-100 p-6 rounded-md shadow-lg border border-blue-600">
+        <div className="container mx-auto  p-6 rounded-md shadow-lg border border-blue-600">
           <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">
             <div className="text-2xl font-semibold">{t("profile.title")}</div>
             <div>

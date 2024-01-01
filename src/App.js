@@ -56,9 +56,9 @@ const App = () => {
       <Provider store={store}>
         <Router>
           <ScrollToTop />
-          <div className="flex flex-col min-h-screen min-w-72">
+          <div className="flex flex-col min-h-screen min-w-72 ">
             <CustomNavbar />
-            <div className="flex-grow">
+            <div className="flex-grow ">
               <Routes>
                 <Route path="/" element={<LanguageRedirector />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
