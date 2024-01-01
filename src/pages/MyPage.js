@@ -1,5 +1,7 @@
 import { deleteUser, fetchProfile, updateProfile } from "api/profileService";
+import { useAuth } from "components/auth/AuthContext";
 import LoadingSpinner from "components/views/LoadingSpinner";
+import { getLangUrl } from "locales/utils";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -64,6 +66,7 @@ const AccountPage = () => {
 
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState("");
+  const { authState, updateAuthState } = useAuth();
 
   const handleDelete = async () => {
     if (deleteInput === "Delete Account") {
@@ -71,7 +74,8 @@ const AccountPage = () => {
       // 직접 계정 삭제 로직을 구현할 수 있습니다.
       if (window.confirm("Are you sure you want to delete your account?")) {
         await deleteUser();
-        navigate("/");
+        updateAuthState({ ...authState, isLoggedIn: false });
+        navigate(getLangUrl("/"));
         console.log("Account deleted");
       }
     } else {
@@ -145,24 +149,22 @@ const AccountPage = () => {
           </div>
 
           <div className="flex justify-between items-center mx-auto mb-10">
-            <div className="text-2xl font-bold">Email</div>
-            <div className="text-lg">{formData.email}</div>
-          </div>
-
-          <div className="mt-4">
-            <h2 className="text-gray-700 text-2xl font-bold">phone number</h2>
+            <h2 className="text-2xl font-bold">phone number</h2>
             {editMode ? (
-              <div className="mt-4">
-                <input
-                  className="border p-2"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
+              <input
+                className="border p-2 text-right"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+              />
             ) : (
               <p className="text-gray-600">{profile.phone}</p>
             )}
+          </div>
+
+          <div className="flex justify-between items-center mx-auto mb-10">
+            <div className="text-2xl font-bold">Email</div>
+            <div className="text-lg">{formData.email}</div>
           </div>
 
           <div className="mt-8">
