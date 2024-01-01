@@ -29,12 +29,20 @@
   "login": {
     "requiredLogin": "Sign in with Google"
   },
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "nickname": "Nickname",
+    "phone": "Phone Number",
+    "email": "Email"
+  },
   "nav": {
     "intro": "MIPP Intro",
     "howToUse": "How To Use",
     "myAccount": "My Account",
     "request": "Request",
-    "logout": "Logout"
+    "logout": "Logout",
+    "result": "My Results"
   },
   "footer": {
     "email": "Email: aimipp@gmail.com",

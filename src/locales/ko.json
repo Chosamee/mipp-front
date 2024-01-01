@@ -29,12 +29,20 @@
   "login": {
     "requiredLogin": "Google 로그인하고 이용해주세요"
   },
+  "profile": {
+    "title": "프로필",
+    "name": "이름",
+    "nickname": "닉네임",
+    "phone": "전화번호",
+    "email": "이메일"
+  },
   "nav": {
     "intro": "MIPP 소개",
     "howToUse": "사용 방법",
     "myAccount": "내 계정",
     "request": "공개 건의 게시판",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "result": "내 검사 결과"
   },
   "footer": {
     "email": "이메일: aimipp@gmail.com",

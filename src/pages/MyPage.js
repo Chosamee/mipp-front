@@ -4,11 +4,12 @@ import { useAuth } from "components/auth/AuthContext";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { getLangUrl } from "locales/utils";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const AccountPage = () => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   // 가정: 사용자 정보가 state 또는 props를 통해 제공됩니다.
   const [originData, setOriginData] = useState({
     name: "",
@@ -157,7 +158,7 @@ const AccountPage = () => {
       {profile ? (
         <div className="container mx-auto bg-gray-100 p-6 rounded-md shadow-lg border border-blue-600">
           <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">
-            <h1 className="text-2xl font-semibold">Profile</h1>
+            <div className="text-2xl font-semibold">{t("profile.title")}</div>
             <div>
               {editMode ? (
                 <div className="mt-4">
@@ -190,7 +191,7 @@ const AccountPage = () => {
           </div>
 
           <div className="flex justify-between items-center mx-auto mb-10 min-[400px]:flex-row flex-col">
-            <div className="text-2xl font-bold">Name</div>
+            <div className="text-2xl font-bold">{t("profile.name")}</div>
             {editMode ? (
               <input
                 className="border p-2 min-[400px]:text-right text-center"
@@ -199,21 +200,20 @@ const AccountPage = () => {
                 onChange={handleChange}
               />
             ) : (
-              <div className="text-lg p-2">{formData.name}</div>
+              <div className="text-lg">{formData.name}</div>
             )}
           </div>
 
           <div className="flex justify-between items-center mx-auto mb-10">
-            <div className="text-2xl font-bold">NickName</div>
+            <div className="text-2xl font-bold">{t("profile.nickname")}</div>
 
             {editMode ? (
               <div className="flex flex-col items-end">
                 <div>
-                  {" "}
                   <button
                     type="button"
                     onClick={checkNicknameAvailability}
-                    className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     중복 검사
                   </button>
                   <input
@@ -234,12 +234,12 @@ const AccountPage = () => {
                 )}
               </div>
             ) : (
-              <div className="text-lg p-2">{formData.nickname}</div>
+              <div className="text-lg">{formData.nickname}</div>
             )}
           </div>
 
           <div className="flex justify-between items-center mx-auto mb-10">
-            <h2 className="text-2xl font-bold">phone number</h2>
+            <div className="text-2xl font-bold">{t("profile.phone")}</div>
             {editMode ? (
               <input
                 className="border p-2 text-right"
@@ -248,19 +248,19 @@ const AccountPage = () => {
                 onChange={handleChange}
               />
             ) : (
-              <p className="text-gray-600">{profile.phone}</p>
+              <div className="text-gray-600">{profile.phone}</div>
             )}
           </div>
 
           <div className="flex justify-between items-center mx-auto mb-10">
-            <div className="text-2xl font-bold">Email</div>
-            <div className="text-lg">{formData.email}</div>
+            <div className="text-2xl font-bold">{t("profile.email")}</div>
+            <div className="text-lg ">{formData.email}</div>
           </div>
 
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-2">Security</h2>
+            <div className="text-xl font-semibold mb-2">Security</div>
             <button
-              className="text-red-600 hover:underline ml-4"
+              className="text-red-600 hover:underline "
               onClick={() => setShowDeleteInput(!showDeleteInput)}>
               Delete account
             </button>

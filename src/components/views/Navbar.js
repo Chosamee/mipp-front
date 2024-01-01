@@ -72,6 +72,11 @@ const NavBar = () => {
               </span>
             </button>
             <button className="flex items-center px-4">
+              <span className="" onClick={() => navigate(getLangUrl("/result"))}>
+                {t("nav.result")}
+              </span>
+            </button>
+            <button className="flex items-center px-4">
               {authState.isLoggedIn && (
                 <span className="" onClick={handleLogoutClick}>
                   {t("nav.logout")}
