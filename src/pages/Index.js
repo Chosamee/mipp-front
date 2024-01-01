@@ -44,11 +44,11 @@ const App = () => {
         {/* Overlay Content */}
         <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center">
           <div className="flex flex-col justify-between max-w-7xl text-center text-white py-4 px-10">
-            <div className="hidden md:block">
+            <div className="">
               <FadeInComp
                 data={
                   <div className=" font-bold mb-2">
-                    <div className="text-7xl my-8">{t("index.mainTitle")}</div>
+                    <div className="text-6xl my-8">{t("index.mainTitle")}</div>
                   </div>
                 }
                 animate={"fade-in-up-delay-1"}

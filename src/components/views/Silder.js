@@ -18,7 +18,7 @@ const ImageSlider = ({ images }) => {
     <Slider {...settings} className="w-3/4 mx-auto">
       {images.map((image, index) => (
         <div key={index}>
-          <img src={image} alt={`Slide ${index}`} className="w-full" />
+          <img src={image} alt={`Slide ${index}`} className="w-full rounded-xl" />
         </div>
       ))}
     </Slider>
