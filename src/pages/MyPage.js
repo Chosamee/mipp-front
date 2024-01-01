@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const AccountPage = () => {
   const navigate = useNavigate();
+
   // 가정: 사용자 정보가 state 또는 props를 통해 제공됩니다.
   const [formData, setFormData] = useState({
     name: "",
@@ -61,9 +62,21 @@ const AccountPage = () => {
     }
   };
 
+  const [showDeleteInput, setShowDeleteInput] = useState(false);
+  const [deleteInput, setDeleteInput] = useState("");
+
   const handleDelete = async () => {
-    await deleteUser();
-    navigate("/");
+    if (deleteInput === "Delete Account") {
+      // 여기서 사용자에게 추가 확인을 요청하는 로직을 구현하거나,
+      // 직접 계정 삭제 로직을 구현할 수 있습니다.
+      if (window.confirm("Are you sure you want to delete your account?")) {
+        await deleteUser();
+        navigate("/");
+        console.log("Account deleted");
+      }
+    } else {
+      alert("Please enter the correct text to delete your account.");
+    }
   };
 
   return (
@@ -154,9 +167,25 @@ const AccountPage = () => {
 
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-2">Security</h2>
-            <button className="text-red-600 hover:underline ml-4" onClick={handleDelete}>
+            <button
+              className="text-red-600 hover:underline ml-4"
+              onClick={() => setShowDeleteInput(!showDeleteInput)}>
               Delete account
             </button>
+            {showDeleteInput && (
+              <div>
+                <p className="mt-4">Please type "Delete Account" to confirm:</p>
+                <input
+                  type="text"
+                  value={deleteInput}
+                  onChange={(e) => setDeleteInput(e.target.value)}
+                  className="border p-2"
+                />
+                <button className="bg-red-600 text-white p-2 mt-2" onClick={handleDelete}>
+                  Confirm Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
       ) : (
