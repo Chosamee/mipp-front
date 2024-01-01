@@ -1,3 +1,4 @@
+import { handleCheckNicknameDuplicate } from "api/authService";
 import { deleteUser, fetchProfile, updateProfile } from "api/profileService";
 import { useAuth } from "components/auth/AuthContext";
 import LoadingSpinner from "components/views/LoadingSpinner";
@@ -9,6 +10,15 @@ const AccountPage = () => {
   const navigate = useNavigate();
 
   // 가정: 사용자 정보가 state 또는 props를 통해 제공됩니다.
+  const [originData, setOriginData] = useState({
+    name: "",
+    nickname: "",
+    email: "",
+    phone: "",
+    birthdate: "",
+    marketingconsent: false,
+    organization: "",
+  });
   const [formData, setFormData] = useState({
     name: "",
     nickname: "",
@@ -27,6 +37,15 @@ const AccountPage = () => {
         const data = await fetchProfile();
         setProfile(data);
         setFormData({
+          name: data.name,
+          nickname: data.nickname,
+          email: data.email,
+          phone: data.phone,
+          birthdate: data.birthdate,
+          marketingconsent: data.marketingconsent,
+          organization: data.organization,
+        });
+        setOriginData({
           name: data.name,
           nickname: data.nickname,
           email: data.email,
@@ -82,7 +101,57 @@ const AccountPage = () => {
       alert("Please enter the correct text to delete your account.");
     }
   };
+  const validateNickname = (value) => {
+    // 한글과 숫자만 포함, 2~8자, 공백 없음을 확인하는 정규식
+    const regex = /^[가-힣A-Za-z0-9]{2,8}$/;
+    return regex.test(value);
+  };
+  const [nicknameError, setNicknameError] = useState("");
+  const [isNicknameValid, setIsNicknameValid] = useState(false);
 
+  const checkNicknameAvailability = async () => {
+    if (!validateNickname(formData.nickname)) {
+      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+      setIsNicknameValid(false);
+      return;
+    }
+
+    try {
+      // 서버에 닉네임 중복 검사 요청
+      const response = await handleCheckNicknameDuplicate(formData.nickname);
+      if (response.isAvailable) {
+        setNicknameError("사용 가능 합니다.");
+        setIsNicknameValid(true);
+      } else {
+        setNicknameError("이미 사용 중인 닉네임입니다.");
+        setIsNicknameValid(false);
+      }
+    } catch (error) {
+      console.error("Error checking nickname:", error);
+      setNicknameError("닉네임 검사 중 오류가 발생했습니다.");
+    }
+  };
+
+  const handleNicknameChange = (e) => {
+    const value = e.target.value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      nickname: value,
+    }));
+    setIsNicknameValid(false);
+    if (!validateNickname(value)) {
+      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+    } else {
+      setNicknameError("");
+    }
+  };
+
+  const handleCancel = () => {
+    // 취소 로직 (예: 폼 필드 초기화 또는 페이지 이동)
+    setFormData(originData);
+    setNicknameError("");
+    setIsNicknameValid(false);
+  };
   return (
     <div className="py-10 max-w-4xl mx-auto px-5 pt-40">
       {profile ? (
@@ -103,6 +172,7 @@ const AccountPage = () => {
                     className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 ml-2"
                     onClick={() => {
                       setEditMode(false);
+                      handleCancel();
                     }}>
                     Cancel
                   </button>
@@ -137,12 +207,32 @@ const AccountPage = () => {
             <div className="text-2xl font-bold">NickName</div>
 
             {editMode ? (
-              <input
-                className="border p-2 text-right"
-                name="nickname"
-                value={formData.nickname}
-                onChange={handleChange}
-              />
+              <div className="flex flex-col items-end">
+                <div>
+                  {" "}
+                  <button
+                    type="button"
+                    onClick={checkNicknameAvailability}
+                    className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    중복 검사
+                  </button>
+                  <input
+                    className="border p-2 text-right"
+                    name="nickname"
+                    value={formData.nickname}
+                    onChange={handleNicknameChange}
+                  />
+                </div>
+
+                {nicknameError && (
+                  <p
+                    className={`${
+                      isNicknameValid ? "text-blue-500" : "text-red-500"
+                    } text-xs italic`}>
+                    {nicknameError}
+                  </p>
+                )}
+              </div>
             ) : (
               <div className="text-lg p-2">{formData.nickname}</div>
             )}

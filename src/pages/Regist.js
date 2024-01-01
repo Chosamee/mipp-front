@@ -3,13 +3,16 @@ import { handleCheckNicknameDuplicate, handleRegist } from "api/authService";
 import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
-  const [name, setName] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    nickname: "",
+    email: "",
+    phone: "",
+    birthdate: "",
+    marketingconsent: false,
+    organization: "",
+  });
   const [nicknameError, setNicknameError] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [marketingconsent, setMarketingconsent] = useState(false);
   const [isNicknameValid, setIsNicknameValid] = useState(false);
   const navigate = useNavigate();
   const validateNickname = (value) => {
@@ -17,9 +20,16 @@ const RegistrationForm = () => {
     const regex = /^[가-힣A-Za-z0-9]{2,8}$/;
     return regex.test(value);
   };
-
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value); // 입력 값이 변경될 때마다 콘솔에 로그 출력
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
   const checkNicknameAvailability = async () => {
-    if (!validateNickname(nickname)) {
+    if (!validateNickname(formData.nickname)) {
       setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
       setIsNicknameValid(false);
       return;
@@ -27,7 +37,7 @@ const RegistrationForm = () => {
 
     try {
       // 서버에 닉네임 중복 검사 요청
-      const response = await handleCheckNicknameDuplicate(nickname);
+      const response = await handleCheckNicknameDuplicate(formData.nickname);
       if (response.isAvailable) {
         setNicknameError("사용 가능 합니다.");
         setIsNicknameValid(true);
@@ -43,7 +53,10 @@ const RegistrationForm = () => {
 
   const handleNicknameChange = (e) => {
     const value = e.target.value;
-    setNickname(value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      nickname: value,
+    }));
     setIsNicknameValid(false);
     if (!validateNickname(value)) {
       setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
@@ -60,15 +73,7 @@ const RegistrationForm = () => {
     }
     // 여기에 회원 가입 요청 로직 구현
     try {
-      const registForm = {
-        name: name,
-        nickname: nickname,
-        phone: phoneNumber,
-        birthdate: birthdate,
-        marketingconsent: marketingconsent,
-        organization: organization,
-      };
-      const response = await handleRegist(registForm);
+      const response = await handleRegist(formData);
       console.log(response.data);
       navigate("/home");
     } catch (error) {
@@ -79,8 +84,15 @@ const RegistrationForm = () => {
 
   const handleCancel = () => {
     // 취소 로직 (예: 폼 필드 초기화 또는 페이지 이동)
-    setNickname("");
-    setPhoneNumber("");
+    setFormData({
+      name: "",
+      nickname: "",
+      email: "",
+      phone: "",
+      birthdate: "",
+      marketingconsent: false,
+      organization: "",
+    });
   };
 
   return (
@@ -97,8 +109,8 @@ const RegistrationForm = () => {
             id="name"
             type="text"
             placeholder="이름"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formData.name}
+            onChange={handleChange}
             required
           />
         </div>
@@ -113,7 +125,7 @@ const RegistrationForm = () => {
               id="nickname"
               type="text"
               placeholder="닉네임"
-              value={nickname}
+              value={formData.nickname}
               onChange={handleNicknameChange}
               required
             />
@@ -140,8 +152,8 @@ const RegistrationForm = () => {
             id="phoneNumber"
             type="tel"
             placeholder="전화번호"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            value={formData.phone}
+            onChange={handleChange}
             required
           />
         </div>
@@ -154,8 +166,8 @@ const RegistrationForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="birthdate"
             type="date"
-            value={birthdate}
-            onChange={(e) => setBirthdate(e.target.value)}
+            value={formData.birthdate}
+            onChange={handleChange}
             required
           />
         </div>
@@ -169,8 +181,8 @@ const RegistrationForm = () => {
             id="organization"
             type="text"
             placeholder="소속 또는 단체명 (선택 사항)"
-            value={organization}
-            onChange={(e) => setOrganization(e.target.value)}
+            value={formData.organization}
+            onChange={handleChange}
           />
         </div>
 
@@ -179,8 +191,8 @@ const RegistrationForm = () => {
             <input
               type="checkbox"
               className="form-checkbox h-5 w-5 text-blue-600"
-              checked={marketingconsent}
-              onChange={(e) => setMarketingconsent(e.target.checked)}
+              checked={formData.marketingconsent}
+              onChange={handleChange}
             />
             <span className="ml-2 text-gray-700 text-sm">마케팅 정보 수신 동의</span>
           </label>
