@@ -22,6 +22,7 @@ import Index from "pages/Index";
 import Login from "pages/Login";
 import Result from "pages/Result";
 import Detail from "pages/Detail";
+import Howtouse from "pages/Howtouse";
 import Suggestion from "pages/Suggestion.js";
 import Asks from "pages/ask/Asks";
 import AskCreate from "pages/ask/AskCreate";
@@ -41,6 +42,7 @@ import store from "store/Store.js";
 // 국제화 및 번역 관련
 import "./i18n";
 import { useTranslation } from "react-i18next";
+import Intro from "pages/Intro";
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -71,7 +73,11 @@ const App = () => {
                   <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />
                   <Route path="board" element={<ProtectedRoute component={Suggestion} />} />
                   <Route path="result" element={<ProtectedRoute component={Result} />} />
+                  <Route path="howtouse" element={<Howtouse />} />
+                  <Route path="intro" element={<Intro />} />
+
                   <Route path="asks" element={<ProtectedRoute component={Asks} />} />
+
                   <Route
                     path="asks/detail/:id"
                     element={<ProtectedRoute component={AskDetail} />}

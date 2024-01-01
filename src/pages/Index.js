@@ -16,14 +16,16 @@ import video1 from "img/index2.mp4";
 import videoWrapper from "img/videoWrapper.webp";
 import FadeInComp from "components/views/FadeInComp";
 import { useTranslation } from "react-i18next";
+import { getLangUrl } from "locales/utils";
+import howtouse_kr from "img/index/howtouse-kr.png";
+import howtouse_en from "img/index/howtouse-en.png";
+
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
 const App = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
-  const handleButtonClick = (path) => {
-    navigate(path);
-  };
+  const { i18n } = useTranslation();
   const { t } = useTranslation();
 
   // 이미지 slide를 위한 array
@@ -63,10 +65,10 @@ const App = () => {
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() =>
                       authState.isLoggedIn
-                        ? handleButtonClick("/home")
-                        : handleButtonClick("/login")
+                        ? navigate(getLangUrl("/home"))
+                        : navigate(getLangUrl("/login"))
                     }>
-                    검사하기
+                    {t("startChecking")}
                   </button>
                 }
                 animate={"fade-in-up-delay-3"}
@@ -79,10 +81,16 @@ const App = () => {
 
       {/* Process Section */}
       <div className="container mx-auto rounded-lg mb-20 mt-5 py-4 px-4 text-center">
-        <h2 className="text-3xl font-bold mb-1 mt-3 ">사용 PROCESS</h2>
+        <h2 className="text-3xl font-bold mb-1 mt-3 ">{t("index.2.title")}</h2>
         {/* Assuming indexContent1 is imported correctly at the top */}
         <FadeInComp
-          data={<img src={indexContent1} alt="Description" className="mx-auto rounded" />}
+          data={
+            <img
+              src={i18n.language === "en" ? howtouse_en : howtouse_kr}
+              alt="Description"
+              className="mx-auto rounded"
+            />
+          }
           animate={"fade-in-right-delay-1"}
         />
       </div>
@@ -98,7 +106,7 @@ const App = () => {
             <FadeInComp
               data={
                 <h1 className="text-4xl md:text-6xl font-bold mb-20 text-center">
-                  음악 IP 보호 및 관리 솔루션
+                  {t("index.1.title")}
                 </h1>
               }
               animate={"fade-in-up-delay-1"}
@@ -108,23 +116,12 @@ const App = () => {
               <FadeInComp
                 data={
                   <div>
-                    <p className="mb-5 md:text-3xl text-xl font-bold">01. AI 음악 분석 검사</p>
-                    <p className="mb-10 md:text-lg text-sm">
-                      MIPP만의 음원 분석 기술을 사용한 AI 음악 표절 검사를 무료로 해보세요 앨범 발매
-                      전 표절로 인한 법적인 문제를 사전에 예방할 수 있습니다.
-                    </p>
-                    <p className="mb-5 md:text-3xl text-xl font-bold">
-                      02. 실시간 표절노래 모니터링
-                    </p>
-                    <p className="mb-10 md:text-lg text-sm">
-                      전 세계에 새로 발매 되는 수억개의 노래 중에 내 노래를 표절한 노래가 있는지
-                      찾아드립니다. MIPP 실시간 표절 모니터링 서비스로 귀하의 음악 저작권을 지키세요
-                    </p>
-                    <p className="mb-5 md:text-3xl text-xl font-bold">03. 음악 IP 수익 극대화</p>
-                    <p className="mb-10 md:text-lg text-sm">
-                      MIPP을 통해 무단 표절 노래로 부터 저작권을 보호 하고 음악 IP의 수익을 극대화
-                      시켜보세요
-                    </p>
+                    <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle1")}</p>
+                    <p className="mb-10 md:text-lg text-sm">{t("index.1.content1")}</p>
+                    <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle2")}</p>
+                    <p className="mb-10 md:text-lg text-sm">{t("index.1.content2")}</p>
+                    <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle3")}</p>
+                    <p className="mb-10 md:text-lg text-sm">{t("index.1.content3")}</p>
                   </div>
                 }
                 animate={"fade-in-up-delay-1"}
@@ -145,6 +142,45 @@ const App = () => {
         <div className="h-5 bg-gradient-to-t from-gray-100  to-black/75"></div>
       </div>
 
+      <div className="max-w-7xl mx-auto flex flex-col">
+        <div className="text-4xl text-center my-10">{t("index.3.title")}</div>
+        <div className="grid grid-cols-3 ">
+          <div className="self-start">
+            <FadeInComp
+              data={
+                <div className="flex flex-col px-10 ">
+                  <div className="text-2xl mb-5">{t("index.3.subtitle1")}</div>
+                  <div className="text-lg">{t("index.3.content1")}</div>
+                </div>
+              }
+              animate={"fade-in-up-delay-1"}
+            />
+          </div>
+          <div className="self-start">
+            <FadeInComp
+              data={
+                <div className="flex flex-col px-10">
+                  <div className="text-2xl mb-5">{t("index.3.subtitle2")}</div>
+                  <div className="text-lg">{t("index.3.content2")}</div>
+                </div>
+              }
+              animate={"fade-in-up-delay-2"}
+            />
+          </div>
+          <div className="self-start">
+            <FadeInComp
+              data={
+                <div className="flex flex-col px-10">
+                  <div className="text-2xl mb-5">{t("index.3.subtitle3")}</div>
+                  <div className="text-lg">{t("index.3.content3")}</div>
+                </div>
+              }
+              animate={"fade-in-up-delay-3"}
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="flex justify-center items-center px-4 my-8 pl-14 w-3/4 mx-auto">
         <YouTubeVideo videoId="xXgsdyXMUHE" />
       </div>
@@ -155,9 +191,9 @@ const App = () => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl text-xl
           fade-in-up-delay-3"
           onClick={() =>
-            authState.isLoggedIn ? handleButtonClick("/home") : handleButtonClick("/login")
+            authState.isLoggedIn ? navigate(getLangUrl("/home")) : navigate(getLangUrl("/login"))
           }>
-          검사하기
+          {t("startChecking")}
         </button>
       </div>
     </div>

@@ -12,10 +12,6 @@ const NavBar = () => {
   const { t } = useTranslation();
   // navigate 기능
   const navigate = useNavigate();
-  const handleNavLinkClick = (path) => {
-    navigate(path);
-    setIsMenuOpen(false); // 메뉴 닫기
-  };
 
   const handleLogoutClick = async () => {
     try {
@@ -41,9 +37,7 @@ const NavBar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-20">
           {/* Logo and title */}
-          <button
-            onClick={() => handleNavLinkClick(getLangUrl("/"))}
-            className="flex items-center px-2">
+          <button onClick={() => navigate(getLangUrl("/"))} className="flex items-center px-2">
             <img src={logo} alt="MIPP Logo" className="h-7" />
             <span className="self-center text-3xl font-bold whitespace-nowrap pl-4">MIPP</span>
           </button>
@@ -53,28 +47,28 @@ const NavBar = () => {
             <LanguageSwitcher />
             {/* Other Links */}
             <button className="flex items-center px-4">
-              <span className="" onClick={() => handleNavLinkClick(getLangUrl("/info"))}>
+              <span className="" onClick={() => navigate(getLangUrl("/intro"))}>
                 {t("nav.intro")}
               </span>
             </button>
             <button className="flex items-center px-4">
-              <span className="" onClick={() => handleNavLinkClick(getLangUrl("/board"))}>
+              <span className="" onClick={() => navigate(getLangUrl("/howtouse"))}>
                 {t("nav.howToUse")}
               </span>
             </button>
             <button className="flex items-center px-4">
-              <span className="" onClick={() => handleNavLinkClick(getLangUrl("/board"))}>
-                {t("nav.startChecking")}
+              <span className="" onClick={() => navigate(getLangUrl("/board"))}>
+                {t("nav.request")}
               </span>
             </button>
             <button className="flex items-center px-4">
-              <span className="" onClick={() => handleNavLinkClick(getLangUrl("/home"))}>
-                {t("nav.startChecking")}
+              <span className="" onClick={() => navigate(getLangUrl("/home"))}>
+                {t("startChecking")}
               </span>
             </button>
             <button className="flex items-center px-4">
-              <span className="" onClick={() => handleNavLinkClick(getLangUrl("/mypage"))}>
-                마이페이지
+              <span className="" onClick={() => navigate(getLangUrl("/mypage"))}>
+                {t("nav.myAccount")}
               </span>
             </button>
           </div>
@@ -97,26 +91,18 @@ const NavBar = () => {
                 isMenuOpen ? "block" : "hidden"
               }`}>
               {!authState.isLoggedIn ? (
-                <button
-                  onClick={() => handleNavLinkClick("/login")}
-                  className="block w-full text-left">
+                <button onClick={() => navigate("/login")} className="block w-full text-left">
                   로그인
                 </button>
               ) : (
                 <>
-                  <button
-                    onClick={() => handleNavLinkClick("/asks")}
-                    className="block w-full text-left">
+                  <button onClick={() => navigate("/asks")} className="block w-full text-left">
                     문의글
                   </button>
-                  <button
-                    onClick={() => handleNavLinkClick("/result")}
-                    className="block w-full text-left">
+                  <button onClick={() => navigate("/result")} className="block w-full text-left">
                     내 신청 조회
                   </button>
-                  <button
-                    onClick={() => handleNavLinkClick("/mypage")}
-                    className="block w-full text-left">
+                  <button onClick={() => navigate("/mypage")} className="block w-full text-left">
                     마이페이지
                   </button>
                   <button onClick={handleLogoutClick} className="block w-full text-left">

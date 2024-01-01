@@ -1,12 +1,42 @@
 {
   "welcome": "Welcome to Our Website!",
+  "startChecking": "Start Checking",
   "index": {
     "mainTitle": "AI Music Plagiarism Checker",
-    "mainIntro": "Do you need a plagiarism check before releasing an album?\n Do you want to know if anyone has plagiarized your music? You can check the two things at once for free."
+    "mainIntro": "Do you need a plagiarism check before releasing an album?\n Do you want to know if anyone has plagiarized your music? You can check the two things at once for free.",
+    "1": {
+      "title": "Music IP Protection & \nManagement Solution",
+      "subtitle1": "01. AI Music Plagiarism Test",
+      "content1": "Start a free AI music plagiarism test with MIPP's music analysis technology to avoid legal issues before releasing your album.",
+      "subtitle2": "02. Real-time plagiarism monitoring",
+      "content2": "We can identify plagiarized music from billions of songs released globally every day. Safeguard your music IP with our real-time plagiarism monitoring service.",
+      "subtitle3": "03. Maximize Music IP Revenue",
+      "content3": "Through MIPP, protect your copyrights from unauthorized plagiarized songs and maximize revenue from your music IP."
+    },
+    "2": {
+      "title": "How to use MIPP"
+    },
+    "3": {
+      "title": "Introduction",
+      "subtitle1": "Standard of the plagiarism test",
+      "content1": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
+      "subtitle2": "Vision",
+      "content2": "To protect creators' copyrights and intellectual property, and further to create a music ecosystem that maximizes the value of creativity.",
+      "subtitle3": "Technology",
+      "content3": "Through AI music analysis technology, it analyzes the structure, rhythm, melody, harmony, and more to detect plagiarized songs. It identifies plagiarized songs among many and safeguards the original creators' music intellectual property (IP)."
+    }
+  },
+  "login": {
+    "requiredLogin": "Sign in with Google"
   },
   "nav": {
     "intro": "MIPP Intro",
     "howToUse": "How To Use",
-    "startChecking": "Start checking"
+    "myAccount": "My Account",
+    "request": "Request"
+  },
+  "footer": {
+    "email": "Email: aimipp@gmail.com",
+    "company": "DoubleHCompany"
   }
 }
