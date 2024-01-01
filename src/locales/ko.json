@@ -38,11 +38,13 @@
   },
   "nav": {
     "intro": "MIPP 소개",
-    "howToUse": "사용 방법",
+    "howToUse": "이용방법",
     "myAccount": "내 계정",
     "request": "공개 건의 게시판",
     "logout": "로그아웃",
-    "result": "내 검사 결과"
+    "result": "내 검사 결과",
+    "login": "로그인",
+    "ask": "개인 문의사항"
   },
   "footer": {
     "email": "이메일: aimipp@gmail.com",

@@ -42,7 +42,9 @@
     "myAccount": "My Account",
     "request": "Request",
     "logout": "Logout",
-    "result": "My Results"
+    "result": "My Results",
+    "login": "Login",
+    "ask": "Support"
   },
   "footer": {
     "email": "Email: aimipp@gmail.com",
