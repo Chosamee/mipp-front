@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "../components/views/Pagination";
 import LoadingSpinner from "../components/views/LoadingSpinner";
 import { addPosts, fetchPosts, deletePosts } from "../api/suggestionService";
+import { useTranslation } from "react-i18next";
+import { getLangUrl } from "locales/utils";
 
 const Suggestion = () => {
   const [myData, setMyData] = useState({});
-  const [resultData, setResultData] = useState([]);
+  const [originData, setOriginData] = useState([]);
   const itemsPerPage = 10;
 
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const Suggestion = () => {
       try {
         const data = await fetchPosts();
         setMyData(data.my_posts);
-        setResultData(data.posts);
+        setOriginData(data.posts);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -27,7 +29,23 @@ const Suggestion = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const convertToLocalTime = (data) => {
+    return data.map((item) => {
+      const dateOptions = { year: "numeric", month: "2-digit", day: "2-digit" };
+      const timeOptions = { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
 
+      const date = new Date(item.created_at);
+      const formattedDate = date.toLocaleDateString("ko-KR", dateOptions);
+      const formattedTime = date.toLocaleTimeString("ko-KR", timeOptions);
+
+      return {
+        ...item,
+        created_at: `${formattedDate}\n${formattedTime}`,
+        requested_at: `${formattedDate}\n${formattedTime}`,
+      };
+    });
+  };
+  const resultData = convertToLocalTime(originData);
   // 검색 기능
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchType, setSearchType] = useState("content");
@@ -47,11 +65,14 @@ const Suggestion = () => {
   // 서버에 전송하는 함수
   const handleSubmit = async () => {
     if (!contents) {
-      alert("내용을 입력해주세요");
+      alert(t("request.errorBlank"));
       return;
     }
-
-    const confirmSubmit = window.confirm("이 내용을 게시하시겠습니까?");
+    if (contents.length > 200) {
+      alert(t("request.errorCount"));
+      return;
+    }
+    const confirmSubmit = window.confirm(t("request.confirmUpload"));
     if (confirmSubmit) {
       try {
         const response = await addPosts(contents);
@@ -59,30 +80,35 @@ const Suggestion = () => {
         window.location.reload();
       } catch (error) {
         console.log(error);
-        navigate("/home");
+        navigate(getLangUrl("/home"));
       }
     } else {
-      console.log("취소됨");
+      console.log("cancelled");
     }
   };
 
   const handleDelete = async (id) => {
-    try {
-      await deletePosts(id);
-      window.location.reload();
-    } catch (error) {
-      console.log("delete front error: ", error);
+    const confirmSubmit = window.confirm(t("request.confirmDelete"));
+    if (confirmSubmit) {
+      try {
+        await deletePosts(id);
+        window.location.reload();
+      } catch (error) {
+        console.log("delete front error: ", error);
+      }
     }
   };
+
+  const { t } = useTranslation();
   return (
     <div className="container mx-auto max-w-7xl px-5 py-10 xl:pt-32 md:pt-48 pt-32 ">
-      <h1 className="mb-10">건의사항s</h1>
-      <div className="flex flex-col mx-auto">
+      <h1 className="mb-10">{t("request.title")}</h1>
+      <div className="flex flex-col mx-auto mb-20">
         <input
           type="text"
           value={contents}
           onChange={handleInputChange}
-          placeholder="문의글 작성"
+          placeholder={t("request.guide")}
           className="w-full px-4 py-2 border rounded-md mb-4"
         />
         <button
@@ -100,19 +126,23 @@ const Suggestion = () => {
           renderItem={(item, index) => (
             <div
               key={index}
-              className="bg-blue-200 p-4 flex md:flex-row flex-col items-center  mb-2 rounded-2xl">
-              <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
+              className="bg-blue-200 p-4 flex flex-col md:grid md:grid-cols-12 items-center mb-2 rounded-2xl">
+              <div
+                className="flex-grow text-blue-800 items-center col-span-8"
+                style={{ flexBasis: "65%" }}>
                 <span className="font-bold text-blue-800">{item.content}</span>
               </div>
-              <div style={{ flexBasis: "10%" }}></div>
-              <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
+              <div></div>
+              <div className="items-center justify-center">
                 <span className="font-bold text-blue-800">{item.user_nickname}</span>
               </div>
-              <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-                <span className="font-bold text-blue-800">{item.created_at}</span>
+              <div className="items-center justify-center text-center">
+                <span className="font-bold text-blue-800 ">{item.created_at}</span>
               </div>
               {myData.some((mine) => mine.id === item.id) ? (
-                <button onClick={() => handleDelete(item.id)}>삭제</button>
+                <button className="pr-2" onClick={() => handleDelete(item.id)}>
+                  삭제
+                </button>
               ) : (
                 <div></div>
               )}
@@ -133,7 +163,8 @@ const Suggestion = () => {
           className="p-2 border border-gray-300 rounded w-1/4"
           onChange={(e) => setSearchType(e.target.value)}
           value={searchType}>
-          <option value="content">제목</option>
+          <option value="content">내용</option>
+          <option value="user_nickname">닉네임</option>
         </select>
       </div>
     </div>

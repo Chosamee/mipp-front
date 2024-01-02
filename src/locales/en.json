@@ -78,6 +78,12 @@
     "phone": "Phone Number",
     "email": "Email"
   },
+  "request": {
+    "title": "건의사항",
+    "guide": "문의글 작성",
+    "error": "내용을 입력해주세요.",
+    "confirm": "이 내용을 게시하시겠습니까?"
+  },
   "nav": {
     "intro": "Introduce MIPP",
     "howToUse": "How To Use",
