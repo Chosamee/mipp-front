@@ -3,7 +3,7 @@ name: Deploy to Google Cloud Platform
 on:
   push:
     branches:
-      - main # main 브랜치에 push가 발생할 때 워크플로우를 트리거
+      - master # main 브랜치에 push가 발생할 때 워크플로우를 트리거
 
 jobs:
   setup-build-deploy:
