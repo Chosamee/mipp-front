@@ -5,6 +5,7 @@ import image3 from "img/intro/icons8-music-100-2.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
+import FadeInComp from "components/views/FadeInComp";
 
 const Intro = () => {
   const { t } = useTranslation();
@@ -19,13 +20,18 @@ const Intro = () => {
           <div className="grid grid-cols-1 md:grid-cols-3"></div>
           <div className="grid grid-cols-1 md:grid-cols-3">
             {Object.keys(images).map((key, i) => (
-              <div className="p-4" key={i}>
-                <div className="flex flex-col px-10 mb-10 text-center items-center border-4 border-blue-300 bg-blue-50 rounded-2xl shadow-2xl h-full">
-                  <img src={images[key]} alt={`img ${i}`} className="w-12 h-12 mb-4 mt-10" />
-                  <div className="text-3xl mb-5 font-bold">{t(`index.3.subtitle${i + 1}`)}</div>
-                  <div className="text-xl">{t(`index.3.content${i + 1}`)}</div>
-                </div>
-              </div>
+              <FadeInComp
+                data={
+                  <div className="p-4 h-full" key={i}>
+                    <div className="flex flex-col px-10 mb-10 text-center items-center border-4 border-blue-300 bg-blue-50 rounded-2xl shadow-2xl h-full">
+                      <img src={images[key]} alt={`img ${i}`} className="w-12 h-12 mb-4 mt-10" />
+                      <div className="text-3xl mb-5 font-bold">{t(`index.3.subtitle${i + 1}`)}</div>
+                      <div className="text-xl">{t(`index.3.content${i + 1}`)}</div>
+                    </div>
+                  </div>
+                }
+                animate={`fade-in-up-delay-${i + 1}`}
+              />
             ))}
           </div>
         </div>
