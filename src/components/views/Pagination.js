@@ -13,7 +13,7 @@ const Pagination = ({ data, itemsPerPage, renderItem }) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {/* 데이터 렌더링 부분 */}
       {currentPageData.map((item, index) => renderItem(item, index))}
 
@@ -52,7 +52,7 @@ const Pagination = ({ data, itemsPerPage, renderItem }) => {
           마지막
         </button>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

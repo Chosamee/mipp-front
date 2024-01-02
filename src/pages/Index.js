@@ -50,7 +50,7 @@ const App = () => {
               <FadeInComp
                 data={
                   <div className=" font-bold mb-2">
-                    <div className="text-6xl my-8">{t("index.mainTitle")}</div>
+                    <div className="md:text-6xl text-3xl my-8">{t("index.mainTitle")}</div>
                   </div>
                 }
                 animate={"fade-in-up-delay-1"}
@@ -58,7 +58,7 @@ const App = () => {
             </div>
             <div className="flex flex-col justify-center">
               <FadeInComp
-                data={<p className="mb-4">{t("index.mainIntro")}</p>}
+                data={<p className="mb-4 md:text-xl text-xs">{t("index.mainIntro")}</p>}
                 animate={"fade-in-up-delay-2"}
               />
               <FadeInComp
@@ -82,7 +82,7 @@ const App = () => {
       </div>
 
       {/* Process Section */}
-      <div className="container mx-auto rounded-lg mb-20 mt-5 py-4 px-4 text-center">
+      <div className="container mx-auto rounded-lg mb-10 mt-5 py-4 px-4 text-center">
         <h2 className="text-3xl font-bold mb-1 mt-3 ">{t("index.2.title")}</h2>
         {/* Assuming indexContent1 is imported correctly at the top */}
         <FadeInComp
@@ -99,7 +99,7 @@ const App = () => {
 
       {/* slide section */}
       <div
-        className="flex flex-col bg-fixed bg-no-repeat bg-center md:h-[1000px] h-[1500px] bg-cover"
+        className="flex flex-col bg-fixed bg-no-repeat bg-center md:h-[1000px] h-[1200px] bg-cover"
         style={{ backgroundImage: `url(${indexImg2})` }}>
         <div className="h-5 bg-gradient-to-b from-gray-100  to-black/75"></div>
 
@@ -107,7 +107,7 @@ const App = () => {
           <div className="container mx-auto  py-6 text-white rounded-lg mb-20 mt-5 max-w-6xl px-10">
             <FadeInComp
               data={
-                <h1 className="text-4xl md:text-6xl font-bold mb-20 text-center">
+                <h1 className="text-2xl md:text-6xl font-bold md:mb-20 mb-10 text-center">
                   {t("index.1.title")}
                 </h1>
               }
@@ -117,14 +117,28 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FadeInComp
                 data={
-                  <div>
-                    <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle1")}</p>
-                    <p className="mb-10 md:text-lg text-sm">{t("index.1.content1")}</p>
-                    <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle2")}</p>
-                    <p className="mb-10 md:text-lg text-sm">{t("index.1.content2")}</p>
-                    <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle3")}</p>
-                    <p className="mb-10 md:text-lg text-sm">{t("index.1.content3")}</p>
-                  </div>
+                  Array.from({ length: 3 }, (_, i) => (
+                    <div key={i}>
+                      <p className="mb-5 md:text-3xl text-xl font-bold md:text-left text-center">
+                        {t(`index.1.subtitle${i + 1}`)}
+                      </p>
+                      <p className="mb-10 md:text-lg text-sm md:text-left text-center">
+                        {t(`index.1.content${i + 1}`)}
+                      </p>
+                    </div>
+                  ))
+                  // <div>
+                  //   <p className="mb-5 md:text-3xl text-lg font-bold md:text-left text-center">
+                  //     {t("index.1.subtitle1")}
+                  //   </p>
+                  //   <p className="mb-10 md:text-lg text-xs md:text-left text-center">
+                  //     {t("index.1.content1")}
+                  //   </p>
+                  //   <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle2")}</p>
+                  //   <p className="mb-10 md:text-lg text-sm">{t("index.1.content2")}</p>
+                  //   <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle3")}</p>
+                  //   <p className="mb-10 md:text-lg text-sm">{t("index.1.content3")}</p>
+                  // </div>
                 }
                 animate={"fade-in-up-delay-1"}
               />

@@ -13,14 +13,14 @@ const Footer = () => {
           !location.pathname.split("/")[2] ? "bg-gray-600" : "bg-blue-500"
         } text-white w-full`}>
         <div className="max-w-6xl mx-auto px-10 py-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="flex flex-col  mb-4 md:mb-0 self-center md:items-start items-center">
+          <div className="flex flex-col  md:mb-0 self-center md:items-start items-center">
             <span className="text-lg">{t("footer.email")}</span>
           </div>
-          <div className="flex flex-col items-center justify-center mb-4 md:mb-0">
+          <div className="flex flex-col items-center justify-center  md:mb-0">
             <span className="text-2xl">{t("footer.company")}</span>
             <span className="text-sm"> </span>
           </div>
-          <div className="flex flex-row  items-center md:justify-end justify-center">
+          <div className="flex flex-row  items-center md:justify-end  justify-center">
             <label>{t("language")}</label>
             <LanguageSwitcher />
           </div>

@@ -14,8 +14,10 @@ const Intro = () => {
   const { authState } = useAuth();
   return (
     <div className="flex h-full items-center justify-center my-auto pt-32 max-w-[1500px] mx-auto">
-      <div className="p-10 w-full">
-        <div className="text-4xl mb-20 font-bold">{t("nav.intro")}</div>
+      <div className="p-5 w-full">
+        <div className="text-4xl md:mb-20 mb-10 font-bold md:text-left text-center p-2">
+          {t("nav.intro")}
+        </div>
         <div className="mx-auto flex flex-col mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3"></div>
           <div className="grid grid-cols-1 md:grid-cols-3">
@@ -25,8 +27,10 @@ const Intro = () => {
                   <div className="p-4 h-full" key={i}>
                     <div className="flex flex-col px-10 mb-10 text-center items-center border-4 border-blue-300 bg-blue-50 rounded-2xl shadow-2xl h-full">
                       <img src={images[key]} alt={`img ${i}`} className="w-12 h-12 mb-4 mt-10" />
-                      <div className="text-3xl mb-5 font-bold">{t(`index.3.subtitle${i + 1}`)}</div>
-                      <div className="text-xl">{t(`index.3.content${i + 1}`)}</div>
+                      <div className="md:text-3xl text-xl mb-5 font-bold">
+                        {t(`index.3.subtitle${i + 1}`)}
+                      </div>
+                      <div className="md:text-xl text-sm">{t(`index.3.content${i + 1}`)}</div>
                     </div>
                   </div>
                 }
@@ -36,7 +40,7 @@ const Intro = () => {
           </div>
         </div>
         {/* Call to Action Button */}
-        <div className="flex justify-center mb-10 mt-20">
+        <div className="flex justify-center mb-10 md:mt-20 mt-10">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl text-xl"
             onClick={() =>

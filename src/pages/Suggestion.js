@@ -75,7 +75,7 @@ const Suggestion = () => {
     }
   };
   return (
-    <div className="container my-10 mx-auto max-w-7xl px-5 pt-40">
+    <div className="container mx-auto max-w-7xl px-5 py-10 pt-40">
       <h1 className="mb-10">건의사항s</h1>
       <div className="flex flex-col mx-auto">
         <input
@@ -100,7 +100,7 @@ const Suggestion = () => {
           renderItem={(item, index) => (
             <div
               key={index}
-              className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
+              className="bg-blue-200 p-4 flex md:flex-row flex-col items-center  mb-2 rounded-2xl">
               <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
                 <span className="font-bold text-blue-800">{item.content}</span>
               </div>

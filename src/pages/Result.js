@@ -5,6 +5,7 @@ import LoadingSpinner from "../components/views/LoadingSpinner";
 import { setData } from "../store/Store.js";
 import { useDispatch } from "react-redux";
 import { fetchResults } from "../api/resultService.js";
+import { getLangUrl } from "locales/utils";
 
 const Result = () => {
   const dispatch = useDispatch();
@@ -107,7 +108,7 @@ const Result = () => {
                 <span className="font-bold text-blue-800">{item.status}</span>
               </div>
               <button
-                onClick={() => handleNavLinkClick("/detail/" + item.id)}
+                onClick={() => handleNavLinkClick(getLangUrl("/detail/" + item.id))}
                 className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
                 style={{ flexBasis: "10%" }}
                 disabled={item.status !== "완료"}>
