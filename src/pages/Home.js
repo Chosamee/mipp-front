@@ -31,7 +31,7 @@ const Home = () => {
       <div className="flex md:flex-row flex-col justify-center space-x-2 mb-4 w-full max-w-2xl">
         <button
           onClick={() => setInst("vocal")}
-          className={`px-4 py-2 text-sm font-semibold rounded-md md:w-1/3 w-full shadow-lg transition-shadow duration-300 w-full ${
+          className={`px-4 py-2 text-sm font-semibold rounded-md md:w-1/3 w-full shadow-lg transition-shadow duration-300 ${
             inst === "vocal" ? "bg-blue-500 text-white" : "bg-white text-gray-700"
           }`}>
           {t("home.option2-1")}

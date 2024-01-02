@@ -18,7 +18,7 @@ const Pagination = ({ data, itemsPerPage, renderItem }) => {
       {currentPageData.map((item, index) => renderItem(item, index))}
 
       {/* 페이지네이션 부분 */}
-      <div className="container mx-auto flex justify-center items-center bg-slate-300">
+      <div className="mx-auto flex justify-center items-center bg-slate-300">
         <button
           className="mx-3 px-2"
           onClick={() => setCurrentPage(1)}

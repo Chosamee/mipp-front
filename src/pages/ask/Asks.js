@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/views/Pagination";
 import LoadingSpinner from "../../components/views/LoadingSpinner";
 import { fetchAsks } from "../../api/askService";
+import { getLangUrl } from "locales/utils";
 
 const Asks = () => {
   const [resultData, setResultData] = useState([]);
@@ -38,12 +39,12 @@ const Asks = () => {
     : resultData;
 
   return (
-    <div className="container mx-auto pt-40 max-w-7xl">
-      <div className="flex justify-between">
+    <div className="container mx-auto pt-40 max-w-7xl p-5">
+      <div className="flex justify-between ">
         <h1 className="mb-10">내 문의 (My doors 아님)</h1>
         <button
           onClick={() => {
-            navigate("/asks/create");
+            navigate(getLangUrl("/asks/create"));
           }}>
           문의하기
         </button>
@@ -60,7 +61,7 @@ const Asks = () => {
               className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
               <div
                 onClick={() => {
-                  handleNavLinkClick(`/asks/detail/${item.id}`);
+                  handleNavLinkClick(getLangUrl(`/asks/detail/${item.id}`));
                 }}
                 className="flex-grow text-blue-800 items-center"
                 style={{ flexBasis: "60%" }}>
