@@ -1,20 +1,17 @@
-# Node.js 베이스 이미지 사용
-FROM node:14
-
-# /app 디렉토리를 작업 디렉토리로 설정
+# 빌드 단계
+# Node.js 이미지를 사용하여 의존성 설치 및 애플리케이션 빌드
+FROM node:14 AS build
 WORKDIR /app
-
-# package.json과 package-lock.json 파일을 /app 디렉토리에 복사
-COPY package*.json ./
-
-# npm을 사용하여 의존성 설치
+COPY package.json package-lock.json ./
 RUN npm install
+COPY . ./
+RUN npm run build
 
-# 현재 디렉토리의 모든 파일을 /app 디렉토리에 복사
-COPY . .
-
-# 3000 포트를 열기
-EXPOSE 3000
-
-# 컨테이너가 시작될 때 실행할 명령어
-CMD ["node", "app.js"]
+# 실행 단계
+# Nginx 이미지를 사용하여 정적 파일 서빙
+FROM nginx:stable-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+# Nginx 설정 파일을 필요한 경우 복사할 수 있습니다.
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
