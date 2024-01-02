@@ -113,7 +113,7 @@ const AskCreate = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-96 min-w-96 mx-auto my-10 p-8 bg-white rounded shadow-lg pt-20">
+      className="w-96 min-w-96 mx-auto my-10 p-8 bg-white rounded shadow-lg xl:pt-32 md:pt-48 pt-32 ">
       <div className="mb-6">
         <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">
           문의 제목

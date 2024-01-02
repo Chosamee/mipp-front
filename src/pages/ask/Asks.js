@@ -39,7 +39,7 @@ const Asks = () => {
     : resultData;
 
   return (
-    <div className="container mx-auto pt-40 max-w-7xl p-5">
+    <div className="container mx-auto max-w-7xl p-5 xl:pt-32 md:pt-48 pt-32 ">
       <div className="flex justify-between ">
         <h1 className="mb-10">내 문의 (My doors 아님)</h1>
         <button

@@ -56,7 +56,7 @@ const Result = () => {
     : resultData;
 
   return (
-    <div className="container mx-auto pt-40 max-w-7xl">
+    <div className="container mx-auto xl:pt-32 md:pt-48 pt-32 px-5 max-w-7xl">
       <h1 className="mb-10">내 신청</h1>
       <div>
         <button

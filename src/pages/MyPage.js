@@ -154,7 +154,7 @@ const AccountPage = () => {
     setIsNicknameValid(false);
   };
   return (
-    <div className="py-10 max-w-4xl mx-auto px-5 pt-40">
+    <div className="xl:pt-32 md:pt-48 pt-32 max-w-4xl mx-auto px-5 ">
       {profile ? (
         <div className="container mx-auto  p-6 rounded-md shadow-lg border border-blue-600">
           <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">

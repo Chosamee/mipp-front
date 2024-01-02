@@ -75,7 +75,7 @@ const Suggestion = () => {
     }
   };
   return (
-    <div className="container mx-auto max-w-7xl px-5 py-10 pt-40">
+    <div className="container mx-auto max-w-7xl px-5 py-10 xl:pt-32 md:pt-48 pt-32 ">
       <h1 className="mb-10">건의사항s</h1>
       <div className="flex flex-col mx-auto">
         <input

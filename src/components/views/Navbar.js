@@ -38,11 +38,11 @@ const NavBar = () => {
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
     <nav
-      className={`backdrop-blur-xl text-white  xl:h-20 h-36 fixed top-0 left-0 right-0 z-30 ${
+      className={`backdrop-blur-xl text-white  xl:h-20 md:h-36 h-20 fixed top-0 left-0 right-0 z-30 ${
         !location.pathname.split("/")[2] ? "bg-black bg-opacity-75" : "bg-blue-500"
       }`}>
-      <div className="max-w-7xl mx-auto">
-        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto flex-col">
+        <div className=" mx-auto px-4">
           <div className="flex items-center h-20 justify-between">
             {/* Logo and title */}
             <button
@@ -199,7 +199,7 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        <div className="flex xl:hidden justify-between w-full ml-2 font-bold">
+        <div className="hidden md:flex xl:hidden justify-between w-full ml-2 font-bold">
           <div className="flex items-center space-x-4">
             {/* Other Links */}
             <button className="flex items-center px-4">
