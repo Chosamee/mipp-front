@@ -1,7 +1,7 @@
 options:
   default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
-  logsBucket: "gs://${_LOGS_BUCKET}"
-  # logging: "CLOUD_LOGGING_ONLY" # 또는 'NONE'
+  # logsBucket: "gs://${_LOGS_BUCKET}"
+  logging: "NONE" # 또는 "CLOUD_LOGGING_ONLY"
 
 steps:
   # Docker Build
