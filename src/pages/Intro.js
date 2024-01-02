@@ -13,7 +13,7 @@ const Intro = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
   return (
-    <div className="flex h-full items-center justify-center my-auto xl:pt-32 md:pt-48 pt-32 max-w-[1500px] mx-auto">
+    <div className="flex h-full items-center justify-center my-auto xl:mt-32 md:mt-48 mt-32 max-w-[1500px] mx-auto">
       <div className="p-5 w-full">
         <div className="text-4xl md:mb-20 mb-10 font-bold md:text-left text-center p-2">
           {t("nav.intro")}

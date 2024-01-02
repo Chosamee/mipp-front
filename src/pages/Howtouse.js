@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const Howtouse = () => {
   const { t } = useTranslation();
   return (
-    <div className="flex h-full items-center justify-center my-auto pt-32 max-w-[1500px] mx-auto">
+    <div className="flex h-full items-center justify-center my-auto xl:mt-32 md:mt-48 mt-32 max-w-[1500px] mx-auto">
       <div className="p-10 w-full">
         <div className="text-4xl mb-10 font-bold">{t("nav.howToUse")}</div>
         <div className="text-xl mb-10">{t("howtouse.title")}</div>

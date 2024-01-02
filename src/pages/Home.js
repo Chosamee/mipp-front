@@ -9,9 +9,9 @@ const Home = () => {
   const [inst, setInst] = useState("vocal");
   const { t } = useTranslation();
   return (
-    <div className="p-6 flex flex-col mt-32 max-w-2xl mx-auto">
+    <div className="p-6 flex flex-col xl:mt-32 md:mt-48 mt-32 max-w-2xl mx-auto">
       <div className="text-start mb-5">{t("home.step1")}</div>
-      <div className="flex md:flex-row flex-col justify-center space-x-2 mb-4 w-full max-w-2xl">
+      <div className="flex md:flex-row flex-col justify-center md:space-x-2 mb-4 w-full max-w-2xl">
         <button
           onClick={() => setActiveTab("upload")}
           className={`px-4 py-2 text-sm font-semibold rounded-md w-full shadow-lg transition-shadow duration-300 ${
@@ -28,7 +28,7 @@ const Home = () => {
         </button>
       </div>
       <div className="text-start mb-5">{t("home.step2")}</div>
-      <div className="flex md:flex-row flex-col justify-center space-x-2 mb-4 w-full max-w-2xl">
+      <div className="flex md:flex-row flex-col justify-center md:space-x-2 mb-4 w-full max-w-2xl">
         <button
           onClick={() => setInst("vocal")}
           className={`px-4 py-2 text-sm font-semibold rounded-md md:w-1/3 w-full shadow-lg transition-shadow duration-300 ${
