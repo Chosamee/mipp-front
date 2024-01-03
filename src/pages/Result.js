@@ -110,7 +110,7 @@ const Result = () => {
                 onClick={() => navigate(getLangUrl("/detail/" + item.id))}
                 className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
                 style={{ flexBasis: "10%" }}
-                disabled={item.status !== "Complete"}>
+                disabled={item.status !== "Complete" && item.status !== "완료" }>
                 상세결과
               </button>
             </div>
