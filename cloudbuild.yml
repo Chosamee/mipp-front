@@ -4,11 +4,6 @@ options:
   logging: "CLOUD_LOGGING_ONLY" # 또는 'NONE'
 
 steps:
-  # NPM Build with environment variables
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "build"]
-    secretEnv: ["REACT_APP_MIPP_API_URL", "REACT_APP_GOOGLE_CLIENT_ID"]
-
   # Docker Build
   - name: "gcr.io/cloud-builders/docker"
     args:
