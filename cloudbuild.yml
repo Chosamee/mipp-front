@@ -4,6 +4,7 @@ options:
   logging: "CLOUD_LOGGING_ONLY" # 또는 'NONE'
 
 steps:
+  # NPM Build with environment variables
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
     env:
@@ -19,7 +20,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage"]
 
-  # Entrypoint, timeout and environment variables
+  # Deploy the container to a new VM instance
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "gcloud"
     timeout: 240s
