@@ -6,11 +6,13 @@ import { setData } from "../store/Store.js";
 import { useDispatch } from "react-redux";
 import { fetchResults } from "../api/resultService.js";
 import { getLangUrl } from "locales/utils";
+import { useTranslation } from "react-i18next";
 
 const Result = () => {
   const dispatch = useDispatch();
   const [resultData, setresultData] = useState([]);
   const itemsPerPage = 10;
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -121,7 +123,7 @@ const Result = () => {
         <input
           type="text"
           className="p-2 border border-gray-300 rounded w-full"
-          placeholder={`검색어를 입력하세요 (${searchType})`}
+          placeholder={t("searchGuide") + searchType}
           onChange={(e) => setSearchKeyword(e.target.value)}
         />
         <select
