@@ -4,6 +4,11 @@ options:
   logging: "CLOUD_LOGGING_ONLY" # 또는 'NONE'
 
 steps:
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
+    env:
+      - "REACT_APP_API_KEY=${_REACT_APP_API_KEY}"
+
   # Docker Build
   - name: "gcr.io/cloud-builders/docker"
     args:
@@ -25,7 +30,17 @@ steps:
         "my-vm-name",
         "--container-image",
         "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
+        "--container-env",
+        "REACT_APP_API_KEY=${_REACT_APP_API_KEY}",
+        "REACT_APP_GOOGLE_CLIENT_ID=${_REACT_APP_GOOGLE_CLIENT_ID}",
       ]
     env:
       - "CLOUDSDK_COMPUTE_REGION=asia-northeast3"
       - "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/486098542239/secrets/REACT_APP_MIPP_API_URL/versions/latest
+      env: "_REACT_APP_MIPP_API_URL"
+    - versionName: projects/486098542239/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/latest
+      env: "_REACT_APP_GOOGLE_CLIENT_ID"
