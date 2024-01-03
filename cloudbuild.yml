@@ -17,7 +17,7 @@ steps:
         "--build-arg",
         "REACT_APP_GOOGLE_CLIENT_ID=${_REACT_APP_GOOGLE_CLIENT_ID}",
       ]
-    secretEnv: ["REACT_APP_MIPP_API_URL", "REACT_APP_GOOGLE_CLIENT_ID"]
+    secretEnv: ["_REACT_APP_MIPP_API_URL", "_REACT_APP_GOOGLE_CLIENT_ID"]
 
   # Docker Push
   - name: "gcr.io/cloud-builders/docker"
