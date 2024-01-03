@@ -75,7 +75,16 @@
     "name": "이름",
     "nickname": "닉네임",
     "phone": "전화번호",
-    "email": "이메일"
+    "email": "이메일",
+    "confirmRegist": "이 내용을 게시하시겠습니까?",
+    "confirmDelete": "정말로 계정을 삭제하시겠습니까?",
+    "submitDelete": "계정이 삭제되었습니다.",
+    "errorDelete": "계정 삭제를 위해 올바른 텍스트를 입력해주세요.",
+    "errorNickname": "닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.",
+    "errorNicknameDuplicate": "이미 사용 중인 닉네임입니다.",
+    "errorNicknameCheck": "닉네임 검사 중 오류가 발생했습니다.",
+    "possibleNickname": "사용 가능한 닉네임입니다.",
+    "deleteGuide": "계정 삭제를 위해 \"Delete Account\" 를 입력해주세요:"
   },
   "request": {
     "title": "건의사항",
@@ -95,6 +104,7 @@
     "login": "로그인",
     "ask": "개인 문의사항"
   },
+
   "footer": {
     "email": "이메일: aimipp@gmail.com",
     "company": "더블H컴퍼니"

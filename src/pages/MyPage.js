@@ -73,7 +73,7 @@ const AccountPage = () => {
   };
 
   const handleSubmitClick = async () => {
-    const confirmSubmit = window.confirm("이 내용을 게시하시겠습니까?");
+    const confirmSubmit = window.confirm(t("profile.confirmRegist"));
     if (confirmSubmit) {
       const response = await updateProfile(formData);
       console.log(response);
@@ -92,14 +92,14 @@ const AccountPage = () => {
     if (deleteInput === "Delete Account") {
       // 여기서 사용자에게 추가 확인을 요청하는 로직을 구현하거나,
       // 직접 계정 삭제 로직을 구현할 수 있습니다.
-      if (window.confirm("Are you sure you want to delete your account?")) {
+      if (window.confirm(t("profile.confirmDelete"))) {
         await deleteUser();
         updateAuthState({ ...authState, isLoggedIn: false });
         navigate(getLangUrl("/"));
         console.log("Account deleted");
       }
     } else {
-      alert("Please enter the correct text to delete your account.");
+      alert(t("profile.errorDelete"));
     }
   };
   const validateNickname = (value) => {
@@ -112,7 +112,7 @@ const AccountPage = () => {
 
   const checkNicknameAvailability = async () => {
     if (!validateNickname(formData.nickname)) {
-      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+      setNicknameError(t("profile.errorNickname"));
       setIsNicknameValid(false);
       return;
     }
@@ -121,15 +121,15 @@ const AccountPage = () => {
       // 서버에 닉네임 중복 검사 요청
       const response = await handleCheckNicknameDuplicate(formData.nickname);
       if (response.isAvailable) {
-        setNicknameError("사용 가능 합니다.");
+        setNicknameError(t("profile.possibleNickname"));
         setIsNicknameValid(true);
       } else {
-        setNicknameError("이미 사용 중인 닉네임입니다.");
+        setNicknameError(t("profile.errorNicknameDuplicate"));
         setIsNicknameValid(false);
       }
     } catch (error) {
       console.error("Error checking nickname:", error);
-      setNicknameError("닉네임 검사 중 오류가 발생했습니다.");
+      setNicknameError(t("profile.errorNicknameCheck"));
     }
   };
 
@@ -141,7 +141,7 @@ const AccountPage = () => {
     }));
     setIsNicknameValid(false);
     if (!validateNickname(value)) {
-      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+      setNicknameError(t("profile.errorNickname"));
     } else {
       setNicknameError("");
     }
@@ -266,7 +266,7 @@ const AccountPage = () => {
             </button>
             {showDeleteInput && (
               <div>
-                <p className="mt-4">Please type "Delete Account" to confirm:</p>
+                <p className="mt-4">{t("profile.deleteGuide")}</p>
                 <input
                   type="text"
                   value={deleteInput}
