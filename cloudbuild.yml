@@ -1,3 +1,10 @@
+availableSecrets:
+  secretManager:
+    - versionName: projects/$PROJECT_ID/secrets/REACT_APP_MIPP_API_URL/versions/latest
+      env: "_REACT_APP_MIPP_API_URL"
+    - versionName: projects/$PROJECT_ID/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/latest
+      env: "_REACT_APP_GOOGLE_CLIENT_ID"
+
 options:
   default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
   # logsBucket: "gs://${_LOGS_BUCKET}"
@@ -36,10 +43,3 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_REGION=asia-northeast3"
       - "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"
-
-availableSecrets:
-  secretManager:
-    - versionName: projects/$PROJECT_ID/secrets/REACT_APP_MIPP_API_URL/versions/latest
-      env: "_REACT_APP_MIPP_API_URL"
-    - versionName: projects/$PROJECT_ID/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/latest
-      env: "_REACT_APP_GOOGLE_CLIENT_ID"
