@@ -7,7 +7,16 @@ steps:
   # Docker Build
   - name: "gcr.io/cloud-builders/docker"
     args:
-      ["build", "-t", "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage", "."]
+      [
+        "build",
+        "-t",
+        "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
+        ".",
+        "--build-arg",
+        "REACT_APP_MIPP_API_URL=${_REACT_APP_MIPP_API_URL}",
+        "--build-arg",
+        "REACT_APP_GOOGLE_CLIENT_ID=${_REACT_APP_GOOGLE_CLIENT_ID}",
+      ]
     secretEnv: ["REACT_APP_MIPP_API_URL", "REACT_APP_GOOGLE_CLIENT_ID"]
 
   # Docker Push
@@ -48,6 +57,6 @@ steps:
 availableSecrets:
   secretManager:
     - versionName: projects/$PROJECT_ID/secrets/REACT_APP_MIPP_API_URL/versions/latest
-      env: "REACT_APP_MIPP_API_URL"
+      env: "_REACT_APP_MIPP_API_URL"
     - versionName: projects/$PROJECT_ID/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/latest
-      env: "REACT_APP_GOOGLE_CLIENT_ID"
+      env: "_REACT_APP_GOOGLE_CLIENT_ID"
