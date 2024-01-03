@@ -56,7 +56,7 @@ steps:
 
 availableSecrets:
   secretManager:
-    - versionName: projects/486098542239/secrets/REACT_APP_MIPP_API_URL/versions/latest
+    - versionName: projects/486098542239/secrets/REACT_APP_MIPP_API_URL/versions/1
       env: "_REACT_APP_MIPP_API_URL"
-    - versionName: projects/486098542239/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/latest
+    - versionName: projects/486098542239/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/1
       env: "_REACT_APP_GOOGLE_CLIENT_ID"
