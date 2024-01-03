@@ -14,22 +14,36 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage"]
 
-  # Deploy the container to a new VM instance
+  # 기존 인스턴스 업데이트
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "gcloud"
-    timeout: 240s
     args:
       [
         "compute",
         "instances",
-        "create-with-container",
+        "update-container",
         "my-vm-name",
         "--container-image",
         "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
       ]
-    env:
-      - "CLOUDSDK_COMPUTE_REGION=asia-northeast3"
-      - "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"
+    env: ["CLOUDSDK_COMPUTE_REGION=asia-northeast3", "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"]
+
+  # Deploy the container to a new VM instance
+  # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  #   entrypoint: "gcloud"
+  #   timeout: 240s
+  #   args:
+  #     [
+  #       "compute",
+  #       "instances",
+  #       "create-with-container",
+  #       "my-vm-name",
+  #       "--container-image",
+  #       "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
+  #     ]
+  #   env:
+  #     - "CLOUDSDK_COMPUTE_REGION=asia-northeast3"
+  #     - "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"
 
 availableSecrets:
   secretManager:
