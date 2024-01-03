@@ -31,7 +31,7 @@ steps:
         "--container-image",
         "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
         "--container-env",
-        "REACT_APP_API_KEY=${_REACT_APP_MIPP_API_URL}",
+        "REACT_APP_MIPP_API_URL=${_REACT_APP_MIPP_API_URL}",
         "REACT_APP_GOOGLE_CLIENT_ID=${_REACT_APP_GOOGLE_CLIENT_ID}",
       ]
     env:
