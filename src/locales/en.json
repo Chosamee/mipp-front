@@ -1,6 +1,8 @@
 {
   "welcome": "Welcome to Our Website!",
   "startChecking": "Start Checking",
+  "language": "Language",
+  "searchGuide": "검색어를 입력하세요",
   "index": {
     "mainTitle": "AI Music Plagiarism Checker",
     "mainIntro": "Do you need a plagiarism check before releasing an album?\n Do you want to know if anyone has plagiarized your music? You can check the two things at once for free.",
@@ -76,13 +78,24 @@
     "name": "Name",
     "nickname": "Nickname",
     "phone": "Phone Number",
-    "email": "Email"
+    "email": "Email",
+    "confirmRegist": "이 내용을 게시하시겠습니까?",
+    "confirmDelete": "Are you sure you want to delete your account?",
+    "submitDelete": "Account deleted",
+    "errorDelete": "Please enter the correct text to delete your account.",
+    "errorNickname": "닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.",
+    "errorNicknameDuplicate": "이미 사용 중인 닉네임입니다.",
+    "errorNicknameCheck": "닉네임 검사 중 오류가 발생했습니다.",
+    "possibleNickname": "사용 가능한 닉네임입니다.",
+    "deleteGuide": "Please type \"Delete Account\" to confirm:"
   },
   "request": {
     "title": "건의사항",
-    "guide": "문의글 작성",
-    "error": "내용을 입력해주세요.",
-    "confirm": "이 내용을 게시하시겠습니까?"
+    "guide": "건의글 작성 (200자 내)",
+    "errorBlank": "내용을 입력해주세요.",
+    "errorCount": "글자 수가 너무 많습니다!",
+    "confirmUpload": "이 내용을 게시하시겠습니까?",
+    "confirmDelete": "정말로 삭제하시겠습니까?"
   },
   "nav": {
     "intro": "Introduce MIPP",
@@ -97,6 +110,5 @@
   "footer": {
     "email": "Email: aimipp@gmail.com",
     "company": "DoubleHCompany"
-  },
-  "language": "Language"
+  }
 }
