@@ -38,14 +38,18 @@ jobs:
             gcloud compute instances create-with-container my-instance --container-image $IMAGE --zone asia-northeast3-c
           fi
 
+      # - name: Deploy to Compute Engine
+      #   run: |
+      #     # gcloud를 사용하여 Docker 컨테이너 실행 명령을 Compute Engine 인스턴스에 전송
+      #     gcloud compute ssh slslslrhfem5@my-instance --zone asia-northeast3-c --command "\
+      #       sudo docker stop my-app || true && \
+      #       sudo docker rm my-app || true && \
+      #       sudo docker run --name my-app -d -p 80:3000 gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA"
       - name: Deploy to Compute Engine
         run: |
           # gcloud를 사용하여 Docker 컨테이너 실행 명령을 Compute Engine 인스턴스에 전송
           gcloud compute ssh slslslrhfem5@my-instance --zone asia-northeast3-c --command "\
-            sudo docker stop my-app || true && \
-            sudo docker rm my-app || true && \
-            sudo docker run --name my-app -d -p 80:3000 gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA"
-
+            sudo docker run -p 80:3000 gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA"
       # - name: Deploy React Build to GCP Instance via SSH
       #   run: |
       #     # SSH를 통해 GCP 인스턴스에 접근
