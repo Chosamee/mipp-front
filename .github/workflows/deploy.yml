@@ -1,32 +1,38 @@
-name: Deploy to Google Cloud Platform
+name: Build and Deploy to GCP
 
 on:
   push:
     branches:
-      - master # main 브랜치에 push가 발생할 때 워크플로우를 트리거
+      - main
 
 jobs:
-  setup-build-deploy:
-    name: Setup, Build, and Deploy
-    runs-on: ubuntu-latest # GitHub Actions 러너 설정
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2 # 현재 리포지토리를 체크아웃
+        uses: actions/checkout@v2
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0.2.0 # Google Cloud SDK 설정
+      - name: Set up GCP Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }} # GCP 프로젝트 ID
-          service_account_key: ${{ secrets.GCP_SA_KEY }} # 서비스 계정 키
-          export_default_credentials: true
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-      - name: Install dependencies
-        run: npm install # 의존성 설치
+      - name: Build and push Docker image
+        run: |
+          docker build -t gcr.io/$GCP_PROJECT_ID/my-app:$GITHUB_SHA --build-arg REACT_APP_MIPP_API_URL=${{ secrets.REACT_APP_MIPP_API_URL }} --build-arg REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} .
+          gcloud auth configure-docker
+          docker push gcr.io/$GCP_PROJECT_ID/my-app:$GITHUB_SHA
 
-      - name: Build
-        run: npm run build # 빌드 스크립트 실행
+      - name: Deploy to Google Compute Engine
+        run: |
+          IMAGE=gcr.io/$GCP_PROJECT_ID/my-app:$GITHUB_SHA
 
-      - name: Deploy to Google Cloud
-        run: | # Cloud Build를 사용하여 GCP에 배포
-          gcloud builds submit --config cloudbuild.yaml .
+          # 인스턴스가 이미 존재하는지 확인
+          if gcloud compute instances describe my-instance --zone asia-northeast3-c 2>/dev/null; then
+            # 인스턴스 업데이트
+            gcloud compute instances update-container my-instance --container-image $IMAGE --zone asia-northeast3-c
+            # 새 인스턴스 생성
+            gcloud compute instances create-with-container my-instance --container-image $IMAGE --zone asia-northeast3-c
+          fi
