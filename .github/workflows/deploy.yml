@@ -25,14 +25,15 @@ jobs:
           gcloud auth configure-docker
           docker push gcr.io/${{secrets.GCP_PROJECT_ID}}/my-app:$GITHUB_SHA
 
-      - name: Deploy to Google Compute Engine
-        run: |
-          IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA
+          - name: Deploy to Google Compute Engine
+          run: |
+            IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA
 
-          # 인스턴스가 이미 존재하는지 확인
-          if gcloud compute instances describe my-instance --zone asia-northeast3-c 2>/dev/null; then
-            # 인스턴스 업데이트
-            gcloud compute instances update-container my-instance --container-image $IMAGE --zone asia-northeast3-c
-            # 새 인스턴스 생성
-            gcloud compute instances create-with-container my-instance --container-image $IMAGE --zone asia-northeast3-c
-          fi
+            # 인스턴스가 이미 존재하는지 확인
+            if gcloud compute instances describe my-instance --zone asia-northeast3-c 2>/dev/null; then
+              # 인스턴스 업데이트
+              gcloud compute instances update-container my-instance --container-image $IMAGE --zone asia-northeast3-c
+            else
+              # 새 인스턴스 생성
+              gcloud compute instances create-with-container my-instance --container-image $IMAGE --zone asia-northeast3-c
+            fi
