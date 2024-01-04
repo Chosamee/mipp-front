@@ -27,7 +27,7 @@ jobs:
 
       - name: Deploy to Google Compute Engine
         run: |
-          IMAGE=gcr.io/$GCP_PROJECT_ID/my-app:$GITHUB_SHA
+          IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA
 
           # 인스턴스가 이미 존재하는지 확인
           if gcloud compute instances describe my-instance --zone asia-northeast3-c 2>/dev/null; then
