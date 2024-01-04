@@ -1,14 +1,33 @@
 name: Build and Deploy to GCP
 
+<<<<<<< HEAD
 on:
   push:
     branches:
       - main
+=======
+steps:
+  # Docker Build
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
+        ".",
+        "--build-arg",
+        "REACT_APP_MIPP_API_URL=${_REACT_APP_MIPP_API_URL}",
+        "--build-arg",
+        "REACT_APP_GOOGLE_CLIENT_ID=${_REACT_APP_GOOGLE_CLIENT_ID}",
+      ]
+    secretEnv: ["_REACT_APP_MIPP_API_URL", "_REACT_APP_GOOGLE_CLIENT_ID"]
+>>>>>>> 342ba3cfa0f2acc71f574c730a91bb5351813d4d
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+<<<<<<< HEAD
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -37,3 +56,42 @@ jobs:
           # 새 인스턴스 생성
           gcloud compute instances create-with-container my-instance --container-image $IMAGE --zone asia-northeast3-c
         fi
+=======
+  # 기존 인스턴스 업데이트
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args:
+      [
+        "compute",
+        "instances",
+        "update-container",
+        "my-vm-name",
+        "--container-image",
+        "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
+      ]
+    env: ["CLOUDSDK_COMPUTE_REGION=asia-northeast3", "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"]
+
+  # Deploy the container to a new VM instance
+  # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  #   entrypoint: "gcloud"
+  #   timeout: 240s
+  #   args:
+  #     [
+  #       "compute",
+  #       "instances",
+  #       "create-with-container",
+  #       "my-vm-name",
+  #       "--container-image",
+  #       "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage",
+  #     ]
+  #   env:
+  #     - "CLOUDSDK_COMPUTE_REGION=asia-northeast3"
+  #     - "CLOUDSDK_COMPUTE_ZONE=asia-northeast3-c"
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/486098542239/secrets/REACT_APP_MIPP_API_URL/versions/1
+      env: "_REACT_APP_MIPP_API_URL"
+    - versionName: projects/486098542239/secrets/REACT_APP_GOOGLE_CLIENT_ID/versions/1
+      env: "_REACT_APP_GOOGLE_CLIENT_ID"
+>>>>>>> 342ba3cfa0f2acc71f574c730a91bb5351813d4d
