@@ -38,7 +38,9 @@ jobs:
             gcloud compute instances create-with-container my-instance --container-image $IMAGE --zone asia-northeast3-c
           fi
           gcloud compute ssh slslslrhfem5@my-instance --zone asia-northeast3-c --command "\
-            docker run -p 80:3000 $IMAGE"
+            docker run -p 80:3000 $IMAGE &"
+          # & 붙이는 이유는 ssh 연결 끊어도 백그라운드에서 돌아가게 하려고
+
       # - name: Deploy to Compute Engine
       #   run: |
       #     # gcloud를 사용하여 Docker 컨테이너 실행 명령을 Compute Engine 인스턴스에 전송
