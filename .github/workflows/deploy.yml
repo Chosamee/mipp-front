@@ -21,15 +21,15 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t gcr.io/$GCP_PROJECT_ID/my-app:latest -t gcr.io/$GCP_PROJECT_ID/my-app:$GITHUB_SHA --build-arg REACT_APP_MIPP_API_URL=${{ secrets.REACT_APP_MIPP_API_URL }} --build-arg REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} .
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:latest -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA --build-arg REACT_APP_MIPP_API_URL=${{ secrets.REACT_APP_MIPP_API_URL }} --build-arg REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} .
           gcloud auth configure-docker
-          docker push gcr.io/$GCP_PROJECT_ID/my-app:latest
-          docker push gcr.io/$GCP_PROJECT_ID/my-app:$GITHUB_SHA
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:latest
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:$GITHUB_SHA
 
       - name: Deploy to Google Compute Engine
         run: |
           # 이미지 이름 설정
-          IMAGE=gcr.io/$GCP_PROJECT_ID/my-app:latest
+          IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-app:latest
 
           # 인스턴스가 이미 존재하는지 확인
           if gcloud compute instances describe my-instance --zone asia-northeast3-c 2>/dev/null; then
