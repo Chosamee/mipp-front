@@ -41,7 +41,6 @@ jobs:
             # 새 인스턴스 생성
             gcloud compute instances create-with-container my-instance\
               --container-image $IMAGE\
-              --tags=http-server\
               --zone asia-northeast3-c
           fi
 
