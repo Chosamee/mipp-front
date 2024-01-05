@@ -21,7 +21,7 @@ COPY . .
 RUN npm run build
 
 # 애플리케이션이 사용할 포트 설정
-EXPOSE 80
+EXPOSE 3000
 
 # 애플리케이션 실행
 CMD ["npm", "start"]
