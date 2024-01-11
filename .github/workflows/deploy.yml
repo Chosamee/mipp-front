@@ -28,3 +28,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: chosami/mipp-front:latest
+          build-args: |
+            REACT_APP_MIPP_API_URL=${{ secrets.REACT_APP_MIPP_API_URL }}
+            REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
