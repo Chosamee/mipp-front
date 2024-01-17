@@ -33,19 +33,12 @@ export const handleLogout = async () => {
 
 export const handleGoogleLogin = async (googleData) => {
   const formData = new FormData();
-  console.log(googleData);
   formData.append("token", googleData.credential);
 
   try {
-    const response = await axios.post(
-      `${API_BASE_URL}/google_auth`,
-      {
-        id_token: googleData.credential,
-      },
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.post(`${API_BASE_URL}/google_token`, formData, {
+      withCredentials: true,
+    });
     console.log("Google Login Success:", response);
     return response.data;
   } catch (error) {
