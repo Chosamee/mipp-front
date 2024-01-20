@@ -1,6 +1,6 @@
 {
   "welcome": "우리 웹사이트에 오신 것을 환영합니다!",
-  "startChecking": "검사하기",
+  "startChecking": "지금 무료 검사하기",
   "language": "언어 선택",
   "searchGuide": "검색어를 입력하세요",
   "index": {
@@ -100,7 +100,7 @@
     "intro": "MIPP 소개",
     "howToUse": "이용방법",
     "myAccount": "내 계정",
-    "request": "공개 건의 게시판",
+    "request": "문의하기",
     "logout": "로그아웃",
     "result": "내 검사 결과",
     "login": "로그인",

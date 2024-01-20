@@ -2,15 +2,15 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import translationEN from "./locales/en.json";
-import translationKO from "./locales/ko.json";
+import translationKR from "./locales/kr.json";
 
 // the translations
 const resources = {
   en: {
     translation: translationEN,
   },
-  ko: {
-    translation: translationKO,
+  kr: {
+    translation: translationKR,
   },
 };
 

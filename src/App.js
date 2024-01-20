@@ -47,7 +47,7 @@ import Intro from "pages/Intro";
 const App = () => {
   const { i18n } = useTranslation();
   useEffect(() => {
-    // URL에서 언어 코드 추출 (예: /en/, /ko/)
+    // URL에서 언어 코드 추출 (예: /en/, /kr/)
     const language = window.location.pathname.split("/")[1];
     i18n.changeLanguage(language);
   }, [i18n]);
@@ -105,7 +105,7 @@ const CustomNavbar = () => {
 
 export default App;
 
-const supportedLanguages = ["en", "ko"]; // 지원되는 언어 목록
+const supportedLanguages = ["en", "kr"]; // 지원되는 언어 목록
 
 const LanguageRedirector = () => {
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const LanguageRedirector = () => {
     if (location.pathname === "/" || !supportedLanguages.includes(currentLang)) {
       // 루트 경로 또는 지원되지 않는 언어 경로에 접근한 경우
       const userLang = navigator.language || navigator.userLanguage;
-      const defaultLang = userLang.includes("ko") ? "ko" : "en";
+      const defaultLang = userLang.includes("kr") ? "kr" : "en";
       navigate(`/${defaultLang}`, { replace: true });
     } else if (
       currentLang &&

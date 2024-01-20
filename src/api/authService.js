@@ -32,10 +32,6 @@ export const handleLogout = async () => {
 };
 
 export const handleGoogleLogin = async (googleData) => {
-  const formData = new FormData();
-  console.log(googleData);
-  formData.append("token", googleData.credential);
-
   try {
     const response = await axios.post(
       `${API_BASE_URL}/google_auth`,
