@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { handleLogout } from "api/authService";
-import LanguageSwitcher from "components/views/LanguageSwitcher";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import i18n from "i18n";
 
 const NavBar = () => {
   const { authState, updateAuthState } = useAuth();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   // navigate 기능
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,10 +21,16 @@ const NavBar = () => {
       console.log("logout error: ", error);
     }
   };
+  const [lang, setLang] = useState("en");
+  useEffect(() => {
+    // URL에서 언어 코드 추출 (예: /en/, /kr/)
+    setLang(window.location.pathname.split("/")[1]);
+  }, [i18n]);
 
   // 언어 변경
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
+    setLang(language);
 
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const currentPath = window.location.pathname;
@@ -51,7 +55,7 @@ const NavBar = () => {
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
     <nav
-      className={`backdrop-blur-xl text-black  h-fit fixed top-0 left-0 right-0 z-30 ${
+      className={`backdrop-blur-xl text-black fixed top-0 left-0 right-0 z-30 ${
         !location.pathname.split("/")[2] ? "bg-white" : "bg-white"
       }
         tracking-[0.0096em] leading-6
@@ -64,8 +68,8 @@ const NavBar = () => {
             className="self-center text-4xl font-bold">
             MIPP
           </button>
-          <div className="flex gap-10 py-3 pr-6">
-            <div className="flex gap-[26px] px-2">
+          <div className="flex py-3 pr-6 text-lg gap-[40px]">
+            <div className="flex gap-[26px] px-2 items-center ">
               <button
                 className="flex p-1 gap-[6px] items-center"
                 onClick={() => navigate(getLangUrl("/intro"))}>
@@ -83,14 +87,18 @@ const NavBar = () => {
               </button>
               <div className="flex gap-[14px] p-1">
                 <button
-                  className="flex p-1 gap-[6px] items-center"
+                  className={`flex p-1 gap-[6px] items-center ${
+                    lang === "kr" ? "text-black" : "text-[#A5A5A5]"
+                  }`}
                   onClick={() => changeLanguage("kr")}>
                   KR
                 </button>
                 <div className="w-[1px] h-5 bg-[#D9D9D9] self-center"></div>
                 <button
-                  className="flex p-1 gap-[6px] items-center"
-                  onClick={() => LanguageSwitcher("en")}>
+                  className={`flex p-1 gap-[6px] items-center ${
+                    lang === "en" ? "text-black" : "text-[#A5A5A5]"
+                  }`}
+                  onClick={() => changeLanguage("en")}>
                   EN
                 </button>
               </div>

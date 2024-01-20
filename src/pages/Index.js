@@ -29,56 +29,58 @@ const App = () => {
   const images = [image1, image2, image3, image4];
 
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-screen pt-[132px]">
       {/* Video Background Section */}
-      <div className="flex flex-col relative h-[500px] md:h-[700px] overflow-hidden">
-        {/* Assuming video1 is imported correctly at the top */}
-        <video
-          autoPlay
-          loop
-          muted
-          preload="none"
-          poster={thumbnailImage}
-          className="absolute top-0 left-0 w-full h-full object-cover">
-          <source src={video1} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Overlay Content */}
-        <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center">
-          <div className="flex flex-col justify-between max-w-7xl text-center text-white py-4 px-10">
-            <div className="">
-              <FadeInComp
-                data={
-                  <div className=" font-bold mb-2">
-                    <div className="md:text-6xl text-3xl my-8">{t("index.mainTitle")}</div>
-                  </div>
-                }
-                animate={"fade-in-up-delay-1"}
-              />
-            </div>
-            <div className="flex flex-col justify-center">
-              <FadeInComp
-                data={<p className="mb-4 md:text-xl text-xs">{t("index.mainIntro")}</p>}
-                animate={"fade-in-up-delay-2"}
-              />
-              <FadeInComp
-                data={
-                  <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() =>
-                      authState.isLoggedIn
-                        ? navigate(getLangUrl("/home"))
-                        : navigate(getLangUrl("/login"))
-                    }>
-                    {t("startChecking")}
-                  </button>
-                }
-                animate={"fade-in-up-delay-3"}
-              />
+      <div className="flex relative overflow-hidden gap-[10px] w-[1854px] h-[620px] mx-auto rounded-[45px] px-[649px] py-[100px]">
+        <div className=" mx-auto">
+          {/* Assuming video1 is imported correctly at the top */}
+          <video
+            autoPlay
+            loop
+            muted
+            preload="none"
+            poster={thumbnailImage}
+            className="absolute top-0 left-0 w-full h-full object-cover">
+            <source src={video1} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Overlay Content */}
+          <div className="bg-index-gradient absolute top-0 left-0 right-0 bottom-0 flex flex-col gap-[10px] items-center justify-center">
+            <div className="gap=[54px]">
+              <div className="gap-[34px] text-white">
+                <FadeInComp
+                  data={
+                    <div className="font-bold leading-[83.54px] text-[70px] text-center mb-10">
+                      {t("index.mainTitle")}
+                    </div>
+                  }
+                  animate={"fade-in-up-delay-1"}
+                />
+                <FadeInComp
+                  data={<div className="text-[25px] text-center mb-10">{t("index.mainIntro")}</div>}
+                  animate={"fade-in-up-delay-2"}
+                />
+              </div>
+              <div className="flex justify-center">
+                <FadeInComp
+                  data={
+                    <button
+                      className={`bg-[#3B5AFA] hover:bg-[#2440D7] text-white font-semibold
+                    px-[46px] py-[22px] rounded-[100px] gap-2 text-[23px] mx-auto`}
+                      onClick={() =>
+                        authState.isLoggedIn
+                          ? navigate(getLangUrl("/home"))
+                          : navigate(getLangUrl("/login"))
+                      }>
+                      {t("startChecking")}
+                    </button>
+                  }
+                  animate={"fade-in-up-delay-3"}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white via-transparent to-#0000008f"></div>
       </div>
 
       {/* Process Section */}
