@@ -58,7 +58,7 @@ const NavBar = () => {
       className={`backdrop-blur-xl text-black fixed top-0 left-0 right-0 z-30 ${
         !location.pathname.split("/")[2] ? "bg-white" : "bg-white"
       }
-        tracking-[0.0096em] leading-6
+        tracking-[0.0096em] leading-[normal] font-['Pretendard']
       `}>
       <div className="flex items-center justify-between py-5">
         {/* GNB 메인*/}
