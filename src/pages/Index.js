@@ -1,21 +1,21 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import ImageSlider from "components/views/Silder";
-import image1 from "img/intro1.webp";
-import image2 from "img/intro2.webp";
-import image3 from "img/intro3.webp";
-import image4 from "img/intro4.webp";
 import { useAuth } from "components/auth/AuthContext";
-import indexImg1 from "img/index1.jpg";
-import indexImg2 from "img/index2.jpg";
-import indexImg3 from "img/index3.jpg";
-import video1 from "img/index/main-video.mp4";
-import thumbnailImage from "img/index/main-video-thumbnail.jpg";
-import FadeInComp from "components/views/FadeInComp";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
-import howtouse_kr from "img/index/howtouse-kr.png";
-import howtouse_en from "img/index/howtouse-en.png";
+import main from "assets/index/main.png";
+
+// section 1 assets
+import circle from "assets/index/section1/Ellipse 18.svg";
+import step1 from "assets/index/section1/Group 305.svg";
+import step2 from "assets/index/section1/Group 306.svg";
+import step3 from "assets/index/section1/Group 307.svg";
+import step4 from "assets/index/section1/Group 308.svg";
+
+// section 2 assets
+import arrow from "assets/index/section2/cont1/Polygon 14.svg";
+import left_elipse from "assets/index/section2/cont1/Ellipse 33.svg";
+import right_elipse from "assets/index/section2/cont1/Ellipse 34.svg";
 
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
@@ -25,69 +25,149 @@ const App = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation();
 
-  // 이미지 slide를 위한 array
-  const images = [image1, image2, image3, image4];
-
   return (
-    <div className="flex flex-col min-h-screen pt-[132px]">
-      {/* Video Background Section */}
-      <div className="flex relative overflow-hidden gap-[10px] w-[1854px] h-[620px] mx-auto rounded-[45px] px-[649px] py-[100px]">
-        {/* <div className=" mx-auto"> */}
-        {/* Assuming video1 is imported correctly at the top */}
-        <video
-          autoPlay
-          loop
-          muted
-          preload="none"
-          poster={thumbnailImage}
-          className="absolute top-0 left-0 w-full h-full object-cover">
-          <source src={video1} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Overlay Content */}
-        <div className="absolute flex  gap-[10px]">
-          <div className="flex flex-col gap=[54px]">
-            <div className="gap-[34px] text-white">
-              <FadeInComp
-                data={
-                  <div className="font-bold leading-[83.54px] text-[70px] text-center mb-10">
-                    {t("index.mainTitle")}
-                    <br />
-                  </div>
-                }
-                animate={"fade-in-up-delay-1"}
-              />
-              <FadeInComp
-                data={<div className="text-[25px] text-center mb-10">{t("index.mainIntro")}</div>}
-                animate={"fade-in-up-delay-2"}
-              />
-            </div>
-            <div className="flex justify-center">
-              <FadeInComp
-                data={
-                  <button
-                    className={`bg-[#3B5AFA] hover:bg-[#2440D7] text-white font-semibold
-                    px-[46px] py-[22px] rounded-[100px] gap-2 text-[23px] mx-auto`}
-                    onClick={() =>
-                      authState.isLoggedIn
-                        ? navigate(getLangUrl("/home"))
-                        : navigate(getLangUrl("/login"))
-                    }>
-                    {t("startChecking")}
-                  </button>
-                }
-                animate={"fade-in-up-delay-3"}
-              />
-            </div>
+    <div className="flex flex-col min-h-screen items-center pt-[132px] font-['Pretendard'] leading-[normal]">
+      {/** Section 1 Start */}
+      <div className="flex flex-col justify-center items-center gap-[10px]">
+        <div className="relative flex flex-col w-[1852px] h-[620px] py-[100px] gap-[10px] rounded-[45px] justify-center">
+          {/* Background Image Start */}
+          <div
+            className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0 rounded-[45px]"
+            style={{ backgroundImage: `url(${main})` }}>
+            <div className="absolute inset-0 bg-black bg-opacity-60 rounded-[45px]"></div>
           </div>
-          {/* </div> */}
+          {/* Background Image End */}
+          {/* Content Start */}
+          <div className="flex flex-col justify-center items-center gap-[54px] z-10">
+            <div className="flex flex-col items-center gap-[34px]">
+              <div className="text-white font-bold leading-normal text-[70px]">
+                {t("index.mainTitle")}
+              </div>
+              <div className="text-white text-[25px] leading-[34px] text-center">
+                {t("index.mainIntro")}
+              </div>
+            </div>
+            <button
+              className={`bg-[#3B5AFA] hover:bg-[#2440D7] text-white font-semibold
+                    px-[46px] py-[22px] rounded-[100px] gap-2 text-[23px] mx-auto`}
+              onClick={() =>
+                authState.isLoggedIn
+                  ? navigate(getLangUrl("/home"))
+                  : navigate(getLangUrl("/login"))
+              }>
+              {t("startChecking")}
+            </button>
+          </div>
+          {/* Content End */}
         </div>
       </div>
+      {/* Section 1 End */}
 
-      {/* Process Section */}
+      {/* Section 2 Start */}
+      <div className="flex flex-col py-[150px] px-2 items-center gap-[78px]">
+        <div className="flex p-2 justify-center items-center gap-2 text-[50px] font-bold">
+          {t("index.2.title")}
+        </div>
+        <div className="flex text-[#2E2E2E] items-center gap-[72px]">
+          {/* Step 1 Start */}
+          <div className="flex flex-col items-center gap-[50px]">
+            <StepIndicator num={1} />
+            <div className="flex flex-col items-center gap-[26px]">
+              <img src={step1} alt="Step1" />
+              <div className="text-[20px]">{t("index.2.step1")}</div>
+            </div>
+          </div>
+          {/* Step 1 End */}
+
+          {/* Step 2 Start */}
+          <div className="flex flex-col items-center gap-[39px]">
+            <StepIndicator num={2} />
+            <div className="flex flex-col items-center gap-[31px]">
+              <img src={step2} alt="Step2" />
+              <div className="text-[20px]">{t("index.2.step2")}</div>
+            </div>
+          </div>
+          {/* Step 2 End*/}
+
+          {/* Step 3 Start */}
+          <div className="flex flex-col items-center gap-[23px]">
+            <StepIndicator num={3} />
+            <div className="flex flex-col items-center gap-[16px]">
+              <img src={step3} alt="Step3" />
+              <div className="text-[20px]">{t("index.2.step2")}</div>
+            </div>
+          </div>
+          {/* Step 3 End*/}
+
+          {/* Step 4 Start */}
+          <div className="flex flex-col items-center gap-[39px]">
+            <StepIndicator num={4} />
+            <div className="flex flex-col items-center gap-[34px]">
+              <img src={step4} alt="Step4" />
+              <div className="text-[20px]">{t("index.2.step2")}</div>
+            </div>
+          </div>
+          {/* Step 4 End*/}
+        </div>
+      </div>
+      {/* Section 2 End */}
+
+      {/* Section 3 Start */}
+      <div className="flex flex-col items-center gap-[90px] py-[160px] px-2">
+        <div className="text-[50px] text-center font-semibold leading-[68px]">
+          {t("index.1.title")}
+        </div>
+        <div className="flex flex-col items-center gap-[100px]">
+          {/* Content 1 Start */}
+          <div className="flex items-center gap-[182px]">
+            <div className="flex flex-col items-start">
+              <div className="w-[529px] h-[413px] relative">
+                <div
+                  className="left-0 top-0 absolute w-[529px] h-[413px] flex-shrink-0
+                  rounded-[22px] shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)]"
+                />
+                <div className="absolute text-[22px] left-[37px] top-[53px] font-medium">
+                  Music Plagiarism Test Report
+                </div>
+                <div className="w-[188px] h-[188px] left-[264.5px] top-[131px] absolute">
+                  <img
+                    src={left_elipse}
+                    alt="Left elipse"
+                    className="left-[-8px] top-0 absolute flex-shrink-0"
+                  />
+                  <div className="w-[109px] h-[72px] left-[46.5px] top-[60px] absolute">
+                    <div className="left-0 top-0 absolute text-[#3553F3] text-[60px] font-bold">
+                      52
+                    </div>
+                    <div className="left-[75px] top-[24px] absolute text-[#3553F3] text-[35px] font-bold">
+                      %
+                    </div>
+                  </div>
+                  <img
+                    src={right_elipse}
+                    alt="Right elipse"
+                    className="right-[-8px] top-0 absolute flex-shrink-0"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start gap-[10px]">
+              <div className="text-[34px] font-semibold leading-[32px] text-[#2E2E2E]">
+                {t("index.1.subtitle1")}
+              </div>
+              <div className="text-[22px] leading-[35px] text-[#7A7A7A]">
+                {t("index.1.content1")}
+              </div>
+            </div>
+          </div>
+          {/* Content 1 End */}
+        </div>
+      </div>
+      {/* Section 3 End */}
+
+      {/* Process Section
       <div className="container mx-auto rounded-lg mb-10 mt-5 py-4 px-4 text-center">
         <h2 className="text-3xl font-bold mb-1 mt-3 ">{t("index.2.title")}</h2>
-        {/* Assuming indexContent1 is imported correctly at the top */}
         <FadeInComp
           data={
             <img
@@ -100,7 +180,6 @@ const App = () => {
         />
       </div>
 
-      {/* slide section */}
       <div
         className="flex flex-col bg-fixed bg-no-repeat bg-center md:h-[1000px] h-[1200px] bg-cover"
         style={{ backgroundImage: `url(${indexImg2})` }}>
@@ -203,7 +282,7 @@ const App = () => {
       {/* <div className="flex justify-center items-center px-4 my-8 pl-14 w-3/4 mx-auto">
         <YouTubeVideo videoId="xXgsdyXMUHE" />
       </div> */}
-      <div
+      {/* <div
         className="flex flex-col bg-fixed bg-no-repeat bg-center h-[800px] bg-cover"
         style={{ backgroundImage: `url(${indexImg3})` }}>
         <div className="h-5 bg-gradient-to-b from-gray-100  to-black/75"></div>
@@ -234,7 +313,6 @@ const App = () => {
               />
             </div>
 
-            {/* Call to Action Button */}
             <div className="flex justify-center my-10">
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl text-xl
@@ -249,9 +327,22 @@ const App = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
+const StepIndicator = ({ num }) => {
+  return (
+    <div className="flex items-center gap-[6px] text-[20px] font-semibold">
+      STEP
+      <div className="relative">
+        <img src={circle} alt="Circle" />
+        <div className="absolute right-[8px] top-[1px] text-white text-[17px] font-semibold">
+          {num}
+        </div>
+      </div>
+    </div>
+  );
+};
 export default App;

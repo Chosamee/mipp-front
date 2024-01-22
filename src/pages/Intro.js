@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import image1 from "img/intro/icons8-name-tag-100.png";
-import image2 from "img/intro/icons8-ophthalmology-100.png";
-import image3 from "img/intro/icons8-music-100-2.png";
+import image1 from "assets/intro/icons8-name-tag-100.png";
+import image2 from "assets/intro/icons8-ophthalmology-100.png";
+import image3 from "assets/intro/icons8-music-100-2.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
