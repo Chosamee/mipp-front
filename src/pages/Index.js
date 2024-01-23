@@ -22,6 +22,10 @@ import circle2 from "assets/index/section2/cont2/Ellipse 36.svg";
 
 import circle3 from "assets/index/section2/cont3/Ellipse 37.svg";
 
+// section 3 assets
+import realArrow from "assets/index/section3/Group 300.svg";
+import rule from "assets/index/section3/Group 303.svg";
+import tech from "assets/index/section3/Group 304.svg";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
 const App = () => {
@@ -165,169 +169,60 @@ const App = () => {
       </div>
       {/* Section 3 End */}
 
-      {/* Process Section
-      <div className="container mx-auto rounded-lg mb-10 mt-5 py-4 px-4 text-center">
-        <h2 className="text-3xl font-bold mb-1 mt-3 ">{t("index.2.title")}</h2>
-        <FadeInComp
-          data={
-            <img
-              src={i18n.language === "en" ? howtouse_en : howtouse_kr}
-              alt="Description"
-              className="mx-auto rounded"
-            />
-          }
-          animate={"fade-in-right-delay-1"}
-        />
-      </div>
-
-      <div
-        className="flex flex-col bg-fixed bg-no-repeat bg-center md:h-[1000px] h-[1200px] bg-cover"
-        style={{ backgroundImage: `url(${indexImg2})` }}>
-        <div className="h-5 bg-gradient-to-b from-gray-100  to-black/75"></div>
-
-        <div className="flex justify-center items-center h-full bg-black bg-opacity-75 backdrop-blur-sm">
-          <div className="container mx-auto  py-6 text-white rounded-lg mb-20 mt-5 max-w-6xl px-10">
-            <FadeInComp
-              data={
-                <h1 className="text-2xl md:text-6xl font-bold md:mb-20 mb-10 text-center">
-                  {t("index.1.title")}
-                </h1>
-              }
-              animate={"fade-in-up-delay-1"}
-            />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FadeInComp
-                data={
-                  Array.from({ length: 3 }, (_, i) => (
-                    <div key={i}>
-                      <p className="mb-5 md:text-3xl text-xl font-bold md:text-left text-center">
-                        {t(`index.1.subtitle${i + 1}`)}
-                      </p>
-                      <p className="mb-10 md:text-lg text-sm md:text-left text-center">
-                        {t(`index.1.content${i + 1}`)}
-                      </p>
-                    </div>
-                  ))
-                  // <div>
-                  //   <p className="mb-5 md:text-3xl text-lg font-bold md:text-left text-center">
-                  //     {t("index.1.subtitle1")}
-                  //   </p>
-                  //   <p className="mb-10 md:text-lg text-xs md:text-left text-center">
-                  //     {t("index.1.content1")}
-                  //   </p>
-                  //   <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle2")}</p>
-                  //   <p className="mb-10 md:text-lg text-sm">{t("index.1.content2")}</p>
-                  //   <p className="mb-5 md:text-3xl text-xl font-bold">{t("index.1.subtitle3")}</p>
-                  //   <p className="mb-10 md:text-lg text-sm">{t("index.1.content3")}</p>
-                  // </div>
-                }
-                animate={"fade-in-up-delay-1"}
-              />
-              <FadeInComp
-                data={
-                  <div className="z-20 flex justify-center">
-                    <div className="w-full max-w-md px-4">
-                      <ImageSlider images={images} />
-                    </div>
+      {/* Section 4 Start */}
+      <div className="flex py-[180px] px-2 flex-col items-center gap-[86px]">
+        <div className="flex justify-center items-start gap-[86px]">
+          {/* Content 1 Start */}
+          <div className="flex flex-col justify-center items-start gap-[46px]">
+            <div className="flex flex-col justify-center items-start gap-[24px]">
+              <div className="text-[50px] font-semibold leading-[66px]">{t("index.3.title")}</div>
+              <div className="text-[#777A80] text-[22px] font-medium leading-[38px]">
+                {t("index.3.content1")}
+              </div>
+            </div>
+            <button className="flex items-center gap-2">
+              <div className="text-[#3B5AFA] text-[19px] font-medium">{t("index.3.more")}</div>
+              <img src={realArrow} alt="Real Arrow" className=""></img>
+            </button>
+          </div>
+          {/* Content 1 End */}
+          {/* Content 2 Start */}
+          <div className="flex gap-[20px]">
+            {/* First */}
+            <div className="py-[57px] px-[40px] gap-[10px] flex flex-col items-center border-[#D2D8E7] border-[1px] rounded-[20px]">
+              <div className="gap-[30px] flex flex-col items-start">
+                <img src={rule} alt="Rule" />
+                <div className="flex flex-col gap-[67px] ">
+                  <div className="text-[#343434] text-[34px] font-semibold leading-[32px]">
+                    {t("index.3.title2")}
                   </div>
-                }
-                animate={"fade-in-left-delay-1"}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="h-5 bg-gradient-to-t from-gray-100  to-black/75"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto flex flex-col mb-10">
-        <div className="text-4xl text-start px-10 my-10">{t("index.3.title")}</div>
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="self-start">
-            <FadeInComp
-              data={
-                <div className="flex flex-col px-10 mb-10">
-                  <div className="text-2xl mb-5">{t("index.3.subtitle1")}</div>
-                  <div className="text-lg">{t("index.3.content1")}</div>
-                </div>
-              }
-              animate={"fade-in-up-delay-1"}
-            />
-          </div>
-          <div className="self-start">
-            <FadeInComp
-              data={
-                <div className="flex flex-col px-10 mb-10">
-                  <div className="text-2xl mb-5">{t("index.3.subtitle2")}</div>
-                  <div className="text-lg">{t("index.3.content2")}</div>
-                </div>
-              }
-              animate={"fade-in-up-delay-2"}
-            />
-          </div>
-          <div className="self-start">
-            <FadeInComp
-              data={
-                <div className="flex flex-col px-10 mb-10">
-                  <div className="text-2xl mb-5">{t("index.3.subtitle3")}</div>
-                  <div className="text-lg">{t("index.3.content3")}</div>
-                </div>
-              }
-              animate={"fade-in-up-delay-3"}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="flex justify-center items-center px-4 my-8 pl-14 w-3/4 mx-auto">
-        <YouTubeVideo videoId="xXgsdyXMUHE" />
-      </div> */}
-      {/* <div
-        className="flex flex-col bg-fixed bg-no-repeat bg-center h-[800px] bg-cover"
-        style={{ backgroundImage: `url(${indexImg3})` }}>
-        <div className="h-5 bg-gradient-to-b from-gray-100  to-black/75"></div>
-        <div className="flex justify-center items-center h-full bg-black bg-opacity-75 backdrop-blur-sm">
-          <div className="">
-            <div className="container mx-auto  py-6 text-white rounded-lg mb-20 mt-5 max-w-6xl px-10">
-              <FadeInComp
-                data={
-                  <div className="text-4xl md:text-6xl font-bold mb-20 text-center">
-                    <div className="leading-snug">
-                      {t("index.4.title")
-                        .split("\n")
-                        .map((line, index) => (
-                          <React.Fragment key={index}>
-                            {line}
-                            <br />
-                          </React.Fragment>
-                        ))}
-                    </div>
+                  <div className="text-[#777A80] text-[22px] font-medium leading-[36px]">
+                    {t("index.3.content2")}
                   </div>
-                }
-                animate={"fade-in-up-delay-1"}
-              />
-
-              <FadeInComp
-                data={<div className="text-lg md:text-xl text-center">{t("index.4.content")}</div>}
-                animate={"fade-in-right-delay-2"}
-              />
+                </div>
+              </div>
             </div>
-
-            <div className="flex justify-center my-10">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl text-xl
-          fade-in-up-delay-3"
-                onClick={() =>
-                  authState.isLoggedIn
-                    ? navigate(getLangUrl("/home"))
-                    : navigate(getLangUrl("/login"))
-                }>
-                {t("startChecking")}
-              </button>
+            {/* Second */}
+            <div className="py-[57px] px-[40px] gap-[10px] flex flex-col items-center border-[#D2D8E7] border-[1px] rounded-[20px]">
+              <div className="gap-[30px] flex flex-col items-start">
+                <img src={tech} alt="Rule" />
+                <div className="flex flex-col gap-[67px] ">
+                  <div className="text-[#343434] text-[34px] font-semibold leading-[32px]">
+                    {t("index.3.title3")}
+                  </div>
+                  <div className="text-[#777A80] text-[22px] font-medium leading-[36px]">
+                    {t("index.3.content3")}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          {/* Content 2 End */}
         </div>
-      </div> */}
+      </div>
+      {/* Section 4 End */}
+      {/* Section 5 Start */}
+      {/* Section 5 End */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { downloadPDF } from "../../api/pdfService";
 
-const PDFViewer = ({ filepath }) => {
+const PDFViewer = ({ filepath, title }) => {
   const [fileUrl, setfileUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,6 +33,7 @@ const PDFViewer = ({ filepath }) => {
   return (
     <div>
       <div className="m-4">
+        <div className="">{title}</div>
         <button
           onClick={() => {
             if (isOpen) setIsOpen(false);

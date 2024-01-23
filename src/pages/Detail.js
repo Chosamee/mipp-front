@@ -23,7 +23,7 @@ const Detail = () => {
     <div className="container my-10 mx-auto pt-40">
       <h1 className="my-10">상세 정보</h1>
       {resultData ? (
-        resultData.map((item, index) => <PDFViewer filepath={item.path} />)
+        resultData.map((item, index) => <PDFViewer filepath={item.path} title={item.title} />)
       ) : (
         <LoadingSpinner />
       )}
