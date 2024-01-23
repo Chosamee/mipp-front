@@ -10,7 +10,7 @@ const Footer = () => {
   const { t } = useTranslation();
   const location = useLocation();
   return (
-    <footer className="flex w-full h-[350px] py-[53px] justify-center items-center gap-[558px] bg-[#1C1C1C] text-white">
+    <footer className="flex w-full h-[350px] py-[53px] justify-center items-center gap-[558px] bg-[#1C1C1C] text-white min-w-[1536px]">
       <div className="flex justify-between items-start w-[1536px]">
         <div className="flex flex-col items-start gap-[32px]">
           <div className="flex flex-col justify-center items-start gap-[10px] text-[26px] font-bold leading-[22px]">

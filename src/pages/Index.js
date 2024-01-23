@@ -26,6 +26,9 @@ import circle3 from "assets/index/section2/cont3/Ellipse 37.svg";
 import realArrow from "assets/index/section3/Group 300.svg";
 import rule from "assets/index/section3/Group 303.svg";
 import tech from "assets/index/section3/Group 304.svg";
+
+// section 4 assets
+import lockSvg from "assets/index/Group 294.svg";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
 const App = () => {
@@ -37,8 +40,8 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen items-center pt-[132px] leading-[normal]">
       {/** Section 1 Start */}
-      <div className="flex flex-col justify-center items-center gap-[10px]">
-        <div className="relative flex flex-col w-[1852px] h-[620px] py-[100px] gap-[10px] rounded-[45px] justify-center">
+      <div className="flex flex-col justify-center items-center gap-[10px] w-full">
+        <div className="relative flex flex-col w-full h-[620px] py-[100px] gap-[10px] rounded-[45px] justify-center">
           {/* Background Image Start */}
           <div
             className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0 rounded-[45px]"
@@ -71,7 +74,7 @@ const App = () => {
       {/* Section 1 End */}
 
       {/* Section 2 Start */}
-      <div className="flex flex-col py-[150px] px-2 items-center gap-[78px]">
+      <div className="flex flex-col py-[150px] px-2 items-center gap-[78px] min-w-[720px] mx-auto">
         <div className="flex p-2 justify-center items-center gap-2 text-[50px] font-bold">
           {t("index.2.title")}
         </div>
@@ -152,7 +155,7 @@ const App = () => {
           </div>
           {/* Content 2 End */}
           {/* Content 3 Start */}
-          <div className="flex items-center w-[1235px] justify-between">
+          <div className="flex items-center w-[1235px] min-w-[1235px] justify-between">
             <Section2Cont3 />
 
             <div className="flex flex-col items-start gap-[9px] min-w-fit">
@@ -170,7 +173,7 @@ const App = () => {
       {/* Section 3 End */}
 
       {/* Section 4 Start */}
-      <div className="flex py-[180px] px-2 flex-col items-center gap-[86px]">
+      <div className="flex py-[180px] px-2 flex-col items-center gap-[86px] min-w-[1536px] mx-auto">
         <div className="flex justify-center items-start gap-[86px]">
           {/* Content 1 Start */}
           <div className="flex flex-col justify-center items-start gap-[46px]">
@@ -222,6 +225,21 @@ const App = () => {
       </div>
       {/* Section 4 End */}
       {/* Section 5 Start */}
+      <div className="py-[120px] flex px-2 flex-col items-center bg-[#19275F] w-full min-w-[1536px] mx-auto">
+        <img src={lockSvg} alt="Lock" className="mb-[22px]" />
+        <div className="text-white text-[50px] font-semibold leading-[70px] text-center mb-[20px]">
+          {t("index.4.title")}
+        </div>
+        <div className="text-white text-[22px] leading-[36px] text-center mb-[54px]">
+          {t("index.4.content")}
+        </div>
+        <button className="bg-white px-[46px] py-[22px] items-center rounded-[100px] text-[23px] font-semibold mb-[30px]">
+          {t("startChecking")}
+        </button>
+        <div className="text-[#5967A3] text-[20px] font-medium leading-[36px]">
+          {t("index.4.subcontent")}
+        </div>
+      </div>
       {/* Section 5 End */}
     </div>
   );
