@@ -51,7 +51,7 @@ const App = () => {
         {/* Content Start */}
         <div className="flex flex-col justify-center items-center desktop:gap-[54px] gap-[20px] z-10">
           <div className="flex flex-col items-center desktop:gap-[34px] gap-[11px]">
-            <div className="text-white font-bold desktop:text-[70px] text-[32px]">
+            <div className="text-white font-bold desktop:text-[70px] text-[32px] text-center">
               {t("index.mainTitle")}
             </div>
             <div className="text-white text-[25px] leading-[34px] text-center hidden desktop:block">
@@ -96,15 +96,15 @@ const App = () => {
               <StepIndicator num={2} />
               <div className="flex flex-col items-center gap-[31px]">
                 <img src={step2} alt="Step2" />
-                <div className="text-[20px]">{t("index.2.step2")}</div>
+                <div className="desktop:text-[20px] text-[16px]">{t("index.2.step2")}</div>
               </div>
             </div>
             {/* Step 2 End*/}
           </div>
           <div className="w-px h-[161px] bg-[#E5E5E5] flex-shrink-0 hidden desktop:block" />
-          <div className="flex gap-[33px]">
-            <div className="h-px w-[140px] bg-[#E5E5E5] flex-shrink-0 desktop:hidden block" />
-            <div className="h-px w-[140px] bg-[#E5E5E5] flex-shrink-0 desktop:hidden block" />
+          <div className="flex gap-[33px] desktop:hidden">
+            <div className="h-px w-[140px] bg-[#E5E5E5] flex-shrink-0" />
+            <div className="h-px w-[140px] bg-[#E5E5E5] flex-shrink-0" />
           </div>
           <div className="flex desktop:gap-[72px] gap-[20px] flex-shrink-0">
             {/* Step 3 Start */}
@@ -112,7 +112,7 @@ const App = () => {
               <StepIndicator num={3} />
               <div className="flex flex-col items-center gap-[16px]">
                 <img src={step3} alt="Step3" />
-                <div className="text-[20px]">{t("index.2.step2")}</div>
+                <div className="desktop:text-[20px] text-[16px]">{t("index.2.step3")}</div>
               </div>
             </div>
             {/* Step 3 End*/}
@@ -122,7 +122,7 @@ const App = () => {
               <StepIndicator num={4} />
               <div className="flex flex-col items-center gap-[34px]">
                 <img src={step4} alt="Step4" />
-                <div className="text-[20px]">{t("index.2.step2")}</div>
+                <div className="desktop:text-[20px] text-[16px]">{t("index.2.step4")}</div>
               </div>
             </div>
             {/* Step 4 End*/}
@@ -155,7 +155,9 @@ const App = () => {
           {/* Content 1 End */}
           {/* Content 2 Start */}
           <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
-            <Section2Cont2 />
+            <div className="desktop:hidden">
+              <Section2Cont2 />
+            </div>
             <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-[53px]">
               <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
                 {t("index.1.subtitle2")}
@@ -166,6 +168,9 @@ const App = () => {
               <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
                 {t("index.1.content2mobile")}
               </div>
+            </div>{" "}
+            <div className="desktop:flex hidden">
+              <Section2Cont2 />
             </div>
           </div>
           {/* Content 2 End */}

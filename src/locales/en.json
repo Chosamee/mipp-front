@@ -3,33 +3,56 @@
   "startChecking": "Start Checking",
   "language": "Language",
   "searchGuide": "검색어를 입력하세요",
+  "intro": {
+    "title1": "Plagiarism Test Standard",
+    "content1": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
+    "title2": "Vision",
+    "content2": "To protect creators' copyrights and intellectual property, and further to create a music ecosystem that maximizes the value of creativity.",
+    "title3": "Technology",
+    "content3": "Through AI music analysis technology, it analyzes the structure, rhythm, melody, harmony, and more to detect plagiarized songs. It identifies plagiarized songs among many and safeguards the original creators' music intellectual property (IP)."
+  },
   "index": {
-    "mainTitle": "AI Music Plagiarism Checker",
+    "mainTitle": "AI Music\n Plagiarism Checker",
     "mainIntro": "Do you need a plagiarism check before releasing an album?\n Do you want to know if anyone has plagiarized your music? You can check the two things at once for free.",
+    "mainIntroPhone": "Do you need a plagiarism check before \nreleasing an album? Do you want to know if anyone\n has plagiarized your music? You can check the \ntwo things at once for free.",
     "1": {
       "title": "Music IP Protection & \nManagement Solution",
       "subtitle1": "AI Music Plagiarism Test",
       "content1": "Start a free AI music plagiarism test \nwith MIPP's music analysis technology\n to avoid legal issues before releasing your album.",
-      "subtitle2": "02. Real-time plagiarism monitoring",
-      "content2": "We can identify plagiarized music from billions of songs released globally every day. Safeguard your music IP with our real-time plagiarism monitoring service.",
-      "subtitle3": "03. Maximize Music IP Revenue",
-      "content3": "Through MIPP, protect your copyrights from unauthorized plagiarized songs and maximize revenue from your music IP."
+      "content1mobile": "Start a free AI music plagiarism test \nwith MIPP's music analysis technology\n to avoid legal issues before releasing your album.",
+
+      "subtitle2": "Real-time plagiarism monitoring",
+      "content2": "We can identify plagiarized music from billions of songs \nreleased globally every day. Safeguard your music IP\n with our real-time plagiarism monitoring service.",
+      "content2mobile": "We can identify plagiarized music from billions of \nsongs released globally every day. Safeguard \nyour music IP with our real-time plagiarism \nmonitoring service.",
+
+      "subtitle3": "Maximize Music IP Revenue",
+
+      "content3": "Through MIPP, protect your copyrights \nfrom unauthorized plagiarized \nsongs and maximize revenue from your music IP.",
+      "content3mobile": "Through MIPP, protect your copyrights \nfrom unauthorized plagiarized \nsongs and maximize revenue from your music IP."
     },
     "2": {
-      "title": "How to use MIPP"
+      "title": "How to use MIPP",
+      "step1": "MIPP\nPlagiarism Test",
+      "step2": "Music Upload &\nChoose Option",
+      "step3": "Start Music \nPlagiarism Test",
+      "step4": "Check Plagiarism \nTest Report"
     },
     "3": {
       "title": "Introduction",
-      "subtitle1": "Plagiarism Test Standard",
-      "content1": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
-      "subtitle2": "Vision",
-      "content2": "To protect creators' copyrights and intellectual property, and further to create a music ecosystem that maximizes the value of creativity.",
-      "subtitle3": "Technology",
-      "content3": "Through AI music analysis technology, it analyzes the structure, rhythm, melody, harmony, and more to detect plagiarized songs. It identifies plagiarized songs among many and safeguards the original creators' music intellectual property (IP)."
+      "content1": "To protect creators' copyrights and \nintellectual property, and further \nto create a music ecosystem that \nmaximizes the value of creativity.",
+      "title2": "Plagiarism Test Standard",
+      "content2": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
+      "content2mobile": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
+      "title3": "Technology",
+      "content3": "Through AI music analysis technology, it analyzes the structure, rhythm, melody, harmony, and more to detect plagiarized songs. It identifies plagiarized songs among many and safeguards the original creators' music intellectual property (IP).",
+      "content3mobile": "Through AI music analysis technology, it analyzes the structure, rhythm, melody, harmony, and more to detect plagiarized songs. It identifies plagiarized songs among many and safeguards the original creators' music intellectual property (IP).",
+      "more": "More Info"
     },
     "4": {
       "title": "Protect your \n music copyrights \n with MIPP.",
-      "content": "MIPP protects the original creator's music intellectual property.\n Check for any songs that might be suspected of plagiarism using MIPP.\n Music Intellectual Property Protector"
+      "content": "MIPP protects the original creator's music intellectual property.\n Check for any songs that might be suspected of plagiarism using MIPP.\n Music Intellectual Property Protector",
+      "contentmobile": "MIPP protects the original creator's music intellectual property.\n Check for any songs that might be suspected of plagiarism using MIPP.\n Music Intellectual Property Protector",
+      "subcontent": "Music Intellectual Property Protector"
     }
   },
   "howtouse": {

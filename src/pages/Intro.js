@@ -28,9 +28,9 @@ const Intro = () => {
                     <div className="flex flex-col px-10 mb-10 text-center items-center border-4 border-blue-300 bg-blue-50 rounded-2xl shadow-2xl h-full">
                       <img src={images[key]} alt={`img ${i}`} className="w-12 h-12 mb-4 mt-10" />
                       <div className="md:text-3xl text-xl mb-5 font-bold">
-                        {t(`index.3.subtitle${i + 1}`)}
+                        {t(`intro.title${i + 1}`)}
                       </div>
-                      <div className="md:text-xl text-sm">{t(`index.3.content${i + 1}`)}</div>
+                      <div className="md:text-xl text-sm">{t(`intro.content${i + 1}`)}</div>
                     </div>
                   </div>
                 }
