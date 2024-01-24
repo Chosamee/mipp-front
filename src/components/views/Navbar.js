@@ -55,17 +55,16 @@ const NavBar = () => {
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
     <nav
-      className={`backdrop-blur-xl text-black fixed top-0 left-0 right-0 z-30 ${
-        !location.pathname.split("/")[2] ? "bg-white" : "bg-white"
-      }
+      className="backdrop-blur-xl text-black fixed top-0 left-0 right-0 z-30 bg-white
         tracking-[0.0096em] leading-[normal] font-['Pretendard']
-      `}>
-      <div className="flex items-center justify-between py-5">
+
+      ">
+      <div className="flex items-center justify-between py-5 ">
         {/* GNB 메인*/}
         <div className="flex font-bold gap-[60px] py-3 pl-6">
           <button
             onClick={() => navigate(getLangUrl("/"))}
-            className="self-center text-4xl font-bold">
+            className="self-center text-[36px] font-bold">
             MIPP
           </button>
           <div className="flex py-3 pr-6 text-lg gap-[40px]">
