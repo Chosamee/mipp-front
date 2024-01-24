@@ -68,7 +68,7 @@ const NavBar = () => {
             className="self-center text-[36px] font-bold">
             MIPP
           </button>
-          <div className="py-3 pr-6 text-lg gap-[40px] hidden desktop:flex">
+          <div className="py-3 pr-6 text-[18px] gap-[40px] hidden desktop:flex">
             <div className="flex gap-[26px] px-2 items-center ">
               <button
                 className="flex p-1 gap-[6px] items-center"
@@ -107,7 +107,7 @@ const NavBar = () => {
         </div>
 
         {/* 우측 subMenu */}
-        <div className="font-bold py-3 pr-6 gap-[30px]">
+        <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex">
           {authState.isLoggedIn ? (
             <div className="hidden sm:flex items-center space-x-4 justify-end">
               <button className="flex items-center px-4">
@@ -154,12 +154,12 @@ const NavBar = () => {
         <div className="relative desktop:hidden flex">
           <button
             onClick={toggleMenu}
-            className="text-white px-4 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
+            className="justify-center pr-4 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
             <img src={hamberger} alt="Hamberger Bar" />
           </button>
 
           <div
-            className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg w-48 ${
+            className={`absolute right-0 top-10 mt-2 p-5 bg-white text-black rounded shadow-lg w-48 ${
               isMenuOpen ? "block" : "hidden"
             }`}>
             {!authState.isLoggedIn ? (

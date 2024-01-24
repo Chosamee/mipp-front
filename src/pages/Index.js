@@ -415,7 +415,7 @@ const Section2Cont3 = () => {
         <div className="left-[14px] top-[9px] absolute text-[#4F4F4F]">This Week</div>
         <img src={arrow} alt="Arrow" className="top-[15px] right-[15px] absolute" />
       </div>
-      <div className="w-[455px] h-[251px] desktop:left-[37px] left-[24px] desktop:top-[116px] top-[83px] absolute">
+      <div className="desktop:w-[455px] desktop:h-[251px] w-[280px] h-[166px] desktop:left-[37px] left-[24px] desktop:top-[116px] top-[83px] absolute">
         <div className="desktop:left-[331px] desktop:top-[230px] left-[177px] top-[148px] absolute text-[#7E7E7E] desktop:text-[18px] text-[15px]">
           1.10 - 1.17, 2024
         </div>
