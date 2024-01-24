@@ -5,6 +5,8 @@ import { handleLogout } from "api/authService";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 
+import hamberger from "assets/햄버거바.svg";
+
 const NavBar = () => {
   const { authState, updateAuthState } = useAuth();
   const { t, i18n } = useTranslation();
@@ -56,10 +58,9 @@ const NavBar = () => {
   return (
     <nav
       className="backdrop-blur-xl text-black fixed top-0 left-0 right-0 z-30 bg-white
-        tracking-[0.0096em] leading-[normal] font-['Pretendard']
-
+        tracking-[0.0096em] leading-[normal]
       ">
-      <div className="flex items-center justify-between py-5 ">
+      <div className="flex items-center justify-between py-5 w-full">
         {/* GNB 메인*/}
         <div className="flex font-bold gap-[60px] py-3 pl-6">
           <button
@@ -67,7 +68,7 @@ const NavBar = () => {
             className="self-center text-[36px] font-bold">
             MIPP
           </button>
-          <div className="flex py-3 pr-6 text-lg gap-[40px]">
+          <div className="py-3 pr-6 text-lg gap-[40px] hidden desktop:flex">
             <div className="flex gap-[26px] px-2 items-center ">
               <button
                 className="flex p-1 gap-[6px] items-center"
@@ -106,7 +107,7 @@ const NavBar = () => {
         </div>
 
         {/* 우측 subMenu */}
-        <div className="font-bold justify-end py-3 pr-6 gap-[30px]">
+        <div className="font-bold py-3 pr-6 gap-[30px]">
           {authState.isLoggedIn ? (
             <div className="hidden sm:flex items-center space-x-4 justify-end">
               <button className="flex items-center px-4">
@@ -133,7 +134,7 @@ const NavBar = () => {
               </button>
             </div>
           ) : (
-            <div className="flex px-2 gap-[30px]">
+            <div className="desktop:flex px-2 gap-[30px] hidden">
               <button
                 className="flex p-4 gap-[6px] text-lg leading-6"
                 onClick={() => navigate(getLangUrl("/login"))}>
@@ -150,84 +151,84 @@ const NavBar = () => {
         </div>
         {/* 드롭다운 메뉴 */}
 
-        {/* <div className="relative md:hidden  flex justify-end">
-              <button
-                onClick={toggleMenu}
-                className="text-white px-4 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
-                Menu
-              </button>
+        <div className="relative desktop:hidden flex">
+          <button
+            onClick={toggleMenu}
+            className="text-white px-4 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
+            <img src={hamberger} alt="Hamberger Bar" />
+          </button>
 
-              <div
-                className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg w-48 ${
-                  isMenuOpen ? "block" : "hidden"
-                }`}>
-                {!authState.isLoggedIn ? (
-                  <div className="p-4 flex flex-col ">
-                    <button
-                      onClick={() => navigate(getLangUrl("/home"))}
-                      className="block w-full text-left font-bold">
-                      {t("startChecking")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/intro"))}
-                      className="block w-full text-left">
-                      {t("nav.intro")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/howtouse"))}
-                      className="block w-full text-left">
-                      {t("nav.howToUse")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/board"))}
-                      className="block w-full text-left">
-                      {t("nav.request")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/login"))}
-                      className="block w-full text-left">
-                      {t("nav.login")}
-                    </button>
-                  </div>
-                ) : (
-                  <div className="p-4 z-40">
-                    <button
-                      onClick={() => navigate(getLangUrl("/home"))}
-                      className="block w-full text-left font-bold">
-                      {t("startChecking")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/intro"))}
-                      className="block w-full text-left">
-                      {t("nav.intro")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/howtouse"))}
-                      className="block w-full text-left">
-                      {t("nav.howToUse")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/result"))}
-                      className="block w-full text-left">
-                      {t("nav.result")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/board"))}
-                      className="block w-full text-left">
-                      {t("nav.request")}
-                    </button>
-                    <button
-                      onClick={() => navigate(getLangUrl("/asks"))}
-                      className="block w-full text-left">
-                      {t("nav.ask")}
-                    </button>
-                    <button onClick={handleLogoutClick} className="block w-full text-left">
-                      {t("nav.logout")}
-                    </button>
-                  </div>
-                )}
+          <div
+            className={`absolute right-0 top-20 mt-2 p-5 bg-white text-black rounded shadow-lg w-48 ${
+              isMenuOpen ? "block" : "hidden"
+            }`}>
+            {!authState.isLoggedIn ? (
+              <div className="p-4 flex flex-col ">
+                <button
+                  onClick={() => navigate(getLangUrl("/home"))}
+                  className="block w-full text-left font-bold">
+                  {t("startChecking")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/intro"))}
+                  className="block w-full text-left">
+                  {t("nav.intro")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/howtouse"))}
+                  className="block w-full text-left">
+                  {t("nav.howToUse")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/board"))}
+                  className="block w-full text-left">
+                  {t("nav.request")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/login"))}
+                  className="block w-full text-left">
+                  {t("nav.login")}
+                </button>
               </div>
-            </div> */}
+            ) : (
+              <div className="p-4 z-40">
+                <button
+                  onClick={() => navigate(getLangUrl("/home"))}
+                  className="block w-full text-left font-bold">
+                  {t("startChecking")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/intro"))}
+                  className="block w-full text-left">
+                  {t("nav.intro")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/howtouse"))}
+                  className="block w-full text-left">
+                  {t("nav.howToUse")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/result"))}
+                  className="block w-full text-left">
+                  {t("nav.result")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/board"))}
+                  className="block w-full text-left">
+                  {t("nav.request")}
+                </button>
+                <button
+                  onClick={() => navigate(getLangUrl("/asks"))}
+                  className="block w-full text-left">
+                  {t("nav.ask")}
+                </button>
+                <button onClick={handleLogoutClick} className="block w-full text-left">
+                  {t("nav.logout")}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </nav>
   );

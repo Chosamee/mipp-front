@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        desktop: "375px",
+        desktop: "376px",
       },
       backgroundImage: {
         "index-gradient":
