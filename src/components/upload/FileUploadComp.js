@@ -8,6 +8,7 @@ import { getLangUrl } from "locales/utils";
 const FileUploadComp = ({ inst, bpm }) => {
   const [uploadFile, setUploadFile] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const handleFileChange = (event) => {
@@ -28,7 +29,8 @@ const FileUploadComp = ({ inst, bpm }) => {
   };
 
   const handleSubmit = async () => {
-    if (uploadFile) {
+    if (uploadFile && !isSubmit) {
+      setIsSubmit(true);
       try {
         await uploadMedia({ file: uploadFile, inst: inst });
         navigate(getLangUrl("/result"));

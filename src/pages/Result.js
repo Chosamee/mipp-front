@@ -56,14 +56,37 @@ const Result = () => {
 
   return (
     <div className="container mx-auto xl:mt-32 md:mt-48 mt-32 px-5 max-w-7xl">
-      <h1 className="mb-10">내 신청</h1>
+      <div className="bg-gray-600 p-4 flex items-center space-x-2 mb-10 rounded-2xl">
+        <div className="flex-grow text-white items-center text-center">
+          AIMIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! <br />
+          Welcome to beta test version of AIMIPP!
+          <br />
+          <br />
+          검사는 10분 내외, 혹은 신청자가 많다면 더 오래 걸릴 수도 있습니다.
+          <br />
+          The Checking will take about 10 minutes, but it may take longer if there are many
+          applicants.
+          <br />
+          <br />
+          오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주시면 Mail을 보내드리겠습니다.
+          <br />
+          If errors persist, please apply through a one-on-one support, and we will send you an
+          email.
+          <br />
+          <br />
+          한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
+          <br />
+          You can only request up to 10 songs within 24 hours per account.
+        </div>
+      </div>
+      <h1 className="mb-10">{t("result.my")}</h1>
       <div>
         <button
           onClick={() => {
             setInst("");
           }}
           className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow">
-          모두
+          All
         </button>
         <button
           onClick={() => {
@@ -87,7 +110,6 @@ const Result = () => {
           Bass
         </button>
       </div>
-      {filteredData ? <div>총 {Object.keys(filteredData).length} 개</div> : <div></div>}
       {filteredData ? (
         <Pagination
           data={filteredData}
@@ -104,14 +126,18 @@ const Result = () => {
                 <span className="font-bold text-blue-800">{item.inst}</span>
               </div>
               <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-                <span className="font-bold text-blue-800">{item.status}</span>
+                <span className="font-bold text-blue-800">
+                  {isNaN(item.status)
+                    ? t(`result.${item.status}`)
+                    : t("result.percent") + t(`result.${item.status}`) + "%"}
+                </span>
               </div>
               <button
                 onClick={() => navigate(getLangUrl("/detail/" + item.id))}
                 className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
                 style={{ flexBasis: "10%" }}
-                disabled={item.status !== "Complete" && item.status !== "완료" }>
-                상세결과
+                disabled={item.status !== "Complete" && item.status !== "완료"}>
+                {t("detail")}
               </button>
             </div>
           )}

@@ -3,6 +3,25 @@
   "startChecking": "Start Checking",
   "language": "Language",
   "searchGuide": "검색어를 입력하세요",
+  "detail": "Detail",
+  "pagination": {
+    "tot": "Total",
+    "num": "",
+    "first": "First",
+    "prev": "Prev",
+    "next": "Next",
+    "last": "Last"
+  },
+  "ask": {
+    "myask": "My questions",
+    "submit": "Submit one-on-one question",
+    "title": "Question Title",
+    "titleGuide": "Enter Question Title",
+    "content": "Question Content",
+    "contentGuide": "Enter Question Content",
+    "file": "Attachment File",
+    "nofile": "There's no Attachment File"
+  },
   "intro": {
     "title1": "Plagiarism Test Standard",
     "content1": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
@@ -92,7 +111,17 @@
     "uploadError": "Invalid file format.",
     "submit": "Start Checking"
   },
-
+  "result": {
+    "my": "My Results",
+    "In Queue": "In Queue",
+    "음원 분석 중": "Music Analyzing",
+    "음원 비교 중": "Music Comparing",
+    "완료": "Complete",
+    "해당 악기를 발견하지 못함": "Instrument Not Found",
+    "오류가 발생했습니다": "Error Occured",
+    "pdf 생성 중": "PDF processing",
+    "percent": "Music Comparing"
+  },
   "login": {
     "requiredLogin": "Sign in with Google"
   },
@@ -113,7 +142,7 @@
     "deleteGuide": "Please type \"Delete Account\" to confirm:"
   },
   "request": {
-    "title": "건의사항",
+    "title": "Open Request",
     "guide": "건의글 작성 (200자 내)",
     "errorBlank": "내용을 입력해주세요.",
     "errorCount": "글자 수가 너무 많습니다!",
@@ -124,7 +153,7 @@
     "intro": "Introduce MIPP",
     "howToUse": "How To Use",
     "myAccount": "My Account",
-    "request": "Request",
+    "request": "Open Request",
     "logout": "Logout",
     "result": "My Results",
     "login": "Login",

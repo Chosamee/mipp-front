@@ -3,6 +3,25 @@
   "startChecking": "지금 무료 검사하기",
   "language": "언어 선택",
   "searchGuide": "검색어를 입력하세요",
+  "detail": "상세 정보",
+  "pagination": {
+    "tot": "총",
+    "num": "개",
+    "first": "처음",
+    "prev": "이전",
+    "next": "다음",
+    "last": "마지막"
+  },
+  "ask": {
+    "myask": "내 문의",
+    "submit": "문의하기",
+    "title": "문의 제목",
+    "titleGuide": "문의 제목을 입력해주세요",
+    "content": "문의 내용",
+    "contentGuide": "여기에 문의 내용을 작성해주세요",
+    "file": "첨부 파일",
+    "nofile": "첨부된 파일이 없습니다."
+  },
   "intro": {
     "title1": "음악 표절검사의 기준",
     "content1": "AI가 수 만개의 노래를 각각 4마디 단위로 나누고 실질적 유사성을 비교해 표절률이 높은 노래들을 찾아냅니다.",
@@ -88,6 +107,17 @@
     "uploadGuide": "파일을 업로드해주세요 (WAV, MP3, AIFF, AAC, OGG, FLAC)",
     "uploadError": "지원하지 않는 파일 형식입니다.",
     "submit": "검사 시작"
+  },
+  "result": {
+    "my": "내 신청",
+    "In Queue": "In Queue",
+    "음원 분석 중": "음원 분석 중",
+    "음원 비교 중": "음원 비교 중",
+    "완료": "완료",
+    "해당 악기를 발견하지 못함": "해당 악기를 발견하지 못함",
+    "오류가 발생했습니다": "오류가 발생했습니다",
+    "pdf 생성 중": "pdf 생성 중",
+    "percent": "음원 비교 중"
   },
   "login": {
     "requiredLogin": "Google 로그인하고 이용해주세요"

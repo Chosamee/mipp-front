@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import LoadingSpinner from "../components/views/LoadingSpinner";
 import PDFViewer from "../components/views/PDFViewer";
 import { fetchDetail } from "api/resultService";
+import { useTranslation } from "react-i18next";
 
 const Detail = () => {
   const { id } = useParams();
   const [resultData, setresultData] = useState([]);
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,8 +22,8 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="container my-10 mx-auto pt-40">
-      <h1 className="my-10">상세 정보</h1>
+    <div className="container my-10 mx-auto pt-40 pb-20">
+      <h1 className="my-10">{t("detail")}</h1>
       {resultData ? (
         resultData.map((item, index) => <PDFViewer filepath={item.path} title={item.title} />)
       ) : (

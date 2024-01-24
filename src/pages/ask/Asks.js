@@ -4,10 +4,12 @@ import Pagination from "../../components/views/Pagination";
 import LoadingSpinner from "../../components/views/LoadingSpinner";
 import { fetchAsks } from "../../api/askService";
 import { getLangUrl } from "locales/utils";
+import { useTranslation } from "react-i18next";
 
 const Asks = () => {
   const [resultData, setResultData] = useState([]);
   const itemsPerPage = 10;
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   const handleNavLinkClick = (path) => {
@@ -41,16 +43,16 @@ const Asks = () => {
   return (
     <div className="container mx-auto max-w-7xl p-5 xl:mt-32 md:mt-48 mt-32 ">
       <div className="flex justify-between ">
-        <h1 className="mb-10">내 문의 (My doors 아님)</h1>
+        <h1 className="mb-10">{t("ask.myask")}</h1>
         <button
           onClick={() => {
             navigate(getLangUrl("/asks/create"));
-          }}>
-          문의하기
+          }}
+          className="border-2 px-2 rounded-xl">
+          {t("ask.submit")}
         </button>
       </div>
 
-      {filteredData ? <div>총 {Object.keys(filteredData).length} 개</div> : <div></div>}
       {filteredData ? (
         <Pagination
           data={filteredData}

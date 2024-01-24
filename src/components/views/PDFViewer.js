@@ -43,10 +43,10 @@ const PDFViewer = ({ filepath, title }) => {
             }
           }}
           className="px-4 py-2 bg-blue-500 text-white rounded mr-2">
-          미리보기
+          PDF
         </button>
         <button onClick={handleDownload} className="px-4 py-2 bg-green-500 text-white rounded">
-          다운로드
+          Download
         </button>
 
         {isOpen && (

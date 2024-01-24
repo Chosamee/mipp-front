@@ -6,6 +6,7 @@ import { getLangUrl } from "locales/utils";
 
 const YoutubeLinkComp = ({ inst, bpm }) => {
   // 유튜브 링크 값 입력 인식
+  const [isSubmit, setIsSubmit] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -20,12 +21,15 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
       alert(t("home.linkInputGuide"));
       return;
     }
-    try {
-      await uploadMedia({ url: inputValue, inst: inst });
-      navigate(getLangUrl("/result"));
-    } catch (error) {
-      console.log(error);
-      navigate(getLangUrl("/home"));
+    if (!isSubmit) {
+      setIsSubmit(true);
+      try {
+        await uploadMedia({ url: inputValue, inst: inst });
+        navigate(getLangUrl("/result"));
+      } catch (error) {
+        console.log(error);
+        navigate(getLangUrl("/home"));
+      }
     }
   };
 

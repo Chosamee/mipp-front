@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { addAsks } from "../../api/askService";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
 
@@ -12,6 +13,7 @@ const AskCreate = () => {
   });
   const [isDirty, setIsDirty] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleInputChange = (e) => {
     setInquiry({ ...inquiry, [e.target.name]: e.target.value });
@@ -104,7 +106,7 @@ const AskCreate = () => {
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-gray-600">첨부된 파일이 없습니다.</p>
+          <p className="text-sm text-gray-600">{t("ask.nofile")}</p>
         )}
       </div>
     );
@@ -116,14 +118,14 @@ const AskCreate = () => {
       className="w-96 min-w-96 mx-auto my-10 p-8 bg-white rounded shadow-lg xl:mt-32 md:mt-48 mt-32 ">
       <div className="mb-6">
         <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">
-          문의 제목
+          {t("ask.title")}
         </label>
         <input
           type="text"
           id="title"
           name="title"
           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="문의 제목을 입력해주세요."
+          placeholder={t("ask.titleGuide")}
           value={inquiry.title}
           onChange={handleInputChange}
         />
@@ -131,21 +133,21 @@ const AskCreate = () => {
 
       <div className="mb-6">
         <label htmlFor="contents" className="block mb-2 text-sm font-medium text-gray-900">
-          문의 내용
+          {t("ask.content")}
         </label>
         <textarea
           id="contents"
           name="contents"
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none"
-          placeholder="여기에 문의 내용을 작성해주세요."
+          placeholder={t("ask.contentGuide")}
           value={inquiry.contents}
           onChange={handleInputChange}></textarea>
       </div>
 
       <div className="mb-6">
         <label htmlFor="file" className="block mb-2 text-sm font-medium text-gray-900">
-          첨부 파일
+          {t("ask.file")}
         </label>
         <input
           type="file"
@@ -160,7 +162,7 @@ const AskCreate = () => {
       <button
         type="submit"
         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
-        문의하기
+        {t("ask.submit")}
       </button>
     </form>
   );
