@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fileImg from "../../assets/file_select.png";
+import fileImg from "../../assets/file_select.svg";
 import { uploadMedia } from "../../api/uploadService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
