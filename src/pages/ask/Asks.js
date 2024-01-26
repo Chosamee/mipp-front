@@ -87,7 +87,7 @@ const Asks = () => {
                   <span className="font-bold text-blue-800">{item.title}</span>
                 </div>
                 <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "15%" }}>
-                  <span className="font-bold text-blue-800">{item.responsed}</span>
+                  <span className="font-bold text-blue-800">{t(`ask.${item.responsed}`)}</span>
                 </div>
                 <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "25%" }}>
                   <span className="font-bold text-blue-800">{formattedDate}</span>

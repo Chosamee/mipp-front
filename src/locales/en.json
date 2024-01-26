@@ -27,6 +27,8 @@
     "file": "Attachment File",
     "nofile": "There's no Attachment File",
     "ans": "Answer",
+    "답변 대기중": "Wating for Reply",
+    "답변 완료": "Reply Completed",
     "create": {
       "extensionError": "has an unsupported file extension.",
       "volumeError": "Total attachment size cannot exceed 30MB.",
