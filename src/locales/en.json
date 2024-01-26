@@ -28,11 +28,11 @@
     "nofile": "There's no Attachment File",
     "ans": "Answer",
     "create": {
-      "extensionError": "은(는) 허용되지 않는 확장자를 가지고 있습니다.",
-      "volumeError": "첨부파일 총 용량은 30MB를 초과할 수 없습니다.",
-      "requireError": "문의 제목과 내용을 모두 입력해주세요.",
-      "confirmExit": "작성 중인 내용이 있습니다. 페이지를 벗어나시겠습니까?",
-      "confirm": "이 내용을 게시하시겠습니까?"
+      "extensionError": "has an unsupported file extension.",
+      "volumeError": "Total attachment size cannot exceed 30MB.",
+      "require": "Please enter both inquiry title and content.",
+      "confirmExit": "You have unsaved content. Are you sure you want to leave this page?",
+      "confirm": "Do you want to post this content?"
     }
   },
   "intro": {
@@ -146,23 +146,23 @@
     "nickname": "Nickname",
     "phone": "Phone Number",
     "email": "Email",
-    "confirmRegist": "이 내용을 게시하시겠습니까?",
+    "confirmRegist": "Do you want to post this content?",
     "confirmDelete": "Are you sure you want to delete your account?",
     "submitDelete": "Account deleted",
     "errorDelete": "Please enter the correct text to delete your account.",
-    "errorNickname": "닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.",
-    "errorNicknameDuplicate": "이미 사용 중인 닉네임입니다.",
-    "errorNicknameCheck": "닉네임 검사 중 오류가 발생했습니다.",
-    "possibleNickname": "사용 가능한 닉네임입니다.",
+    "errorNickname": "Nickname must be 2-8 characters including Korean, English, and numbers.",
+    "errorNicknameDuplicate": "This nickname is already in use.",
+    "errorNicknameCheck": "An error occurred during nickname verification.",
+    "possibleNickname": "This nickname is available.",
     "deleteGuide": "Please type \"Delete Account\" to confirm:"
   },
   "request": {
     "title": "Open Request",
     "guide": "Submit Open Request (Within 200 Characters)",
-    "errorBlank": "내용을 입력해주세요.",
-    "errorCount": "글자 수가 너무 많습니다!",
-    "confirmUpload": "이 내용을 게시하시겠습니까?",
-    "confirmDelete": "정말로 삭제하시겠습니까?"
+    "errorBlank": "Please enter the content.",
+    "errorCount": "The character count is too high!",
+    "confirmUpload": "Do you want to post this content?",
+    "confirmDelete": "Are you sure you want to delete this?"
   },
   "nav": {
     "intro": "Introduce MIPP",
