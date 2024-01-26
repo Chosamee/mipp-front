@@ -145,7 +145,7 @@ const Result = () => {
                   <span className="font-bold text-blue-800">
                     {isNaN(item.status)
                       ? t(`result.${item.status}`)
-                      : t("result.percent") + t(`result.${item.status}`) + "%"}
+                      : t("result.percent") + item.status + "%"}
                   </span>
                 </div>
                 <button
