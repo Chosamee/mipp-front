@@ -34,7 +34,6 @@ import lockSvg from "assets/index/Group 294.svg";
 const App = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
   const { t } = useTranslation();
 
   return (
@@ -168,7 +167,7 @@ const App = () => {
               <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
                 {t("index.1.content2mobile")}
               </div>
-            </div>{" "}
+            </div>
             <div className="desktop:flex hidden">
               <Section2Cont2 />
             </div>
@@ -270,7 +269,11 @@ const App = () => {
         <div className="text-white text-[15px] leading-[25px] text-center mb-[30px] desktop:hidden">
           {t("index.4.contentmobile")}
         </div>
-        <button className="bg-white desktop:px-[46px] desktop:py-[22px] px-9 py-[15px] items-center rounded-[100px] desktop:text-[23px] text-[16px] font-semibold mb-[30px]">
+        <button
+          className="bg-white desktop:px-[46px] desktop:py-[22px] px-9 py-[15px] items-center rounded-[100px] desktop:text-[23px] text-[16px] font-semibold mb-[30px]"
+          onClick={() => {
+            navigate(getLangUrl("/home"));
+          }}>
           {t("startChecking")}
         </button>
         <div className="text-[#5967A3] desktop:text-[20px] text-[14px] font-medium leading-[36px]">

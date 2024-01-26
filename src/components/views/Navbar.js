@@ -23,16 +23,10 @@ const NavBar = () => {
       console.log("logout error: ", error);
     }
   };
-  const [lang, setLang] = useState("en");
-  useEffect(() => {
-    // URL에서 언어 코드 추출 (예: /en/, /kr/)
-    setLang(window.location.pathname.split("/")[1]);
-  }, [i18n]);
 
   // 언어 변경
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    setLang(language);
 
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const currentPath = window.location.pathname;
@@ -50,7 +44,6 @@ const NavBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   useEffect(() => {
-    console.log(location.pathname.split("/"));
     setIsMenuOpen(false);
   }, [location]);
 
@@ -88,15 +81,15 @@ const NavBar = () => {
               <div className="flex gap-[14px] p-1">
                 <button
                   className={`flex p-1 gap-[6px] items-center ${
-                    lang === "kr" ? "text-black" : "text-[#A5A5A5]"
+                    i18n.language === "ko" ? "text-black" : "text-[#A5A5A5]"
                   }`}
-                  onClick={() => changeLanguage("kr")}>
-                  KR
+                  onClick={() => changeLanguage("ko")}>
+                  KO
                 </button>
                 <div className="w-[1px] h-5 bg-[#D9D9D9] self-center"></div>
                 <button
                   className={`flex p-1 gap-[6px] items-center ${
-                    lang === "en" ? "text-black" : "text-[#A5A5A5]"
+                    i18n.language === "en" ? "text-black" : "text-[#A5A5A5]"
                   }`}
                   onClick={() => changeLanguage("en")}>
                   EN
@@ -109,23 +102,23 @@ const NavBar = () => {
         {/* 우측 subMenu */}
         <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex">
           {authState.isLoggedIn ? (
-            <div className="hidden sm:flex items-center space-x-4 justify-end">
-              <button className="flex items-center px-4">
+            <div className="hidden desktop:flex px-2 gap-[26px] items-center justify-end">
+              <button className="flex items-center text-[18px] p-1">
                 <span className="" onClick={() => navigate(getLangUrl("/asks"))}>
                   {t("nav.ask")}
                 </span>
               </button>
-              <button className="flex items-center px-4">
+              <button className="flex items-center text-[18px] p-1">
                 <span className="" onClick={() => navigate(getLangUrl("/mypage"))}>
                   {t("nav.myAccount")}
                 </span>
               </button>
-              <button className="flex items-center px-4">
+              <button className="flex items-center text-[18px] p-1">
                 <span className="" onClick={() => navigate(getLangUrl("/result"))}>
                   {t("nav.result")}
                 </span>
               </button>
-              <button className="flex items-center px-4">
+              <button className="flex items-center text-[18px] p-1">
                 {authState.isLoggedIn && (
                   <span className="" onClick={handleLogoutClick}>
                     {t("nav.logout")}
@@ -134,7 +127,7 @@ const NavBar = () => {
               </button>
               <button
                 className="flex items-center py-[14px] px-[30px] border-2 gap-[6px]
-                    rounded-[100px] font-semibold text-lg bg-[#3553F3] text-white"
+                    rounded-[100px] font-semibold text-[18px] bg-[#3553F3] text-white"
                 onClick={() => navigate(getLangUrl("/home"))}>
                 {t("startChecking")}
               </button>
@@ -142,13 +135,13 @@ const NavBar = () => {
           ) : (
             <div className="desktop:flex px-2 gap-[30px] hidden">
               <button
-                className="flex p-4 gap-[6px] text-lg leading-6"
+                className="flex p-4 gap-[6px] text-[18px] leading-6"
                 onClick={() => navigate(getLangUrl("/login"))}>
                 {t("nav.login")}
               </button>
               <button
                 className="flex items-center py-[14px] px-[30px] border-2 gap-[6px]
-                    rounded-[100px] font-semibold text-lg bg-[#3553F3] text-white"
+                    rounded-[100px] font-semibold text-[18px] bg-[#3553F3] text-white"
                 onClick={() => navigate(getLangUrl("/home"))}>
                 {t("startChecking")}
               </button>
@@ -160,82 +153,63 @@ const NavBar = () => {
         <div className="relative desktop:hidden flex">
           <button
             onClick={toggleMenu}
-            className="justify-center pr-4 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
+            className="justify-center mr-2 px-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
             <img src={hamberger} alt="Hamberger Bar" />
           </button>
-
-          <div
-            className={`absolute right-0 top-10 mt-2 p-5 bg-white text-black rounded shadow-lg w-48 ${
-              isMenuOpen ? "block" : "hidden"
-            }`}>
+        </div>
+        <div
+          className={`absolute top-[106px] bg-white w-full text-[16px] font-medium pb-[40px] flex flex-col gap-6 ${
+            isMenuOpen ? "block" : "hidden"
+          }`}>
+          <div className="mt-[21px] flex flex-col justify-center gap-[30px]">
+            <button onClick={() => navigate(getLangUrl("/home"))} className="text-left mx-6">
+              {t("startChecking")}
+            </button>
+            <button onClick={() => navigate(getLangUrl("/intro"))} className="text-left mx-6">
+              {t("nav.intro")}
+            </button>
+            <button onClick={() => navigate(getLangUrl("/howtouse"))} className="text-left mx-6">
+              {t("nav.howToUse")}
+            </button>
+            <button onClick={() => navigate(getLangUrl("/board"))} className="text-left mx-6">
+              {t("nav.request")}
+            </button>
+          </div>
+          <div className="bg-[#D9D9D9] h-px mx-6" />
+          <div className="flex flex-col justify-center gap-[30px]">
             {!authState.isLoggedIn ? (
-              <div className="p-4 flex flex-col ">
-                <button
-                  onClick={() => navigate(getLangUrl("/home"))}
-                  className="block w-full text-left font-bold">
-                  {t("startChecking")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/intro"))}
-                  className="block w-full text-left">
-                  {t("nav.intro")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/howtouse"))}
-                  className="block w-full text-left">
-                  {t("nav.howToUse")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/board"))}
-                  className="block w-full text-left">
-                  {t("nav.request")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/login"))}
-                  className="block w-full text-left">
-                  {t("nav.login")}
-                </button>
-              </div>
+              <button onClick={() => navigate(getLangUrl("/login"))} className="text-left mx-6">
+                {t("nav.login")}
+              </button>
             ) : (
-              <div className="p-4 z-40">
-                <button
-                  onClick={() => navigate(getLangUrl("/home"))}
-                  className="block w-full text-left font-bold">
-                  {t("startChecking")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/intro"))}
-                  className="block w-full text-left">
-                  {t("nav.intro")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/howtouse"))}
-                  className="block w-full text-left">
-                  {t("nav.howToUse")}
-                </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/result"))}
-                  className="block w-full text-left">
+              <React.Fragment>
+                <button onClick={() => navigate(getLangUrl("/result"))} className="text-left mx-6">
                   {t("nav.result")}
                 </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/board"))}
-                  className="block w-full text-left">
+                <button onClick={() => navigate(getLangUrl("/board"))} className="text-left mx-6">
                   {t("nav.request")}
                 </button>
-                <button
-                  onClick={() => navigate(getLangUrl("/asks"))}
-                  className="block w-full text-left">
+                <button onClick={() => navigate(getLangUrl("/asks"))} className="text-left mx-6">
                   {t("nav.ask")}
                 </button>
-                <button onClick={handleLogoutClick} className="block w-full text-left">
-                  {t("nav.logout")}
-                </button>
-              </div>
+              </React.Fragment>
             )}
           </div>
+          {authState.isLoggedIn && (
+            <React.Fragment>
+              <div className="bg-[#D9D9D9] h-px mx-6" />
+              <button onClick={handleLogoutClick} className="text-left mx-6">
+                {t("nav.logout")}
+              </button>
+            </React.Fragment>
+          )}
         </div>
       </div>
+      {isMenuOpen && (
+        <div className="fixed top-[106px] left-0 right-0 bottom-0 bg-black opacity-50 z-50">
+          {/* 여기는 검정색 배경을 가진 요소 */}
+        </div>
+      )}
     </nav>
   );
 };

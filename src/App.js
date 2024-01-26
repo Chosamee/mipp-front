@@ -37,7 +37,7 @@ import { AuthProvider } from "components/auth/AuthContext";
 
 // Redux 관련
 import { Provider } from "react-redux";
-import store from "store/Store.js";
+import store from "stateStore/store.js";
 
 // 국제화 및 번역 관련
 import "./i18n";
@@ -45,12 +45,6 @@ import { useTranslation } from "react-i18next";
 import Intro from "pages/Intro";
 
 const App = () => {
-  const { i18n } = useTranslation();
-  useEffect(() => {
-    // URL에서 언어 코드 추출 (예: /en/, /kr/)
-    const language = window.location.pathname.split("/")[1];
-    i18n.changeLanguage(language);
-  }, [i18n]);
   return (
     <AuthProvider>
       <Provider store={store}>
@@ -65,7 +59,7 @@ const App = () => {
 
                 <Route path="/:lang" element={<LanguageRedirector />}>
                   <Route path="*" element={<Navigate to="." replace />} />
-                  {/* 공통된 경로들을 여기에 배치합니다. */}
+                  {/* 공통된 경로들을 배치 */}
                   <Route index element={<Index />} />
                   <Route path="home" element={<ProtectedRoute component={Home} />} />
 
@@ -105,32 +99,25 @@ const CustomNavbar = () => {
 
 export default App;
 
-const supportedLanguages = ["en", "kr"]; // 지원되는 언어 목록
+const supportedLanguages = ["en", "ko"]; // 지원되는 언어 목록
 
 const LanguageRedirector = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const { lang } = useParams();
+  const navigate = useNavigate();
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const pathSegments = location.pathname.split("/");
-    const currentLang = pathSegments.length > 1 ? pathSegments[1] : null;
-
-    if (location.pathname === "/" || !supportedLanguages.includes(currentLang)) {
-      // 루트 경로 또는 지원되지 않는 언어 경로에 접근한 경우
-      const userLang = navigator.language || navigator.userLanguage;
-      const defaultLang = userLang.includes("kr") ? "kr" : "en";
+    // navigator.language에서 첫 부분만 추출 (예: "ko-KR" -> "ko")
+    const browserLang = navigator.language.split("-")[0];
+    if (!lang || !supportedLanguages.includes(lang)) {
+      // 지원되지 않는 언어 코드이거나 언어 코드가 없는 경우 기본 언어로 리다이렉트
+      const defaultLang = supportedLanguages.includes(browserLang) ? browserLang : "en";
       navigate(`/${defaultLang}`, { replace: true });
-    } else if (
-      currentLang &&
-      supportedLanguages.includes(currentLang) &&
-      i18n.language !== currentLang
-    ) {
-      // 지원되는 언어 경로에 접근했으나 현재 설정된 언어와 다른 경우
-      i18n.changeLanguage(currentLang);
+    } else if (i18n.language !== lang) {
+      // URL 경로의 언어 코드가 현재 설정된 언어와 다른 경우 언어 변경
+      i18n.changeLanguage(lang);
     }
-  }, [navigate, location, lang, i18n]);
+  }, [lang, navigate, i18n]);
 
   return <Outlet />;
 };

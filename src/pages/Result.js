@@ -2,17 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/views/Pagination";
 import LoadingSpinner from "../components/views/LoadingSpinner";
-import { setData } from "../store/Store.js";
-import { useDispatch } from "react-redux";
 import { fetchResults } from "../api/resultService.js";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 
 const Result = () => {
-  const dispatch = useDispatch();
   const [resultData, setresultData] = useState([]);
   const itemsPerPage = 10;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -21,7 +18,6 @@ const Result = () => {
       try {
         const data = await fetchResults();
         setresultData(data);
-        dispatch(setData(data));
       } catch (error) {
         console.error("Error:", error);
       }
@@ -80,67 +76,88 @@ const Result = () => {
         </div>
       </div>
       <h1 className="mb-10">{t("result.my")}</h1>
-      <div>
+      <div className="flex gap-3">
         <button
           onClick={() => {
             setInst("");
           }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow">
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
           All
+        </button>
+        <button
+          onClick={() => {
+            setInst("boundary");
+          }}
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
+          {t("home.boundary")}
         </button>
         <button
           onClick={() => {
             setInst("vocal");
           }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow">
-          Vocal
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
+          {t("home.vocal")}
         </button>
         <button
           onClick={() => {
             setInst("melody");
           }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow">
-          Melody
-        </button>
-        <button
-          onClick={() => {
-            setInst("bass");
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow">
-          Bass
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
+          {t("home.melody")}
         </button>
       </div>
       {filteredData ? (
         <Pagination
           data={filteredData}
           itemsPerPage={itemsPerPage}
-          renderItem={(item, index) => (
-            <div
-              key={index}
-              className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
-              <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "65%" }}>
-                <span>{item.title}</span>
+          renderItem={(item, index) => {
+            // Date 객체로 변환
+            const date = new Date(item.requested_at);
+
+            // 사용자의 지역 시간대에 맞춰 포맷팅
+            const options = {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              hour12: false,
+              // timeZoneName: "short",
+            };
+            const formattedDate = new Intl.DateTimeFormat(i18n.language, options).format(date);
+            return (
+              <div
+                key={index}
+                className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
+                <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "50%" }}>
+                  <span>{item.title}</span>
+                </div>
+                <div style={{ flexBasis: "3%" }}></div>
+                <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "15%" }}>
+                  <span>{formattedDate}</span>
+                </div>
+                <div style={{ flexBasis: "2%" }}></div>
+                <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
+                  <span className="font-bold text-blue-800">{t(`home.${item.inst}`)}</span>
+                </div>
+                <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
+                  <span className="font-bold text-blue-800">
+                    {isNaN(item.status)
+                      ? t(`result.${item.status}`)
+                      : t("result.percent") + t(`result.${item.status}`) + "%"}
+                  </span>
+                </div>
+                <button
+                  onClick={() => navigate(getLangUrl("/detail/" + item.id))}
+                  className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
+                  style={{ flexBasis: "10%" }}
+                  disabled={item.status !== "Complete" && item.status !== "완료"}>
+                  {t("detail")}
+                </button>
               </div>
-              <div style={{ flexBasis: "10%" }}></div>
-              <div className="flex-grow items-center justify-center" style={{ flexBasis: "10%" }}>
-                <span className="font-bold text-blue-800">{item.inst}</span>
-              </div>
-              <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-                <span className="font-bold text-blue-800">
-                  {isNaN(item.status)
-                    ? t(`result.${item.status}`)
-                    : t("result.percent") + t(`result.${item.status}`) + "%"}
-                </span>
-              </div>
-              <button
-                onClick={() => navigate(getLangUrl("/detail/" + item.id))}
-                className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
-                style={{ flexBasis: "10%" }}
-                disabled={item.status !== "Complete" && item.status !== "완료"}>
-                {t("detail")}
-              </button>
-            </div>
-          )}
+            );
+          }}
         />
       ) : (
         <LoadingSpinner />
