@@ -43,6 +43,23 @@ const NavBar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const handleWindowSizeChange = () => {
+    if (window.innerWidth >= 441) {
+      // 데스크톱 사이즈 기준 너비
+      setIsMenuOpen(false); // 메뉴 닫기
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  // location 바뀔 시 메뉴 닫기
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
@@ -50,7 +67,7 @@ const NavBar = () => {
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
     <nav
-      className="backdrop-blur-xl text-black fixed top-0 left-0 right-0 z-30 bg-white
+      className=" text-black fixed top-0 left-0 right-0 z-30 bg-white
         tracking-[0.0096em] leading-[normal]
       ">
       <div className="flex items-center justify-between py-5 w-full">
@@ -158,7 +175,7 @@ const NavBar = () => {
           </button>
         </div>
         <div
-          className={`absolute top-[106px] bg-white w-full text-[16px] font-medium pb-[40px] flex flex-col gap-6 ${
+          className={`absolute top-[106px] bg-white w-full text-[16px] font-medium pb-[40px] flex flex-col gap-6 z-30 ${
             isMenuOpen ? "block" : "hidden"
           }`}>
           <div className="mt-[21px] flex flex-col justify-center gap-[30px]">
@@ -186,11 +203,11 @@ const NavBar = () => {
                 <button onClick={() => navigate(getLangUrl("/result"))} className="text-left mx-6">
                   {t("nav.result")}
                 </button>
-                <button onClick={() => navigate(getLangUrl("/board"))} className="text-left mx-6">
-                  {t("nav.request")}
-                </button>
                 <button onClick={() => navigate(getLangUrl("/asks"))} className="text-left mx-6">
                   {t("nav.ask")}
+                </button>
+                <button onClick={() => navigate(getLangUrl("/mypage"))} className="text-left mx-6">
+                  {t("nav.myAccount")}
                 </button>
               </React.Fragment>
             )}
@@ -205,10 +222,9 @@ const NavBar = () => {
           )}
         </div>
       </div>
+      {/* 검정색 배경을 가진 요소 */}
       {isMenuOpen && (
-        <div className="fixed top-[106px] left-0 right-0 bottom-0 bg-black opacity-50 z-50">
-          {/* 여기는 검정색 배경을 가진 요소 */}
-        </div>
+        <div className="fixed top-[106px] left-0 right-0 bottom-0 bg-black opacity-50 z-20" />
       )}
     </nav>
   );
