@@ -146,6 +146,7 @@
     "nickname": "Nickname",
     "phone": "Phone Number",
     "email": "Email",
+    "checkDuplicate": "Check Duplicate",
     "confirmRegist": "Do you want to post this content?",
     "confirmDelete": "Are you sure you want to delete your account?",
     "submitDelete": "Account deleted",

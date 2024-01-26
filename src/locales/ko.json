@@ -143,6 +143,7 @@
     "nickname": "닉네임",
     "phone": "전화번호",
     "email": "이메일",
+    "checkDuplicate": "중복 검사",
     "confirmRegist": "이 내용을 게시하시겠습니까?",
     "confirmDelete": "정말로 계정을 삭제하시겠습니까?",
     "submitDelete": "계정이 삭제되었습니다.",

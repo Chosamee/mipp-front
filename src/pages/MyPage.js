@@ -80,7 +80,7 @@ const AccountPage = () => {
       setProfile(formData);
       setEditMode(false);
     } else {
-      console.log("취소됨");
+      console.log("cancelled");
     }
   };
 
@@ -214,7 +214,7 @@ const AccountPage = () => {
                     type="button"
                     onClick={checkNicknameAvailability}
                     className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    중복 검사
+                    {t("profile.checkDuplicate")}
                   </button>
                   <input
                     className="border p-2 text-right"
