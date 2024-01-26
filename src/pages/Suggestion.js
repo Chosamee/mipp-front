@@ -174,19 +174,20 @@ const Suggestion = () => {
       ) : (
         <LoadingSpinner />
       )}
-      <div className="flex gap-2 mb-4">
+      {/* search */}
+      <div className="flex gap-2 mb-4 mt-2">
         <input
           type="text"
           className="p-2 border border-gray-300 rounded w-full"
-          placeholder={`검색어를 입력하세요 (${searchType})`}
+          placeholder={`${t("search.guide")} (${t(`search.${searchType}`)})`}
           onChange={(e) => setSearchKeyword(e.target.value)}
         />
+
         <select
           className="p-2 border border-gray-300 rounded w-1/4"
           onChange={(e) => setSearchType(e.target.value)}
           value={searchType}>
-          <option value="content">내용</option>
-          <option value="user_nickname">닉네임</option>
+          <option value="content">{t("search.content")}</option>
         </select>
       </div>
     </div>

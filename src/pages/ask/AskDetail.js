@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAsksDetail } from "../../api/askService";
 import LoadingSpinner from "../../components/views/LoadingSpinner";
+import { useTranslation } from "react-i18next";
 
 const AskDetail = () => {
   const { id } = useParams();
   const [ask, setAsk] = useState(null);
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchDetail = async () => {
       try {
@@ -26,7 +28,7 @@ const AskDetail = () => {
           <p className="text-gray-600">{ask.content}</p>
           {ask.responsed !== "답변 대기중" && (
             <div className="mt-4">
-              <h3 className="text-md font-semibold">답변:</h3>
+              <h3 className="text-md font-semibold">{t("ask.ans")} :</h3>
               <p className="text-gray-600">{ask.response}</p>
             </div>
           )}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { addAsks } from "../../api/askService";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getLangUrl } from "locales/utils";
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
 
@@ -24,7 +25,7 @@ const AskCreate = () => {
     const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf|\.docx)$/i;
     const newFiles = Array.from(e.target.files).filter((file) => {
       if (!allowedExtensions.exec(file.name)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자를 가지고 있습니다.`);
+        alert(`${file.name} ${t("ask.create.extensionError")}`);
         return false;
       }
       return true;
@@ -33,7 +34,7 @@ const AskCreate = () => {
     let totalSize = newFiles.reduce((acc, file) => acc + file.size, 0);
 
     if (totalSize + inquiry.files.reduce((acc, file) => acc + file.size, 0) > MAX_FILE_SIZE) {
-      alert("첨부파일 총 용량은 30MB를 초과할 수 없습니다.");
+      alert(t("ask.create.volumeError"));
       return;
     }
 
@@ -58,33 +59,43 @@ const AskCreate = () => {
     e.preventDefault();
     if (!inquiry.title || !inquiry.contents) {
       // 사용자에게 문의 제목과 내용이 필수임을 알립니다.
-      alert("문의 제목과 내용을 모두 입력해주세요.");
+      alert(t("ask.create.requireError"));
       return;
     }
-    try {
-      const response = await addAsks({
-        title: inquiry.title,
-        contents: inquiry.contents,
-        files: inquiry.files,
-      });
-      console.log(response);
-    } catch (error) {
-      console.log("add asks error:", error);
+    const confirmSubmit = window.confirm(t("ask.create.confirm"));
+    if (confirmSubmit) {
+      try {
+        const response = await addAsks({
+          title: inquiry.title,
+          contents: inquiry.contents,
+          files: inquiry.files,
+        });
+        console.log(response);
+      } catch (error) {
+        console.log("add asks error:", error);
+      }
+      setIsDirty(false);
+      navigate(getLangUrl("/asks"));
+    } else {
+      console.log("cancelled");
     }
-    setIsDirty(false);
-    navigate("/asks");
   };
 
   useEffect(() => {
-    const handleBeforeUnload = (e) => {
+    const handleBeforeUnload = (event) => {
       if (isDirty) {
-        e.preventDefault();
-        e.returnValue = "작성 중인 내용이 있습니다. 페이지를 벗어나시겠습니까?";
+        const message = t("ask.create.confirmExit");
+        event.returnValue = message;
+        return message;
       }
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
 
   const renderFileList = () => {
@@ -100,7 +111,7 @@ const AskCreate = () => {
                 <button
                   onClick={() => handleFileDelete(index)}
                   className="text-red-500 text-xs ml-4">
-                  삭제
+                  Delete
                 </button>
               </li>
             ))}

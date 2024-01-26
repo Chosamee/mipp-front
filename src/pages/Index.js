@@ -206,7 +206,9 @@ const App = () => {
                 {t("index.3.content1")}
               </div>
             </div>
-            <button className="flex items-center gap-2">
+            <button
+              className="flex items-center gap-2"
+              onClick={() => navigate(getLangUrl("/intro"))}>
               <div className="text-[#3B5AFA] text-[19px] font-medium">{t("index.3.more")}</div>
               <img src={realArrow} alt="Real Arrow" className=""></img>
             </button>
@@ -370,6 +372,7 @@ const Section2Cont1 = () => {
 };
 
 const Section2Cont2 = () => {
+  const { t } = useTranslation();
   return (
     <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px] overflow-hidden">
       <div className="w-[685px] h-[343px] desktop:left-[-100px] desktop:top-[33px] left-[-103px] top-[18px] absolute">
@@ -387,16 +390,14 @@ const Section2Cont2 = () => {
         />
         <div className="desktop:px-[30px] desktop:py-3.5 px-5 py-[11px] mx-auto desktop:top-[192px] top-[149px] absolute bg-[#3553F3] rounded-[100px]">
           <div className="text-[#F9FAFC] font-semibold desktop:text-[16px] text-[12px]">
-            표절 검사 확인하기
+            {t("startChecking")}
           </div>
         </div>
         <div className="mx-auto desktop:top-[126px] top-[97px] absolute text-center text-black desktop:text-[15px] text-[12px] font-medium desktop:leading-[24px] leading-[19px]">
-          나의 곡과 유사한 음악을 발견하였습니다.
-          <br />
-          표절 검사 리포트를 확인하시겠습니까?
+          {t("index.1.content2ImgContent")}
         </div>
         <div className="mx-auto desktop:top-[91px] top-16 absolute text-[#3553F3] text-[21px] font-bold leading-[26px]">
-          표절 의심곡 발견!
+          {t("index.1.content2ImgTitle")}
         </div>
         <div className="text-[#3553F3] desktop:text-[28px] text-[22px] font-medium desktop:top-[47px] top-[29px] mx-auto absolute leading-[26px]">
           !

@@ -2,7 +2,12 @@
   "welcome": "Welcome to Our Website!",
   "startChecking": "Start Checking",
   "language": "Language",
-  "searchGuide": "검색어를 입력하세요",
+  "search": {
+    "search": "Search",
+    "guide": "Enter Search Term",
+    "title": "Title",
+    "content": "Content"
+  },
   "detail": "Detail",
   "pagination": {
     "tot": "Total",
@@ -20,7 +25,15 @@
     "content": "Question Content",
     "contentGuide": "Enter Question Content",
     "file": "Attachment File",
-    "nofile": "There's no Attachment File"
+    "nofile": "There's no Attachment File",
+    "ans": "Answer",
+    "create": {
+      "extensionError": "은(는) 허용되지 않는 확장자를 가지고 있습니다.",
+      "volumeError": "첨부파일 총 용량은 30MB를 초과할 수 없습니다.",
+      "requireError": "문의 제목과 내용을 모두 입력해주세요.",
+      "confirmExit": "작성 중인 내용이 있습니다. 페이지를 벗어나시겠습니까?",
+      "confirm": "이 내용을 게시하시겠습니까?"
+    }
   },
   "intro": {
     "title1": "Plagiarism Test Standard",
@@ -43,6 +56,8 @@
       "subtitle2": "Real-time plagiarism monitoring",
       "content2": "We can identify plagiarized music from billions of songs \nreleased globally every day. Safeguard your music IP\n with our real-time plagiarism monitoring service.",
       "content2mobile": "We can identify plagiarized music from billions of \nsongs released globally every day. Safeguard \nyour music IP with our real-time plagiarism \nmonitoring service.",
+      "content2ImgTitle": "Plagiarism Alert!",
+      "content2ImgContent": "A similar composition to yours has been \nfound. Access the plagiarism report?",
 
       "subtitle3": "Maximize Music IP Revenue",
 
@@ -143,7 +158,7 @@
   },
   "request": {
     "title": "Open Request",
-    "guide": "건의글 작성 (200자 내)",
+    "guide": "Submit Open Request (Within 200 Characters)",
     "errorBlank": "내용을 입력해주세요.",
     "errorCount": "글자 수가 너무 많습니다!",
     "confirmUpload": "이 내용을 게시하시겠습니까?",
