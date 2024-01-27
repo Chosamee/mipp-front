@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleLoginButton from "../components/auth/GoogleLoginButton";
+import GoogleLoginButton from "../components/auth/GoogleLoginUsePackage";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
