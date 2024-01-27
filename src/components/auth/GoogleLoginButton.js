@@ -1,43 +1,32 @@
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import { handleGoogleLogin } from "../../api/authService"; // Google 로그인 함수 임포트
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
-import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
-  const { authState, updateAuthState } = useAuth();
-  const navigate = useNavigate();
+  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const REDIRECT_URI = `${window.location.origin}/login/callback`;
 
-  const handleLoginSuccess = async (googleData) => {
+  const handleGoogleLogin = async () => {
     try {
-      const response = await handleGoogleLogin(googleData);
-      updateAuthState({
-        ...authState,
-        isLoggedIn: true,
-      });
-      // 추가정보 입력 routing 함수. 임시 주석처리.
-      // if (response.message === "New User") navigate("/regist");
-      // else if (response.message === "Additional Info Required") navigate("/regist");
-      // else if (response.message === "login complete") navigate("/home");
-      // else throw new expect();
-      navigate(getLangUrl("/home"));
+      const googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+      const responseType = "token";
+      const scope = encodeURIComponent(
+        "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+      );
+      const googleURL = `${googleAuthUrl}?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${responseType}&scope=${scope}`;
+
+      window.location.href = googleURL;
     } catch (error) {
-      console.log("Login Error Server response:", error);
+      console.error("워닝! 워닝! 에러발생!");
     }
   };
 
-  const handleLoginFailure = (error) => {
-    console.error("Google Login Failure:", error);
-  };
-
   return (
-    <GoogleLogin
-      buttonText="Login"
-      onSuccess={handleLoginSuccess}
-      onFailure={handleLoginFailure}
-      cookiePolicy={"single_host_origin"}
-    />
+    <button onClick={handleGoogleLogin}>
+      <img
+        src="https://imgnews.pstatic.net/image/016/2015/09/03/20150903000132_0_99_20150903075103.jpg?type=w647"
+        width="45"
+        alt="구글 로그인 버튼"
+      />
+    </button>
   );
 };
 

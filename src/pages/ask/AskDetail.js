@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAsksDetail } from "../../api/askService";
 import LoadingSpinner from "../../components/views/LoadingSpinner";
@@ -21,10 +21,10 @@ const AskDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <>
+    <React.Fragment>
       {ask ? (
         <div className="mx-auto p-4 border border-gray-300 rounded shadow-lg xl:mt-32 md:mt-48 mt-32 max-w-7xl">
-          <h2 className="text-lg font-bold">{ask.title}</h2>
+          <h2 className="text-[18px] font-bold">{ask.title}</h2>
           <p className="text-gray-600">{ask.content}</p>
           {ask.responsed !== "답변 대기중" && (
             <div className="mt-4">
@@ -36,7 +36,7 @@ const AskDetail = () => {
       ) : (
         <LoadingSpinner />
       )}
-    </>
+    </React.Fragment>
   );
 };
 

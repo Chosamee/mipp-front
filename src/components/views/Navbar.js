@@ -158,7 +158,7 @@ const NavBar = () => {
               </button>
               <button
                 className="flex items-center py-[14px] px-[30px] border-2 gap-[6px]
-                    rounded-[100px] font-semibold text-[18px] bg-[#3553F3] text-white"
+                    rounded-[100px] font-semibold text-[18px] bg-[#3553F3] text-white flex-shrink-0"
                 onClick={() => navigate(getLangUrl("/home"))}>
                 {t("startChecking")}
               </button>

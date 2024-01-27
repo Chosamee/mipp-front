@@ -43,6 +43,7 @@ import store from "stateStore/store.js";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import Intro from "pages/Intro";
+import GoogleLoginCallback from "components/auth/GoogleLoginCallback";
 
 const App = () => {
   return (
@@ -56,18 +57,25 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<LanguageRedirector />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="login/callback" element={<GoogleLoginCallback />} />
 
                 <Route path="/:lang" element={<LanguageRedirector />}>
                   <Route path="*" element={<Navigate to="." replace />} />
                   {/* 공통된 경로들을 배치 */}
                   <Route index element={<Index />} />
-                  <Route path="home" element={<ProtectedRoute component={Home} />} />
+                  {/* <Route path="home" element={<ProtectedRoute component={Home} />} /> */}
+                  <Route path="home" element={<Home />} />
 
                   <Route path="login" element={<Login />} />
-                  <Route path="regist" element={<ProtectedRoute component={RegistrationForm} />} />
+                  {/* <Route path="regist" element={<ProtectedRoute component={RegistrationForm} />} />
                   <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />
                   <Route path="board" element={<ProtectedRoute component={Suggestion} />} />
-                  <Route path="result" element={<ProtectedRoute component={Result} />} />
+                  <Route path="result" element={<ProtectedRoute component={Result} />} /> */}
+                  <Route path="regist" element={<RegistrationForm />} />
+                  <Route path="mypage" element={<MyPage />} />
+                  <Route path="board" element={<Suggestion />} />
+                  <Route path="result" element={<Result />} />
+
                   <Route path="howtouse" element={<Howtouse />} />
                   <Route path="intro" element={<Intro />} />
 
