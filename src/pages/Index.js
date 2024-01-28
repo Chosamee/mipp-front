@@ -39,37 +39,40 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen items-center desktop:pt-[132px] pt-[106px] leading-[normal]">
       {/** Section 1 Start */}
-      <div
-        className="relative flex flex-col mx-auto px-[34px] w-full sm:max-w-[600px] md:max-w-[700px] lg:max-w-[980px] xl:max-w-[1852px]
-        desktop:max-w-[1852px] max-w-[100%] desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
-        desktop:rounded-[45px] justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${main})` }}>
-        {/* Background Image Start */}
-        <div className="absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px]"></div>
-        {/* Background Image End */}
-        {/* Content Start */}
-        <div className="flex flex-col justify-center items-center desktop:gap-[54px] gap-[20px] z-10">
-          <div className="flex flex-col items-center desktop:gap-[34px] gap-[11px]">
-            <div className="text-white font-bold desktop:text-[70px] text-[32px] text-center">
-              {t("index.mainTitle")}
+      <div className="flex desktop:px-[34px] px-0 desktop:max-w-[1852px] max-w-[100%] w-full">
+        <div
+          className="relative flex flex-col mx-auto px-[34px] w-full desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
+      desktop:rounded-[45px] justify-center bg-cover bg-center"
+          style={{ backgroundImage: `url(${main})` }}>
+          {/* Background Image Start */}
+          <div className="absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px]"></div>
+          {/* Background Image End */}
+          {/* Content Start */}
+          <div className="flex flex-col justify-center items-center desktop:gap-[54px] gap-[20px] z-10">
+            <div className="flex flex-col items-center desktop:gap-[34px] gap-[11px]">
+              <div className="text-white font-bold desktop:text-[70px] text-[32px] text-center">
+                {t("index.mainTitle")}
+              </div>
+              <div className="text-white text-[25px] leading-[34px] text-center hidden desktop:block">
+                {t("index.mainIntro")}
+              </div>
+              <div className="text-white text-[15px]  leading-[25px] text-center desktop:hidden">
+                {t("index.mainIntroPhone")}
+              </div>
             </div>
-            <div className="text-white text-[25px] leading-[34px] text-center hidden desktop:block">
-              {t("index.mainIntro")}
-            </div>
-            <div className="text-white text-[15px]  leading-[25px] text-center desktop:hidden">
-              {t("index.mainIntroPhone")}
-            </div>
-          </div>
-          <button
-            className={`bg-[#3B5AFA] hover:bg-[#2440D7] text-white font-semibold
+            <button
+              className={`bg-[#3B5AFA] hover:bg-[#2440D7] text-white font-semibold
                     desktop:px-[46px] desktop:py-[22px] px-9 py-[15px] rounded-[100px] gap-2 desktop:text-[23px] text-[16px] mx-auto`}
-            onClick={() =>
-              authState.isLoggedIn ? navigate(getLangUrl("/home")) : navigate(getLangUrl("/login"))
-            }>
-            {t("startChecking")}
-          </button>
+              onClick={() =>
+                authState.isLoggedIn
+                  ? navigate(getLangUrl("/home"))
+                  : navigate(getLangUrl("/login"))
+              }>
+              {t("startChecking")}
+            </button>
+          </div>
+          {/* Content End */}
         </div>
-        {/* Content End */}
       </div>
       {/* Section 1 End */}
 
