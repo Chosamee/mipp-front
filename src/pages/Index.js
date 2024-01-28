@@ -39,24 +39,24 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen items-center desktop:pt-[132px] pt-[106px] leading-[normal]">
       {/** Section 1 Start */}
-      <div className="flex desktop:px-[34px] px-0 desktop:max-w-[1852px] max-w-[100%] w-full">
+      <div className="flex desktop:px-[34px] px-0 desktop:max-w-[1852px] max-w-[100%] w-full min-w-fit mx-auto">
+        {/* Background Image Start */}
         <div
-          className="relative flex flex-col mx-auto px-[34px] w-full desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
+          className="relative flex flex-col mx-auto px-8 w-full desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
       desktop:rounded-[45px] justify-center bg-cover bg-center"
           style={{ backgroundImage: `url(${main})` }}>
-          {/* Background Image Start */}
           <div className="absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px]"></div>
           {/* Background Image End */}
           {/* Content Start */}
           <div className="flex flex-col justify-center items-center desktop:gap-[54px] gap-[20px] z-10">
             <div className="flex flex-col items-center desktop:gap-[34px] gap-[11px]">
-              <div className="text-white font-bold desktop:text-[70px] text-[32px] text-center">
+              <div className="text-white font-bold desktop:text-[70px] text-[32px] text-center text-nowrap">
                 {t("index.mainTitle")}
               </div>
-              <div className="text-white text-[25px] leading-[34px] text-center hidden desktop:block">
+              <div className="text-white text-[25px] leading-[34px] text-center hidden desktop:block text-nowrap">
                 {t("index.mainIntro")}
               </div>
-              <div className="text-white text-[15px]  leading-[25px] text-center desktop:hidden">
+              <div className="text-white text-[15px]  leading-[25px] text-center desktop:hidden text-nowrap">
                 {t("index.mainIntroPhone")}
               </div>
             </div>
