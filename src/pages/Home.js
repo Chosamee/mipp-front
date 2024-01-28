@@ -7,7 +7,7 @@ import { getRemain } from "api/uploadService";
 const Home = () => {
   // 탭 선택
   const [activeTab, setActiveTab] = useState("upload");
-  const [inst, setInst] = useState("vocal");
+  const [inst, setInst] = useState("boundary");
   const [remain, setRemain] = useState();
   const { t } = useTranslation();
 
@@ -73,6 +73,7 @@ const Home = () => {
           <div className="leading-[35px] font-medium text-[22px]">{t("home.guide")}</div>
         </div>
 
+        {/* 음원 타입 선택 */}
         <div className="flex flex-col mb-20 mx-auto py-[100px]">
           <div className="py-5 text-center"> Your Usage Limit: {remain} / 10</div>
 
@@ -87,16 +88,16 @@ const Home = () => {
           </div>
         </div>
 
+        {/* 업로드 방식 선택 */}
         <div className="flex flex-col mx-auto">
           <div className="text-start mb-[11px] text-[22px] font-semibold">{t("home.step2")}</div>
           <div className="text-start mb-7 text-[17px] text-[#9B9B9B] font-medium">
             {t("home.step2guide")}
           </div>
-
-          <div className="flex justify-center mb-[30px] gap-2">
+          <div className="flex justify-center mb-[30px]">
             <button
               onClick={() => setActiveTab("upload")}
-              className={`px-[60px] py-3 text-sm mb-2 font-semibold shadow-[0_0_0_2px_#3553F3]text-[#3553F3] w-[250px] text-center ${
+              className={`px-[60px] py-3 text-[16px] mb-2 font-semibold shadow-[0_0_0_2px_#3553F3]text-[#3553F3] w-[210px] text-center ${
                 activeTab === "upload"
                   ? "shadow-[0_2px_0_0_#3553F3] text-[#3553F3]"
                   : "shadow-[0_2px_0_0_#A9A9A9] text-[#A9A9A9]"
@@ -105,7 +106,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => setActiveTab("link")}
-              className={`px-[60px] py-3 text-sm mb-2 font-semibold shadow-[0_0_0_2px_#3553F3]text-[#3553F3] w-[250px] text-center ${
+              className={`px-[60px] py-3 text-[16px] mb-2 font-semibold shadow-[0_0_0_2px_#3553F3]text-[#3553F3] w-[210px] text-center ${
                 activeTab === "link"
                   ? "shadow-[0_2px_0_0_#3553F3] text-[#3553F3]"
                   : "shadow-[0_2px_0_0_#A9A9A9] text-[#A9A9A9]"
@@ -113,10 +114,10 @@ const Home = () => {
               {t("home.option1-2")}
             </button>
           </div>
-        </div>
-        <div className="mx-auto w-full flex flex-col justify-center items-center">
-          {activeTab === "upload" && <FileUploadComp inst={inst} />}
-          {activeTab === "link" && <YoutubeLinkComp inst={inst} />}
+          <div className="mx-auto w-full flex flex-col justify-center items-center">
+            {activeTab === "upload" && <FileUploadComp inst={inst} />}
+            {activeTab === "link" && <YoutubeLinkComp inst={inst} />}
+          </div>
         </div>
       </div>
     </div>

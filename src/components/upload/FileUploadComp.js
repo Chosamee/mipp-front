@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fileImg from "../../assets/file_select.svg";
+import fileSelect from "../../assets/file_select.svg";
+import fileSelected from "../../assets/file_selected.svg";
+import fileSelectHover from "../../assets/file_select_hover.svg";
+
 import { uploadMedia } from "../../api/uploadService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
@@ -45,19 +48,29 @@ const FileUploadComp = ({ inst, bpm }) => {
 
   return (
     <React.Fragment>
-      <label className="mb-6 mx-auto w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-blue-500">
-        <img className="" src={fileImg} alt="Select File"></img>
-        <span className="mt-2 text-base leading-normal">{fileName || t("home.uploadGuide")}</span>
-        <input
-          type="file"
-          accept=".wav, .mp3, .aiff, .aif, .flac, .ogg"
-          onChange={handleFileChange}
-          className="hidden"
-        />
-      </label>
+      <div className="w-[420px]">
+        <label
+          className="group mb-6 mx-auto w-full flex flex-col items-center px-4 py-10 text-blue rounded-[12px]
+      border-2 border-[#C7CCD9] border-dashed bg-[#F8F9FC] cursor-pointer hover:bg-[#E1EBFF] hover:text-[#3B59FA] hover:border-[#A1B5E8]">
+          <img src={fileSelect} alt="File Select" className="group-hover:hidden" />
+          <img src={fileSelectHover} alt="File Select Hover" className="hidden group-hover:block" />
+          <div
+            className={`mt-[14px] text-[16px] font-medium leading-[24px] ${
+              fileName && "text-[#3B59FA]"
+            }`}>
+            {fileName || t("home.uploadGuide")}
+          </div>
+          <input
+            type="file"
+            accept=".wav, .mp3, .aiff, .aif, .flac, .ogg"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+        </label>
+      </div>
       <button
         onClick={handleSubmit}
-        className="w-[500px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
+        className="w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
         {t("home.submit")}
       </button>
     </React.Fragment>

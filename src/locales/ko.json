@@ -126,9 +126,9 @@
     "melody": "보컬 제외 멜로디",
     "linkGuide": "음악 표절검사를 위한 음원 링크를 입력 해주세요. *",
     "linkInputGuide": "URL을 입력하세요.",
-    "uploadGuide": "파일을 업로드해주세요 (WAV, MP3, AIFF, AAC, OGG, FLAC)",
+    "uploadGuide": "파일을 업로드해주세요 \n(WAV, MP3, AIFF, AAC, OGG, FLAC)",
     "uploadError": "지원하지 않는 파일 형식입니다.",
-    "submit": "검사 시작"
+    "submit": "검사 시작하기"
   },
   "result": {
     "my": "내 신청",

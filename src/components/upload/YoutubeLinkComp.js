@@ -35,7 +35,7 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
 
   return (
     <React.Fragment>
-      <div className="mb-5 w-full text-start">{t("home.linkGuide")}</div>
+      <div className="mb-5 w-[420px] text-start">{t("home.linkGuide")}</div>
       <input
         type="text"
         value={inputValue}
@@ -45,7 +45,7 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
       />
       <button
         onClick={handleSubmit}
-        className="w-[500px] py-[20px] bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
+        className="w-[420px] py-[20px] bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
         {t("home.submit")}
       </button>
     </React.Fragment>
