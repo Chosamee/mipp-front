@@ -52,8 +52,19 @@ const FileUploadComp = ({ inst, bpm }) => {
         <label
           className="group mb-6 mx-auto w-full flex flex-col items-center px-4 py-10 text-blue rounded-[12px]
       border-2 border-[#C7CCD9] border-dashed bg-[#F8F9FC] cursor-pointer hover:bg-[#E1EBFF] hover:text-[#3B59FA] hover:border-[#A1B5E8]">
-          <img src={fileSelect} alt="File Select" className="group-hover:hidden" />
-          <img src={fileSelectHover} alt="File Select Hover" className="hidden group-hover:block" />
+          {!fileName ? (
+            <React.Fragment>
+              <img src={fileSelect} alt="File Select" className="group-hover:hidden" />
+              <img
+                src={fileSelectHover}
+                alt="File Select Hover"
+                className="hidden group-hover:block"
+              />
+            </React.Fragment>
+          ) : (
+            <img src={fileSelected} alt="File Selected" />
+          )}
+
           <div
             className={`mt-[14px] text-[16px] font-medium leading-[24px] ${
               fileName && "text-[#3B59FA]"

@@ -39,13 +39,13 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen items-center desktop:pt-[132px] pt-[106px] leading-[normal]">
       {/** Section 1 Start */}
-      <div className="relative flex flex-col w-full desktop:h-[620px] h-[340px] py-[100px] gap-[10px] desktop:rounded-[45px] justify-center">
+      <div
+        className="relative flex flex-col mx-auto px-[34px] w-full sm:max-w-[600px] md:max-w-[700px] lg:max-w-[980px] xl:max-w-[1852px]
+        desktop:max-w-[1852px] max-w-[100%] desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
+        desktop:rounded-[45px] justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${main})` }}>
         {/* Background Image Start */}
-        <div
-          className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0 desktop:rounded-[45px]"
-          style={{ backgroundImage: `url(${main})` }}>
-          <div className="absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px]"></div>
-        </div>
+        <div className="absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px]"></div>
         {/* Background Image End */}
         {/* Content Start */}
         <div className="flex flex-col justify-center items-center desktop:gap-[54px] gap-[20px] z-10">
