@@ -34,21 +34,21 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto w-full">
-      <div className="mb-5">{t("home.linkGuide")}</div>
+    <React.Fragment>
+      <div className="mb-5 w-full text-start">{t("home.linkGuide")}</div>
       <input
         type="text"
         value={inputValue}
         onChange={handleInputChange}
         placeholder={t("home.linkInputGuide")}
-        className="px-4 py-2 border rounded-full mb-4 border-black"
+        className="px-4 py-2 border rounded-full mb-4 w-full border-black"
       />
       <button
         onClick={handleSubmit}
-        className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
+        className="w-[500px] py-[20px] bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
         {t("home.submit")}
       </button>
-    </div>
+    </React.Fragment>
   );
 };
 

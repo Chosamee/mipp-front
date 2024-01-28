@@ -44,7 +44,7 @@ const FileUploadComp = ({ inst, bpm }) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto w-full">
+    <React.Fragment>
       <label className="mb-6 mx-auto w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-blue-500">
         <img className="" src={fileImg} alt="Select File"></img>
         <span className="mt-2 text-base leading-normal">{fileName || t("home.uploadGuide")}</span>
@@ -57,10 +57,10 @@ const FileUploadComp = ({ inst, bpm }) => {
       </label>
       <button
         onClick={handleSubmit}
-        className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
+        className="w-[500px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
         {t("home.submit")}
       </button>
-    </div>
+    </React.Fragment>
   );
 };
 

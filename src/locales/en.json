@@ -115,11 +115,16 @@
     "step6content": "Grab your detailed plagiarism report in a handy PDF format. It's perfect for keeping records or sharing with your team."
   },
   "home": {
-    "step1": "1. Choose Test Type",
-    "step2": "2. Choose Instrument",
+    "title": "음악 표절 확인,\n 이제 원클릭으로 간편하게.",
+    "guide": "검사하고 싶은 음악에 알맞은 옵션을 선택한 후,\n음원을 업로드하세요.",
+    "step1": "1. 음원 타입 선택하기",
+    "step1guide": "검사하고 싶은 음원 타입 한 가지를 선택하세요. (필수선택)",
+    "step2": "2. 업로드 방식 선택하기",
+    "step2guide": "음원 파일 혹은 링크 중 하나를 선택하고, 업로드를 진행하세요.",
     "option1-1": "Upload Music File",
     "option1-2": "Youtube / Soundcloud Link",
     "boundary": "Standard",
+    "type": "Type",
     "vocal": "Vocal Melody",
     "melody": "Non-Vocal Melody",
     "linkGuide": "Please enter the music link for the plagiarism check. *",
