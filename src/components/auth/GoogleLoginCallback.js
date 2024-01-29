@@ -1,41 +1,37 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { handleGoogleLogin } from "api/authService";
 import { useAuth } from "./AuthContext";
 import { getLangUrl } from "locales/utils";
 const GoogleLoginCallback = () => {
   const { authState, updateAuthState } = useAuth();
-  const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    const hash = window.location.hash;
-    const params = new URLSearchParams(hash.substring(1)); // '#' 문자를 제외하고 파라미터를 가져옴
-    const token = params.get("access_token");
-    console.log(token);
-    const handleLoginSuccess = async (googleData) => {
-      try {
-        const response = await handleGoogleLogin(googleData);
-        updateAuthState({
-          ...authState,
-          isLoggedIn: true,
-        });
-        // 추가정보 입력 routing 함수. 임시 주석처리.
-        // if (response.message === "New User") navigate("/regist");
-        // else if (response.message === "Additional Info Required") navigate("/regist");
-        // else if (response.message === "login complete") navigate("/home");
-        // else throw new expect();
-        navigate(getLangUrl("/home"));
-      } catch (error) {
-        console.log("Login Error Server response:", error);
+    const handleAuthentication = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+
+      if (code) {
+        try {
+          // 백엔드로 인증 코드 전송 및 처리
+          await handleGoogleLogin(code);
+          updateAuthState({
+            ...authState,
+            isLoggedIn: true,
+          });
+          navigate(getLangUrl("/home")); // 성공 시 홈 페이지로 리디렉션
+        } catch (error) {
+          console.error("Authentication error:", error);
+          // 오류 처리 로직
+        }
       }
     };
-    if (token) {
-      handleLoginSuccess(token);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
 
-  return <div>로그인 처리 중...</div>;
+    handleAuthentication();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
+
+  return <div></div>;
 };
 
 export default GoogleLoginCallback;

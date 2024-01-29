@@ -11,6 +11,8 @@ const GoogleLoginButton = () => {
 
   const handleLoginSuccess = async (googleData) => {
     try {
+      console.log("??");
+
       const response = await handleGoogleLogin(googleData);
       updateAuthState({
         ...authState,
