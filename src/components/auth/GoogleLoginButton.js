@@ -31,8 +31,7 @@ const GoogleLoginButton = () => {
             ...authState,
             isLoggedIn: true,
           });
-          i18n.language = navigator.language.split("-")[0];
-          navigate(getLangUrl("/home")); // 성공 시 홈 페이지로 리디렉션
+          navigate(`${navigator.language.split("-")[0]}/home`); // 성공 시 홈 페이지로 리디렉션
         } catch (error) {
           console.error("Authentication error:", error);
           // 오류 처리 로직

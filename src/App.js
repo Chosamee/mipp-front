@@ -65,14 +65,14 @@ const App = () => {
                   <Route path="home" element={<Home />} />
 
                   <Route path="login" element={<Login />} />
-                  {/* <Route path="regist" element={<ProtectedRoute component={RegistrationForm} />} />
+                  <Route path="regist" element={<ProtectedRoute component={RegistrationForm} />} />
                   <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />
                   <Route path="board" element={<ProtectedRoute component={Suggestion} />} />
-                  <Route path="result" element={<ProtectedRoute component={Result} />} /> */}
-                  <Route path="regist" element={<RegistrationForm />} />
+                  <Route path="result" element={<ProtectedRoute component={Result} />} />
+                  {/* <Route path="regist" element={<RegistrationForm />} />
                   <Route path="mypage" element={<MyPage />} />
                   <Route path="board" element={<Suggestion />} />
-                  <Route path="result" element={<Result />} />
+                  <Route path="result" element={<Result />} /> */}
 
                   <Route path="howtouse" element={<Howtouse />} />
                   <Route path="intro" element={<Intro />} />
