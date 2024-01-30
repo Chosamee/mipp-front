@@ -28,7 +28,7 @@ const GoogleLoginButton = () => {
       if (code && state) {
         try {
           // 백엔드로 인증 코드 전송 및 처리
-          await handleOauthLogin(code, state, navigator.language.split("-")[0]);
+          await handleOauthLogin(code, state, i18n.language);
           updateAuthState({
             ...authState,
             isLoggedIn: true,
