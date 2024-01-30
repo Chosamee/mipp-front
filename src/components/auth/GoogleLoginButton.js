@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
+  const { i18n } = useTranslation();
   const initiateLogin = async () => {
     const redirect = await handleSessionState(navigator.language.split("-")[0]);
     window.location.href = redirect;
@@ -30,7 +31,8 @@ const GoogleLoginButton = () => {
             ...authState,
             isLoggedIn: true,
           });
-          // navigate(getLangUrl("/home")); // 성공 시 홈 페이지로 리디렉션
+          i18n.language = navigator.language.split("-")[0];
+          navigate(getLangUrl("/home")); // 성공 시 홈 페이지로 리디렉션
         } catch (error) {
           console.error("Authentication error:", error);
           // 오류 처리 로직
