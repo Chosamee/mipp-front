@@ -162,8 +162,8 @@
     "deleteGuide": "계정 삭제를 위해 \"Delete Account\" 를 입력해주세요:"
   },
   "request": {
-    "title": "건의사항",
-    "guide": "건의글 작성 (200자 내)",
+    "title": "커뮤니티",
+    "guide": "글 작성 (200자 내)",
     "errorBlank": "내용을 입력해주세요.",
     "errorCount": "글자 수가 너무 많습니다!",
     "confirmUpload": "이 내용을 게시하시겠습니까?",
@@ -173,7 +173,7 @@
     "intro": "MIPP 소개",
     "howToUse": "이용방법",
     "myAccount": "내 계정",
-    "request": "건의하기",
+    "request": "커뮤니티",
     "logout": "로그아웃",
     "result": "내 검사 결과",
     "login": "로그인",

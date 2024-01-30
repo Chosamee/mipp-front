@@ -165,8 +165,8 @@
     "deleteGuide": "Please type \"Delete Account\" to confirm:"
   },
   "request": {
-    "title": "Open Request",
-    "guide": "Submit Open Request (Within 200 Characters)",
+    "title": "Community",
+    "guide": "Submit Article (Within 200 Characters)",
     "errorBlank": "Please enter the content.",
     "errorCount": "The character count is too high!",
     "confirmUpload": "Do you want to post this content?",
@@ -176,7 +176,7 @@
     "intro": "Introduce MIPP",
     "howToUse": "How To Use",
     "myAccount": "My Account",
-    "request": "Open Request",
+    "request": "Community",
     "logout": "Logout",
     "result": "My Results",
     "login": "Login",
