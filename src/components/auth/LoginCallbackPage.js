@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleGoogleLogin } from "api/authService";
+import { handleOauthLogin } from "api/authService";
 import { useAuth } from "./AuthContext";
 import { getLangUrl } from "locales/utils";
-const GoogleLoginCallback = () => {
+
+const LoginCallbackPage = () => {
   const { authState, updateAuthState } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     const handleAuthentication = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
+      const state = urlParams.get("state");
 
-      if (code) {
+      if (code && state) {
         try {
           // 백엔드로 인증 코드 전송 및 처리
-          await handleGoogleLogin(code);
+          await handleOauthLogin(code, state);
           updateAuthState({
             ...authState,
             isLoggedIn: true,
@@ -29,9 +31,9 @@ const GoogleLoginCallback = () => {
 
     handleAuthentication();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate]);
+  }, []);
 
   return <div></div>;
 };
 
-export default GoogleLoginCallback;
+export default LoginCallbackPage;

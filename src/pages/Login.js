@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleLoginButton from "../components/auth/GoogleLoginUsePackage";
+import GoogleLoginButton from "../components/auth/GoogleLoginButton";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
@@ -22,9 +22,7 @@ const Login = () => {
               {t("login.requiredLogin")}
             </div>
             <div className="flex justify-center items-center h-20">
-              <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-                <GoogleLoginButton />
-              </GoogleOAuthProvider>
+              <GoogleLoginButton />
             </div>
           </div>
         </div>

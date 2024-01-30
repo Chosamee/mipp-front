@@ -31,6 +31,34 @@ export const handleLogout = async () => {
   }
 };
 
+export const handleSessionState = async (language) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/session_state?language=${language}`, {
+      withCredentials: true,
+    });
+    return response.data.redirect_url;
+  } catch (error) {
+    console.error("Error during Google Login:", error);
+    throw error;
+  }
+};
+
+export const handleOauthLogin = async (code, state) => {
+  const formData = new FormData();
+  formData.append("code", code);
+  formData.append("state", state);
+  try {
+    const response = await axios.post(`${API_BASE_URL}/google_token`, formData, {
+      withCredentials: true,
+    });
+    console.log("Google Login Success:", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error during Login:", error);
+    throw error;
+  }
+};
+
 export const handleGoogleLogin = async (googleData) => {
   const formData = new FormData();
   formData.append("token", googleData.credential);
