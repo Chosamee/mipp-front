@@ -33,9 +33,7 @@ export const handleLogout = async () => {
 
 export const handleSessionState = async (language) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/session_state?language=${language}`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(`${API_BASE_URL}/session_state?language=${language}`);
     return response.data.redirect_url;
   } catch (error) {
     console.error("Error during Google Login:", error);
