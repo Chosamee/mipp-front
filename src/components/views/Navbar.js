@@ -72,7 +72,7 @@ const NavBar = () => {
       ">
       <div className="flex items-center justify-between py-5 w-full">
         {/* GNB 메인*/}
-        <div className="flex font-bold gap-[60px] py-3 pl-6">
+        <div className="flex font-bold gap-[60px] py-3 pl-6 pr-5">
           <button
             onClick={() => navigate(getLangUrl("/"))}
             className="self-center text-[36px] font-bold">
@@ -168,12 +168,30 @@ const NavBar = () => {
         {/* 드롭다운 메뉴 */}
 
         <div className="relative desktop:hidden flex">
+          <div className="flex gap-[14px] p-1 desktop:hidden mr-5">
+            <button
+              className={`flex p-1 gap-[6px] items-center ${
+                i18n.language === "ko" ? "text-black" : "text-[#A5A5A5]"
+              }`}
+              onClick={() => changeLanguage("ko")}>
+              KO
+            </button>
+            <div className="w-[1px] h-5 bg-[#D9D9D9] self-center"></div>
+            <button
+              className={`flex p-1 gap-[6px] items-center ${
+                i18n.language === "en" ? "text-black" : "text-[#A5A5A5]"
+              }`}
+              onClick={() => changeLanguage("en")}>
+              EN
+            </button>
+          </div>
           <button
             onClick={toggleMenu}
-            className="justify-center mr-2 px-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition">
+            className="justify-center mr-2 px-2 rounded-md text-sm font-medium focus:outline-none focus:ring transition flex-shrink-0">
             <img src={hamberger} alt="Hamberger Bar" />
           </button>
         </div>
+
         <div
           className={`absolute top-[106px] bg-white w-full text-[16px] font-medium pb-[40px] flex flex-col gap-6 z-30 ${
             isMenuOpen ? "block" : "hidden"

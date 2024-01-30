@@ -1,5 +1,4 @@
 import React from "react";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import GoogleLoginButton from "../components/auth/GoogleLoginButton";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
@@ -8,7 +7,6 @@ import { Navigate } from "react-router-dom";
 
 const Login = () => {
   // Google Client ID
-  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const { t } = useTranslation();
   const { authState } = useAuth();
   return (
