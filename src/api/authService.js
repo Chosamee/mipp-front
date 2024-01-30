@@ -32,8 +32,12 @@ export const handleLogout = async () => {
 };
 
 export const handleSessionState = async (language) => {
+  const formData = new FormData();
+  formData.append("language", language);
   try {
-    const response = await axios.get(`${API_BASE_URL}/session_state?language=${language}`);
+    const response = await axios.post(`${API_BASE_URL}/session_state`, formData, {
+      withCredentials: true,
+    });
     return response.data.redirect_url;
   } catch (error) {
     console.error("Error during Google Login:", error);
