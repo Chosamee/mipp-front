@@ -9,14 +9,13 @@ import { getLangUrl } from "locales/utils";
 const GoogleLoginButton = () => {
   const { i18n } = useTranslation();
   const initiateLogin = async () => {
-    const redirect = await handleSessionState(navigator.language.split("-")[0]);
+    const redirect = await handleSessionState(i18n.language);
     window.location.href = redirect;
   };
   const { authState, updateAuthState } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    i18n.changeLanguage(navigator.language.split("-")[0]);
     if (authState.isLoggedIn === true) {
       navigate(getLangUrl("/home"));
     }
@@ -33,7 +32,7 @@ const GoogleLoginButton = () => {
             ...authState,
             isLoggedIn: true,
           });
-          navigate(`${navigator.language.split("-")[0]}/home`); // 성공 시 홈 페이지로 리디렉션
+          navigate(getLangUrl("/home")); // 성공 시 홈 페이지로 리디렉션
         } catch (error) {
           console.error("Authentication error:", error);
           // 오류 처리 로직
