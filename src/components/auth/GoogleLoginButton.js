@@ -7,10 +7,8 @@ import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
-  const { i18n } = useTranslation();
-
   const initiateLogin = async () => {
-    const redirect = await handleSessionState(i18n.language);
+    const redirect = await handleSessionState(navigator.language.split("-")[0]);
     window.location.href = redirect;
   };
   const { authState, updateAuthState } = useAuth();
