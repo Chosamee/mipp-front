@@ -43,10 +43,12 @@ export const handleSessionState = async (language) => {
   }
 };
 
-export const handleOauthLogin = async (code, state) => {
+export const handleOauthLogin = async (code, state, language) => {
   const formData = new FormData();
   formData.append("code", code);
   formData.append("state", state);
+  formData.append("language", language);
+
   try {
     const response = await axios.post(`${API_BASE_URL}/google_token`, formData, {
       withCredentials: true,

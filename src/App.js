@@ -43,7 +43,6 @@ import store from "stateStore/store.js";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import Intro from "pages/Intro";
-import LoginCallbackPage from "components/auth/LoginCallbackPage";
 
 const App = () => {
   return (
@@ -57,7 +56,6 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<LanguageRedirector />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
-                <Route path="login" element={<LoginCallbackPage />} />
 
                 <Route path="/:lang" element={<LanguageRedirector />}>
                   <Route path="*" element={<Navigate to="." replace />} />

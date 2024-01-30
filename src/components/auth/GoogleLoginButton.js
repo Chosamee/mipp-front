@@ -4,25 +4,30 @@ import { handleOauthLogin, handleSessionState } from "api/authService";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { useTranslation } from "react-i18next";
+import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
   const { i18n } = useTranslation();
+
   const initiateLogin = async () => {
     const redirect = await handleSessionState(i18n.language);
     window.location.href = redirect;
   };
   const { authState, updateAuthState } = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
+    if (authState.isLoggedIn === true) {
+      navigate(getLangUrl("/home"));
+    }
     const handleAuthentication = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
       const state = urlParams.get("state");
-
       if (code && state) {
         try {
           // 백엔드로 인증 코드 전송 및 처리
-          await handleOauthLogin(code, state);
+          await handleOauthLogin(code, state, navigator.language.split("-")[0]);
           updateAuthState({
             ...authState,
             isLoggedIn: true,
