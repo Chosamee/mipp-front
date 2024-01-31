@@ -29,15 +29,104 @@ import tech from "assets/index/section3/Group 304.svg";
 
 // section 4 assets
 import lockSvg from "assets/index/Group 294.svg";
+import { Helmet } from "react-helmet";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
 const App = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="flex flex-col min-h-screen items-center desktop:pt-[132px] pt-[106px] leading-[normal]">
+      {i18n.language === "en" ? (
+        <Helmet>
+          <title>AI Music Plagiarism Check MIPP</title>
+          <meta name="description" content="" />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://aimipp.com/en" />
+          <meta property="og:title" content="AI Music Plagiarism Check MIPP" />
+          <meta
+            property="og:description"
+            content="To protect your music IP, easily conduct music plagiarism checks using AI, with MIPP."
+          />
+          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:url" content="https://aimipp.com/en" />
+          <meta name="twitter:title" content="AI Music Plagiarism Check MIPP" />
+          <meta
+            name="twitter:description"
+            content="To protect your music IP, easily conduct music plagiarism checks using AI, with MIPP."
+          />
+          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+
+          <link rel="canonical" href="https://aimipp.com/en" />
+          <meta name="robots" content="index, follow" />
+          <script type="application/ld+json">
+            {`{
+              "@context": "http://schema.org/",
+              "@type": "WebPage",
+              name: "MIPP Main Page",
+              description:
+                "MIPP provides solutions for protecting your music against plagiarism, ensuring your intellectual property rights are safeguarded.",
+              url: "https://aimipp.com/en/",
+              inLanguage: "en-US",
+              publisher: {
+                "@type": "Organization",
+                name: "DoubleH Company",
+              },
+            }`}
+          </script>
+        </Helmet>
+      ) : (
+        <Helmet>
+          <title>AI 음악 표절 검사 MIPP</title>
+          <meta
+            name="description"
+            content="AI를 활용하여 음악 표절 검사를 손쉽게 진행해보세요. MIPP"
+          />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://aimipp.com/kr" />
+          <meta property="og:title" content="AI 음악 표절 검사 MIPP" />
+          <meta
+            property="og:description"
+            content="MIPP과 함께 AI 음악 표절 검사를 진행하고, 음악 저작권을 보호하세요."
+          />
+          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:domain" content="aimipp.com" />
+          <meta name="twitter:url" content="https://aimipp.com/" />
+          <meta name="twitter:title" content="AI 음악 표절 검사 MIPP" />
+          <meta
+            name="twitter:description"
+            content="MIPP과 함께 AI 음악 표절 검사를 진행하고, 음악 저작권을 보호하세요."
+          />
+          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+
+          <link rel="canonical" href="https://aimipp.com/kr" />
+          <meta name="robots" content="index, follow" />
+          <script type="application/ld+json">
+            {`{
+              "@context": "http://schema.org/",
+              "@type": "WebPage",
+              name: "MIPP 메인 페이지",
+              description:
+                "MIPP는 음악 표절 방지와 지식재산권 보호를 위한 최첨단 솔루션을 제공합니다.",
+              url: "https://aimipp.com/kr/",
+              inLanguage: "ko-KR",
+              publisher: {
+                "@type": "Organization",
+                name: "DoubleH Company",
+              },
+            }`}
+          </script>
+        </Helmet>
+      )}
+
       {/** Section 1 Start */}
       <div className="flex desktop:px-[34px] px-0 desktop:max-w-[1852px] max-w-[100%] w-full min-w-fit mx-auto">
         {/* Background Image Start */}
