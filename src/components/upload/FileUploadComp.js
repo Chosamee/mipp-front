@@ -48,7 +48,7 @@ const FileUploadComp = ({ inst, bpm }) => {
 
   return (
     <React.Fragment>
-      <div className="w-[420px]">
+      <div className="desktop:w-[420px] w-[335px]">
         <label
           className="group mb-6 mx-auto w-full flex flex-col items-center px-4 py-10 text-blue rounded-[12px]
       border-2 border-[#C7CCD9] border-dashed bg-[#F8F9FC] cursor-pointer hover:bg-[#E1EBFF] hover:text-[#3B59FA] hover:border-[#A1B5E8]">
@@ -81,7 +81,7 @@ const FileUploadComp = ({ inst, bpm }) => {
       </div>
       <button
         onClick={handleSubmit}
-        className="w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
+        className="w-[326px] desktop:w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
         {t("home.submit")}
       </button>
     </React.Fragment>

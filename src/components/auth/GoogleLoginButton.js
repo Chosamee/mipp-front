@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import googleBrandIcon from "assets/web_light_sq_SI@3x.png";
 import { handleOauthLogin, handleSessionState } from "api/authService";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +8,14 @@ import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
   const { i18n } = useTranslation();
+  const [isRequested, setIsRequested] = useState(false);
+
   const initiateLogin = async () => {
-    console.log(i18n.language);
-    const redirect = await handleSessionState(i18n.language);
-    window.location.href = redirect;
+    if (!isRequested) {
+      const redirect = await handleSessionState(i18n.language);
+      setIsRequested(true);
+      window.location.href = redirect;
+    }
   };
   const { authState, updateAuthState } = useAuth();
   const navigate = useNavigate();
@@ -46,7 +50,7 @@ const GoogleLoginButton = () => {
   }, [navigate]);
 
   return (
-    <button onClick={initiateLogin} className="mt-20">
+    <button onClick={initiateLogin} className="mt-12">
       <img src={googleBrandIcon} alt="구글 로그인 버튼" className="w-[300px]" />
       {/* <img src={naverBrandIcon} alt="구글 로그인 버튼" className="w-[300px]" /> */}
     </button>

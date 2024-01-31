@@ -31,9 +31,9 @@ export const handleLogout = async () => {
   }
 };
 
-export const handleSessionState = async (language) => {
+export const handleSessionState = async (lang) => {
   const formData = new FormData();
-  formData.append("language", language);
+  formData.append("lang", lang);
   try {
     const response = await axios.post(`${API_BASE_URL}/session_state`, formData, {
       withCredentials: true,
@@ -45,11 +45,10 @@ export const handleSessionState = async (language) => {
   }
 };
 
-export const handleOauthLogin = async (code, state, language) => {
+export const handleOauthLogin = async (code, state) => {
   const formData = new FormData();
   formData.append("code", code);
   formData.append("state", state);
-  formData.append("language", language);
 
   try {
     const response = await axios.post(`${API_BASE_URL}/google_token`, formData, {

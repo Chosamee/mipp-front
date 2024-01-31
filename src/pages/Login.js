@@ -19,7 +19,7 @@ const Login = () => {
             <div className="text-3xl text-gray-800 font-bold my-auto">
               {t("login.requiredLogin")}
             </div>
-            <div className="flex justify-center items-center h-20">
+            <div className="flex justify-center items-center mb-32">
               <GoogleLoginButton />
             </div>
           </div>
