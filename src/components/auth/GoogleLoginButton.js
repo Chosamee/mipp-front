@@ -42,6 +42,7 @@ const GoogleLoginButton = () => {
         } catch (error) {
           console.error("Authentication error:", error);
           // 오류 처리 로직
+          setIsLoading(false);
         }
       }
     };
