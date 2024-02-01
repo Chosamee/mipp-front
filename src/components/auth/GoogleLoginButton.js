@@ -14,10 +14,11 @@ const GoogleLoginButton = () => {
     setIsLoading(true);
 
     try {
-      const redirect = await handleSessionState(i18n.language);
+      const redirect = await handleSessionState();
       window.location.href = redirect;
       // 성공적인 리디렉션 후에는 여기에 도달하지 않음
     } catch (error) {
+      setIsLoading(false);
       console.error("Login failed:", error);
     }
   };
@@ -29,11 +30,10 @@ const GoogleLoginButton = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
       const state = urlParams.get("state");
-      console.log(i18n.language);
       if (code && state) {
         try {
           // 백엔드로 인증 코드 전송 및 처리
-          await handleOauthLogin(code, state, i18n.language);
+          await handleOauthLogin(code, state);
           updateAuthState({
             ...authState,
             isLoggedIn: true,
