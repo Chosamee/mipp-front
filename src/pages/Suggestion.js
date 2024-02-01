@@ -79,7 +79,7 @@ const Suggestion = () => {
       try {
         const response = await addPosts(contents);
         console.log(response);
-        window.location.reload();
+        navigate(0);
       } catch (error) {
         console.log(error);
         updateAuthState({ isLoggedIn: false });
@@ -95,7 +95,7 @@ const Suggestion = () => {
     if (confirmSubmit) {
       try {
         await deletePosts(id);
-        window.location.reload();
+        navigate(0);
       } catch (error) {
         console.log("delete front error: ", error);
       }
