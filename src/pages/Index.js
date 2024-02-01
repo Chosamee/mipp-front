@@ -66,18 +66,17 @@ const App = () => {
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
             {`{
-              "@context": "http://schema.org/",
-              "@type": "WebPage",
-              name: "MIPP Main Page",
-              description:
-                "MIPP provides solutions for protecting your music against plagiarism, ensuring your intellectual property rights are safeguarded.",
-              url: "https://aimipp.com/en/",
-              inLanguage: "en-US",
-              publisher: {
-                "@type": "Organization",
-                name: "DoubleH Company",
-              },
-            }`}
+  "@context": "http://schema.org/",
+  "@type": "WebPage",
+  "name": "MIPP Main Page",
+  "description": "MIPP provides solutions for protecting your music against plagiarism, ensuring your intellectual property rights are safeguarded.",
+  "url": "https://aimipp.com/en/",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoubleH Company"
+  }
+}`}
           </script>
         </Helmet>
       ) : (
@@ -111,18 +110,17 @@ const App = () => {
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
             {`{
-              "@context": "http://schema.org/",
-              "@type": "WebPage",
-              name: "MIPP 메인 페이지",
-              description:
-                "MIPP는 음악 표절 방지와 지식재산권 보호를 위한 최첨단 솔루션을 제공합니다.",
-              url: "https://aimipp.com/kr/",
-              inLanguage: "ko-KR",
-              publisher: {
-                "@type": "Organization",
-                name: "DoubleH Company",
-              },
-            }`}
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "name": "MIPP 메인 페이지",
+    "description": "MIPP는 음악 표절 방지와 지식재산권 보호를 위한 최첨단 솔루션을 제공합니다.",
+    "url": "https://aimipp.com/kr/",
+    "inLanguage": "ko-KR",
+    "publisher": {
+      "@type": "Organization",
+      "name": "DoubleH Company"
+    }
+  }`}
           </script>
         </Helmet>
       )}

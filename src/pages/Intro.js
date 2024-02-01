@@ -51,18 +51,17 @@ const Intro = () => {
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
             {`{
-              "@context": "http://schema.org/",
-              "@type": "AboutPage",
-              name: "Introduction to MIPP",
-              description:
-                "Setting the standard in plagiarism detection, MIPP is forward to protecting the rights of creators through the latest AI technology.",
-              url: "https://aimipp.com/en/intro",
-              inLanguage: "en-US",
-              publisher: {
-                "@type": "Organization",
-                name: "MIPP",
-              },
-            }`}
+  "@context": "http://schema.org/",
+  "@type": "AboutPage",
+  "name": "Introduction to MIPP",
+  "description": "Setting the standard in plagiarism detection, MIPP is forward to protecting the rights of creators through the latest AI technology.",
+  "url": "https://aimipp.com/en/intro",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@type": "Organization",
+    "name": "MIPP"
+  }
+}`}
           </script>
         </Helmet>
       ) : (
@@ -95,17 +94,17 @@ const Intro = () => {
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
             {`{
-              "@context": "http://schema.org/",
-              "@type": "AboutPage",
-              name: "MIPP 소개",
-              description: "MIPP는 음악 창작자의 권리 보호를 위해 최신 AI 기술을 연구합니다.",
-              url: "https://aimipp.com/kr/intro",
-              inLanguage: "ko-KR",
-              publisher: {
-                "@type": "Organization",
-                name: "더블에이치컴퍼니",
-              },
-            }`}
+  "@context": "http://schema.org/",
+  "@type": "AboutPage",
+  "name": "MIPP 소개",
+  "description": "MIPP는 음악 창작자의 권리 보호를 위해 최신 AI 기술을 연구합니다.",
+  "url": "https://aimipp.com/kr/intro",
+  "inLanguage": "ko-KR",
+  "publisher": {
+    "@type": "Organization",
+    "name": "더블에이치컴퍼니"
+  }
+}`}
           </script>
         </Helmet>
       )}
