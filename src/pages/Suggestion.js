@@ -5,6 +5,7 @@ import LoadingSpinner from "../components/views/LoadingSpinner";
 import { addPosts, fetchPosts, deletePosts } from "../api/suggestionService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
+import { useAuth } from "components/auth/AuthContext";
 
 const Suggestion = () => {
   const [myData, setMyData] = useState({});
@@ -62,6 +63,7 @@ const Suggestion = () => {
   const handleInputChange = (event) => {
     setContents(event.target.value);
   };
+  const { updateAuthState } = useAuth();
   // 서버에 전송하는 함수
   const handleSubmit = async () => {
     if (!contents) {
@@ -80,7 +82,8 @@ const Suggestion = () => {
         window.location.reload();
       } catch (error) {
         console.log(error);
-        navigate(getLangUrl("/home"));
+        updateAuthState({ isLoggedIn: false });
+        navigate(getLangUrl("/login"));
       }
     } else {
       console.log("cancelled");

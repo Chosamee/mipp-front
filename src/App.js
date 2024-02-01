@@ -1,11 +1,10 @@
 // React 및 라우팅 관련 라이브러리
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
-  useLocation,
   useNavigate,
   useParams,
   Outlet,
@@ -30,29 +29,36 @@ import { useTranslation } from "react-i18next";
 import LoginCallbackPage from "components/auth/LoginCallbackPage";
 
 // 페이지: 애플리케이션의 각 페이지
-const Home = lazy(() => import("pages/Home"));
-const Index = lazy(() => import("pages/Index"));
-const Login = lazy(() => import("pages/Login"));
-const Result = lazy(() => import("pages/Result"));
-const Detail = lazy(() => import("pages/Detail"));
-const Howtouse = lazy(() => import("pages/Howtouse"));
-const Suggestion = lazy(() => import("pages/Suggestion"));
-const Asks = lazy(() => import("pages/ask/Asks"));
-const AskCreate = lazy(() => import("pages/ask/AskCreate"));
-const AskDetail = lazy(() => import("pages/ask/AskDetail"));
-const RegistrationForm = lazy(() => import("pages/Regist"));
-const MyPage = lazy(() => import("pages/MyPage"));
-const Intro = lazy(() => import("pages/Intro"));
+import Home from "pages/Home";
+import Index from "pages/Index";
+import Login from "pages/Login";
+import Result from "pages/Result";
+import Detail from "pages/Detail";
+import Howtouse from "pages/Howtouse";
+import Suggestion from "pages/Suggestion";
+import Asks from "pages/ask/Asks";
+import AskCreate from "pages/ask/AskCreate";
+import AskDetail from "pages/ask/AskDetail";
+import RegistrationForm from "pages/Regist";
+import MyPage from "pages/MyPage";
+import Intro from "pages/Intro";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Provider store={store}>
-        <Router>
-          <Suspense fallback={<div>Loading...</div>}>
+    <Provider store={store}>
+      <Router>
+        <AuthProvider>
+          <Suspense
+            fallback={
+              <div>
+                Page Loading... Wait a second. <br />
+                If the problem persists, please contact your network administrator or web page
+                administrator.
+              </div>
+            }>
             <ScrollToTop />
             <div className="flex flex-col min-h-screen min-w-72 ">
-              <CustomNavbar />
+              <Navbar />
               <div className="flex-grow mt-50">
                 <Routes>
                   <Route path="/" element={<LanguageRedirector />} />
@@ -94,16 +100,10 @@ const App = () => {
               <Footer />
             </div>
           </Suspense>
-        </Router>
-      </Provider>
-    </AuthProvider>
+        </AuthProvider>
+      </Router>
+    </Provider>
   );
-};
-
-const CustomNavbar = () => {
-  const location = useLocation(); // Router 컨텍스트 내부에서 useLocation 사용
-
-  return location.pathname.startsWith("/asks") ? <Navbar /> : <Navbar />;
 };
 
 export default App;

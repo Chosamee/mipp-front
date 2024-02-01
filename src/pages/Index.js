@@ -114,7 +114,7 @@ const App = () => {
     "@type": "WebPage",
     "name": "MIPP 메인 페이지",
     "description": "MIPP는 음악 표절 방지와 지식재산권 보호를 위한 최첨단 솔루션을 제공합니다.",
-    "url": "https://aimipp.com/kr/",
+    "url": "https://aimipp.com/ko/",
     "inLanguage": "ko-KR",
     "publisher": {
       "@type": "Organization",
@@ -537,7 +537,7 @@ const Section2Cont3 = () => {
           <path
             d="M1 161.256L83.5381 113.364L160.318 103.786L231.339 48.2318L302.36 78.8824L377.22 17.5812L454 2.25586"
             stroke="#3553F3"
-            stroke-width="4"
+            strokeWidth="4"
           />
         </svg>
         <div className="desktop:left-[0.50px] desktop:top-[63px] left-[4px] top-[54px] absolute text-blue-600 desktop:text-[20px] text-[16px] font-semibold">

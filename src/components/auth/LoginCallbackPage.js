@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { handleOauthLogin } from "api/authService";
 import { useAuth } from "./AuthContext";
 import { getLangUrl } from "locales/utils";
+import LoadingSpinner from "components/views/LoadingSpinner";
 
 const LoginCallbackPage = () => {
   const { updateAuthState } = useAuth();
@@ -27,10 +28,14 @@ const LoginCallbackPage = () => {
     };
 
     handleAuthentication();
-  }, [navigate, updateAuthState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // 로딩 인디케이터나 메시지를 추가하는 것이 좋을 수 있습니다.
-  return <div>로그인 처리 중...</div>;
+  return (
+    <div className="flex pt-[300px] pb-[200px] items-center">
+      <LoadingSpinner />
+    </div>
+  );
 };
 
 export default LoginCallbackPage;

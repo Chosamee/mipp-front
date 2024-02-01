@@ -31,11 +31,9 @@ export const handleLogout = async () => {
   }
 };
 
-export const handleSessionState = async (lang) => {
-  const formData = new FormData();
-  formData.append("lang", lang);
+export const handleSessionState = async () => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/session_state`, formData, {
+    const response = await axios.get(`${API_BASE_URL}/session_state`, {
       withCredentials: true,
     });
     return response.data.redirect_url;

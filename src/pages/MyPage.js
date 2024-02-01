@@ -1,7 +1,6 @@
 import { handleCheckNicknameDuplicate } from "api/authService";
 import { deleteUser, fetchProfile, updateProfile } from "api/profileService";
 import { useAuth } from "components/auth/AuthContext";
-import LoadingSpinner from "components/views/LoadingSpinner";
 import { getLangUrl } from "locales/utils";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -57,6 +56,8 @@ const AccountPage = () => {
         });
       } catch (error) {
         console.error("Error:", error);
+        updateAuthState({ isLoggedIn: false });
+        navigate(getLangUrl("/login"));
       }
     };
 
@@ -155,7 +156,7 @@ const AccountPage = () => {
   };
   return (
     <div className="xl:mt-32 md:mt-48 mt-32 max-w-4xl mx-auto px-5 pb-20">
-      {profile ? (
+      {profile && (
         <div className="container mx-auto  p-6 rounded-md shadow-lg border border-blue-600">
           <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">
             <div className="text-2xl font-semibold">{t("profile.title")}</div>
@@ -280,8 +281,6 @@ const AccountPage = () => {
             )}
           </div>
         </div>
-      ) : (
-        <LoadingSpinner />
       )}
     </div>
   );

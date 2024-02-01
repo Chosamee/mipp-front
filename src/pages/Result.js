@@ -5,12 +5,13 @@ import LoadingSpinner from "../components/views/LoadingSpinner";
 import { fetchResults } from "../api/resultService.js";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "components/auth/AuthContext";
 
 const Result = () => {
   const [resultData, setresultData] = useState([]);
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
-
+  const { updateAuthState } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,6 +21,8 @@ const Result = () => {
         setresultData(data);
       } catch (error) {
         console.error("Error:", error);
+        updateAuthState({ isLoggedIn: false });
+        navigate(getLangUrl("/login"));
       }
     };
 

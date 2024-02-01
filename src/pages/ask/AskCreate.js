@@ -3,6 +3,7 @@ import { addAsks } from "../../api/askService";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
+import { useAuth } from "components/auth/AuthContext";
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
 
@@ -53,7 +54,7 @@ const AskCreate = () => {
     const newFiles = inquiry.files.filter((_, fileIndex) => fileIndex !== index);
     setInquiry({ ...inquiry, files: newFiles });
   };
-
+  const { updateAuthState } = useAuth();
   const handleSubmit = async (e) => {
     console.log(inquiry);
     e.preventDefault();
@@ -73,6 +74,7 @@ const AskCreate = () => {
         console.log(response);
       } catch (error) {
         console.log("add asks error:", error);
+        updateAuthState({ isLoggedIn: false });
       }
       setIsDirty(false);
       navigate(getLangUrl("/asks"));

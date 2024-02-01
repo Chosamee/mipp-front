@@ -3,6 +3,9 @@ import FileUploadComp from "../components/upload/FileUploadComp";
 import YoutubeLinkComp from "../components/upload/YoutubeLinkComp";
 import { useTranslation } from "react-i18next";
 import { getRemain } from "api/uploadService";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "components/auth/AuthContext";
+import { getLangUrl } from "locales/utils";
 
 const Home = () => {
   // 탭 선택
@@ -10,6 +13,8 @@ const Home = () => {
   const [inst, setInst] = useState("boundary");
   const [remain, setRemain] = useState();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { updateAuthState } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,11 +23,13 @@ const Home = () => {
         setRemain(data.avail_num);
       } catch (error) {
         console.error("Error:", error);
+        updateAuthState({ isLoggedIn: false });
+        navigate(getLangUrl("/login"));
       }
     };
 
     fetchData();
-  });
+  }, [navigate, updateAuthState]);
 
   const SelectMusicType = ({ selected, optionNum }) => {
     const { t } = useTranslation();

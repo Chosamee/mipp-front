@@ -25,10 +25,6 @@ const GoogleLoginButton = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsLoading(true);
-    if (authState.isLoggedIn === true) {
-      navigate(getLangUrl("/home"));
-    }
     const handleAuthentication = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
@@ -46,7 +42,6 @@ const GoogleLoginButton = () => {
         } catch (error) {
           console.error("Authentication error:", error);
           // 오류 처리 로직
-          setIsLoading(false);
         }
       }
     };

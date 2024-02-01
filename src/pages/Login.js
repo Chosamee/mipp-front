@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GoogleLoginButton from "../components/auth/GoogleLoginButton";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
   // Google Client ID
   const { t } = useTranslation();
   const { authState } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (authState.isLoggedIn === true) {
+      navigate(getLangUrl("/home"));
+    }
+  });
   return (
     <React.Fragment>
       {authState.isLoggedIn ? (

@@ -73,7 +73,7 @@ const Intro = () => {
           />
 
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://aimipp.com/kr/intro" />
+          <meta property="og:url" content="https://aimipp.com/ko/intro" />
           <meta property="og:title" content="MIPP 소개: 음악 저작권 보호의 새로운 시대" />
           <meta
             property="og:description"
@@ -82,7 +82,7 @@ const Intro = () => {
           <meta property="og:image" content="https://aimipp.com/image.jpg" />
 
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://aimipp.com/kr/intro" />
+          <meta name="twitter:url" content="https://aimipp.com/ko/intro" />
           <meta name="twitter:title" content="AIMIPP 소개: 음악 저작권 보호의 새로운 시대" />
           <meta
             name="twitter:description"
@@ -90,7 +90,7 @@ const Intro = () => {
           />
           <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
 
-          <link rel="canonical" href="https://aimipp.com/kr/intro" />
+          <link rel="canonical" href="https://aimipp.com/ko/intro" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
             {`{
@@ -98,7 +98,7 @@ const Intro = () => {
   "@type": "AboutPage",
   "name": "MIPP 소개",
   "description": "MIPP는 음악 창작자의 권리 보호를 위해 최신 AI 기술을 연구합니다.",
-  "url": "https://aimipp.com/kr/intro",
+  "url": "https://aimipp.com/ko/intro",
   "inLanguage": "ko-KR",
   "publisher": {
     "@type": "Organization",
@@ -117,8 +117,9 @@ const Intro = () => {
           <div className="grid grid-cols-1 md:grid-cols-3">
             {Object.keys(images).map((key, i) => (
               <FadeInComp
+                key={key}
                 data={
-                  <div className="p-4 h-full" key={i}>
+                  <div className="p-4 h-full">
                     <div className="flex flex-col px-10 mb-10 text-center items-center border-4 border-blue-300 bg-blue-50 rounded-2xl shadow-2xl h-full">
                       <img src={images[key]} alt={`img ${i}`} className="w-12 h-12 mb-4 mt-10" />
                       <div className="md:text-3xl text-xl mb-5 font-bold">
