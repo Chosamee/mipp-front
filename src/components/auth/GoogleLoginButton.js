@@ -8,19 +8,24 @@ import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
   const { i18n } = useTranslation();
-  const [isRequested, setIsRequested] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const initiateLogin = async () => {
-    if (!isRequested) {
+    setIsLoading(true);
+
+    try {
       const redirect = await handleSessionState(i18n.language);
-      setIsRequested(true);
       window.location.href = redirect;
+      // 성공적인 리디렉션 후에는 여기에 도달하지 않음
+    } catch (error) {
+      console.error("Login failed:", error);
     }
   };
   const { authState, updateAuthState } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIsLoading(true);
     if (authState.isLoggedIn === true) {
       navigate(getLangUrl("/home"));
     }
@@ -41,6 +46,7 @@ const GoogleLoginButton = () => {
         } catch (error) {
           console.error("Authentication error:", error);
           // 오류 처리 로직
+          setIsLoading(false);
         }
       }
     };
@@ -50,7 +56,7 @@ const GoogleLoginButton = () => {
   }, [navigate]);
 
   return (
-    <button onClick={initiateLogin} className="mt-12">
+    <button onClick={initiateLogin} className="mt-12" disabled={isLoading}>
       <img src={googleBrandIcon} alt="구글 로그인 버튼" className="w-[300px]" />
       {/* <img src={naverBrandIcon} alt="구글 로그인 버튼" className="w-[300px]" /> */}
     </button>

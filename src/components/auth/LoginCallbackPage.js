@@ -5,8 +5,9 @@ import { useAuth } from "./AuthContext";
 import { getLangUrl } from "locales/utils";
 
 const LoginCallbackPage = () => {
-  const { authState, updateAuthState } = useAuth();
+  const { updateAuthState } = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
     const handleAuthentication = async () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -15,25 +16,21 @@ const LoginCallbackPage = () => {
 
       if (code && state) {
         try {
-          // 백엔드로 인증 코드 전송 및 처리
           await handleOauthLogin(code, state);
-          updateAuthState({
-            ...authState,
-            isLoggedIn: true,
-          });
-          navigate(getLangUrl("/home")); // 성공 시 홈 페이지로 리디렉션
+          updateAuthState({ isLoggedIn: true });
+          navigate(getLangUrl("/home"));
         } catch (error) {
           console.error("Authentication error:", error);
-          // 오류 처리 로직
+          navigate(getLangUrl("/login")); // 오류 시 로그인 페이지로 리디렉션
         }
       }
     };
 
     handleAuthentication();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [navigate, updateAuthState]);
 
-  return <div></div>;
+  // 로딩 인디케이터나 메시지를 추가하는 것이 좋을 수 있습니다.
+  return <div>로그인 처리 중...</div>;
 };
 
 export default LoginCallbackPage;
