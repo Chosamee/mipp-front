@@ -33,7 +33,7 @@ export const handleLogout = async () => {
 
 export const handleSessionState = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/session_state`, {
+    const response = await axios.post(`${API_BASE_URL}/session_state`, null, {
       withCredentials: true,
     });
     return response.data.redirect_url;
