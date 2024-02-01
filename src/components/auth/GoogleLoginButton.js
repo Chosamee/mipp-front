@@ -3,11 +3,9 @@ import googleBrandIcon from "assets/web_light_sq_SI@3x.png";
 import { handleOauthLogin, handleSessionState } from "api/authService";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 
 const GoogleLoginButton = () => {
-  const { i18n } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
   const initiateLogin = async () => {

@@ -11,6 +11,7 @@ const protectedRoutes = ["/mypage", "/board", "/result", "/home", "/asks", "/det
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     isLoggedIn: false,
+    isLoading: true,
     // 여기에 추가적인 상태나 정보를 저장
   });
   const location = useLocation();
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkToken = async () => {
       const isTokenValid = await verifyToken(); // 서버에 토큰 유효성 검증 요청
-      setAuthState({ isLoggedIn: isTokenValid.isValid }); // 토큰이 유효하지 않다면 AuthState 업데이트
+      setAuthState({ isLoggedIn: isTokenValid.isValid, isLoading: false });
       if (!isTokenValid) {
         clearInterval(interval); // 인증 실패시 인터벌 중지
       }
@@ -49,7 +50,6 @@ export const AuthProvider = ({ children }) => {
     };
     const pathParts = location.pathname.split("/").slice(2);
     const pathWithoutLang = `/${pathParts.join("/")}`;
-
     const pathIsProtected = protectedRoutes.some((protectedPath) =>
       pathWithoutLang.startsWith(protectedPath)
     );
