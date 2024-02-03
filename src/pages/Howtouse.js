@@ -21,7 +21,10 @@ const Howtouse = () => {
             property="og:description"
             content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide."
           />
-          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            property="og:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://aimipp.com/en/howtouse" />
@@ -30,7 +33,10 @@ const Howtouse = () => {
             name="twitter:description"
             content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide."
           />
-          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            name="twitter:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <link rel="canonical" href="https://aimipp.com/en/howtouse" />
           <meta name="robots" content="index, follow" />
@@ -95,7 +101,10 @@ const Howtouse = () => {
             property="og:description"
             content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요."
           />
-          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            property="og:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://aimipp.com/ko/howtouse" />
           <meta name="twitter:title" content="MIPP 사용 방법" />
@@ -103,7 +112,10 @@ const Howtouse = () => {
             name="twitter:description"
             content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요."
           />
-          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            name="twitter:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
           <link rel="canonical" href="https://aimipp.com/ko/howtouse" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">

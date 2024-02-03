@@ -51,7 +51,10 @@ const App = () => {
             property="og:description"
             content="To protect your music IP, easily conduct music plagiarism checks using AI, with MIPP."
           />
-          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            property="og:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://aimipp.com/en" />
@@ -60,7 +63,10 @@ const App = () => {
             name="twitter:description"
             content="To protect your music IP, easily conduct music plagiarism checks using AI, with MIPP."
           />
-          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            name="twitter:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <link rel="canonical" href="https://aimipp.com/en" />
           <meta name="robots" content="index, follow" />
@@ -94,7 +100,10 @@ const App = () => {
             property="og:description"
             content="MIPP과 함께 AI 음악 표절 검사를 진행하고, 음악 저작권을 보호하세요."
           />
-          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            property="og:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:domain" content="aimipp.com" />
@@ -104,7 +113,10 @@ const App = () => {
             name="twitter:description"
             content="MIPP과 함께 AI 음악 표절 검사를 진행하고, 음악 저작권을 보호하세요."
           />
-          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            name="twitter:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <link rel="canonical" href="https://aimipp.com/kr" />
           <meta name="robots" content="index, follow" />
@@ -221,64 +233,66 @@ const App = () => {
       {/* Section 2 End */}
 
       {/* Section 3 Start */}
-      <div className="flex flex-col items-center desktop:gap-[90px] desktop:py-[160px] py-20 px-2 mx-auto">
-        <div className="desktop:text-[50px] text-[28px] text-center font-semibold desktop:leading-[68px] leading-[38px] desktop:mb-0 mb-7">
-          {t("index.1.title")}
-        </div>
-        <div className="flex flex-col items-center desktop:gap-[100px] gap-[50px]">
-          {/* Content 1 Start */}
-          <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
-            <Section2Cont1 />
-            <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-7">
-              <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
-                {t("index.1.subtitle1")}
-              </div>
-              <div className="desktop:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium">
-                {t("index.1.content1")}
-              </div>
-              <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
-                {t("index.1.content1mobile")}
-              </div>
-            </div>
+      <div className="bg-[#F4F6FA] w-full">
+        <div className="flex flex-col items-center desktop:gap-[90px] desktop:py-[160px] py-20 px-2 mx-auto">
+          <div className="desktop:text-[50px] text-[28px] text-center font-semibold desktop:leading-[68px] leading-[38px] desktop:mb-0 mb-7">
+            {t("index.1.title")}
           </div>
-          {/* Content 1 End */}
-          {/* Content 2 Start */}
-          <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
-            <div className="desktop:hidden">
-              <Section2Cont2 />
-            </div>
-            <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-[53px]">
-              <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
-                {t("index.1.subtitle2")}
+          <div className="flex flex-col items-center desktop:gap-[100px] gap-[50px]">
+            {/* Content 1 Start */}
+            <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
+              <Section2Cont1 />
+              <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-7">
+                <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
+                  {t("index.1.subtitle1")}
+                </div>
+                <div className="desktop:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium">
+                  {t("index.1.content1")}
+                </div>
+                <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
+                  {t("index.1.content1mobile")}
+                </div>
               </div>
-              <div className="desktop:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium">
-                {t("index.1.content2")}
+            </div>
+            {/* Content 1 End */}
+            {/* Content 2 Start */}
+            <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
+              <div className="desktop:hidden">
+                <Section2Cont2 />
               </div>
-              <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
-                {t("index.1.content2mobile")}
+              <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-[53px]">
+                <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
+                  {t("index.1.subtitle2")}
+                </div>
+                <div className="desktop:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium">
+                  {t("index.1.content2")}
+                </div>
+                <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
+                  {t("index.1.content2mobile")}
+                </div>
+              </div>
+              <div className="desktop:flex hidden">
+                <Section2Cont2 />
               </div>
             </div>
-            <div className="desktop:flex hidden">
-              <Section2Cont2 />
+            {/* Content 2 End */}
+            {/* Content 3 Start */}
+            <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
+              <Section2Cont3 />
+              <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-[53px]">
+                <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
+                  {t("index.1.subtitle3")}
+                </div>
+                <div className="desktop:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium">
+                  {t("index.1.content3")}
+                </div>
+                <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
+                  {t("index.1.content3mobile")}
+                </div>
+              </div>
             </div>
+            {/* Content 3 End */}
           </div>
-          {/* Content 2 End */}
-          {/* Content 3 Start */}
-          <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
-            <Section2Cont3 />
-            <div className="flex flex-col desktop:items-start self-start desktop:self-center gap-[10px] flex-shrink-0 desktop:mt-0 mt-[53px]">
-              <div className="desktop:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
-                {t("index.1.subtitle3")}
-              </div>
-              <div className="desktop:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium">
-                {t("index.1.content3")}
-              </div>
-              <div className="desktop:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium">
-                {t("index.1.content3mobile")}
-              </div>
-            </div>
-          </div>
-          {/* Content 3 End */}
         </div>
       </div>
       {/* Section 3 End */}

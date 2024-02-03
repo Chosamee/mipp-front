@@ -29,7 +29,8 @@ const Home = () => {
     };
 
     fetchData();
-  }, [navigate, updateAuthState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
 
   const SelectMusicType = ({ selected, optionNum }) => {
     const { t } = useTranslation();
@@ -100,9 +101,9 @@ const Home = () => {
             {t("home.step1guideMobile")}
           </div>
           <div className="flex flex-col justify-center mb-4 gap-2">
-            <SelectMusicType selected={"boundary"} optionNum={1} />
-            <SelectMusicType selected={"vocal"} optionNum={2} />
-            <SelectMusicType selected={"melody"} optionNum={3} />
+            <SelectMusicType selected={"vocal"} optionNum={1} />
+            <SelectMusicType selected={"melody"} optionNum={2} />
+            <SelectMusicType selected={"boundary"} optionNum={3} />
           </div>
         </div>
 

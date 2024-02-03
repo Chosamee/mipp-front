@@ -33,7 +33,10 @@ const Intro = () => {
             property="og:description"
             content="MIPP sets a new standard in plagiarism detection, aiming to open new horizons in music copyright protection."
           />
-          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            property="og:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://aimipp.com/en/intro" />
@@ -45,7 +48,10 @@ const Intro = () => {
             property="twitter:description"
             content="MIPP sets a new standard in plagiarism detection, aiming to open new horizons in music copyright protection."
           />
-          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            name="twitter:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <link rel="canonical" href="https://aimipp.com/en/intro" />
           <meta name="robots" content="index, follow" />
@@ -79,7 +85,10 @@ const Intro = () => {
             property="og:description"
             content="MIPP는 표절 검사의 새로운 기준을 제시하여 음악 저작권 보호의 새로운 지평을 열어가고자 합니다."
           />
-          <meta property="og:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            property="og:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://aimipp.com/ko/intro" />
@@ -88,7 +97,10 @@ const Intro = () => {
             name="twitter:description"
             content="MIPP는 표절 검사의 새로운 기준을 제시하여 음악 저작권 보호의 새로운 지평을 열어가고자 합니다."
           />
-          <meta name="twitter:image" content="https://aimipp.com/image.jpg" />
+          <meta
+            name="twitter:image"
+            content="https://storage.googleapis.com/domainbucket/imageog.png"
+          />
 
           <link rel="canonical" href="https://aimipp.com/ko/intro" />
           <meta name="robots" content="index, follow" />
