@@ -16,7 +16,7 @@ const Footer = () => {
             Double H Company.
           </div>
           <div className="flex flex-col items-start gap-2 text-[17px] leading-[31px] text-nowrap">
-            E-mail : aimipp@gmail.com
+            E-mail : mippcomp@gmail.com
             <br /> Copyright © 2024. DoubleHCompany. All Rights Reserved
           </div>
         </div>

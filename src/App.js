@@ -44,6 +44,16 @@ import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
 
 const App = () => {
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    // 애플리케이션 로드 시 로컬 스토리지에서 언어 설정을 로드
+    const savedLang = localStorage.getItem("appLanguage");
+
+    // 저장된 언어가 있고 현재 i18n 언어와 다르면 언어 변경
+    if (savedLang && savedLang !== i18n.language) {
+      i18n.changeLanguage(savedLang);
+    }
+  }, [i18n]);
   return (
     <Provider store={store}>
       <Router>
@@ -119,12 +129,12 @@ const LanguageRedirector = () => {
     // navigator.language에서 첫 부분만 추출 (예: "ko-KR" -> "ko")
     const browserLang = navigator.language.split("-")[0];
     if (!lang || !supportedLanguages.includes(lang)) {
-      // 지원되지 않는 언어 코드이거나 언어 코드가 없는 경우 기본 언어로 리다이렉트
       const defaultLang = supportedLanguages.includes(browserLang) ? browserLang : "en";
       navigate(`/${defaultLang}`, { replace: true });
+      localStorage.setItem("appLanguage", defaultLang); // 로컬 스토리지에 언어 설정 저장
     } else if (i18n.language !== lang) {
-      // URL 경로의 언어 코드가 현재 설정된 언어와 다른 경우 언어 변경
       i18n.changeLanguage(lang);
+      localStorage.setItem("appLanguage", lang); // 로컬 스토리지에 언어 설정 저장
     }
   }, [lang, navigate, i18n]);
 

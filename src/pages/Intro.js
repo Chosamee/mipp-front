@@ -121,9 +121,9 @@ const Intro = () => {
         </Helmet>
       )}
       <div className="p-5 w-full">
-        <div className="text-4xl md:mb-20 mb-10 font-bold md:text-left text-center p-2">
+        <h1 className="text-4xl md:mb-20 mb-10 font-bold md:text-left text-center p-2">
           {t("nav.intro")}
-        </div>
+        </h1>
         <div className="mx-auto flex flex-col mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3"></div>
           <div className="grid grid-cols-1 md:grid-cols-3">

@@ -94,7 +94,7 @@ const App = () => {
           />
 
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://aimipp.com/kr" />
+          <meta property="og:url" content="https://aimipp.com/ko" />
           <meta property="og:title" content="AI 음악 표절 검사 MIPP" />
           <meta
             property="og:description"
@@ -118,7 +118,7 @@ const App = () => {
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
 
-          <link rel="canonical" href="https://aimipp.com/kr" />
+          <link rel="canonical" href="https://aimipp.com/ko" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
             {`{
@@ -153,12 +153,12 @@ const App = () => {
           {/* Content Start */}
           <div className="flex flex-col justify-center items-center desktop:gap-[54px] gap-[20px] z-10">
             <div className="flex flex-col items-center desktop:gap-[34px] gap-[11px]">
-              <div className="text-white font-bold desktop:text-[70px] text-[32px] text-center text-nowrap">
+              <h1 className="text-white font-bold desktop:text-[70px] text-[32px] text-center text-nowrap">
                 {t("index.mainTitle")}
-              </div>
-              <div className="text-white text-[25px] leading-[34px] text-center hidden desktop:block text-nowrap">
+              </h1>
+              <h2 className="text-white text-[25px] leading-[34px] text-center hidden desktop:block text-nowrap">
                 {t("index.mainIntro")}
-              </div>
+              </h2>
               <div className="text-white text-[15px]  leading-[25px] text-center desktop:hidden text-nowrap">
                 {t("index.mainIntroPhone")}
               </div>
@@ -181,9 +181,9 @@ const App = () => {
 
       {/* Section 2 Start */}
       <div className="flex flex-col desktop:py-[150px] py-20 px-2 items-center desktop:gap-[78px] gap-[30px] desktop:min-w-[720px] mx-auto">
-        <div className="flex p-2 justify-center items-center gap-2 desktop:text-[50px] text-[28px] font-bold">
+        <h2 className="flex p-2 justify-center items-center gap-2 desktop:text-[50px] text-[28px] font-bold">
           {t("index.2.title")}
-        </div>
+        </h2>
         <div className="flex desktop:flex-row flex-col text-[#2E2E2E] items-center desktop:gap-[72px] gap-[16px] flex-shrink-0">
           <div className="flex desktop:gap-[72px] gap-[20px] flex-shrink-0">
             {/* Step 1 Start */}
@@ -239,9 +239,9 @@ const App = () => {
       {/* Section 3 Start */}
       <div className="bg-[#F4F6FA] w-full">
         <div className="flex flex-col items-center desktop:gap-[90px] desktop:py-[160px] py-20 px-2 mx-auto">
-          <div className="desktop:text-[50px] text-[28px] text-center font-semibold desktop:leading-[68px] leading-[38px] desktop:mb-0 mb-7">
+          <h2 className="desktop:text-[50px] text-[28px] text-center font-semibold desktop:leading-[68px] leading-[38px] desktop:mb-0 mb-7">
             {t("index.1.title")}
-          </div>
+          </h2>
           <div className="flex flex-col items-center desktop:gap-[100px] gap-[50px]">
             {/* Content 1 Start */}
             <div className="flex desktop:flex-row flex-col desktop:items-center desktop:w-[1235px] desktop:justify-between">
@@ -307,9 +307,9 @@ const App = () => {
           {/* Content 1 Start */}
           <div className="flex flex-col justify-center desktop:items-start items-center gap-[46px] mx-auto desktop:mx-0">
             <div className="flex flex-col justify-center items-start gap-[24px]">
-              <div className="desktop:text-[50px] text-[28px] desktop:self-start self-center font-semibold leading-[66px]">
+              <h2 className="desktop:text-[50px] text-[28px] desktop:self-start self-center font-semibold leading-[66px]">
                 {t("index.3.title")}
-              </div>
+              </h2>
               <div className="text-[#777A80] desktop:text-[22px] text-[16px] font-medium desktop:self-start self-center desktop:leading-[38px] leading-[27px]">
                 {t("index.3.content1")}
               </div>
@@ -370,9 +370,9 @@ const App = () => {
       {/* Section 5 Start */}
       <div className="desktop:py-[120px] py-[70px] px-[23px] flex desktop:px-2 flex-col items-center bg-[#19275F] w-full desktop:min-w-[1536px] mx-auto">
         <img src={lockSvg} alt="Lock" className="mb-[22px]" />
-        <div className="text-white desktop:text-[50px] text-[24px] font-semibold desktop:leading-[70px] text-center mb-[20px]">
+        <h2 className="text-white desktop:text-[50px] text-[24px] font-semibold desktop:leading-[70px] text-center mb-[20px]">
           {t("index.4.title")}
-        </div>
+        </h2>
         <div className="text-white text-[22px] leading-[36px] text-center mb-[54px] desktop:block hidden">
           {t("index.4.content")}
         </div>

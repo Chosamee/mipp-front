@@ -168,7 +168,7 @@ const Howtouse = () => {
       )}
       <div className="p-10 w-full">
         <div className="text-4xl mb-10 font-bold">{t("nav.howToUse")}</div>
-        <div className="text-xl mb-10">{t("howtouse.title")}</div>
+        <h1 className="text-xl mb-10">{t("howtouse.title")}</h1>
 
         {Array.from({ length: 4 }, (_, i) => (
           <div key={i}>
