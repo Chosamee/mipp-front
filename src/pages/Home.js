@@ -10,7 +10,7 @@ import { getLangUrl } from "locales/utils";
 const Home = () => {
   // 탭 선택
   const [activeTab, setActiveTab] = useState("upload");
-  const [inst, setInst] = useState("boundary");
+  const [inst, setInst] = useState("vocal");
   const [remain, setRemain] = useState();
   const { t } = useTranslation();
   const navigate = useNavigate();
