@@ -84,7 +84,7 @@ const PDFViewer = ({ filepath, title }) => {
       </button>
       {isLoading && <LoadingSpinner />}
       {isOpen && fileUrl && (
-        <div className="flex flex-col items-center overflow-auto h-[900px]">
+        <div className="flex flex-col items-center overflow-auto desktop:h-[600px] h-[500px] md:h-[700px] lg:[h-900px]">
           <Document
             file={fileUrl}
             onLoadSuccess={onDocumentLoadSuccess}

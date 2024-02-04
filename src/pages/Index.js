@@ -397,11 +397,11 @@ const App = () => {
 
 const StepIndicator = ({ num }) => {
   return (
-    <div className="flex items-center gap-[6px] text-[20px] font-semibold ">
+    <div className="flex items-center gap-[6px] text-[20px] font-semibold">
       STEP
       <div className="relative flex-shrink-0">
         <img src={circle} alt="Circle" />
-        <div className="absolute right-[8px] top-[1px] text-white text-[17px] font-semibold">
+        <div className="absolute right-[8px] top-[2px] text-white text-[17px] font-semibold">
           {num}
         </div>
       </div>
