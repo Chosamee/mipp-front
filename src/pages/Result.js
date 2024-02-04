@@ -56,27 +56,34 @@ const Result = () => {
   return (
     <div className="container mx-auto xl:mt-32 md:mt-48 mt-32 px-5 max-w-7xl">
       <div className="bg-gray-600 p-4 flex items-center space-x-2 mb-10 rounded-2xl">
-        <div className="flex-grow text-white items-center text-center">
-          AIMIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! <br />
-          Welcome to beta test version of AIMIPP!
-          <br />
-          <br />
-          검사는 10분 내외, 혹은 신청자가 많다면 더 오래 걸릴 수도 있습니다.
-          <br />
-          The Checking will take about 10 minutes, but it may take longer if there are many
-          applicants.
-          <br />
-          <br />
-          오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주시면 Mail을 보내드리겠습니다.
-          <br />
-          If errors persist, please apply through a one-on-one support, and we will send you an
-          email.
-          <br />
-          <br />
-          한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
-          <br />
-          You can only request up to 10 songs within 24 hours per account.
-        </div>
+        {i18n.language === "en" ? (
+          <div className="flex-grow text-white items-center text-center">
+            Welcome to beta test version of AIMIPP!
+            <br />
+            <br />
+            The Checking will take about 10 minutes, but it may take longer if there are many
+            applicants.
+            <br />
+            <br />
+            If errors persist, please apply through a one-on-one support, and we will send you an
+            email.
+            <br />
+            <br />
+            You can only request up to 10 songs within 24 hours per account.
+          </div>
+        ) : (
+          <div className="flex-grow text-white items-center text-center">
+            AIMIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다!
+            <br />
+            <br />
+            검사는 10분 내외, 혹은 신청자가 많다면 더 오래 걸릴 수도 있습니다.
+            <br />
+            <br />
+            오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주시면 Mail을 보내드리겠습니다.
+            <br />
+            <br />한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
+          </div>
+        )}
       </div>
       <h1 className="mb-10">{t("result.my")}</h1>
       <div className="flex gap-3">

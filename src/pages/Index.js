@@ -411,10 +411,10 @@ const StepIndicator = ({ num }) => {
 
 const Section2Cont1 = () => {
   return (
-    <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative rounded-[22px] shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)]">
+    <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative rounded-[22px] shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] bg-white">
       <div
         className="absolute desktop:text-[22px] text-[17px] desktop:left-[37px] desktop:top-[53px]
-      left-[23px] top-[25px] font-medium leading-[22px] desktop:leading-[normal]">
+      left-[23px] top-[25px] font-medium leading-[22px] desktop:leading-[normal] ">
         Music Plagiarism <br className="desktop:hidden" /> Test Report
       </div>
       <div className="w-[119px] h-9 desktop:left-[373px] desktop:top-[48px] left-[186px] top-[29px] absolute">
@@ -482,7 +482,7 @@ const Section2Cont1 = () => {
 const Section2Cont2 = () => {
   const { t } = useTranslation();
   return (
-    <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px] overflow-hidden">
+    <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px] overflow-hidden bg-white">
       <div className="w-[685px] h-[343px] desktop:left-[-100px] desktop:top-[33px] left-[-103px] top-[18px] absolute">
         <img
           src={worldMap}
@@ -517,7 +517,7 @@ const Section2Cont2 = () => {
 
 const Section2Cont3 = () => {
   return (
-    <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px]">
+    <div className="desktop:w-[529px] desktop:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px]  bg-white">
       <div className="desktop:top-[52px] desktop:left-[34px] top-[35px] left-[25px] absolute">
         <img src={circle3} alt="Circle 3" className="desktop:w-[28px] w-[22px]"></img>
         <div className="text-white desktop:text-[20px] text-[14px] font-medium absolute top-[2px] desktop:left-[8px] left-[7px]">
