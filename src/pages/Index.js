@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
-import main from "assets/index/main.png";
+import main from "assets/index/main.webp";
 
 // section 1 assets
 import circle from "assets/index/section1/Ellipse 18.svg";
@@ -142,8 +142,12 @@ const App = () => {
         {/* Background Image Start */}
         <div
           className="relative flex flex-col mx-auto px-8 w-full desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
-      desktop:rounded-[45px] justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url(${main})` }}>
+      desktop:rounded-[45px] justify-center bg-cover bg-center">
+          <img
+            src={main}
+            alt="Main"
+            className="absolute inset-0 w-full h-full object-cover desktop:rounded-[45px]"
+          />
           <div className="absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px]"></div>
           {/* Background Image End */}
           {/* Content Start */}
