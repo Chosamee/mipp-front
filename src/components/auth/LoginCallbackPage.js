@@ -4,9 +4,11 @@ import { handleOauthLogin } from "api/authService";
 import { useAuth } from "./AuthContext";
 import { getLangUrl } from "locales/utils";
 import LoadingSpinner from "components/views/LoadingSpinner";
+import { useTranslation } from "react-i18next";
 
 const LoginCallbackPage = () => {
   const { updateAuthState } = useAuth();
+  const { i18n } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +18,8 @@ const LoginCallbackPage = () => {
       const state = urlParams.get("state");
 
       if (code && state) {
+        i18n.changeLanguage(localStorage.getItem("language")); // 로컬 스토리지에 언어 설정 저장
+        localStorage.removeItem("language");
         try {
           await handleOauthLogin(code, state);
           updateAuthState({ isLoggedIn: true });

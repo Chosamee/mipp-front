@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import googleBrandIcon from "assets/web_light_sq_SI@3x.png";
 import { handleSessionState } from "api/authService";
+import { useTranslation } from "react-i18next";
 
 const GoogleLoginButton = () => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const { i18n } = useTranslation();
   const initiateLogin = async () => {
     setIsLoading(true);
 
     try {
+      localStorage.setItem("language", i18n.language);
       const redirect = await handleSessionState();
       window.location.href = redirect;
       // 성공적인 리디렉션 후에는 여기에 도달하지 않음
