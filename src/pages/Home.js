@@ -91,7 +91,7 @@ const Home = () => {
         <div className="flex flex-col mb-20 mx-auto py-[100px]">
           <div className="py-5 text-center"> Your Usage Limit: {remain} / 10</div>
 
-          <div className="text-start mb-[11px] text-[20px] desktop:text-[22px] font-semibold">
+          <div className="text-start mb-[10px] text-[20px] desktop:text-[22px] font-semibold">
             {t("home.step1")}
           </div>
           <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block">
