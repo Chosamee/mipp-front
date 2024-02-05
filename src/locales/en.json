@@ -136,14 +136,15 @@
     "submit": "Start Checking"
   },
   "result": {
-    "my": "My Results",
+    "my": "내 검사 결과",
     "In Queue": "In Queue",
-    "음원 분석 중": "Music Analyzing",
-    "음원 비교 중": "Music Comparing",
-    "완료": "Complete",
-    "해당 악기를 발견하지 못함": "Instrument Not Found",
-    "오류가 발생했습니다": "Error Occured",
-    "pdf 생성 중": "PDF processing",
+    "음원 분리 중": "Separating Audio Tracks",
+    "구조 분석 중": "Analyze Song Structure",
+    "악보 분석 중": "Anylyze Music Notes",
+    "완료": "완료",
+    "링크 혹은 파일에 문제가 있습니다": " Link or file error",
+    "해당 악기가 없습니다": "Given instrument track not found",
+    "표절곡이 없거나 파일 생성에 문제가 있습니다": "No plagiarism or file generation error",
     "percent": "Music Comparing"
   },
   "login": {

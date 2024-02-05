@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/views/Pagination";
-import LoadingSpinner from "../components/views/LoadingSpinner";
-import { fetchResults } from "../api/resultService.js";
+import Pagination from "components/views/Pagination";
+import LoadingSpinner from "components/views/LoadingSpinner";
+import { fetchResults } from "api/resultService.js";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
+
+import loupe from "assets/result/loupe.svg";
+import down_vector from "assets/result/down_vector.svg";
 
 const Result = () => {
   const [resultData, setresultData] = useState([]);
@@ -54,7 +57,7 @@ const Result = () => {
     : resultData;
 
   return (
-    <div className="container mx-auto px-5 max-w-7xl">
+    <div className="mx-auto px-5 w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
       <div className="bg-gray-600 p-4 flex items-center space-x-2 mb-10 rounded-2xl">
         {i18n.language === "en" ? (
           <div className="flex-grow text-white items-center text-center">
@@ -85,7 +88,29 @@ const Result = () => {
           </div>
         )}
       </div>
-      <h1 className="mb-10">{t("result.my")}</h1>
+
+      {/* Title 및 검색 하십시오.. */}
+      <div className="gap-[26px] flex items-center mb-9 h-10">
+        <h1 className="text-[24px] leading-[28px] font-semibold">{t("result.my")}</h1>
+        <div className="w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
+          <input
+            className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[291px] focus:outline-none ml-4"
+            type="text"
+            placeholder={`${t("search.guide")}`}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+          />
+          <img src={loupe} alt="Loupe" />
+        </div>
+      </div>
+
+      {/* 선택 버튼 */}
+      {/* <div className="flex w-[920px] h-14 items-center gap-6">
+        <div className="py-1 gap-[10px] ">
+          <button>
+            <img src={down_vector} alt="Vector" />
+          </button>
+        </div>
+      </div> */}
       <div className="flex gap-3">
         <button
           onClick={() => {
