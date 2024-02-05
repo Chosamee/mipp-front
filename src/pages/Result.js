@@ -68,8 +68,7 @@ const Result = () => {
             applicants.
             <br />
             <br />
-            If errors persist, please apply through a one-on-one support, and we will send you an
-            email.
+            If errors persist, please apply through a one-on-one support. email.
             <br />
             <br />
             You can only request up to 10 songs within 24 hours per account.
@@ -82,7 +81,7 @@ const Result = () => {
             검사는 10분 내외, 혹은 신청자가 많다면 더 오래 걸릴 수도 있습니다.
             <br />
             <br />
-            오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주시면 Mail을 보내드리겠습니다.
+            오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주세요.
             <br />
             <br />한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
           </div>
@@ -104,13 +103,14 @@ const Result = () => {
       </div>
 
       {/* 선택 버튼 */}
-      {/* <div className="flex w-[920px] h-14 items-center gap-6">
-        <div className="py-1 gap-[10px] ">
+      <div className="flex w-[920px] h-14 items-center gap-6">
+        <div className="py-1 gap-[10px] flex">
           <button>
             <img src={down_vector} alt="Vector" />
           </button>
+          <div className="text-[14px] text-center font-medium leading-[20px]">최신순</div>
         </div>
-      </div> */}
+      </div>
       <div className="flex gap-3">
         <button
           onClick={() => {
@@ -166,7 +166,11 @@ const Result = () => {
                 key={index}
                 className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
                 <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "50%" }}>
-                  <span>{item.title}</span>
+                  <span>
+                    {item.title === "처리 대기 중" || item.title === "업로드 중"
+                      ? t(`result.${item.title}`)
+                      : item.title}
+                  </span>
                 </div>
                 <div style={{ flexBasis: "3%" }}></div>
                 <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "15%" }}>
