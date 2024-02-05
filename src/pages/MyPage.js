@@ -155,7 +155,7 @@ const AccountPage = () => {
     setIsNicknameValid(false);
   };
   return (
-    <div className="xl:mt-48 md:mt-56 mt-48 max-w-4xl mx-auto px-5 pb-20">
+    <div className=" pt-20 max-w-4xl mx-auto px-5 pb-20">
       {profile && (
         <div className="container mx-auto  p-6 rounded-md shadow-lg border border-blue-600">
           <div className="border-b border-blue-600 pb-4 mb-4 flex justify-between items-center">

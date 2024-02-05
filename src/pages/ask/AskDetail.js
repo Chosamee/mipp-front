@@ -30,7 +30,7 @@ const AskDetail = () => {
   return (
     <React.Fragment>
       {ask ? (
-        <div className="mx-auto p-4 border border-gray-300 rounded shadow-lg xl:mt-32 md:mt-48 mt-32 max-w-7xl">
+        <div className="mx-auto p-4 border border-gray-300 rounded shadow-lg pt-32 max-w-7xl">
           <h2 className="text-[18px] font-bold">{ask.title}</h2>
           <p className="text-gray-600">{ask.content}</p>
           {ask.responsed !== "답변 대기중" && (

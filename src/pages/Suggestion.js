@@ -104,7 +104,7 @@ const Suggestion = () => {
 
   const { t } = useTranslation();
   return (
-    <div className="container mx-auto max-w-7xl px-5 py-10 xl:mt-32 md:mt-48 mt-32 ">
+    <div className="container mx-auto max-w-7xl px-5 py-10">
       <h1 className="mb-10">{t("request.title")}</h1>
       <div className="flex flex-col mx-auto mb-20">
         <input

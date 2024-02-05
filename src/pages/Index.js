@@ -38,7 +38,7 @@ const App = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="flex flex-col min-h-screen items-center desktop:pt-[132px] pt-[106px] leading-[normal]">
+    <div className="flex flex-col min-h-screen items-center leading-[normal]">
       {i18n.language === "en" ? (
         <Helmet>
           <title>AI Music Plagiarism Check MIPP</title>

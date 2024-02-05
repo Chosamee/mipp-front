@@ -59,7 +59,7 @@ const App = () => {
             <ScrollToTop />
             <div className="flex flex-col min-h-screen min-w-72 ">
               <Navbar />
-              <div className="flex-grow mt-50">
+              <div className="flex-grow desktop:mt-[125px] mt-[106px] ">
                 <Routes>
                   <Route path="/" element={<LanguageRedirector />} />
                   <Route path="*" element={<Navigate to="/" replace />} />

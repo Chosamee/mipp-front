@@ -73,7 +73,7 @@ const Home = () => {
 
   return (
     <div className="px-[20px] pb-[70px] desktop:px-[60px] desktop:pb-[150px]">
-      <div className="flex flex-col mt-32 w-[335px] desktop:w-[520px] mx-auto leading-[normal] py-[100px] justify-center items-center">
+      <div className="flex flex-col w-[335px] desktop:w-[520px] mx-auto leading-[normal] py-[100px] justify-center items-center">
         <div className="flex flex-col py-6 desktop:pt-[99px] desktop:pb-[60px] mx-auto gap-[11px] desktop:gap-[14px] text-center desktop:px-5">
           <div
             className="leading-[34px] text-[24px]

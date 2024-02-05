@@ -128,7 +128,7 @@ const AskCreate = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-96 min-w-96 mx-auto my-10 p-8 bg-white rounded shadow-lg xl:mt-32 md:mt-48 mt-32 ">
+      className="w-96 min-w-96 mx-auto p-8 bg-white rounded shadow-lg my-20">
       <div className="mb-6">
         <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">
           {t("ask.title")}

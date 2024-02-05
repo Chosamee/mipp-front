@@ -14,7 +14,7 @@ const Intro = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
   return (
-    <div className="flex h-full items-center justify-center my-auto xl:mt-32 md:mt-48 mt-32 max-w-[1500px] mx-auto">
+    <div className="flex h-full items-center justify-center my-auto max-w-[1500px] mx-auto">
       {i18n.language === "en" ? (
         <Helmet>
           <title>Introduction to MIPP</title>

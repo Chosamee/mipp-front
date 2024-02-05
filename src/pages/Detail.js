@@ -31,7 +31,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="container my-10 mx-auto pt-40 pb-20">
+    <div className="container my-10 mx-auto pb-20">
       <h1 className="my-10">{t("detail")}</h1>
       {resultData ? (
         resultData.map((item, index) => (

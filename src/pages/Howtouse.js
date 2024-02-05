@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 const Howtouse = () => {
   const { t, i18n } = useTranslation();
   return (
-    <div className="flex h-full items-center justify-center my-auto xl:mt-32 md:mt-48 mt-32 max-w-[1500px] mx-auto">
+    <div className="flex h-full items-center justify-center my-auto max-w-[1500px] mx-auto">
       {i18n.language === "en" ? (
         <Helmet>
           <title>How to Use MIPP</title>

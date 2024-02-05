@@ -54,7 +54,7 @@ const Result = () => {
     : resultData;
 
   return (
-    <div className="container mx-auto xl:mt-32 md:mt-48 mt-32 px-5 max-w-7xl">
+    <div className="container mx-auto px-5 max-w-7xl">
       <div className="bg-gray-600 p-4 flex items-center space-x-2 mb-10 rounded-2xl">
         {i18n.language === "en" ? (
           <div className="flex-grow text-white items-center text-center">
