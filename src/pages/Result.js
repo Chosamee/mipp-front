@@ -108,7 +108,9 @@ const Result = () => {
           <button>
             <img src={down_vector} alt="Vector" />
           </button>
-          <div className="text-[14px] text-center font-medium leading-[20px]">최신순</div>
+          <div className="text-[14px] text-center font-medium leading-[20px]">
+            {i18n.language === "en" ? "Latest" : "최신순"}
+          </div>
         </div>
       </div>
       <div className="flex gap-3">
