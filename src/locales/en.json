@@ -127,6 +127,7 @@
     "option1-2": "Music Link",
     "boundary": "Vocal + MR Melody",
     "type": "Type",
+    "all": "All",
     "vocal": "Vocal Melody",
     "melody": "MR Melody",
     "linkGuide": "You can upload YouTube and Soundcloud links.",

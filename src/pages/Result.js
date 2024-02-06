@@ -38,10 +38,10 @@ const Result = () => {
   // 검색 기능
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchType, setSearchType] = useState("title");
-  const [inst, setInst] = useState("");
+  const [inst, setInst] = useState("all");
 
   const filteredData = searchKeyword
-    ? inst
+    ? inst !== "all"
       ? resultData.filter(
           (item) =>
             item[searchType] &&
@@ -52,7 +52,7 @@ const Result = () => {
           (item) =>
             item[searchType] && item[searchType].toLowerCase().includes(searchKeyword.toLowerCase())
         )
-    : inst
+    : inst !== "all"
     ? resultData.filter((item) => item[searchType] && item["inst"] === inst)
     : resultData;
 
@@ -115,38 +115,24 @@ const Result = () => {
             <div className="text-[14px] text-center font-medium leading-[20px]">최신순</div>
           )}
         </div>
+        <div className="h-[13px] w-px bg-[#E5E8EB] flex-shrink-0" />
+        <div className="flex">
+          {["all", "vocal", "melody", "boundary"].map((item, index) => {
+            return (
+              <button
+                className={`h-7 text-sm leading-5 font-semibold  px-3 py-1 items-center justify-center ${
+                  inst === item ? "rounded-[9999px] text-[#171923] bg-[#E2E8F0]" : "text-[#999DA1]"
+                }`}
+                onClick={() => {
+                  setInst(item);
+                }}>
+                {t(`home.${item}`)}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      <div className="flex gap-3">
-        <button
-          onClick={() => {
-            setInst("");
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
-          All
-        </button>
-        <button
-          onClick={() => {
-            setInst("boundary");
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
-          {t("home.boundary")}
-        </button>
-        <button
-          onClick={() => {
-            setInst("vocal");
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
-          {t("home.vocal")}
-        </button>
-        <button
-          onClick={() => {
-            setInst("melody");
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none shadow w-1/4">
-          {t("home.melody")}
-        </button>
-      </div>
       {filteredData ? (
         <Pagination
           data={filteredData}
