@@ -124,7 +124,7 @@ const Result = () => {
       </div>
 
       {/* 선택 버튼 */}
-      <div className="flex w-[920px] h-14 items-center gap-6">
+      <div className="flex w-[326px] desktop:w-[920px] h-14 items-center gap-6">
         <div className="py-1 gap-[10px] flex">
           <button>
             <img src={down_vector} alt="Vector" />
@@ -204,10 +204,11 @@ const Result = () => {
             return (
               <div
                 key={item.id}
-                className="w-[920px] h-[60px] flex mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB]">
+                className="w-[920px] h-[60px] flex mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
                 <button
                   className="w-[460px] h-[60px] pl-7 pr-3 text-start"
-                  onClick={() => navigate(getLangUrl("/detail/" + item.id))}>
+                  onClick={() => navigate(getLangUrl("/detail/" + item.id))}
+                  disabled={item.status !== "완료"}>
                   {item.title === "처리 대기 중" || item.title === "업로드 중"
                     ? t(`result.${item.title}`)
                     : item.title}
