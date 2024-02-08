@@ -22,7 +22,6 @@ const RegistrationForm = () => {
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value); // 입력 값이 변경될 때마다 콘솔에 로그 출력
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -74,7 +73,6 @@ const RegistrationForm = () => {
     // 여기에 회원 가입 요청 로직 구현
     try {
       const response = await handleRegist(formData);
-      console.log(response.data);
       navigate("/home");
     } catch (error) {
       console.error("Error submitting registration:", error);

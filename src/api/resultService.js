@@ -14,9 +14,10 @@ export const fetchResults = async () => {
   }
 };
 
-export const fetchDetail = async (id) => {
+export const fetchDetail = async (id, language) => {
   const formData = new FormData();
   formData.append("music_id", id);
+  formData.append("language", language);
 
   try {
     const response = await axios.post(`${API_BASE_URL}/detail`, formData, {
@@ -25,6 +26,17 @@ export const fetchDetail = async (id) => {
     return response.data.results;
   } catch (error) {
     console.error("Error fetching detail:", error);
+    throw error;
+  }
+};
+
+export const deleteResult = async (id) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/result/${id}`, {
+      withCredentials: true,
+    });
+  } catch (error) {
+    console.error("Error delete result:", error);
     throw error;
   }
 };

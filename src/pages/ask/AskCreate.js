@@ -56,7 +56,6 @@ const AskCreate = () => {
   };
   const { updateAuthState } = useAuth();
   const handleSubmit = async (e) => {
-    console.log(inquiry);
     e.preventDefault();
     if (!inquiry.title || !inquiry.contents) {
       // 사용자에게 문의 제목과 내용이 필수임을 알립니다.
@@ -71,9 +70,8 @@ const AskCreate = () => {
           contents: inquiry.contents,
           files: inquiry.files,
         });
-        console.log(response);
       } catch (error) {
-        console.log("add asks error:", error);
+        console.error("add asks error:", error);
         updateAuthState({ isLoggedIn: false });
       }
       setIsDirty(false);

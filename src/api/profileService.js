@@ -7,7 +7,6 @@ export const fetchProfile = async () => {
     const response = await axios.post(`${API_BASE_URL}/profile`, null, {
       withCredentials: true,
     });
-    console.log("fetchProfile Success:", response);
     return response.data;
   } catch (error) {
     console.error("Error fetchProfile Api:", error);
@@ -20,7 +19,6 @@ export const updateProfile = async (userInfo) => {
     const response = await axios.post(`${API_BASE_URL}/modify_profile`, userInfo, {
       withCredentials: true,
     });
-    console.log("fetchProfile Success:", response);
     return response.data;
   } catch (error) {
     console.error("Error fetchProfile Api:", error);
@@ -33,7 +31,6 @@ export const deleteUser = async () => {
     const response = await axios.post(`${API_BASE_URL}/delete_user`, null, {
       withCredentials: true,
     });
-    console.log("fetchProfile Success:", response);
     return response.data;
   } catch (error) {
     console.error("Error fetchProfile Api:", error);

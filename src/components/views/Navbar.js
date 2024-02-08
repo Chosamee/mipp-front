@@ -20,7 +20,7 @@ const NavBar = () => {
       navigate(getLangUrl("/"));
       setIsMenuOpen(false); // 메뉴 닫기
     } catch (error) {
-      console.log("logout error: ", error);
+      console.error("logout error: ", error);
     }
   };
 

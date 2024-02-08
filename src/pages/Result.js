@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "components/views/Pagination";
 import LoadingSpinner from "components/views/LoadingSpinner";
-import { fetchResults } from "api/resultService.js";
+import { deleteResult, fetchResults } from "api/resultService.js";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
@@ -16,19 +16,17 @@ const Result = () => {
   const { t, i18n } = useTranslation();
   const { updateAuthState } = useAuth();
   const navigate = useNavigate();
-
+  const fetchData = async () => {
+    try {
+      const data = await fetchResults();
+      setresultData(data);
+    } catch (error) {
+      console.error("Error:", error);
+      updateAuthState({ isLoggedIn: false });
+      navigate(getLangUrl("/login"));
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchResults();
-        setresultData(data);
-      } catch (error) {
-        console.error("Error:", error);
-        updateAuthState({ isLoggedIn: false });
-        navigate(getLangUrl("/login"));
-      }
-    };
-
     fetchData();
     const interval = setInterval(fetchData, 10000);
     return () => clearInterval(interval);
@@ -55,6 +53,27 @@ const Result = () => {
     : inst !== "all"
     ? resultData.filter((item) => item[searchType] && item["inst"] === inst)
     : resultData;
+
+  const errorMessage = [
+    "해당 악기를 발견하지 못함",
+    "오류가 발생했습니다",
+    "완료",
+    "링크 혹은 파일에 문제가 있습니다",
+    "해당 악기가 없습니다",
+    "표절곡이 없거나 파일 생성에 문제가 있습니다",
+  ];
+
+  const handleDeleteResult = async (id) => {
+    const confirmSubmit = window.confirm(t("request.confirmDelete"));
+    if (confirmSubmit) {
+      try {
+        await deleteResult(id);
+        fetchData();
+      } catch (error) {
+        console.error("delete front error: ", error);
+      }
+    }
+  };
 
   return (
     <div className="mx-auto px-5 w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
@@ -90,7 +109,9 @@ const Result = () => {
 
       {/* Title 및 검색 하십시오.. */}
       <div className="gap-[26px] flex items-center mb-9 h-10">
-        <h1 className="text-[24px] leading-[28px] font-semibold">{t("result.my")}</h1>
+        <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
+          {t("result.my")}
+        </h1>
         <div className="w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
           <input
             className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[291px] focus:outline-none ml-4"
@@ -110,9 +131,13 @@ const Result = () => {
           </button>
 
           {i18n.language === "en" ? (
-            <div className="text-[14px] text-center font-medium leading-[20px]">Latest</div>
+            <div className="text-[14px] text-center font-medium leading-[20px] text-[#171923]">
+              Latest
+            </div>
           ) : (
-            <div className="text-[14px] text-center font-medium leading-[20px]">최신순</div>
+            <div className="text-[14px] text-center font-medium leading-[20px] text-[#171923]">
+              최신순
+            </div>
           )}
         </div>
         <div className="h-[13px] w-px bg-[#E5E8EB] flex-shrink-0" />
@@ -133,6 +158,17 @@ const Result = () => {
         </div>
       </div>
 
+      {/* 이름/ 타입/ 업로드 날짜/ 진행상황/ 삭제 
+          600   100   120   100
+      */}
+      <div className="w-[920px] h-10 flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+        <div className="w-[460px] pl-7 pr-3">이름</div>
+        <div className="w-[160px] px-3">타입</div>
+        <div className="w-[120px] px-3">업로드 날짜</div>
+        <div className="w-[120px] px-3">진행상황</div>
+        <div className="w-[60px] px-3">삭제</div>
+      </div>
+
       {filteredData ? (
         <Pagination
           data={filteredData}
@@ -144,47 +180,41 @@ const Result = () => {
             // 사용자의 지역 시간대에 맞춰 포맷팅
             const options = {
               year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "2-digit",
-              hour12: false,
+              month: "2-digit",
+              day: "2-digit",
+              // hour: "2-digit",
+              // minute: "2-digit",
+              // second: "2-digit",
+              // hour12: false,
               // timeZoneName: "short",
             };
-            const formattedDate = new Intl.DateTimeFormat(i18n.language, options).format(date);
+            const formatter = new Intl.DateTimeFormat(i18n.language, options).format(date);
+            const formattedDate = formatter.replace(/\s+/g, "");
+
             return (
               <div
-                key={index}
-                className="bg-blue-200 p-4 flex items-center space-x-2 mb-2 rounded-2xl">
-                <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "50%" }}>
-                  <span>
-                    {item.title === "처리 대기 중" || item.title === "업로드 중"
-                      ? t(`result.${item.title}`)
-                      : item.title}
-                  </span>
-                </div>
-                <div style={{ flexBasis: "3%" }}></div>
-                <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "15%" }}>
-                  <span>{formattedDate}</span>
-                </div>
-                <div style={{ flexBasis: "2%" }}></div>
-                <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-                  <span className="font-bold text-blue-800">{t(`home.${item.inst}`)}</span>
-                </div>
-                <div className="flex-grow items-center justify-center" style={{ flexBasis: "15%" }}>
-                  <span className="font-bold text-blue-800">
-                    {isNaN(item.status)
-                      ? t(`result.${item.status}`)
-                      : t("result.percent") + item.status + "%"}
-                  </span>
+                key={item.id}
+                className="w-[920px] h-[60px] flex mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB]">
+                <button
+                  className="w-[460px] h-[60px] pl-7 pr-3 text-start"
+                  onClick={() => navigate(getLangUrl("/detail/" + item.id))}>
+                  {item.title === "처리 대기 중" || item.title === "업로드 중"
+                    ? t(`result.${item.title}`)
+                    : item.title}
+                </button>
+                <div className="w-[160px] px-3">{t(`home.${item.inst}`)}</div>
+                <div className="w-[120px] px-3">{formattedDate}</div>
+                <div className="w-[120px] px-3">
+                  {isNaN(item.status)
+                    ? t(`result.${item.status}`)
+                    : t("result.percent") + item.status + "%"}
                 </div>
                 <button
-                  onClick={() => navigate(getLangUrl("/detail/" + item.id))}
-                  className="flex-grow bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded focus:outline-none shadow"
-                  style={{ flexBasis: "10%" }}
-                  disabled={item.status !== "Complete" && item.status !== "완료"}>
-                  {t("detail")}
+                  onClick={() => handleDeleteResult(item.id)}
+                  className="w-[60px] px-3 text-red-600"
+                  disabled={errorMessage.includes(item.status)}
+                  hidden={errorMessage.includes(item.status)}>
+                  X
                 </button>
               </div>
             );
@@ -194,7 +224,7 @@ const Result = () => {
         <LoadingSpinner />
       )}
       {/* search */}
-      <div className="flex gap-2 mb-4 mt-2">
+      {/* <div className="flex gap-2 mb-4 mt-2">
         <input
           type="text"
           className="p-2 border border-gray-300 rounded w-full"
@@ -208,7 +238,7 @@ const Result = () => {
           value={searchType}>
           <option value="title">{t("search.title")}</option>
         </select>
-      </div>
+      </div> */}
     </div>
   );
 };

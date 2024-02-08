@@ -16,17 +16,16 @@ const Suggestion = () => {
   const handleNavLinkClick = (path) => {
     navigate(path);
   };
-
+  const fetchData = async () => {
+    try {
+      const data = await fetchPosts();
+      setMyData(data.my_posts);
+      setOriginData(data.posts);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchPosts();
-        setMyData(data.my_posts);
-        setOriginData(data.posts);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -78,10 +77,9 @@ const Suggestion = () => {
     if (confirmSubmit) {
       try {
         const response = await addPosts(contents);
-        console.log(response);
         navigate(0);
       } catch (error) {
-        console.log(error);
+        console.error(error);
         updateAuthState({ isLoggedIn: false });
         navigate(getLangUrl("/login"));
       }
@@ -95,9 +93,9 @@ const Suggestion = () => {
     if (confirmSubmit) {
       try {
         await deletePosts(id);
-        navigate(0);
+        fetchData();
       } catch (error) {
-        console.log("delete front error: ", error);
+        console.error("delete front error: ", error);
       }
     }
   };

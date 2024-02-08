@@ -7,6 +7,7 @@ import fileSelectHover from "../../assets/file_select_hover.svg";
 import { uploadMedia } from "../../api/uploadService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
+import LoadingSpinner from "components/views/LoadingSpinner";
 
 const FileUploadComp = ({ inst, bpm }) => {
   const [uploadFile, setUploadFile] = useState(null);
@@ -114,11 +115,15 @@ const FileUploadComp = ({ inst, bpm }) => {
           />
         </label>
       </div>
-      <button
-        onClick={handleSubmit}
-        className="w-[326px] desktop:w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
-        {t("home.submit")}
-      </button>
+      {isSubmit ? (
+        <LoadingSpinner />
+      ) : (
+        <button
+          onClick={handleSubmit}
+          className="w-[326px] desktop:w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
+          {t("home.submit")}
+        </button>
+      )}
     </React.Fragment>
   );
 };

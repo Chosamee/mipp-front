@@ -27,7 +27,7 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
         await uploadMedia({ url: inputValue, inst: inst });
         navigate(getLangUrl("/result"));
       } catch (error) {
-        console.log(error);
+        console.error(error);
         navigate(getLangUrl("/home"));
       }
     }

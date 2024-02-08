@@ -14,14 +14,15 @@ const Detail = () => {
   const { t } = useTranslation();
   const { updateAuthState } = useAuth();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchDetail(id);
+        const response = await fetchDetail(id, i18n.language);
         setresultData(response);
       } catch (error) {
-        console.log(error);
+        console.error(error);
         updateAuthState({ isLoggedIn: false });
         navigate(getLangUrl("/login"));
       }

@@ -66,7 +66,6 @@ const AccountPage = () => {
   }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value); // 입력 값이 변경될 때마다 콘솔에 로그 출력
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -77,7 +76,6 @@ const AccountPage = () => {
     const confirmSubmit = window.confirm(t("profile.confirmRegist"));
     if (confirmSubmit) {
       const response = await updateProfile(formData);
-      console.log(response);
       setProfile(formData);
       setEditMode(false);
     } else {

@@ -19,7 +19,7 @@ const AskDetail = () => {
         const response = await fetchAsksDetail(id);
         setAsk(response.asks);
       } catch (error) {
-        console.log("print detail asks error: ", error);
+        console.error("print detail asks error: ", error);
         updateAuthState({ isLoggedIn: false });
         navigate(getLangUrl("/login"));
       }
