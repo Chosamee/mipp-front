@@ -16,7 +16,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en", // 초기 언어 설정
+  lng: window.localStorage.getItem("i18nextLng") || window.location.pathname.split("/")[1] || "en",
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,

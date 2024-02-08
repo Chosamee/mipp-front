@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "../components/views/LoadingSpinner";
@@ -17,6 +17,8 @@ const Detail = () => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
+    console.log(i18n.language);
+    console.log(prevLangRef.current);
     const fetchData = async () => {
       try {
         const response = await fetchDetail(id, i18n.language);
@@ -30,6 +32,21 @@ const Detail = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const currentLang = i18n.language;
+  const prevLangRef = useRef(currentLang);
+
+  useEffect(() => {
+    const prevLang = prevLangRef.current;
+
+    // 언어가 변경되었는지 확인
+    if (prevLang !== currentLang) {
+      // 필요한 경우 페이지 새로고침 수행
+      window.location.reload();
+    }
+    // 현재 언어를 이전 언어 참조로 업데이트
+    prevLangRef.current = currentLang;
+  }, [currentLang]); // 현재 언어가 변경될 때마다 이 효과를 실행
 
   return (
     <div className="container my-10 mx-auto pb-20">

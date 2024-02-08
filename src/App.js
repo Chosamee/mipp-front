@@ -116,14 +116,18 @@ const LanguageRedirector = () => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    // navigator.language에서 첫 부분만 추출 (예: "ko-KR" -> "ko")
     const browserLang = navigator.language.split("-")[0];
-    // 지원하지 않는 언어일 경우 => 브라우저 언어 혹은 default
-    if (!lang || !supportedLanguages.includes(lang)) {
-      const defaultLang = supportedLanguages.includes(browserLang) ? browserLang : "en";
-      navigate(`/${defaultLang}`, { replace: true });
-    } else if (i18n.language !== lang) {
-      i18n.changeLanguage(lang);
+    const defaultLang = supportedLanguages.includes(browserLang) ? browserLang : "en";
+    const targetLang = supportedLanguages.includes(lang) ? lang : defaultLang;
+
+    // URL에 설정된 언어가 i18n의 현재 언어와 다른 경우에만 언어 변경을 시도
+    if (i18n.language !== targetLang) {
+      i18n.changeLanguage(targetLang).then(() => {
+        // 언어 변경 후 현재 URL이 변경된 언어에 맞지 않는 경우, 해당 언어의 URL로 리디렉션
+        if (lang !== targetLang) {
+          navigate(`/${targetLang}`, { replace: true });
+        }
+      });
     }
   }, [lang, navigate, i18n]);
 

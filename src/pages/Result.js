@@ -161,13 +161,23 @@ const Result = () => {
       {/* 이름/ 타입/ 업로드 날짜/ 진행상황/ 삭제 
           600   100   120   100
       */}
-      <div className="w-[920px] h-10 flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
-        <div className="w-[460px] pl-7 pr-3">이름</div>
-        <div className="w-[160px] px-3">타입</div>
-        <div className="w-[120px] px-3">업로드 날짜</div>
-        <div className="w-[120px] px-3">진행상황</div>
-        <div className="w-[60px] px-3">삭제</div>
-      </div>
+      {i18n.language === "en" ? (
+        <div className="w-[920px] h-10 flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+          <div className="w-[460px] pl-7 pr-3">Name</div>
+          <div className="w-[160px] px-3">Type</div>
+          <div className="w-[120px] px-3">Upload Date</div>
+          <div className="w-[120px] px-3">Progress</div>
+          <div className="w-[60px] px-3">Delete</div>
+        </div>
+      ) : (
+        <div className="w-[920px] h-10 flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+          <div className="w-[460px] pl-7 pr-3">이름</div>
+          <div className="w-[160px] px-3">타입</div>
+          <div className="w-[120px] px-3">업로드 날짜</div>
+          <div className="w-[120px] px-3">진행상황</div>
+          <div className="w-[60px] px-3">삭제</div>
+        </div>
+      )}
 
       {filteredData ? (
         <Pagination
