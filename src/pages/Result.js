@@ -222,8 +222,8 @@ const Result = () => {
                 <button
                   onClick={() => handleDeleteResult(item.id)}
                   className="w-[60px] px-3 text-red-600"
-                  disabled={errorMessage.includes(item.status)}
-                  hidden={errorMessage.includes(item.status)}>
+                  disabled={!errorMessage.includes(item.status)}
+                  hidden={!errorMessage.includes(item.status)}>
                   X
                 </button>
               </div>
