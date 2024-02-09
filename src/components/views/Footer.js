@@ -32,8 +32,9 @@ const Footer = () => {
           <img src={instaram} alt="Social Instagram" className="w-[28px]" />
           <img src={youtube} alt="Social Youtube" className="w-[39.2px]" />
         </div>
-        <LanguageSeletor />
         <div className="flex flex-col gap-[13px]">
+          <LanguageSeletor />
+
           <div className="flex flex-col justify-center items-start text-[18px] font-bold leading-[22px] text-[#EAECEE]">
             Double H Company.
           </div>
