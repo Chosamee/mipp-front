@@ -67,7 +67,7 @@ const NavBar = () => {
   return (
     <nav
       className=" text-black fixed top-0 left-0 right-0 z-30 bg-white
-        tracking-[0.0096em] leading-[normal]
+        tracking-[0.0096em] leading-[normal] 
       ">
       <div className="flex items-center justify-between py-5 w-full">
         {/* GNB 메인*/}
@@ -78,7 +78,7 @@ const NavBar = () => {
             MIPP
           </button>
           <div className="py-3 pr-6 text-[18px] gap-[40px] hidden desktop:flex">
-            <div className="flex gap-[26px] px-2 items-center ">
+            <div className="flex gap-[26px] px-2 items-center text-nowrap">
               <button
                 className="flex p-1 gap-[6px] items-center"
                 onClick={() => navigate(getLangUrl("/intro"))}>
@@ -116,9 +116,9 @@ const NavBar = () => {
         </div>
 
         {/* 우측 subMenu */}
-        <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex">
+        <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex ">
           {authState.isLoggedIn ? (
-            <div className="hidden desktop:flex px-2 gap-[26px] items-center justify-end">
+            <div className="hidden desktop:flex px-2 gap-[26px] items-center justify-end text-nowrap">
               <button className="flex items-center text-[18px] p-1">
                 <span className="" onClick={() => navigate(getLangUrl("/asks"))}>
                   {t("nav.ask")}
@@ -149,7 +149,7 @@ const NavBar = () => {
               </button>
             </div>
           ) : (
-            <div className="desktop:flex px-2 gap-[30px] hidden">
+            <div className="desktop:flex px-2 gap-[30px] hidden text-nowrap">
               <button
                 className="flex p-4 gap-[6px] text-[18px] leading-6"
                 onClick={() => navigate(getLangUrl("/login"))}>

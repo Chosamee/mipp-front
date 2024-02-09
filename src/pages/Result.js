@@ -76,45 +76,16 @@ const Result = () => {
   };
 
   return (
-    <div className="mx-auto px-5 w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
-      <div className="bg-gray-600 p-4 flex items-center space-x-2 mb-10 rounded-2xl">
-        {i18n.language === "en" ? (
-          <div className="flex-grow text-white items-center text-center">
-            Welcome to beta test version of AIMIPP!
-            <br />
-            <br />
-            The Checking will take about 10 minutes, but it may take longer if there are many
-            applicants.
-            <br />
-            <br />
-            If errors persist, please apply through a one-on-one support. email.
-            <br />
-            <br />
-            You can only request up to 10 songs within 24 hours per account.
-          </div>
-        ) : (
-          <div className="flex-grow text-white items-center text-center">
-            AIMIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다!
-            <br />
-            <br />
-            검사는 10분 내외, 혹은 신청자가 많다면 더 오래 걸릴 수도 있습니다.
-            <br />
-            <br />
-            오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주세요.
-            <br />
-            <br />한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
-          </div>
-        )}
-      </div>
-
+    <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
+      <Notify />
       {/* Title 및 검색 하십시오.. */}
-      <div className="gap-[26px] flex items-center mb-9 h-10">
+      <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
         <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
           {t("result.my")}
         </h1>
-        <div className="w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
+        <div className="w-[326px] desktop:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
           <input
-            className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[291px] focus:outline-none ml-4"
+            className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[264px] focus:outline-none ml-4"
             type="text"
             placeholder={`${t("search.guide")}`}
             onChange={(e) => setSearchKeyword(e.target.value)}
@@ -124,7 +95,7 @@ const Result = () => {
       </div>
 
       {/* 선택 버튼 */}
-      <div className="flex w-[326px] desktop:w-[920px] h-14 items-center gap-6">
+      <div className="flex w-[326px] desktop:w-[920px] h-14 items-center desktop:gap-6 gap-4">
         <div className="py-1 gap-[10px] flex">
           <button>
             <img src={down_vector} alt="Vector" />
@@ -145,7 +116,7 @@ const Result = () => {
           {["all", "vocal", "melody", "boundary"].map((item, index) => {
             return (
               <button
-                className={`h-7 text-sm leading-5 font-semibold  px-3 py-1 items-center justify-center ${
+                className={`h-7 text-sm leading-5 font-semibold  desktop:px-3 px-2.5 py-1 items-center justify-center ${
                   inst === item ? "rounded-[9999px] text-[#171923] bg-[#E2E8F0]" : "text-[#999DA1]"
                 }`}
                 onClick={() => {
@@ -162,7 +133,7 @@ const Result = () => {
           600   100   120   100
       */}
       {i18n.language === "en" ? (
-        <div className="w-[920px] h-10 flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+        <div className="w-[920px] h-10 hidden desktop:flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
           <div className="w-[460px] pl-7 pr-3">Name</div>
           <div className="w-[160px] px-3">Type</div>
           <div className="w-[120px] px-3">Upload Date</div>
@@ -170,7 +141,7 @@ const Result = () => {
           <div className="w-[60px] px-3">Delete</div>
         </div>
       ) : (
-        <div className="w-[920px] h-10 flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+        <div className="w-[920px] h-10 hidden desktop:flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
           <div className="w-[460px] pl-7 pr-3">이름</div>
           <div className="w-[160px] px-3">타입</div>
           <div className="w-[120px] px-3">업로드 날짜</div>
@@ -202,32 +173,69 @@ const Result = () => {
             const formattedDate = formatter.replace(/\s+/g, "");
 
             return (
-              <div
-                key={item.id}
-                className="w-[920px] h-[60px] flex mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
-                <button
-                  className="w-[460px] h-[60px] pl-7 pr-3 text-start"
-                  onClick={() => navigate(getLangUrl("/detail/" + item.id))}
-                  disabled={item.status !== "완료"}>
-                  {item.title === "처리 대기 중" || item.title === "업로드 중"
-                    ? t(`result.${item.title}`)
-                    : item.title}
-                </button>
-                <div className="w-[160px] px-3">{t(`home.${item.inst}`)}</div>
-                <div className="w-[120px] px-3">{formattedDate}</div>
-                <div className="w-[120px] px-3">
-                  {isNaN(item.status)
-                    ? t(`result.${item.status}`)
-                    : t("result.percent") + item.status + "%"}
+              <React.Fragment>
+                <div
+                  key={item.id}
+                  className="hidden desktop:flex w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
+                  <button
+                    className="w-[460px] h-[60px] pl-7 pr-3 text-start"
+                    onClick={() => navigate(getLangUrl("/detail/" + item.id))}
+                    disabled={item.status !== "완료"}>
+                    {item.title === "처리 대기 중" || item.title === "업로드 중"
+                      ? t(`result.${item.title}`)
+                      : item.title}
+                  </button>
+                  <div className="w-[160px] px-3">{t(`home.${item.inst}`)}</div>
+                  <div className="w-[120px] px-3">{formattedDate}</div>
+                  <div className="w-[120px] px-3">
+                    {isNaN(item.status)
+                      ? t(`result.${item.status}`)
+                      : t("result.percent") + item.status + "%"}
+                  </div>
+                  <button
+                    onClick={() => handleDeleteResult(item.id)}
+                    className="w-[60px] px-3 text-red-600"
+                    disabled={!errorMessage.includes(item.status)}
+                    hidden={!errorMessage.includes(item.status)}>
+                    X
+                  </button>
                 </div>
-                <button
-                  onClick={() => handleDeleteResult(item.id)}
-                  className="w-[60px] px-3 text-red-600"
-                  disabled={!errorMessage.includes(item.status)}
-                  hidden={!errorMessage.includes(item.status)}>
-                  X
-                </button>
-              </div>
+                <div
+                  key={item.id}
+                  className="flex flex-col desktop:hidden w-[326px]  py-6 px-3 gap-2.5 mx-auto text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
+                  <button
+                    className="w-[302px] text-start"
+                    onClick={() => navigate(getLangUrl("/detail/" + item.id))}
+                    disabled={item.status !== "완료"}>
+                    {item.title === "처리 대기 중" || item.title === "업로드 중"
+                      ? t(`result.${item.title}`)
+                      : item.title}
+                  </button>
+                  <div className="flex w-[302px] items-center justify-center">
+                    <div className="w-20 pr-2 text-nowrap">{t(`home.${item.inst}`)}</div>
+                    <div className="h-3 w-px bg-[#E3E3E3] self-center" />
+                    <div className="px-2 w-24 text-center">{formattedDate}</div>
+                    <div className="h-3 w-px bg-[#E3E3E3]" />
+
+                    <div className="px-1">
+                      {isNaN(item.status)
+                        ? t(`result.${item.status}`)
+                        : t("result.percent") + item.status + "%"}
+                    </div>
+
+                    <div className="flex items-center ml-auto">
+                      <div className="h-3 mr-2 w-px bg-[#E3E3E3]" />
+                      <button
+                        onClick={() => handleDeleteResult(item.id)}
+                        className=" pl-2 text-red-600"
+                        disabled={!errorMessage.includes(item.status)}
+                        hidden={!errorMessage.includes(item.status)}>
+                        X
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </React.Fragment>
             );
           }}
         />
@@ -250,6 +258,41 @@ const Result = () => {
           <option value="title">{t("search.title")}</option>
         </select>
       </div> */}
+    </div>
+  );
+};
+
+const Notify = () => {
+  const { i18n } = useTranslation();
+  return (
+    <div className="bg-gray-600 p-4 flex items-center space-x-2 mb-10 rounded-2xl">
+      {i18n.language === "en" ? (
+        <div className="flex-grow text-white items-center text-center">
+          Welcome to beta test version of AIMIPP!
+          <br />
+          <br />
+          The Checking will take about 10 minutes, but it may take longer if there are many
+          applicants.
+          <br />
+          <br />
+          If errors persist, please apply through a one-on-one support. email.
+          <br />
+          <br />
+          You can only request up to 10 songs within 24 hours per account.
+        </div>
+      ) : (
+        <div className="flex-grow text-white items-center text-center">
+          AIMIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다!
+          <br />
+          <br />
+          검사는 10분 내외, 혹은 신청자가 많다면 더 오래 걸릴 수도 있습니다.
+          <br />
+          <br />
+          오류가 지속적으로 생긴다면, 1대1 문의하기를 통해 신청해주세요.
+          <br />
+          <br />한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
+        </div>
+      )}
     </div>
   );
 };
