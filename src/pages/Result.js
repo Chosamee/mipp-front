@@ -175,7 +175,7 @@ const Result = () => {
             return (
               <React.Fragment>
                 <div
-                  key={item.id}
+                  key={`desktop-${item.id}`}
                   className="hidden desktop:flex w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
                   <button
                     className="w-[460px] h-[60px] pl-7 pr-3 text-start"
@@ -201,7 +201,7 @@ const Result = () => {
                   </button>
                 </div>
                 <div
-                  key={item.id}
+                  key={`mobile-${item.id}`}
                   className="flex flex-col desktop:hidden w-[326px]  py-6 px-3 gap-2.5 mx-auto text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
                   <button
                     className="w-[302px] text-start"
