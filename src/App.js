@@ -42,6 +42,7 @@ import AskDetail from "pages/ask/AskDetail";
 import RegistrationForm from "pages/Regist";
 import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
+import DetailMK2 from "pages/detail/DetailMK2";
 
 const App = () => {
   return (
@@ -93,7 +94,7 @@ const App = () => {
                       element={<ProtectedRoute component={AskDetail} />}
                     />
                     <Route path="asks/create" element={<ProtectedRoute component={AskCreate} />} />
-                    <Route path="detail/:id" element={<ProtectedRoute component={Detail} />} />
+                    <Route path="detail/:id" element={<ProtectedRoute component={DetailMK2} />} />
                   </Route>
                 </Routes>
               </div>

@@ -23,7 +23,7 @@ export const fetchDetail = async (id, language) => {
     const response = await axios.post(`${API_BASE_URL}/detail`, formData, {
       withCredentials: true,
     });
-    return response.data.results;
+    return response.data;
   } catch (error) {
     console.error("Error fetching detail:", error);
     throw error;
