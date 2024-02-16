@@ -1,4 +1,20 @@
+import { downloadPDF } from "api/pdfService";
+import { useState } from "react";
+
 const Each = ({ file, handleCheckboxChange, index }) => {
+  const [fileUrl, setFileUrl] = useState();
+  const handlePreview = async () => {
+    console.log(file);
+    if (!fileUrl) {
+      try {
+        const url = await downloadPDF(file.path); // 서버로부터 PDF 파일 받아오기
+        window.open(url, "_blank"); // 새 창에서 PDF 파일 열기
+        setFileUrl(url); // 받아온 URL을 상태에 저장
+      } catch (error) {
+        console.error("Preview error:", error);
+      }
+    }
+  };
   return (
     <li
       className={`flex w-full h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
@@ -12,13 +28,17 @@ const Each = ({ file, handleCheckboxChange, index }) => {
           className="checked:bg-blue-600"
         />
       </div>
-      <div className="flex px-3 w-[550px] h-full items-center text-[#171923]">{file.name}</div>
+      <div className="flex px-3 w-[550px] h-full items-center text-[#171923]">{file.title}</div>
       <div className="flex px-3 w-[123px] h-full items-center text-[#171923] gap-[6px]">
-        <div className={`w-4 h-4 rounded-[90px] bg-[${getColorScore(file.score)}]`} />
-        <div>{file.score} %</div>
+        <div className={`w-4 h-4 rounded-[90px] bg-[${getColorScore(file.plagiarism_rate)}]`} />
+        <div>{file.plagiarism_rate} %</div>
       </div>
       <div className="flex pl-3 pr-5 h-full items-center">
-        <button className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md">
+        <button
+          className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
+          onClick={() => {
+            handlePreview();
+          }}>
           <div className="text-[#31353B] text-[12px] text-nowrap">확인하기</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"

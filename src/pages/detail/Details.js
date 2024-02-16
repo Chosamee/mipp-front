@@ -2,7 +2,17 @@ import React, { useEffect, useState } from "react";
 import Each from "./Each";
 
 const Details = ({ files, sendCountFunc }) => {
-  const [checkedFiles, setCheckedFiles] = useState(files);
+  const [checkedFiles, setCheckedFiles] = useState([]);
+
+  useEffect(() => {
+    // files 배열에 변화가 있을 때마다 실행
+    const initializedFiles = files.map((file) => ({
+      ...file,
+      checked: false, // 초기 체크 상태는 false로 설정
+    }));
+    setCheckedFiles(initializedFiles);
+  }, [files]);
+
   const [isAllChecked, setIsAllChecked] = useState(false);
 
   const handleSelectAll = (event) => {
@@ -31,7 +41,6 @@ const Details = ({ files, sendCountFunc }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkedCount]);
-
   return (
     <React.Fragment>
       {/* 비교 결과 목차 */}

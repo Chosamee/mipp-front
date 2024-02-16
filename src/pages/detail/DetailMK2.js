@@ -25,7 +25,7 @@ const DetailMK2 = () => {
       try {
         const response = await fetchDetail(id, i18n.language);
         setresultData(response.results);
-        console.log(response);
+        console.log(response.results);
       } catch (error) {
         console.error(error);
         updateAuthState({ isLoggedIn: false });
@@ -50,17 +50,6 @@ const DetailMK2 = () => {
     // 현재 언어를 이전 언어 참조로 업데이트
     prevLangRef.current = currentLang;
   }, [currentLang]); // 현재 언어가 변경될 때마다 이 효과를 실행
-
-  const files = [
-    { name: "JOY 조이 안녕 (Hello)", checked: false, score: 90 },
-    { name: "JOY 조이 잘가 (ㅁㄴㅇ)", checked: false, score: 76 },
-    { name: "asdasdas", checked: false, score: 56 },
-    { name: "ang ang ang", checked: false, score: 38 },
-    { name: "JOY aaaao)", checked: false, score: 11 },
-    { name: "JOYJOYJOYJOYJOY", checked: false, score: 5 },
-
-    // ... 나머지 파일 목록
-  ];
 
   const [checkedCount, setCheckedCount] = useState(0);
   const handleCount = (calculatedResult) => {
@@ -97,7 +86,7 @@ const DetailMK2 = () => {
       </div>
 
       {/* 비교 결과 */}
-      <Details files={files} sendCountFunc={handleCount} />
+      <Details files={resultData} sendCountFunc={handleCount} />
 
       <div className="h-20" />
 
