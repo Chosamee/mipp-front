@@ -91,6 +91,11 @@ const NavBar = () => {
               </button>
               <button
                 className="flex p-1 gap-[6px] items-center"
+                onClick={() => navigate(getLangUrl("/faqs"))}>
+                FAQ
+              </button>
+              <button
+                className="flex p-1 gap-[6px] items-center"
                 onClick={() => navigate(getLangUrl("/board"))}>
                 {t("nav.request")}
               </button>

@@ -1,22 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import LoadingSpinner from "../../components/views/LoadingSpinner";
-import PDFViewer from "../../components/views/PDFViewer";
 import { fetchDetail } from "api/resultService";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
 import Details from "./Details";
 import Criteria from "./Criteria";
+import { multiDownloadPDF } from "api/pdfService";
 
-const DetailMK2 = () => {
+const DetailPage = () => {
   const { id } = useParams();
   const [resultData, setresultData] = useState([]);
+  const [musicData, setMusicData] = useState([]);
   const { t } = useTranslation();
   const { updateAuthState } = useAuth();
   const navigate = useNavigate();
   const { i18n } = useTranslation();
+  const [checkedFiles, setCheckedFiles] = useState([]);
+  const [downloadLoading, setDownloadLoading] = useState(false);
 
   useEffect(() => {
     console.log(i18n.language);
@@ -25,7 +27,8 @@ const DetailMK2 = () => {
       try {
         const response = await fetchDetail(id, i18n.language);
         setresultData(response.results);
-        console.log(response.results);
+        setMusicData(response.music);
+        console.log(response.music);
       } catch (error) {
         console.error(error);
         updateAuthState({ isLoggedIn: false });
@@ -57,36 +60,73 @@ const DetailMK2 = () => {
     setCheckedCount(calculatedResult);
   };
 
+  const getMultiDowndladPDF = async () => {
+    if (downloadLoading) return;
+    const checkedPaths = checkedFiles.filter((item) => item.checked).map((item) => item.path);
+    if (checkedPaths.length === 0) {
+      alert("Select Files");
+      return;
+    }
+    setDownloadLoading(true);
+    try {
+      const url = await multiDownloadPDF(checkedPaths);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${musicData.title}.zip`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download error:", error);
+    }
+    setDownloadLoading(false);
+  };
+
   return (
     <div className="mx-auto pt-[150px] pb-[120px] w-[854px] px-2 leading-[normal] text-[#171923]">
       {/* 전체 검사결과 뒤로가기 */}
       <div className="flex items-center gap-[10px]">
         <BackArrowIcon />
-        <div className="text-[15px] font-medium">전체 검사결과</div>
+        <div className="text-[15px] font-medium">{t("detail.전체 검사결과")}</div>
       </div>
 
       {/* 노래 검사 유형 / 노래 제목 */}
       <div className="flex mt-[50px] gap-[10px]">
         <div className="bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit">
-          기본
+          {t(`detail.${musicData.inst}`)}
         </div>
-        <div className="text-[24px] leading-[28px] font-semibold">태민 - MOVE</div>
+        <div className="text-[24px] leading-[28px] font-semibold">{musicData.title}</div>
       </div>
 
       {/* 선택 파일 갯수/ 파일 다운로드 버튼 */}
       <div className="flex mt-9 items-center">
-        <div className="text-[17px] font-medium leading-[16px]">선택파일</div>
+        <div className="text-[17px] font-medium leading-[16px]">{t("detail.선택파일")}</div>
         <div className="text-[17px] font-medium leading-[16px] text-[#3553F3] ml-1 w-[34px]">
-          {checkedCount}건
+          ({checkedCount})
         </div>
-        <button className="flex h-[30px] bg-[#3553F3] rounded-md px-3 items-center gap-1 ml-[18px]">
+        <button
+          className="flex h-[30px] bg-[#3553F3] rounded-md px-3 items-center gap-1 ml-[18px]"
+          onClick={() => {
+            getMultiDowndladPDF();
+          }}>
           <DownloadIcon />
-          <div className="text-white text-[12px] leading-[16px] font-medium">파일 다운로드</div>
+          <div className="text-white text-[12px] leading-[16px] font-medium">
+            {t("detail.파일 다운로드")}
+          </div>
         </button>
+        {downloadLoading && (
+          <div className="ml-5 animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500" />
+        )}
       </div>
 
       {/* 비교 결과 */}
-      <Details files={resultData} sendCountFunc={handleCount} />
+      <Details
+        files={resultData}
+        sendCountFunc={handleCount}
+        checkedFiles={checkedFiles}
+        setCheckedFiles={setCheckedFiles}
+      />
 
       <div className="h-20" />
 
@@ -126,4 +166,4 @@ const DownloadIcon = () => {
     </svg>
   );
 };
-export default DetailMK2;
+export default DetailPage;

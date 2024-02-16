@@ -1,29 +1,30 @@
 import { getLangUrl } from "locales/utils";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
 const Criteria = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <div className="flex flex-col w-full gap-[44px] py-[50px] mx-auto bg-[#F9FAFB] rounded-[14px]">
       <div className="flex flex-col gap-[10px] items-center justify-center">
         <h1 className="text-[#2C2F35] text-[20px] font-semibold tracking-[0.192px] leading-[30px]">
-          표절률 기준(%)
+          {t("detail.표절률 기준")}(%)
         </h1>
         <ColorBar />
         <div className="text-[#8D8D8D] text-[12px] font-light leading-[20px]">
-          * 장르에 따라서 차이가 있을 수 있습니다
+          * {t("detail.장르에 따라서 차이가 있을 수 있습니다")}
         </div>
       </div>
       <div className="w-[740px] h-px bg-[#EAEFF4] self-center" />
       <div className="flex flex-col gap-[19px] items-center">
         <div className="text-[20px] font-semibold leading-[30px] tracking-[0.192px] text-[#2C2F35]">
-          다른 음악 표절 검사 결과도 궁금하다면?
+          {t("detail.다른 음악 표절 검사 결과도 궁금하다면?")}
         </div>
         <button
           className="w-fit px-[19px] py-2 border-2 border-[#3553F3] bg-[#3553F3] rounded-lg text-[14px] text-white leading-[24px] tracking-[0.134px]"
           onClick={() => navigate(getLangUrl("/home"))}>
-          다시 검사하기
+          {t("detail.다시 검사하기")}
         </button>
       </div>
     </div>
@@ -31,12 +32,14 @@ const Criteria = () => {
 };
 
 export const ColorBar = () => {
+  const { t } = useTranslation();
+
   const colorSegments = [
-    { score: "0", color: "#3553F3", label: "없음" },
-    { score: "30", color: "#BDC4FF", label: "낮음" },
-    { score: "40", color: "#F3D3FF", label: "보통" },
-    { score: "50", color: "#FFA3FB", label: "높음" },
-    { score: "60", color: "#FE5BBD", label: "아주 높음" },
+    { score: "0", color: "#3553F3", label: t("detail.없음") },
+    { score: "30", color: "#BDC4FF", label: t("detail.낮음") },
+    { score: "40", color: "#F3D3FF", label: t("detail.보통") },
+    { score: "50", color: "#FFA3FB", label: t("detail.높음") },
+    { score: "60", color: "#FE5BBD", label: t("detail.아주 높음") },
   ];
   return (
     <React.Fragment>

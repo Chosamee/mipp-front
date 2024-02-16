@@ -8,7 +8,27 @@
     "title": "Title",
     "content": "Content"
   },
-  "detail": "Detail",
+  "detail": {
+    "전체 검사결과": "Result Page",
+    "boundary": "Vocal+Inst.",
+    "vocal": "Vocal",
+    "melody": "Inst.",
+    "선택파일": "Selected Files",
+    "파일 다운로드": "Download Files",
+    "이름": "Title",
+    "표절률": "Plagiarism Rate",
+    "확인하기": "Check",
+    "결과자료": "Result PDF",
+    "표절률 기준": "Plagiarism Rate Standard",
+    "장르에 따라서 차이가 있을 수 있습니다": "Differences may exist depending on the genre",
+    "다른 음악 표절 검사 결과도 궁금하다면?": "Interested in plagiarism checks for other tracks?",
+    "다시 검사하기": "Check Again",
+    "없음": "Safe",
+    "낮음": "Low",
+    "보통": "Medium",
+    "높음": "High",
+    "아주 높음": "Very High"
+  },
   "pagination": {
     "tot": "Total",
     "num": "",

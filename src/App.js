@@ -33,7 +33,6 @@ import Home from "pages/Home";
 import Index from "pages/Index";
 import Login from "pages/Login";
 import Result from "pages/Result";
-import Detail from "pages/Detail";
 import Howtouse from "pages/Howtouse";
 import Suggestion from "pages/Suggestion";
 import Asks from "pages/ask/Asks";
@@ -42,7 +41,8 @@ import AskDetail from "pages/ask/AskDetail";
 import RegistrationForm from "pages/Regist";
 import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
-import DetailMK2 from "pages/detail/DetailMK2";
+import DetailPage from "pages/detail/DetailPage";
+import FAQ from "pages/solution/FAQ";
 
 const App = () => {
   return (
@@ -88,13 +88,13 @@ const App = () => {
                     <Route path="intro" element={<Intro />} />
 
                     <Route path="asks" element={<ProtectedRoute component={Asks} />} />
-
+                    <Route path="faqs" element={<FAQ />} />
                     <Route
                       path="asks/detail/:id"
                       element={<ProtectedRoute component={AskDetail} />}
                     />
                     <Route path="asks/create" element={<ProtectedRoute component={AskCreate} />} />
-                    <Route path="detail/:id" element={<ProtectedRoute component={DetailMK2} />} />
+                    <Route path="detail/:id" element={<ProtectedRoute component={DetailPage} />} />
                   </Route>
                 </Routes>
               </div>

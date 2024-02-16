@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Each from "./Each";
+import { useTranslation } from "react-i18next";
 
-const Details = ({ files, sendCountFunc }) => {
-  const [checkedFiles, setCheckedFiles] = useState([]);
+const Details = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => {
+  const { t } = useTranslation();
 
   useEffect(() => {
     // files 배열에 변화가 있을 때마다 실행
@@ -11,6 +12,7 @@ const Details = ({ files, sendCountFunc }) => {
       checked: false, // 초기 체크 상태는 false로 설정
     }));
     setCheckedFiles(initializedFiles);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files]);
 
   const [isAllChecked, setIsAllChecked] = useState(false);
@@ -41,6 +43,7 @@ const Details = ({ files, sendCountFunc }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkedCount]);
+
   return (
     <React.Fragment>
       {/* 비교 결과 목차 */}
@@ -48,9 +51,9 @@ const Details = ({ files, sendCountFunc }) => {
         <div className="flex px-5 items-center h-full font-medium">
           <input type="checkbox" checked={isAllChecked} onChange={handleSelectAll} />
         </div>
-        <div className="flex px-3 w-[550px] h-full items-center">이름</div>
-        <div className="flex px-3 w-[123px] h-full items-center">표절률</div>
-        <div className="flex pl-3 pr-5 h-full items-center">결과자료</div>
+        <div className="flex px-3 w-[520px] h-full items-center">{t("detail.이름")}</div>
+        <div className="flex px-3 w-[153px] h-full items-center">{t("detail.표절률")}</div>
+        <div className="flex pl-3 pr-5 h-full items-center">{t("detail.결과자료")}</div>
       </div>
       {/* 찐 결과 */}
       {checkedFiles.map((file, index) => (

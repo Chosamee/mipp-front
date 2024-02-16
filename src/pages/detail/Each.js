@@ -1,10 +1,15 @@
 import { downloadPDF } from "api/pdfService";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Each = ({ file, handleCheckboxChange, index }) => {
   const [fileUrl, setFileUrl] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
+
   const handlePreview = async () => {
-    console.log(file);
+    if (isLoading) return;
+    setIsLoading(true);
     if (!fileUrl) {
       try {
         const url = await downloadPDF(file.path); // 서버로부터 PDF 파일 받아오기
@@ -13,7 +18,10 @@ const Each = ({ file, handleCheckboxChange, index }) => {
       } catch (error) {
         console.error("Preview error:", error);
       }
+    } else {
+      window.open(fileUrl, "_blank");
     }
+    setIsLoading(false);
   };
   return (
     <li
@@ -28,27 +36,31 @@ const Each = ({ file, handleCheckboxChange, index }) => {
           className="checked:bg-blue-600"
         />
       </div>
-      <div className="flex px-3 w-[550px] h-full items-center text-[#171923]">{file.title}</div>
-      <div className="flex px-3 w-[123px] h-full items-center text-[#171923] gap-[6px]">
+      <div className="flex px-3 w-[520px] h-full items-center text-[#171923]">{file.title}</div>
+      <div className="flex px-3 w-[153px] h-full items-center text-[#171923] gap-[6px]">
         <div className={`w-4 h-4 rounded-[90px] bg-[${getColorScore(file.plagiarism_rate)}]`} />
         <div>{file.plagiarism_rate} %</div>
       </div>
       <div className="flex pl-3 pr-5 h-full items-center">
-        <button
-          className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
-          onClick={() => {
-            handlePreview();
-          }}>
-          <div className="text-[#31353B] text-[12px] text-nowrap">확인하기</div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="6"
-            height="10"
-            viewBox="0 0 6 10"
-            fill="none">
-            <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
-          </svg>
-        </button>
+        {isLoading ? (
+          <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
+        ) : (
+          <button
+            className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
+            onClick={() => {
+              handlePreview();
+            }}>
+            <div className="text-[#31353B] text-[12px] text-nowrap">{t("detail.확인하기")}</div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="6"
+              height="10"
+              viewBox="0 0 6 10"
+              fill="none">
+              <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
+            </svg>
+          </button>
+        )}
       </div>
     </li>
   );

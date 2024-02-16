@@ -19,3 +19,23 @@ export const downloadPDF = async (filepath) => {
     throw error;
   }
 };
+
+export const multiDownloadPDF = async (filepaths) => {
+  const url = `${API_BASE_URL}/download_multi`;
+  const jsonData = JSON.stringify(filepaths);
+
+  try {
+    const response = await axios.post(url, jsonData, {
+      responseType: "blob", // 중요: 서버의 응답을 Blob으로 처리',
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // Blob 데이터를 이용하여 다운로드 링크 생성
+    return window.URL.createObjectURL(new Blob([response.data], { type: "application/zip" }));
+  } catch (error) {
+    console.error("Download error:", error);
+    throw error;
+  }
+};
