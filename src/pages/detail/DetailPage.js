@@ -84,7 +84,7 @@ const DetailPage = () => {
   };
 
   return (
-    <div className="mx-auto pt-[50px] pb-[70px] desktop:pt-[150px] desktop:pb-[120px] w-[327px] desktop:w-[854px] px-5 leading-[normal] text-[#171923]">
+    <div className="mx-auto pt-[50px] pb-[70px] desktop:pt-[150px] desktop:pb-[120px] w-[375px] desktop:w-[854px] px-5 leading-[normal] text-[#171923]">
       {/* 전체 검사결과 뒤로가기 */}
       <div className="hidden desktop:flex items-center gap-[10px] mb-[50px]">
         <BackArrowIcon />
@@ -92,10 +92,10 @@ const DetailPage = () => {
       </div>
 
       {/* 노래 검사 유형 / 노래 제목 */}
-      <div className="flex gap-[10px]">
+      <div className="flex gap-[10px] items-center">
         <div
           className="flex bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit
-        text-[#171923] text-[14px] leading-[20px] font-semibold">
+        text-[#171923] text-[14px] leading-[20px] font-semibold h-fit">
           {t(`detail.${musicData.inst}`)}
         </div>
         <div className="text-[22px] desktop:text-[24px] leading-[28px] font-semibold">

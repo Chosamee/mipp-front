@@ -48,7 +48,7 @@ const Details = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => {
     <React.Fragment>
       {/* 비교 결과 목차 */}
       <div className="flex w-full h-10 mt-4 items-center border-y-[1px] border-[#E5E8EB]">
-        <div className="flex px-0 desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit">
+        <div className="flex px-0 desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
           <input type="checkbox" checked={isAllChecked} onChange={handleSelectAll} />
         </div>
         <div className="flex px-3 w-[184px] desktop:w-[520px] h-full items-center">

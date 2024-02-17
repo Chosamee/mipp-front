@@ -28,7 +28,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
       className={`flex w-full min-h-[88px] h-fit desktop:h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
         file.checked ? "bg-[#ECF2F8]" : ""
       }`}>
-      <div className="flex px-0 desktop:px-5 items-center h-full">
+      <div className="flex px-0 desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
         <input
           type="checkbox"
           checked={file.checked}
@@ -69,7 +69,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
         )}
       </div>
       <button
-        className="desktop:hidden w-[30px] relative right-0"
+        className="desktop:hidden relative right-0"
         onClick={() => {
           handlePreview();
         }}>
