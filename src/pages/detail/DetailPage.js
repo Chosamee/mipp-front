@@ -84,23 +84,27 @@ const DetailPage = () => {
   };
 
   return (
-    <div className="mx-auto pt-[150px] pb-[120px] w-[854px] px-2 leading-[normal] text-[#171923]">
+    <div className="mx-auto pt-[50px] pb-[70px] desktop:pt-[150px] desktop:pb-[120px] w-[327px] desktop:w-[854px] px-5 leading-[normal] text-[#171923]">
       {/* 전체 검사결과 뒤로가기 */}
-      <div className="flex items-center gap-[10px]">
+      <div className="hidden desktop:flex items-center gap-[10px] mb-[50px]">
         <BackArrowIcon />
         <div className="text-[15px] font-medium">{t("detail.전체 검사결과")}</div>
       </div>
 
       {/* 노래 검사 유형 / 노래 제목 */}
-      <div className="flex mt-[50px] gap-[10px]">
-        <div className="bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit">
+      <div className="flex gap-[10px]">
+        <div
+          className="flex bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit
+        text-[#171923] text-[14px] leading-[20px] font-semibold">
           {t(`detail.${musicData.inst}`)}
         </div>
-        <div className="text-[24px] leading-[28px] font-semibold">{musicData.title}</div>
+        <div className="text-[22px] desktop:text-[24px] leading-[28px] font-semibold">
+          {musicData.title}
+        </div>
       </div>
 
       {/* 선택 파일 갯수/ 파일 다운로드 버튼 */}
-      <div className="flex mt-9 items-center">
+      <div className="flex mt-10 desktop:mt-9 items-center">
         <div className="text-[17px] font-medium leading-[16px]">{t("detail.선택파일")}</div>
         <div className="text-[17px] font-medium leading-[16px] text-[#3553F3] ml-1 w-[34px]">
           ({checkedCount})
@@ -128,7 +132,7 @@ const DetailPage = () => {
         setCheckedFiles={setCheckedFiles}
       />
 
-      <div className="h-20" />
+      <div className="h-10 desktop:h-20" />
 
       {/* 표절률 기준 */}
       <Criteria />
