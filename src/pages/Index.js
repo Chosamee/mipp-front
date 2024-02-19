@@ -67,7 +67,7 @@ const App = () => {
             name="twitter:image"
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
-
+          <link rel="alternate" hreflang="en" href="https://aimipp.com/en" />
           <link rel="canonical" href="https://aimipp.com/en" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
@@ -117,7 +117,7 @@ const App = () => {
             name="twitter:image"
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
-
+          <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko" />
           <link rel="canonical" href="https://aimipp.com/ko" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">

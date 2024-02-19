@@ -52,7 +52,7 @@ const Intro = () => {
             name="twitter:image"
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
-
+          <link rel="alternate" hreflang="en" href="https://aimipp.com/en/intro" />
           <link rel="canonical" href="https://aimipp.com/en/intro" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
@@ -101,6 +101,7 @@ const Intro = () => {
             name="twitter:image"
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
+          <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko/intro" />
 
           <link rel="canonical" href="https://aimipp.com/ko/intro" />
           <meta name="robots" content="index, follow" />

@@ -43,6 +43,8 @@ import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
 import DetailPage from "pages/detail/DetailPage";
 import FAQ from "pages/solution/FAQ";
+import TermsPage from "pages/docs/TermsPage";
+import PolicyPage from "pages/docs/PolicyPage";
 
 const App = () => {
   return (
@@ -62,14 +64,16 @@ const App = () => {
               <Navbar />
               <div className="flex-grow desktop:mt-[125px] mt-[106px] ">
                 <Routes>
-                  <Route path="/" element={<LanguageRedirector />} />
+                  {/* <Route path="/" element={<LanguageRedirector />} /> */}
+                  <Route path="/" element={<Index />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                   <Route path="login/callback" element={<LoginCallbackPage />} />
                   <Route path="/:lang" element={<LanguageRedirector />}>
                     <Route path="*" element={<Navigate to="." replace />} />
                     {/* 공통된 경로들을 배치 */}
                     <Route index element={<Index />} />
-
+                    <Route path="docs/terms" element={<TermsPage />} />
+                    <Route path="docs/policy" element={<PolicyPage />} />
                     <Route path="login" element={<Login />} />
                     <Route
                       path="regist"

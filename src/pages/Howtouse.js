@@ -37,7 +37,7 @@ const Howtouse = () => {
             name="twitter:image"
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
-
+          <link rel="alternate" hreflang="en" href="https://aimipp.com/en/howtouse" />
           <link rel="canonical" href="https://aimipp.com/en/howtouse" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
@@ -95,6 +95,7 @@ const Howtouse = () => {
             content="MIPP는 누가, 어떻게 사용하면 좋을까요? 음악 표절 검사를 쉽고 효과적으로 활용하는 방법을 알아보세요."
           />
           <meta property="og:type" content="website" />
+
           <meta property="og:url" content="https://aimipp.com/ko/howtouse" />
           <meta property="og:title" content="MIPP 사용 방법" />
           <meta
@@ -116,6 +117,7 @@ const Howtouse = () => {
             name="twitter:image"
             content="https://storage.googleapis.com/domainbucket/imageog.png"
           />
+          <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko/howtouse" />
           <link rel="canonical" href="https://aimipp.com/ko/howtouse" />
           <meta name="robots" content="index, follow" />
           <script type="application/ld+json">
