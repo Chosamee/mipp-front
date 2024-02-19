@@ -128,7 +128,7 @@ const TermsEn = () => {
       <Title>10 Protection of Personal Information</Title>
       <Content>
         10-1 The Company will strive to protect Members' personal information in accordance with
-        relevant laws and ensure that it is not leaked. For more details, please refer to the
+        relevant laws and ensure that it is not leaked. For more details, please refer to the&nbsp;
         <button
           onClick={() => {
             navigate(getLangUrl("/docs/policy"));
