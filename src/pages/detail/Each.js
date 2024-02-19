@@ -41,9 +41,8 @@ const Each = ({ file, handleCheckboxChange, index }) => {
       </div>
       <div className="flex px-3 w-[108px] desktop:w-[153px] h-full items-center text-[#171923] gap-[6px]">
         <div
-          className={`hidden desktop:block w-4 h-4 rounded-[90px] bg-[${getColorScore(
-            file.plagiarism_rate
-          )}]`}
+          className="hidden desktop:block w-4 h-4 rounded-[90px]"
+          style={{ backgroundColor: getColorScore(file.plagiarism_rate) }}
         />
         <div>{file.plagiarism_rate} %</div>
       </div>
@@ -91,11 +90,11 @@ const Each = ({ file, handleCheckboxChange, index }) => {
 };
 
 const getColorScore = (score) => {
-  if (score < 30) return "#3553F3";
-  else if (score < 40) return "#BDC4FF";
-  else if (score < 50) return "#F3D3FF";
-  else if (score < 60) return "#FFA3FB";
-  else return "#FE5BBD"; // 60 이상 100 이하
+  if (score >= 60) return "#FE5BBD"; // 60 이상일 경우
+  else if (score >= 50) return "#FFA3FB"; // 50 이상 60 미만
+  else if (score >= 40) return "#F3D3FF"; // 40 이상 50 미만
+  else if (score >= 30) return "#BDC4FF"; // 30 이상 40 미만
+  else return "#3553F3"; // 30 미만
 };
 
 export default Each;
