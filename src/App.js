@@ -64,8 +64,8 @@ const App = () => {
               <Navbar />
               <div className="flex-grow desktop:mt-[125px] mt-[106px] ">
                 <Routes>
-                  {/* <Route path="/" element={<LanguageRedirector />} /> */}
-                  <Route path="/" element={<Index />} />
+                  <Route path="/" element={<LanguageRedirector />} />
+                  {/* <Route path="/" element={<Index />} /> */}
                   <Route path="*" element={<Navigate to="/" replace />} />
                   <Route path="login/callback" element={<LoginCallbackPage />} />
                   <Route path="/:lang" element={<LanguageRedirector />}>
