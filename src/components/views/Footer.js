@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import instaram from "assets/footer/social_instagram.png";
 import youtube from "assets/footer/social_youtube.png";
@@ -21,20 +21,16 @@ const Footer = () => {
           </div>
           <div className="w-72 h-px bg-gray-300"></div>
           <div className="flex mt-4 gap-10">
-            <button
+            <Link
               className="flex items-center hover:text-gray-300 hover:underline"
-              onClick={() => {
-                navigate(getLangUrl("/docs/terms"));
-              }}>
+              to={getLangUrl("/docs/terms")}>
               Terms of Service
-            </button>
-            <button
+            </Link>
+            <Link
               className="flex items-center hover:text-gray-300 hover:underline"
-              onClick={() => {
-                navigate(getLangUrl("/docs/policy"));
-              }}>
+              to={getLangUrl("/docs/policy")}>
               Privacy Policy
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -87,36 +83,37 @@ const Footer = () => {
 
 const LanguageSeletor = () => {
   const { i18n } = useTranslation();
-  const navigate = useNavigate();
   const location = useLocation();
   // 언어 변경
   const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const pathParts = location.pathname.split("/");
     pathParts[1] = language; // URL의 언어 부분을 변경
-    const newPath = pathParts.join("/");
-
-    navigate(newPath); // 변경된 URL로 이동
+    return pathParts.join("/");
   };
   return (
     <div className="p-1 items-center gap-[14px] flex">
-      <button
+      <Link
         className={`text-[18px] font-medium leading-[24px] tracking-[0.173px] font-feature-settings-['ss10'_on] ${
           i18n.language === "ko" ? "text-white" : "text-[#A5A5A5]"
         }`}
-        onClick={() => changeLanguage("ko")}>
+        to={changeLanguage("ko")}
+        onClick={() => {
+          i18n.changeLanguage("ko");
+        }}>
         KO
-      </button>
+      </Link>
       <div className="w-[1px] h-5 bg-[#5F5F5F]" />
-      <button
+      <Link
         className={`text-[18px] font-medium leading-[24px] tracking-[0.173px] font-feature-settings-['ss10'_on] ${
           i18n.language === "en" ? "text-white" : "text-[#A5A5A5]"
         }`}
-        onClick={() => changeLanguage("en")}>
+        to={changeLanguage("en")}
+        onClick={() => {
+          i18n.changeLanguage("en");
+        }}>
         EN
-      </button>
+      </Link>
     </div>
   );
 };

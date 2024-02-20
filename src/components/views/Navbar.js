@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { handleLogout } from "api/authService";
 import { getLangUrl } from "locales/utils";
@@ -26,14 +26,10 @@ const NavBar = () => {
 
   // 언어 변경
   const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const pathParts = location.pathname.split("/");
     pathParts[1] = language; // URL의 언어 부분을 변경
-    const newPath = pathParts.join("/");
-
-    navigate(newPath); // 변경된 URL로 이동
+    return pathParts.join("/");
   };
 
   // 햄버거 메뉴 상태 관리
@@ -72,49 +68,45 @@ const NavBar = () => {
       <div className="flex items-center justify-between py-5 w-full">
         {/* GNB 메인*/}
         <div className="flex font-bold gap-[60px] py-3 pl-6 pr-5">
-          <button
-            onClick={() => navigate(getLangUrl("/"))}
-            className="self-center text-[36px] font-bold">
+          <Link to={getLangUrl("/")} className="self-center text-[36px] font-bold">
             MIPP
-          </button>
+          </Link>
           <div className="py-3 pr-6 text-[18px] gap-[40px] hidden desktop:flex">
             <div className="flex gap-[26px] px-2 items-center text-nowrap">
-              <button
-                className="flex p-1 gap-[6px] items-center"
-                onClick={() => navigate(getLangUrl("/intro"))}>
+              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/intro")}>
                 {t("nav.intro")}
-              </button>
-              <button
-                className="flex p-1 gap-[6px] items-center"
-                onClick={() => navigate(getLangUrl("/howtouse"))}>
+              </Link>
+              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/howtouse")}>
                 {t("nav.howToUse")}
-              </button>
-              <button
-                className="flex p-1 gap-[6px] items-center"
-                onClick={() => navigate(getLangUrl("/faqs"))}>
+              </Link>
+              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/faqs")}>
                 FAQ
-              </button>
-              <button
-                className="flex p-1 gap-[6px] items-center"
-                onClick={() => navigate(getLangUrl("/board"))}>
+              </Link>
+              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/board")}>
                 {t("nav.request")}
-              </button>
+              </Link>
               <div className="flex gap-[14px] p-1">
-                <button
+                <Link
                   className={`flex p-1 gap-[6px] items-center ${
                     i18n.language === "ko" ? "text-black" : "text-[#A5A5A5]"
                   }`}
-                  onClick={() => changeLanguage("ko")}>
+                  to={changeLanguage("ko")}
+                  onClick={() => {
+                    i18n.changeLanguage("ko");
+                  }}>
                   KO
-                </button>
+                </Link>
                 <div className="w-[1px] h-5 bg-[#D9D9D9] self-center"></div>
-                <button
+                <Link
                   className={`flex p-1 gap-[6px] items-center ${
                     i18n.language === "en" ? "text-black" : "text-[#A5A5A5]"
                   }`}
-                  onClick={() => changeLanguage("en")}>
+                  to={changeLanguage("en")}
+                  onClick={() => {
+                    i18n.changeLanguage("en");
+                  }}>
                   EN
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -125,47 +117,45 @@ const NavBar = () => {
           {authState.isLoggedIn ? (
             <div className="hidden desktop:flex px-2 gap-[26px] items-center justify-end text-nowrap">
               <button className="flex items-center text-[18px] p-1">
-                <span className="" onClick={() => navigate(getLangUrl("/asks"))}>
+                <Link className="" to={getLangUrl("/asks")}>
                   {t("nav.ask")}
-                </span>
+                </Link>
               </button>
               <button className="flex items-center text-[18px] p-1">
-                <span className="" onClick={() => navigate(getLangUrl("/mypage"))}>
+                <Link className="" to={getLangUrl("/mypage")}>
                   {t("nav.myAccount")}
-                </span>
+                </Link>
               </button>
               <button className="flex items-center text-[18px] p-1">
-                <span className="" onClick={() => navigate(getLangUrl("/result"))}>
+                <Link className="" to={getLangUrl("/result")}>
                   {t("nav.result")}
-                </span>
+                </Link>
               </button>
               <button className="flex items-center text-[18px] p-1">
                 {authState.isLoggedIn && (
-                  <span className="" onClick={handleLogoutClick}>
+                  <button className="" onClick={handleLogoutClick}>
                     {t("nav.logout")}
-                  </span>
+                  </button>
                 )}
               </button>
-              <button
+              <Link
                 className="flex items-center py-[14px] px-[30px] border-2 gap-[6px]
                     rounded-[100px] font-semibold text-[18px] bg-[#3553F3] text-white"
-                onClick={() => navigate(getLangUrl("/home"))}>
+                to={getLangUrl("/home")}>
                 {t("startChecking")}
-              </button>
+              </Link>
             </div>
           ) : (
             <div className="desktop:flex px-2 gap-[30px] hidden text-nowrap">
-              <button
-                className="flex p-4 gap-[6px] text-[18px] leading-6"
-                onClick={() => navigate(getLangUrl("/login"))}>
+              <Link className="flex p-4 gap-[6px] text-[18px] leading-6" to={getLangUrl("/login")}>
                 {t("nav.login")}
-              </button>
-              <button
+              </Link>
+              <Link
                 className="flex items-center py-[14px] px-[30px] border-2 gap-[6px]
                     rounded-[100px] font-semibold text-[18px] bg-[#3553F3] text-white flex-shrink-0"
-                onClick={() => navigate(getLangUrl("/home"))}>
+                to={getLangUrl("/home")}>
                 {t("startChecking")}
-              </button>
+              </Link>
             </div>
           )}
         </div>
@@ -173,21 +163,27 @@ const NavBar = () => {
 
         <div className="relative desktop:hidden flex">
           <div className="flex gap-[14px] p-1 desktop:hidden mr-5">
-            <button
+            <Link
               className={`flex p-1 gap-[6px] items-center ${
                 i18n.language === "ko" ? "text-black" : "text-[#A5A5A5]"
               }`}
-              onClick={() => changeLanguage("ko")}>
+              to={changeLanguage("ko")}
+              onClick={() => {
+                i18n.changeLanguage("ko");
+              }}>
               KO
-            </button>
+            </Link>
             <div className="w-[1px] h-5 bg-[#D9D9D9] self-center"></div>
-            <button
+            <Link
               className={`flex p-1 gap-[6px] items-center ${
                 i18n.language === "en" ? "text-black" : "text-[#A5A5A5]"
               }`}
-              onClick={() => changeLanguage("en")}>
+              to={changeLanguage("en")}
+              onClick={() => {
+                i18n.changeLanguage("en");
+              }}>
               EN
-            </button>
+            </Link>
           </div>
           <button
             onClick={toggleMenu}
@@ -201,36 +197,36 @@ const NavBar = () => {
             isMenuOpen ? "block" : "hidden"
           }`}>
           <div className="mt-[21px] flex flex-col justify-center gap-[30px]">
-            <button onClick={() => navigate(getLangUrl("/home"))} className="text-left mx-6">
+            <Link to={getLangUrl("/home")} className="text-left mx-6">
               {t("startChecking")}
-            </button>
-            <button onClick={() => navigate(getLangUrl("/intro"))} className="text-left mx-6">
+            </Link>
+            <Link to={getLangUrl("/intro")} className="text-left mx-6">
               {t("nav.intro")}
-            </button>
-            <button onClick={() => navigate(getLangUrl("/howtouse"))} className="text-left mx-6">
+            </Link>
+            <Link to={getLangUrl("/howtouse")} className="text-left mx-6">
               {t("nav.howToUse")}
-            </button>
-            <button onClick={() => navigate(getLangUrl("/board"))} className="text-left mx-6">
+            </Link>
+            <Link to={getLangUrl("/board")} className="text-left mx-6">
               {t("nav.request")}
-            </button>
+            </Link>
           </div>
           <div className="bg-[#D9D9D9] h-px mx-6" />
           <div className="flex flex-col justify-center gap-[30px]">
             {!authState.isLoggedIn ? (
-              <button onClick={() => navigate(getLangUrl("/login"))} className="text-left mx-6">
+              <Link to={getLangUrl("/login")} className="text-left mx-6">
                 {t("nav.login")}
-              </button>
+              </Link>
             ) : (
               <React.Fragment>
-                <button onClick={() => navigate(getLangUrl("/result"))} className="text-left mx-6">
+                <Link to={getLangUrl("/result")} className="text-left mx-6">
                   {t("nav.result")}
-                </button>
-                <button onClick={() => navigate(getLangUrl("/asks"))} className="text-left mx-6">
+                </Link>
+                <Link to={getLangUrl("/asks")} className="text-left mx-6">
                   {t("nav.ask")}
-                </button>
-                <button onClick={() => navigate(getLangUrl("/mypage"))} className="text-left mx-6">
+                </Link>
+                <Link to={getLangUrl("/mypage")} className="text-left mx-6">
                   {t("nav.myAccount")}
-                </button>
+                </Link>
               </React.Fragment>
             )}
           </div>
