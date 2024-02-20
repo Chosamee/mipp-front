@@ -58,6 +58,10 @@
     "tailwindcss": "^3.3.6"
   },
   "reactSnap": {
-    "port": 45679
+    "port": 45679,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }
