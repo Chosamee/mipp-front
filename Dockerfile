@@ -4,6 +4,15 @@ FROM node:20
 # 애플리케이션 디렉토리 생성
 WORKDIR /usr/src/app
 
+# 빌드 환경 변수 설정
+ARG REACT_APP_MIPP_API_URL
+ARG REACT_APP_GOOGLE_CLIENT_ID
+ENV REACT_APP_MIPP_API_URL=${REACT_APP_MIPP_API_URL}
+ENV REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
+
+# 애플리케이션 의존성 설치
+COPY package*.json ./
+
 # Puppeteer 의존성 설치
 RUN apt-get update && apt-get install -y \
     wget \
@@ -23,18 +32,12 @@ RUN apt-get update && apt-get install -y \
     libxdamage1 \
     libxrandr2 \
     xdg-utils \
+    libxss1 \
+    libxkbfile1 \
+    libxtst6 \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-
-# 빌드 환경 변수 설정
-ARG REACT_APP_MIPP_API_URL
-ARG REACT_APP_GOOGLE_CLIENT_ID
-ENV REACT_APP_MIPP_API_URL=${REACT_APP_MIPP_API_URL}
-ENV REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
-
-# 애플리케이션 의존성 설치
-COPY package*.json ./
 RUN npm install
 
 # 애플리케이션 소스 추가
