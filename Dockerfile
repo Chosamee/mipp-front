@@ -65,6 +65,7 @@ RUN apt-get update && apt-get install -y \
     libxrandr2 \
     libxrender1 \
     libxss1 \
+    libxkbfile1 \
     libxtst6 \
     lsb-release
 
