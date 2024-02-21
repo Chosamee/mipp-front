@@ -28,7 +28,6 @@ const DetailPage = () => {
         const response = await fetchDetail(id, i18n.language);
         setresultData(response.results);
         setMusicData(response.music);
-        console.log(response.music);
       } catch (error) {
         console.error(error);
         updateAuthState({ isLoggedIn: false });

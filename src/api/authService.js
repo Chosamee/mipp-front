@@ -51,7 +51,7 @@ export const handleOauthLogin = async (code, state) => {
     const response = await axios.post(`${API_BASE_URL}/google_token`, formData, {
       withCredentials: true,
     });
-    console.log("Google Login Success:", response);
+    console.log("Google Login Success:");
     return response.data;
   } catch (error) {
     console.error("Error during Login:", error);
@@ -64,7 +64,7 @@ export const handleRegist = async (registForm) => {
     const response = await axios.post(`${API_BASE_URL}/additional_info`, registForm, {
       withCredentials: true,
     });
-    console.log("Regist Success:", response);
+    console.log("Regist Success:");
     return response;
   } catch (error) {
     console.error("Error Regist Api:", error);
@@ -73,14 +73,13 @@ export const handleRegist = async (registForm) => {
 };
 
 export const handleCheckNicknameDuplicate = async (nickname) => {
-  console.log(nickname);
   const formData = new FormData();
   formData.append("nickname", nickname);
   try {
     const response = await axios.post(`${API_BASE_URL}/nickname_check`, formData, {
       withCredentials: true,
     });
-    console.log("check Success:", response.data);
+    console.log("check Success:");
     return response.data;
   } catch (error) {
     console.error("check error Api:", error);

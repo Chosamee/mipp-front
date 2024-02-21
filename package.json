@@ -63,6 +63,23 @@
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
+    ],
+    "include": [
+      "/",
+      "/ko",
+      "/en",
+      "/ko/docs/terms",
+      "/en/docs/terms",
+      "/ko/docs/policy",
+      "/en/docs/policy",
+      "/ko/howtouse",
+      "/en/howtouse",
+      "/ko/intro",
+      "/en/intro",
+      "/ko/login",
+      "/en/login",
+      "/ko/faqs",
+      "/en/faqs"
     ]
   }
 }
