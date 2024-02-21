@@ -59,6 +59,8 @@
     "tailwindcss": "^3.3.6"
   },
   "reactSnap": {
+    "skipThirdPartyRequests": true,
+    "ignoreHTTPSErrors": true,
     "port": 45679,
     "puppeteerArgs": [
       "--no-sandbox",

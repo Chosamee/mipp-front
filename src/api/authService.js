@@ -12,7 +12,7 @@ export const verifyToken = async () => {
       action: response.data.action === "Additional_info_needed" ? false : true,
     };
   } catch (error) {
-    console.error("Token verification error:", error);
+    console.error("Token verification error:");
     return {
       isValid: false,
       action: false,
@@ -23,7 +23,7 @@ export const verifyToken = async () => {
 export const handleLogout = async () => {
   try {
     const response = await axios.post(`${API_BASE_URL}/logout`, null, { withCredentials: true });
-    console.log("Logout Success:", response);
+    console.log("Logout Success:");
   } catch (error) {
     console.error("Logout api error:", error);
     throw error;

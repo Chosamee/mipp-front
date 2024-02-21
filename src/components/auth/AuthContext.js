@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
           isLoggedIn: isTokenValid.isValid,
         });
       } catch (error) {
-        console.error("Authentication error:", error);
+        console.error("Authentication error:");
       }
     };
     const pathParts = location.pathname.split("/").slice(2);
