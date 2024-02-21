@@ -69,20 +69,20 @@ RUN apt-get update && apt-get install -y \
     libxtst6 \
     lsb-release
 
-# Puppeteer 사용자와 그룹 생성
-RUN groupadd -r puppeteer && useradd -r -g puppeteer -G audio,video puppeteer \
-    && mkdir -p /home/puppeteer/Downloads \
-    && chown -R puppeteer:puppeteer /home/puppeteer \
-    && chown -R puppeteer:puppeteer /usr/src/app
+# # Puppeteer 사용자와 그룹 생성
+# RUN groupadd -r puppeteer && useradd -r -g puppeteer -G audio,video puppeteer \
+#     && mkdir -p /home/puppeteer/Downloads \
+#     && chown -R puppeteer:puppeteer /home/puppeteer \
+#     && chown -R puppeteer:puppeteer /usr/src/app
 
-# Puppeteer 사용자로 전환
-USER puppeteer
+# # Puppeteer 사용자로 전환
+# USER puppeteer
 
 # npm 의존성 설치
 RUN npm install
 
 # 애플리케이션 소스 추가
-COPY --chown=puppeteer:puppeteer . .
+COPY . .
 
 # React 앱 빌드
 RUN npm run build --verbose
