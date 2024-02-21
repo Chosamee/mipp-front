@@ -87,9 +87,6 @@ COPY --chown=puppeteer:puppeteer . .
 # React 앱 빌드
 RUN npm run build --verbose
 
-# React 앱 빌드
-RUN npm run build --verbose
-
 # 애플리케이션이 사용할 포트 설정
 EXPOSE 3000
 
