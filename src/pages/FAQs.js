@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-
+import FAQsSEOEN from "seo/FAQsSEO.en";
+import FAQsSEOKO from "seo/FAQsSEO.ko";
 const FAQ_DATA_KR = [
   {
     question: "로그인이 안돼요. 어떻게 해야 하나요?",
@@ -78,7 +78,7 @@ const FAQ_DATA_EN = [
   },
 ];
 
-const FAQ = () => {
+const FAQs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedItem, setExpandedItem] = useState(null);
   const ITEMS_PER_PAGE = 5;
@@ -99,8 +99,10 @@ const FAQ = () => {
   };
 
   return (
-    <div className="px-2 desktop:w-[750px] w-[375px] pt-16 pb-16 mx-auto">
-      <h1 className="text-2xl font-bold pt-2 pb-2 mt-4 mb-6">FAQ</h1>
+    <div className="px-2 desktop:w-[750px] w-[375px] pt-16  pb-16 mx-auto">
+      {i18n.language === "en" ? <FAQsSEOEN /> : <FAQsSEOKO />}
+
+      <h1 className="text-2xl font-bold pt-2 pb-2 mt-4 mb-6">FAQs</h1>
 
       {currentItems.map((item, index) => (
         <div key={index} className="mb-4">
@@ -128,7 +130,7 @@ const FAQ = () => {
         </div>
       ))}
       {/* Pagination */}
-      {FAQ && (
+      {FAQs && (
         <div className="flex justify-center items-center mt-8 space-x-4">
           {[...Array(Math.ceil(FAQData.length / ITEMS_PER_PAGE)).keys()].map((page, index) => (
             <button
@@ -146,4 +148,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FAQs;

@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Content, Title } from "./Comp";
 import React from "react";
 import { getLangUrl } from "locales/utils";
 
 const TermsEn = () => {
-  const navigate = useNavigate();
   return (
     <React.Fragment>
       <Title>1 Purpose</Title>
@@ -129,13 +128,9 @@ const TermsEn = () => {
       <Content>
         10-1 The Company will strive to protect Members' personal information in accordance with
         relevant laws and ensure that it is not leaked. For more details, please refer to the&nbsp;
-        <button
-          onClick={() => {
-            navigate(getLangUrl("/docs/policy"));
-          }}
-          className="text-nowrap text-blue-700 underline">
+        <Link to={getLangUrl("/docs/policy")} className="text-nowrap text-blue-700 underline">
           Privacy Policy
-        </button>
+        </Link>
         .
       </Content>
 

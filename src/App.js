@@ -42,9 +42,9 @@ import RegistrationForm from "pages/Regist";
 import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
 import DetailPage from "pages/detail/DetailPage";
-import FAQ from "pages/solution/FAQ";
-import TermsPage from "pages/docs/TermsPage";
-import PolicyPage from "pages/docs/PolicyPage";
+import FAQs from "pages/FAQs";
+import TermsPage from "pages/docs/Terms";
+import PolicyPage from "pages/docs/Policy";
 
 const App = () => {
   return (
@@ -92,7 +92,7 @@ const App = () => {
                     <Route path="intro" element={<Intro />} />
 
                     <Route path="asks" element={<ProtectedRoute component={Asks} />} />
-                    <Route path="faqs" element={<FAQ />} />
+                    <Route path="faqs" element={<FAQs />} />
                     <Route
                       path="asks/detail/:id"
                       element={<ProtectedRoute component={AskDetail} />}

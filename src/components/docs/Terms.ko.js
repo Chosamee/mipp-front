@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Content, Title } from "./Comp";
 import React from "react";
 import { getLangUrl } from "locales/utils";
 
 const TermsKo = () => {
-  const navigate = useNavigate();
   return (
     <React.Fragment>
       <Title>제 1조 목적</Title>
@@ -127,15 +126,11 @@ const TermsKo = () => {
 
       <Title>제 10조 개인정보의 보호</Title>
       <Content>
-        10-1 회사는 관련 법령에 따라 회원의 개인정보를 보호하고, 회원의 개인정보가 유출되지 않도록
-        최선을 다할 것입니다. 자세한 사항은{" "}
-        <button
-          onClick={() => {
-            navigate(getLangUrl("/docs/policy"));
-          }}
-          className="text-nowrap text-blue-700 underline">
+        10-1 회사는 관련 법령에 따라 회원의 개인정보를 보호하고, 회원의 개인정보가 유출되지
+        않도록&nbsp;
+        <Link to={getLangUrl("/docs/policy")} className="text-nowrap text-blue-700 underline">
           개인정보보호정책
-        </button>
+        </Link>
         을 참조해 주시기 바랍니다.
       </Content>
 
