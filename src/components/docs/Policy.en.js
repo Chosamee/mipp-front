@@ -1,159 +1,313 @@
-import { useNavigate } from "react-router-dom";
-import { Content, Title } from "./Comp";
 import React from "react";
-import { getLangUrl } from "locales/utils";
+import styled from "styled-components";
+
+const BracketOl = styled.ol`
+  counter-reset: list-item 0; /* 카운터를 0부터 시작하도록 초기화 */
+  > li {
+    counter-increment: list-item; /* 각 항목마다 카운터를 1씩 증가 */
+  }
+  > li::before {
+    content: counter(list-item) ") "; /* 카운터와 닫는 괄호를 내용으로 설정 */
+  }
+`;
+
+const DiskOl = styled.ol`
+  > li::before {
+    content: "• ";
+  }
+`;
+
+// 공통 스타일이 적용된 TableCell 컴포넌트
+const TableCell = ({ children, isHeader = false }) => {
+  const commonStyles = "border border-gray-400 px-4 py-2 w-1/2";
+  return isHeader ? (
+    <th className={`${commonStyles} text-gray-800`}>{children}</th>
+  ) : (
+    <td className={commonStyles}>{children}</td>
+  );
+};
 
 const PolicyEN = () => {
-  const navigate = useNavigate();
   return (
     <React.Fragment>
-      <Title>1 Purpose</Title>
-      <Content>
-        These Terms and Conditions are established to clarify the basic matters such as rights,
-        duties, and responsibilities between "Users" (hereafter referred to as 'Members') and
-        DoubleH Company Ltd. (hereafter referred to as "the Company") regarding the use of various
-        services provided by the Company.
-      </Content>
-      <Title>2 Effectiveness and Amendment of the Terms</Title>
-      <Content>
-        2-1 These Terms become effective upon their announcement within the service or notification
-        to Members via email or other means.
-      </Content>
-      <Content>
-        2-2 The Company may amend these Terms within the bounds of applicable laws without prior
-        notice when necessary.
-      </Content>
-      <Content>
-        2-3 If you do not agree with the amended Terms, you may request to withdraw your membership.
-        If you continue to use the service after the announcement of the amended Terms, you are
-        deemed to have consented to the changes.
-      </Content>
-      <Title>3 Definition of Terms</Title>
-      <Content>
-        3-1 "Service": Refers to all services provided to Members through the &lt; MIPP &gt;
-        platform operated by the Company.
-      </Content>
-      <Content>3-2 "Member": Refers to all users of the Company's services.</Content>
-      <Content>
-        3-3 "Original Music": Refers to the music files or data uploaded by Members for the use of
-        the service.
-      </Content>
-      <Content>
-        3-4 "Comparison Music": Refers to the music used as a standard for assessing the originality
-        of the inspection sound source.
-      </Content>
-      <Content>
-        3-5 "Music Plagiarism Test": The process by which the Company analyzes the similarities
-        between the inspection sound source and the comparison sound source.
-      </Content>
-      <Content>
-        3-6 "Plagiarism Rate": An indicator of the similarity between the inspection sound source
-        and the comparison sound source. The final decision on plagiarism is the responsibility of
-        the Member.
-      </Content>
-      <Title>4 Supplementary Rules</Title>
-      <Content>
-        4-1 Matters not specified in these Terms or interpretations thereof shall follow the
-        Company's announcements, relevant laws, or customary practices.
-      </Content>
-      <Content>
-        4-2 In case a Member enters into a separate contract with the Company, such a contract shall
-        take precedence.
-      </Content>
-      <Title>5 Formation of the Use Agreement</Title>
-      <Content>
-        Clicking the "I agree" button during the registration process is considered as consenting to
-        these Terms, and the use agreement is established upon the Company's approval.
-      </Content>
-      <Title>6 Changes and Interruption of Service</Title>
-      <Content>
-        6-1 For quality enhancement, operational or technical requirements, the Company may change,
-        interrupt, or add to the whole or part of the services.
-      </Content>
-      <Title>7 Copyright of Posts</Title>
-      <Content>
-        7-1 The rights and responsibilities for the inspection sound sources uploaded to the MIPP
-        service by Members belong to the Members. The Company will use them only to the extent
-        necessary for service operation.
-      </Content>
-      <Content>
-        7-2 Members grant the Company permission to use the inspection sound sources for service
-        improvement. The Company respects the copyright of the content provided by Members.
-      </Content>
-      <Content>
-        7-3 The Company is not liable for any civil or criminal responsibilities if a Member's
-        inspection sound source infringes or has infringed upon someone else's copyright.
-      </Content>
-      <Title>8 Member's Duties</Title>
-      <Content>
-        8-1 Members must verify and secure the appropriate rights for the content before using the
-        service, especially obtaining the necessary permissions under copyright law when required.
-      </Content>
-      <Content>
-        8-2 Members are responsible for any copyright issues that may arise from using the service.
-      </Content>
-      <Content>
-        8-3 Members must obtain the Company's prior approval for commercial use of the service.
-      </Content>
-      <Content>
-        8-4 Members shall not use the information obtained from the service for commercial purposes
-        or provide it to third parties without the Company's prior consent.
-      </Content>
-      <Content>
-        8-5 Members must not interfere with the operation of the Company's services or infringe on
-        the rights of third parties.
-      </Content>
-      <Title>9 Company's Duties</Title>
-      <Content>9-1 The Company will do its best to provide stable and continuous service.</Content>
-      <Content>
-        9-2 The Company will strive to promptly resolve any inconveniences or complaints from
-        Members.
-      </Content>
-      <Content>
-        9-3 The Company is not liable for any service interruptions caused by force majeure, but
-        will make every effort to resume normal service as soon as possible.
-      </Content>
-      <Content>
-        9-4 The Company will do its utmost to protect and securely manage Members' personal
-        information and will not provide it to third parties without the Members' consent.
-      </Content>
-      <Content>
-        9-5 Data collected during the use of the service may be used for service improvement and
-        development.
-      </Content>
-      <Content>
-        9-6 The Company is not principally liable for any responsibilities, damages, lawsuits,
-        harms, or compensations arising from the use of the service by Members.
-      </Content>
-      <Title>10 Protection of Personal Information</Title>
-      <Content>
-        10-1 The Company will strive to protect Members' personal information in accordance with
-        relevant laws and ensure that it is not leaked. For more details, please refer to the&nbsp;
-        <button
-          onClick={() => {
-            navigate(getLangUrl("/docs/policy"));
-          }}
-          className="text-nowrap text-blue-700 underline">
-          Privacy Policy
-        </button>
-        .
-      </Content>
-
-      <Title>11 Service Fees</Title>
-      <Content>
-        11-1 Members can use the service for free during the beta service period. The Company have
-        to clearly announce any changes to the fee policy in advance.
-      </Content>
-
-      <Title>12 Miscellaneous</Title>
-      <Content>
-        12-1 These Terms are governed by the laws of the Republic of Korea, irrespective of the
-        Member's place of residence.
-      </Content>
-      <Content>
-        12-2 Even if any provision of these Terms is deemed invalid or unenforceable by a court or
-        competent jurisdiction, the remaining provisions shall remain in effect and enforceable.
-      </Content>
+      <h1 className="font-semibold mb-2">MIPP Privacy Policy</h1>
+      <p>
+        DoubleH Company Ltd. ("the Company") is committed to safeguarding the personal information
+        of users engaging with the MIPP service and its associated services (hereafter referred to
+        as "the Service"), in line with applicable laws. This Privacy Policy outlines the purposes
+        for which we process personal information:
+      </p>
+      {/* 약관 1 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        1. Purposes of Personal Information Processing
+      </h2>
+      <p className="mb-4 font-semibold">
+        The Company processes personal information for the following purposes:
+      </p>
+      <BracketOl>
+        <li className="mb-2">
+          Service Delivery: We process personal information for identity verification, registration
+          intent confirmation, service provision, issuance of plagiarism check results, and for the
+          development of our services.
+        </li>
+        <li className="mb-2">
+          Handling Inquiries: We handle personal information for verifying inquiries such as access
+          to personal information, corrections/deletions, and suspension requests, and for
+          contacting and notifying regarding the investigation and its outcomes.
+        </li>
+        <li className="mb-2">
+          Marketing and Advertising: We use personal information to deliver customized
+          advertisements, provide information on events and promotional activities, and offer
+          participation opportunities.
+        </li>
+        <li className="mb-2">
+          Service Improvement and Development: Personal information is used to enhance existing
+          services and develop new, tailored services.
+        </li>
+        <li className="mb-2">
+          Provision of Paid Services: We process personal information for payment and settlement
+          purposes related to the use of paid services.
+        </li>
+      </BracketOl>
+      {/* 약관 2 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        2. Personal Information Collection and Methods
+      </h2>
+      <p className="mb-4 font-semibold">
+        To offer and enhance our services, we collect personal information as follows:
+      </p>
+      <table className="min-w-full border-collapse mb-4">
+        <thead>
+          <tr>
+            <TableCell isHeader>Data Collected</TableCell>
+            <TableCell isHeader>Purpose of Use</TableCell>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <TableCell>Email, Nickname, Name(Essential)</TableCell>
+            <TableCell>For identity verification and membership management</TableCell>
+          </tr>
+          <tr>
+            <TableCell>Service Content: Uploaded files, Links</TableCell>
+            <TableCell>For service provision and development</TableCell>
+          </tr>
+          <tr>
+            <TableCell>Contactable Email Address, Name, Mobile Phone Number(Optional)</TableCell>
+            <TableCell>For marketing purposes like event notifications and newsletters</TableCell>
+          </tr>
+          <tr>
+            <TableCell>
+              IP Address, Cookies, Access Logs, Visit Time, Service Usage Records
+            </TableCell>
+            <TableCell>For service provision</TableCell>
+          </tr>
+          <tr>
+            <TableCell>
+              Payment Info: Card Issuer Name, Card Number, Email, Date of Birth, Business
+              Registration Number, Account Holder's Name, Account Number, Bank Name, Mobile Phone
+              Number, and Carrier Information
+            </TableCell>
+            <TableCell>For processing payments</TableCell>
+          </tr>
+        </tbody>
+      </table>
+      <p className="mb-4 font-semibold">The collection occurs through:</p>
+      <p className="mb-2">
+        We ensure to inform users and obtain their consent before collecting personal information.
+      </p>
+      <DiskOl>
+        <li className="mb-2">
+          Direct input of information by users during registration and service use.
+        </li>
+        <li className="mb-2">Interactions with our customer service via email or phone.</li>
+        <li className="mb-2">
+          Participation in events or activities, both online and offline, where we collect
+          information with separate consent for marketing purposes.
+        </li>
+      </DiskOl>
+      {/* 약관 3 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        3. Personal Information Processing and Retention Period
+      </h2>
+      <DiskOl>
+        <li className="mb-2">
+          The Company processes and retains personal information within the period specified by law
+          or agreed upon by the user.
+        </li>
+        <li className="mb-2">
+          Personal information is promptly destroyed once its purpose is fulfilled. This includes
+          automatic destruction upon a member's service withdrawal or loss of eligibility, without
+          needing a separate request.
+        </li>
+      </DiskOl>
+      <BracketOl>
+        <li className="mb-2">
+          If there are ongoing investigations due to legal violations, the information is retained
+          until the end of those investigations.
+        </li>
+        <li className="mb-2">
+          Information related to unresolved financial obligations from service use is retained until
+          these obligations are settled.
+        </li>
+        <li className="mb-2">
+          Information may be retained to prevent fraudulent re-registration and misuse of services,
+          according to the terms of service.
+        </li>
+        <li className="mb-2">
+          Certain information must be retained for a period specified by laws such as commercial law
+          and consumer protection in e-commerce laws.
+        </li>
+      </BracketOl>
+      <p className="mb-2 ml-6">
+        4-1 Information related to service use (log records) is retained for 3 months as per the
+        "Protection Of Communications Secrets Act".
+      </p>
+      <p className="mb-2 ml-6">
+        4-2 Records related to contracts or subscription withdrawals, and supply of goods are
+        retained for 5 years as per the "Act on the Consumer Protection in Electronic Commerce".
+      </p>
+      <p className="mb-2 ml-6">
+        4-3 Records on consumer complaints or dispute resolution are retained for 3 years as per the
+        "Act on Consumer Protection in Electronic Commerce".
+      </p>
+      <p className="mb-2 ml-6">
+        4-4 Records on advertising display are kept for 6 months under the "Act on Consumer
+        Protection in Electronic Commerce".
+      </p>
+      <p className="mb-2 ml-6">
+        4-5 All transaction records and supporting documents as required by tax law are retained for
+        5 years in accordance with the "The Basic Law for National Taxes".
+      </p>
+      {/* 약관 4 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">4. Disclosure of Personal Information</h2>
+      <p className="mb-2">
+        The Company uses members' personal information within the scope disclosed at the time of
+        collection and does not exceed this scope without prior consent from the member.
+      </p>
+      <DiskOl>
+        <li className="mb-2">
+          Principally, we do not disclose personal information to external parties unless required
+          by law. An exception is made when legal authorities request information for investigative
+          purposes, following the procedures and methods defined by law.
+        </li>
+      </DiskOl>
+      {/* 약관 5 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        5. Entrusting the Processing of Personal Information
+      </h2>
+      <p className="mb-2">
+        The Company entrusts personal information for service improvement and big data analysis.
+        This includes:
+      </p>
+      <DiskOl>
+        <li className="mb-2">Google Analytics and Amplitude for big data insights.</li>
+      </DiskOl>
+      {/* 약관 6 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">6. Destruction of Personal Information</h2>
+      <p className="mb-2">
+        When the purpose for collecting and using personal information has been achieved, it is
+        promptly destroyed. The process and method are as follows:
+      </p>
+      <BracketOl>
+        <li className="mb-2">
+          Destruction Process: The Company selects the personal information due for destruction and
+          proceeds with deletion after approval from the personal information protection officer. If
+          personal information must be retained due to other legal requirements despite the expiry
+          of the consented retention period or achievement of the processing purpose, it is
+          transferred to a separate database (DB) or stored differently.
+        </li>
+        <li className="mb-2">
+          Destruction Method: Electronic records are destroyed using methods that prevent data
+          recovery. Physical records are shredded or incinerated.
+        </li>
+      </BracketOl>
+      {/* 약관 7 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        7. Rights and Duties of the Data Subject and Legal Representative
+      </h2>
+      <BracketOl>
+        <li className="mb-2">
+          Data subjects have the right to exercise the following personal information protection
+          rights at any time:
+          <p className="ml-4">1-1) Request to view personal information</p>
+          <p className="ml-4">1-2) Request correction in case of errors</p>
+          <p className="ml-4">1-3) Request deletion</p>
+          <p className="ml-4">1-4) Request to stop processing</p>
+        </li>
+        <li className="mb-2">
+          The exercise of rights mentioned in 1) can be done through written documents, phone calls,
+          emails, FAX, etc., and the Company will take immediate action.
+        </li>
+        <li className="mb-2">
+          The rights mentioned in 1) can be exercised through a legal representative or an agent
+          authorized by the data subject. In such cases, a power of attorney must be submitted to
+          verify the agent's authority.
+        </li>
+        <li className="mb-2">
+          Data subjects must not violate personal information protection laws or any other related
+          laws by infringing on their own or others' personal information and privacy.
+        </li>
+      </BracketOl>
+      {/* 약관 8 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        8. Measures to Ensure the Security of Personal Information
+      </h2>
+      <p className="mb-2">
+        The Company implements appropriate technical, administrative, and physical measures to
+        secure personal information against loss, theft, alteration, or damage, in accordance with
+        Article 29 of the “Personal Information Protection Act.” These include:
+      </p>
+      <BracketOl>
+        <li className="mb-2">
+          Administrative measures: Establishing and executing internal management plans, regular
+          employee training, etc.
+        </li>
+        <li className="mb-2">
+          Technical measures: Implementing technological solutions to prevent hacking, encrypting
+          personal information, and safeguarding access records to prevent tampering.
+        </li>
+        <li className="mb-2">
+          Physical measures: Controlling access to server rooms and data storage areas to prevent
+          unauthorized access.
+        </li>
+      </BracketOl>
+      {/* 약관 9 */}
+      <h2 className="text-3xl font-medium mt-10 mb-6">
+        9. Personal Information Protection Officer
+      </h2>
+      <p className="mb-2">
+        The Company is responsible for overseeing all activities related to the processing of
+        personal information and has designated a Personal Information Protection Officer (PIPO) for
+        handling user complaints and damage relief related to personal information processing. The
+        details of the PIPO are as follows:
+      </p>
+      <BracketOl>
+        <li className="mb-2">The details of the PIPO are as follows:</li>
+      </BracketOl>
+      <p>
+        Name: Oh Chan-ho
+        <br />
+        Position: CEO
+        <br />
+        Email: mippcomp@gmail.com
+      </p>
+      <p>
+        <br />
+        For reports of personal information breaches or consultations, you can contact the following
+        organizations:
+        <BracketOl>
+          <li>Personal Information Infringement Report Center (privacy.kisa.or.kr)</li>
+          <li>Supreme Prosecutors' Office Cyber Investigation Department (spo.go.kr)</li>
+          <li>National Police Agency Cyber Security Bureau (cyberbureau.police.go.kr)</li>
+        </BracketOl>
+        <br />
+      </p>
+      <p>
+        This privacy policy becomes effective as noted in the service documentation.
+        <br />
+        The revision date of the privacy policy is 2024.02.22.
+      </p>
     </React.Fragment>
   );
 };
