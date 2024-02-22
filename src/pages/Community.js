@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/views/Pagination";
 import LoadingSpinner from "../components/views/LoadingSpinner";
-import { addPosts, fetchPosts, deletePosts } from "../api/suggestionService";
+import { addPosts, fetchPosts, deletePosts } from "../api/communityService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 import { useAuth } from "components/auth/AuthContext";
@@ -76,7 +76,7 @@ const Suggestion = () => {
     const confirmSubmit = window.confirm(t("request.confirmUpload"));
     if (confirmSubmit) {
       try {
-        const response = await addPosts(contents);
+        await addPosts(contents);
         navigate(0);
       } catch (error) {
         console.error(error);

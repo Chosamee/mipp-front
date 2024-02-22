@@ -34,7 +34,7 @@ import Index from "pages/Index";
 import Login from "pages/Login";
 import Result from "pages/Result";
 import Howtouse from "pages/Howtouse";
-import Suggestion from "pages/Suggestion";
+import Suggestion from "pages/Community";
 import Asks from "pages/ask/Asks";
 import AskCreate from "pages/ask/AskCreate";
 import AskDetail from "pages/ask/AskDetail";
