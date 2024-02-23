@@ -45,6 +45,7 @@ import DetailPage from "pages/detail/DetailPage";
 import FAQs from "pages/FAQs";
 import TermsPage from "pages/docs/Terms";
 import PolicyPage from "pages/docs/Policy";
+import NoticeLists from "pages/notice/NoticeLists";
 
 const App = () => {
   return (
@@ -99,6 +100,7 @@ const App = () => {
                     />
                     <Route path="asks/create" element={<ProtectedRoute component={AskCreate} />} />
                     <Route path="detail/:id" element={<ProtectedRoute component={DetailPage} />} />
+                    <Route path="notice" element={<NoticeLists />} />
                   </Route>
                 </Routes>
               </div>
