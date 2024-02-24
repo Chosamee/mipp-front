@@ -1,10 +1,9 @@
 import getFormattedDate from "components/utils/getFormattedDate";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NoticeEach = ({ item }) => {
-  const navigate = useNavigate();
   const { i18n } = useTranslation();
   const formattedDate = getFormattedDate(item.created_at, i18n.language); // getFormattedDate 함수를 사용하여 날짜 포맷팅
 
