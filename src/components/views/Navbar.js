@@ -79,12 +79,13 @@ const NavBar = () => {
               <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/howtouse")}>
                 {t("nav.howToUse")}
               </Link>
+              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/notice")}>
+                {t("nav.notice")}
+              </Link>
               <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/faqs")}>
                 FAQ
               </Link>
-              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/board")}>
-                {t("nav.request")}
-              </Link>
+
               <div className="flex gap-[14px] p-1">
                 <Link
                   className={`flex p-1 gap-[6px] items-center ${
@@ -115,7 +116,10 @@ const NavBar = () => {
         {/* 우측 subMenu */}
         <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex ">
           {authState.isLoggedIn ? (
-            <div className="hidden desktop:flex px-2 gap-[26px] items-center justify-end text-nowrap">
+            <div className="flex px-2 gap-[26px] items-center justify-end text-nowrap">
+              <Link className="flex items-center text-[18px] p-1" to={getLangUrl("/board")}>
+                {t("nav.request")}
+              </Link>
               <button className="flex items-center text-[18px] p-1">
                 <Link className="" to={getLangUrl("/asks")}>
                   {t("nav.ask")}
@@ -206,8 +210,8 @@ const NavBar = () => {
             <Link to={getLangUrl("/howtouse")} className="text-left mx-6">
               {t("nav.howToUse")}
             </Link>
-            <Link to={getLangUrl("/board")} className="text-left mx-6">
-              {t("nav.request")}
+            <Link to={getLangUrl("/howtouse")} className="text-left mx-6">
+              {t("nav.notice")}
             </Link>
           </div>
           <div className="bg-[#D9D9D9] h-px mx-6" />
@@ -218,6 +222,9 @@ const NavBar = () => {
               </Link>
             ) : (
               <React.Fragment>
+                <Link to={getLangUrl("/board")} className="text-left mx-6">
+                  {t("nav.request")}
+                </Link>
                 <Link to={getLangUrl("/result")} className="text-left mx-6">
                   {t("nav.result")}
                 </Link>

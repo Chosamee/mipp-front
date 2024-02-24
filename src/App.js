@@ -46,6 +46,7 @@ import FAQs from "pages/FAQs";
 import TermsPage from "pages/docs/Terms";
 import PolicyPage from "pages/docs/Policy";
 import NoticeLists from "pages/notice/NoticeLists";
+import NoticeDetail from "pages/notice/NoticeDetail";
 
 const App = () => {
   return (
@@ -91,7 +92,8 @@ const App = () => {
                     {/* <Route path="home" element={<Home />} /> */}
                     <Route path="howtouse" element={<Howtouse />} />
                     <Route path="intro" element={<Intro />} />
-
+                    <Route path="notice" element={<NoticeLists />} />
+                    <Route path="notice/:id" element={<NoticeDetail />} />
                     <Route path="asks" element={<ProtectedRoute component={Asks} />} />
                     <Route path="faqs" element={<FAQs />} />
                     <Route
@@ -100,7 +102,6 @@ const App = () => {
                     />
                     <Route path="asks/create" element={<ProtectedRoute component={AskCreate} />} />
                     <Route path="detail/:id" element={<ProtectedRoute component={DetailPage} />} />
-                    <Route path="notice" element={<NoticeLists />} />
                   </Route>
                 </Routes>
               </div>

@@ -21,23 +21,9 @@ export const fetchNotice = async (notice_id) => {
     const response = await axios.post(`${API_BASE_URL}/notice_detail`, formData, {
       withCredentials: true,
     });
-    return response.data;
+    return response.data.notice;
   } catch (error) {
     console.error("Error fetch notice detail:", error);
-    throw error;
-  }
-};
-
-export const deletePosts = async (post_id) => {
-  const formData = new FormData();
-  formData.append("post_id", post_id);
-  try {
-    const response = await axios.post(`${API_BASE_URL}/delete_posts`, formData, {
-      withCredentials: true,
-    });
-    return response;
-  } catch (error) {
-    console.error("Error delete posts:", error);
     throw error;
   }
 };

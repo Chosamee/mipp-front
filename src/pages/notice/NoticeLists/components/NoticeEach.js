@@ -1,39 +1,24 @@
+import getFormattedDate from "components/utils/getFormattedDate";
 import { getLangUrl } from "locales/utils";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NoticeEach = ({ item }) => {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-
-  // Date 객체로 변환
-  const date = new Date(item.created_at);
-
-  // 사용자의 지역 시간대에 맞춰 포맷팅
-  const options = {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    // hour: "2-digit",
-    // minute: "2-digit",
-    // second: "2-digit",
-    // hour12: false,
-    // timeZoneName: "short",
-  };
-  const formatter = new Intl.DateTimeFormat(i18n.language, options).format(date);
-  const formattedDate = formatter.replace(/\s+/g, "");
+  const formattedDate = getFormattedDate(item.created_at, i18n.language); // getFormattedDate 함수를 사용하여 날짜 포맷팅
 
   return (
     <div
       key={item.id}
-      className="flex w-[375px] desktop:w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
-      <button
-        className="w-[460px] h-[60px] pl-7 pr-3 text-start"
-        onClick={() => navigate(getLangUrl("/notice/" + item.id))}>
-        {i18n.language === "en" ? "en_title" : "ko_title"}
-      </button>
-      <div className="w-[120px] px-3">{formattedDate}</div>
+      className="flex w-[326px] desktop:w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
+      <div className="w-5 desktop:w-10 px-1">{item.id}</div>
+      <Link
+        className="flex w-[205px] desktop:w-[760px] h-[60px] pl-7 pr-3 text-start items-center"
+        to={getLangUrl("/notice/" + item.id)}>
+        {i18n.language === "en" ? item.en_title : item.ko_title}
+      </Link>
+      <div className="desktop:w-[120px] px-3">{formattedDate}</div>
     </div>
   );
 };

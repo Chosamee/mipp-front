@@ -211,7 +211,8 @@
     "logout": "Logout",
     "result": "My Results",
     "login": "Login",
-    "ask": "Support"
+    "ask": "Support",
+    "notice": "Notice"
   },
   "footer": {
     "email": "Email: mippcomp@gmail.com",
