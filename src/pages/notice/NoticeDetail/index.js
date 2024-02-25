@@ -44,9 +44,13 @@ const NoticeDetail = () => {
             </div>
             <div className="flex justify-end">{formattedDate}</div>
           </div>
-          <div className="flex items-center text-lg mt-10">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: i18n.language === "en" ? notice.en_content : notice.ko_content,
+            }}></div>
+          {/* <div className="flex items-center text-lg mt-10">
             {i18n.language === "en" ? notice.en_content : notice.ko_content}
-          </div>
+          </div> */}
         </>
       ) : (
         <LoadingSpinner />

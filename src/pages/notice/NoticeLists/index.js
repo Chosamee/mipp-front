@@ -90,13 +90,15 @@ const NoticeLists = () => {
       )
     : notices;
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
       {/* Title 및 검색 하십시오.. */}
       <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
-        <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">공지사항</h1>
+        <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
+          {i18n.language === "en" ? "Notice" : "공지사항"}
+        </h1>
         <div className="w-[326px] desktop:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
           <input
             className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[264px] focus:outline-none ml-4"
