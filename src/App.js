@@ -45,8 +45,11 @@ import DetailPage from "pages/detail/DetailPage";
 import FAQs from "pages/FAQs";
 import TermsPage from "pages/docs/Terms";
 import PolicyPage from "pages/docs/Policy";
-import NoticeLists from "pages/notice/NoticeLists";
+import NoticeLists from "pages/notice/NoticeList";
 import NoticeDetail from "pages/notice/NoticeDetail";
+import CommunityList from "pages/community/CommunityList";
+import CommunityDetail from "pages/community/CommunityDetail";
+import CommunityEditor from "pages/community/CommunityEditor";
 
 const App = () => {
   return (
@@ -82,7 +85,6 @@ const App = () => {
                       element={<ProtectedRoute component={RegistrationForm} />}
                     />
                     <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />
-                    <Route path="board" element={<ProtectedRoute component={Suggestion} />} />
                     <Route path="result" element={<ProtectedRoute component={Result} />} />
                     <Route path="home" element={<ProtectedRoute component={Home} />} />
                     {/* <Route path="regist" element={<RegistrationForm />} />
@@ -92,8 +94,27 @@ const App = () => {
                     {/* <Route path="home" element={<Home />} /> */}
                     <Route path="howtouse" element={<Howtouse />} />
                     <Route path="intro" element={<Intro />} />
+                    {/* Notice */}
                     <Route path="notice" element={<NoticeLists />} />
                     <Route path="notice/:id" element={<NoticeDetail />} />
+                    {/* Community */}
+                    <Route
+                      path="community"
+                      element={<ProtectedRoute component={CommunityList} />}
+                    />
+                    <Route
+                      path="community/:id"
+                      element={<ProtectedRoute component={CommunityDetail} />}
+                    />
+                    <Route
+                      path="community/:id/edit"
+                      element={<ProtectedRoute component={CommunityEditor} />}
+                    />
+                    <Route
+                      path="community/create"
+                      element={<ProtectedRoute component={CommunityEditor} />}
+                    />
+
                     <Route path="asks" element={<ProtectedRoute component={Asks} />} />
                     <Route path="faqs" element={<FAQs />} />
                     <Route

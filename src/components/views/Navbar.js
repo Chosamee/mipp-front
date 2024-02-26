@@ -117,7 +117,7 @@ const NavBar = () => {
         <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex ">
           {authState.isLoggedIn ? (
             <div className="flex px-2 gap-[26px] items-center justify-end text-nowrap">
-              <Link className="flex items-center text-[18px] p-1" to={getLangUrl("/board")}>
+              <Link className="flex items-center text-[18px] p-1" to={getLangUrl("/community")}>
                 {t("nav.request")}
               </Link>
               <button className="flex items-center text-[18px] p-1">

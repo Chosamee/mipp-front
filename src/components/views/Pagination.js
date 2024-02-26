@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Pagination = ({ data, itemsPerPage, renderItem, currentPage, setCurrentPage }) => {
   const maxPage = Math.ceil(data.length / itemsPerPage);
@@ -10,6 +11,17 @@ const Pagination = ({ data, itemsPerPage, renderItem, currentPage, setCurrentPag
     const end = Math.min(currentPage <= 3 ? 5 : currentPage + 2, maxPage);
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   };
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  // currentPage 값이 변경될 때만 실행되는 useEffect
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (currentPage !== 1) params.set("page", currentPage);
+    else params.delete("page"); // 1페이지인 경우 page 파라미터를 URL에서 제거합니다.
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]); // 의존성 배열에 currentPage만 포함시켜 currentPage 값이 변경될 때만 이 useEffect가 실행되도록 합니다.
 
   return (
     <>

@@ -7,7 +7,7 @@ import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 
-import loupe from "assets/result/loupe.svg";
+import loupe from "assets/loupe.svg";
 import down_vector from "assets/result/down_vector.svg";
 
 const Result = () => {
