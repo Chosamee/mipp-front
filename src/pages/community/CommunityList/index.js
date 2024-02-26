@@ -9,7 +9,6 @@ import LoadingSpinner from "components/views/LoadingSpinner";
 import { getLangUrl } from "locales/utils";
 
 const CommunityList = () => {
-  const [myData, setMyData] = useState({});
   const [originData, setOriginData] = useState([]);
 
   useEffect(() => {
@@ -17,7 +16,6 @@ const CommunityList = () => {
       try {
         const data = await fetchAllPosts();
         console.log(data);
-        setMyData(data.my_posts);
         setOriginData(data.posts);
       } catch (error) {
         console.error("Error:", error);
@@ -79,7 +77,7 @@ const CommunityList = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           renderItem={(item) => {
-            return <CommunityEach item={item} myData={myData} />;
+            return <CommunityEach key={item.id} item={item} />;
           }}
         />
       ) : (

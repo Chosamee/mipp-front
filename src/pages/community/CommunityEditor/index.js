@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { addPosts } from "api/communityService";
+import { addPost, fetchPost, updatePost } from "../api";
+import { getLangUrl } from "locales/utils";
 
 const CommunityEditor = () => {
   const { t } = useTranslation();
@@ -16,8 +17,13 @@ const CommunityEditor = () => {
       return;
     }
     try {
-      await addPosts({ title, content });
-      navigate("/community");
+      if (isEdit) {
+        await updatePost(id, title, content);
+        navigate(getLangUrl(`/community/${id}`));
+      } else {
+        await addPost(title, content);
+        navigate(getLangUrl("/community"));
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -25,9 +31,7 @@ const CommunityEditor = () => {
 
   // 페이지를 떠날 때 질문을 물어봅니다.
   const [isDirty, setIsDirty] = useState(false);
-  const handleInputChange = (e) => {
-    setIsDirty(true);
-  };
+
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       if (isDirty) {
@@ -44,6 +48,33 @@ const CommunityEditor = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
+
+  const { id } = useParams(); // 수정 시 사용될 id
+  const location = useLocation();
+  const isEdit = location.pathname.includes("/edit"); // 현재 경로가 수정인지 확인
+
+  useEffect(() => {
+    if (isEdit) {
+      // 수정 모드일 경우, 기존 포스트 데이터를 불러옵니다.
+      const fetchData = async () => {
+        try {
+          const data = await fetchPost(id);
+          if (data.owner === false) {
+            navigate(getLangUrl("/community"));
+          }
+          setTitle(data.post.title);
+          setContent(data.post.content);
+        } catch (error) {
+          console.error("Error fetching post data:", error);
+          // setError(t("community.edit.errorFetching"));
+        }
+      };
+
+      fetchData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <h1 className="mt-10 text-xl text-center">Community</h1>
@@ -52,14 +83,14 @@ const CommunityEditor = () => {
         className="w-[750px] min-w-96 mx-auto p-8 bg-white rounded shadow-lg mt-10 mb-20">
         <div className="mb-6">
           <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">
-            {t("ask.title")}
+            {"title"}
           </label>
           <input
             type="text"
             id="title"
             name="title"
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-            placeholder={t("ask.titleGuide")}
+            placeholder={"title"}
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
@@ -70,14 +101,14 @@ const CommunityEditor = () => {
 
         <div className="mb-6">
           <label htmlFor="contents" className="block mb-2 text-sm font-medium text-gray-900">
-            {t("ask.content")}
+            {"contents"}
           </label>
           <textarea
             id="contents"
             name="contents"
             rows="4"
             className="block p-2.5 w-full h-[300px] text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none"
-            placeholder={t("ask.contentGuide")}
+            placeholder={"contents"}
             value={content}
             onChange={(e) => {
               setContent(e.target.value);
