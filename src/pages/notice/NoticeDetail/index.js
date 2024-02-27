@@ -33,7 +33,9 @@ const NoticeDetail = () => {
       {/* 전체 검사결과 뒤로가기 */}
       <div className="flex items-center gap-[10px] mb-[50px]">
         <BackArrowIcon />
-        <div className="text-[15px] font-medium">목록으로 (All notices)</div>
+        <div className="text-[15px] font-medium">
+          {i18n.language === "en" ? "All notices" : "목록으로"}
+        </div>
       </div>
 
       {notice ? (
