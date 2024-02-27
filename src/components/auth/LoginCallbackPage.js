@@ -21,8 +21,9 @@ const LoginCallbackPage = () => {
         i18n.changeLanguage(localStorage.getItem("language")); // 로컬 스토리지에 언어 설정 저장
         localStorage.removeItem("language");
         try {
-          await handleOauthLogin(code, state);
-          updateAuthState({ isLoggedIn: true });
+          const response = await handleOauthLogin(code, state);
+          console.log(response);
+          updateAuthState({ isLoggedIn: true, user_id: response.user_id });
           navigate(getLangUrl("/home"));
         } catch (error) {
           console.error("Authentication error:", error);

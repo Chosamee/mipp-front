@@ -87,3 +87,49 @@ export const updateServerLikeStatus = async (post_id, like) => {
     throw error;
   }
 };
+
+export const addComment = async (post_id, content, parent_id) => {
+  const formData = new FormData();
+  formData.append("post_id", post_id);
+  formData.append("content", content);
+  console.log(post_id, content);
+  if (parent_id) formData.append("parent_id", parent_id);
+  try {
+    const response = await axios.post(`${API_BASE_URL}/create_comment`, formData, {
+      withCredentials: true,
+    });
+    return response;
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    throw error;
+  }
+};
+
+export const deleteComment = async (comment_id) => {
+  const formData = new FormData();
+  formData.append("comment_id", comment_id);
+  try {
+    const response = await axios.post(`${API_BASE_URL}/delete_comment`, formData, {
+      withCredentials: true,
+    });
+    return response;
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+    throw error;
+  }
+};
+
+export const updateComment = async (comment_id, contents) => {
+  const formData = new FormData();
+  formData.append("comment_id", comment_id);
+  formData.append("contents", contents);
+  try {
+    const response = await axios.post(`${API_BASE_URL}/update_comment`, formData, {
+      withCredentials: true,
+    });
+    return response;
+  } catch (error) {
+    console.error("Error updating comment:", error);
+    throw error;
+  }
+};

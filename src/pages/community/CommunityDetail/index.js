@@ -6,6 +6,9 @@ import PostEditBtn from "./PostEditBtn";
 import PostLikeBtn from "./PostLikeBtn";
 import getFormattedDate from "components/utils/getFormattedDate";
 import { useTranslation } from "react-i18next";
+import Comment from "./comment/Comment";
+import { useAuth } from "components/auth/AuthContext";
+import CommentForm from "./comment/CommentForm";
 
 const CommunityDetail = () => {
   const { id } = useParams();
@@ -22,6 +25,7 @@ const CommunityDetail = () => {
         setComments(data.comments);
         setIsOwner(data.owner);
         setData(data);
+        console.log(data);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -44,6 +48,8 @@ const CommunityDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
   const { i18n } = useTranslation();
+
+  const { authState } = useAuth();
   return (
     <div className="py-20 flex flex-col items-center">
       <div className="w-[750px] mx-auto justify-between px-5 flex mb-6">
@@ -68,9 +74,11 @@ const CommunityDetail = () => {
       <p className="w-[750px] mx-auto px-5 mb-40">{post.content}</p>
 
       <div className="w-[750px] mx-auto px-5 mb-10 text-xl">Comments</div>
+      <CommentForm post_id={post.id} />
+      <div className="h-10" />
       {comments.map((comment) => (
         <div key={comment.id} className="w-[750px] mx-auto px-5">
-          {comment.content}
+          <Comment isOwner={comment.user_id === authState.nickname} comment={comment} />
         </div>
       ))}
     </div>

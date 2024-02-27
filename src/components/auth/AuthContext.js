@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     isLoggedIn: false,
     isLoading: true,
+    user_id: "",
     // 여기에 추가적인 상태나 정보를 저장
   });
   const location = useLocation();
