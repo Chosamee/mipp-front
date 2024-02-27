@@ -22,7 +22,6 @@ const LoginCallbackPage = () => {
         localStorage.removeItem("language");
         try {
           const response = await handleOauthLogin(code, state);
-          console.log(response);
           updateAuthState({ isLoggedIn: true, user_id: response.user_id });
           navigate(getLangUrl("/home"));
         } catch (error) {

@@ -1,9 +1,15 @@
 import bling from "assets/result/bling.svg";
 import paper from "assets/result/paper.png";
+import { useTranslation } from "react-i18next";
 
 const VoteBanner = ({ vote }) => {
+  const { i18n } = useTranslation();
   const handleVoteClicked = () => {
-    window.open(vote, "_blank");
+    const voteUrl =
+      i18n === "en"
+        ? "https://docs.google.com/forms/d/1-gonui98i9BmJmGzfxrTSJJNBNNvBo7FMeuG-Se_e6E/edit"
+        : "https://docs.google.com/forms/d/1Iw5ofDxmmATG5xtOUs_CnBF-SLpjBJvszQk16qOZwsM/edit";
+    window.open(voteUrl, "_blank");
   };
 
   return (
@@ -18,7 +24,7 @@ const VoteBanner = ({ vote }) => {
             서비스를 지속적으로 개선합니다.
           </p>
           <button
-            className="flex gap-[10px] items-center"
+            className="flex gap-[10px] items-center w-fit"
             onClick={() => {
               handleVoteClicked();
             }}>

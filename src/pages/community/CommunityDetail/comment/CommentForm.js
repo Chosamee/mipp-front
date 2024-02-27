@@ -1,17 +1,16 @@
 import { addComment } from "pages/community/api";
 import { useState } from "react";
 
-const CommentForm = ({ post_id, parent_id = null }) => {
+const CommentForm = ({ post_id, parent_id = null, setReloadRequired }) => {
   const [content, setContent] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("post_id", post_id, "content", content, "parent_id", parent_id);
     await addComment(post_id, content, parent_id);
+    setReloadRequired(true);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-2 w-[700px] mx-auto">
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-2 w-full mx-auto">
       <textarea
         className="border p-2 overflow-y-auto h-16 w-full border-gray-300 rounded resize-none"
         value={content}

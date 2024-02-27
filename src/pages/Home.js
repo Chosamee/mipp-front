@@ -12,6 +12,7 @@ const Home = () => {
   const [activeTab, setActiveTab] = useState("upload");
   const [inst, setInst] = useState("vocal");
   const [remain, setRemain] = useState();
+  const [totalNum, setTotalNum] = useState(10); // [임시] 총 사용가능 횟수 [임시]
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { updateAuthState } = useAuth();
@@ -21,6 +22,7 @@ const Home = () => {
       try {
         const data = await getRemain();
         setRemain(data.avail_num);
+        setTotalNum(data.total_num);
       } catch (error) {
         console.error("Error:", error);
         updateAuthState({ isLoggedIn: false });
@@ -89,7 +91,10 @@ const Home = () => {
 
         {/* 음원 타입 선택 */}
         <div className="flex flex-col mb-20 mx-auto py-[100px]">
-          <div className="py-5 text-center"> Your Usage Limit: {remain} / 10</div>
+          <div className="py-5 text-center">
+            {" "}
+            Your Usage Limit: {remain} / {totalNum}
+          </div>
 
           <div className="text-start mb-[10px] text-[20px] desktop:text-[22px] font-semibold">
             {t("home.step1")}

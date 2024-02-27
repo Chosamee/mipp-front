@@ -92,7 +92,6 @@ export const addComment = async (post_id, content, parent_id) => {
   const formData = new FormData();
   formData.append("post_id", post_id);
   formData.append("content", content);
-  console.log(post_id, content);
   if (parent_id) formData.append("parent_id", parent_id);
   try {
     const response = await axios.post(`${API_BASE_URL}/create_comment`, formData, {

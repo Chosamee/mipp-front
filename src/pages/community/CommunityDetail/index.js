@@ -16,23 +16,25 @@ const CommunityDetail = () => {
   const [comments, setComments] = useState([]);
   const [isOwner, setIsOwner] = useState(false);
   const [data, setData] = useState([]);
+  const [reloadRequired, setReloadRequired] = useState(false); // 댓글 추가 후 새로고침 필요 여부
+
+  const fetchData = async () => {
+    try {
+      const data = await fetchPost(id);
+      setPost(data.post);
+      setComments(data.comments);
+      setIsOwner(data.owner);
+      setData(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchPost(id);
-        setPost(data.post);
-        setComments(data.comments);
-        setIsOwner(data.owner);
-        setData(data);
-        console.log(data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
     fetchData();
+    setReloadRequired(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reloadRequired]);
 
   // 검색 기능
 
@@ -74,11 +76,13 @@ const CommunityDetail = () => {
       <p className="w-[750px] mx-auto px-5 mb-40">{post.content}</p>
 
       <div className="w-[750px] mx-auto px-5 mb-10 text-xl">Comments</div>
-      <CommentForm post_id={post.id} />
+      <div className="w-[700px]">
+        <CommentForm post_id={post.id} setReloadRequired={setReloadRequired} />
+      </div>
       <div className="h-10" />
       {comments.map((comment) => (
         <div key={comment.id} className="w-[750px] mx-auto px-5">
-          <Comment isOwner={comment.user_id === authState.nickname} comment={comment} />
+          <Comment comment={comment} setReloadRequired={setReloadRequired} />
         </div>
       ))}
     </div>

@@ -25,7 +25,13 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkToken = async () => {
       const isTokenValid = await verifyToken(); // 서버에 토큰 유효성 검증 요청
-      setAuthState({ isLoggedIn: isTokenValid.isValid, isLoading: false });
+
+      updateAuthState({
+        ...authState,
+        isLoggedIn: isTokenValid.isValid,
+        isLoading: false,
+        user_id: isTokenValid.user_id,
+      });
       if (!isTokenValid) {
         clearInterval(interval); // 인증 실패시 인터벌 중지
       }
@@ -41,9 +47,10 @@ export const AuthProvider = ({ children }) => {
     const checkTokenValidity = async () => {
       try {
         const isTokenValid = await verifyToken();
-        setAuthState({
+        updateAuthState({
           ...authState,
           isLoggedIn: isTokenValid.isValid,
+          user_id: isTokenValid.user_id,
         });
       } catch (error) {
         console.error("Authentication error:");
