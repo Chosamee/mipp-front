@@ -51,7 +51,6 @@ const CommunityDetail = () => {
   }, [location.search]);
   const { i18n } = useTranslation();
 
-  const { authState } = useAuth();
   return (
     <div className="py-20 flex flex-col items-center">
       <div className="w-[750px] mx-auto justify-between px-5 flex mb-6">
@@ -68,10 +67,11 @@ const CommunityDetail = () => {
           )}
         </div>
       </div>
-      <div className="w-[750px] mx-auto px-5 text-3xl">{post.title}</div>
+      <div className="w-[750px] mx-auto px-5 text-3xl mb-4">{post.title}</div>
       <div className="w-[750px] mx-auto px-5 text-sm">
         {post.created_at && getFormattedDate(post.created_at, i18n.language)}
       </div>
+      <div className="w-[750px] mx-auto px-5 text-lg">{data.nickname}</div>
       <div className="h-px w-[750px] bg-blue-500 my-10"></div>
       <p className="w-[750px] mx-auto px-5 mb-40">{post.content}</p>
 

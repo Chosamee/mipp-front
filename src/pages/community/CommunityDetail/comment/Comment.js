@@ -22,7 +22,7 @@ const Comment = ({ comment, setReloadRequired }) => {
             )}
           </div>
           <div>
-            <p>{comment.user_nickname}</p>
+            <p>{comment.nickname}</p>
             <p>{getFormattedDate(comment.created_at)}</p>
           </div>
         </div>
