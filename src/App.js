@@ -32,9 +32,8 @@ import LoginCallbackPage from "components/auth/LoginCallbackPage";
 import Home from "pages/Home";
 import Index from "pages/Index";
 import Login from "pages/Login";
-import Result from "pages/Result";
+import ResultList from "pages/result/ResultList";
 import Howtouse from "pages/Howtouse";
-import Suggestion from "pages/Community";
 import Asks from "pages/ask/Asks";
 import AskCreate from "pages/ask/AskCreate";
 import AskDetail from "pages/ask/AskDetail";
@@ -85,7 +84,7 @@ const App = () => {
                       element={<ProtectedRoute component={RegistrationForm} />}
                     />
                     <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />
-                    <Route path="result" element={<ProtectedRoute component={Result} />} />
+                    <Route path="result" element={<ProtectedRoute component={ResultList} />} />
                     <Route path="home" element={<ProtectedRoute component={Home} />} />
                     {/* <Route path="regist" element={<RegistrationForm />} />
                   <Route path="mypage" element={<MyPage />} />

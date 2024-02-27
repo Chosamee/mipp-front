@@ -1,3 +1,4 @@
+import TryTry from "components/views/TryTry";
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
@@ -5,43 +6,44 @@ import { useTranslation } from "react-i18next";
 const Howtouse = () => {
   const { t, i18n } = useTranslation();
   return (
-    <div className="flex h-full items-center justify-center my-auto max-w-[1500px] mx-auto">
-      {i18n.language === "en" ? (
-        <Helmet>
-          <title>How to Use MIPP</title>
-          <meta
-            name="description"
-            content="Follow our guide on how to use MIPP. Learn how to perform music plagiarism checks easily and effectively."
-          />
+    <>
+      <div className="flex h-full items-center justify-center my-auto max-w-[1500px] mx-auto">
+        {i18n.language === "en" ? (
+          <Helmet>
+            <title>How to Use MIPP</title>
+            <meta
+              name="description"
+              content="Follow our guide on how to use MIPP. Learn how to perform music plagiarism checks easily and effectively."
+            />
 
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://aimipp.com/en/howtouse" />
-          <meta property="og:title" content="Guide on How to Use MIPP" />
-          <meta
-            property="og:description"
-            content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide."
-          />
-          <meta
-            property="og:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
-          />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://aimipp.com/en/howtouse" />
+            <meta property="og:title" content="Guide on How to Use MIPP" />
+            <meta
+              property="og:description"
+              content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide."
+            />
+            <meta
+              property="og:image"
+              content="https://storage.googleapis.com/domainbucket/imageog.png"
+            />
 
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://aimipp.com/en/howtouse" />
-          <meta name="twitter:title" content="Guide on How to Use MIPP" />
-          <meta
-            name="twitter:description"
-            content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide."
-          />
-          <meta
-            name="twitter:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
-          />
-          <link rel="alternate" hreflang="en" href="https://aimipp.com/en/howtouse" />
-          <link rel="canonical" href="https://aimipp.com/en/howtouse" />
-          <meta name="robots" content="index, follow" />
-          <script type="application/ld+json">
-            {`{
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:url" content="https://aimipp.com/en/howtouse" />
+            <meta name="twitter:title" content="Guide on How to Use MIPP" />
+            <meta
+              name="twitter:description"
+              content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide."
+            />
+            <meta
+              name="twitter:image"
+              content="https://storage.googleapis.com/domainbucket/imageog.png"
+            />
+            <link rel="alternate" hreflang="en" href="https://aimipp.com/en/howtouse" />
+            <link rel="canonical" href="https://aimipp.com/en/howtouse" />
+            <meta name="robots" content="index, follow" />
+            <script type="application/ld+json">
+              {`{
   "@context": "http://schema.org/",
   "@type": "HowTo",
   "name": "How to Use MIPP",
@@ -85,43 +87,43 @@ const Howtouse = () => {
     "name": "DoubleH Company"
   }
 }`}
-          </script>
-        </Helmet>
-      ) : (
-        <Helmet>
-          <title>MIPP 사용 방법</title>
-          <meta
-            name="description"
-            content="MIPP는 누가, 어떻게 사용하면 좋을까요? 음악 표절 검사를 쉽고 효과적으로 활용하는 방법을 알아보세요."
-          />
-          <meta property="og:type" content="website" />
+            </script>
+          </Helmet>
+        ) : (
+          <Helmet>
+            <title>MIPP 사용 방법</title>
+            <meta
+              name="description"
+              content="MIPP는 누가, 어떻게 사용하면 좋을까요? 음악 표절 검사를 쉽고 효과적으로 활용하는 방법을 알아보세요."
+            />
+            <meta property="og:type" content="website" />
 
-          <meta property="og:url" content="https://aimipp.com/ko/howtouse" />
-          <meta property="og:title" content="MIPP 사용 방법" />
-          <meta
-            property="og:description"
-            content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요."
-          />
-          <meta
-            property="og:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
-          />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://aimipp.com/ko/howtouse" />
-          <meta name="twitter:title" content="MIPP 사용 방법" />
-          <meta
-            name="twitter:description"
-            content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요."
-          />
-          <meta
-            name="twitter:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
-          />
-          <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko/howtouse" />
-          <link rel="canonical" href="https://aimipp.com/ko/howtouse" />
-          <meta name="robots" content="index, follow" />
-          <script type="application/ld+json">
-            {`{
+            <meta property="og:url" content="https://aimipp.com/ko/howtouse" />
+            <meta property="og:title" content="MIPP 사용 방법" />
+            <meta
+              property="og:description"
+              content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요."
+            />
+            <meta
+              property="og:image"
+              content="https://storage.googleapis.com/domainbucket/imageog.png"
+            />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:url" content="https://aimipp.com/ko/howtouse" />
+            <meta name="twitter:title" content="MIPP 사용 방법" />
+            <meta
+              name="twitter:description"
+              content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요."
+            />
+            <meta
+              name="twitter:image"
+              content="https://storage.googleapis.com/domainbucket/imageog.png"
+            />
+            <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko/howtouse" />
+            <link rel="canonical" href="https://aimipp.com/ko/howtouse" />
+            <meta name="robots" content="index, follow" />
+            <script type="application/ld+json">
+              {`{
   "@context": "http://schema.org/",
   "@type": "HowTo",
   "name": "MIPP 사용 방법",
@@ -165,34 +167,38 @@ const Howtouse = () => {
     "name": "더블에이치컴퍼니"
   }
 }`}
-          </script>
-        </Helmet>
-      )}
-      <div className="p-10 w-full">
-        <div className="text-4xl mb-10 font-bold">{t("nav.howToUse")}</div>
-        <h1 className="text-xl mb-10">{t("howtouse.title")}</h1>
+            </script>
+          </Helmet>
+        )}
+        <div className="p-10 w-full">
+          <div className="text-4xl mb-10 font-bold">{t("nav.howToUse")}</div>
+          <h1 className="text-xl mb-10">{t("howtouse.title")}</h1>
 
-        {Array.from({ length: 4 }, (_, i) => (
-          <div key={i}>
-            <div className="text-xl mb-5">{t(`howtouse.subtitle${i + 1}`)}</div>
-            <div className="text-xl mb-10">{t(`howtouse.content${i + 1}`)}</div>
-          </div>
-        ))}
-
-        <div className="h-32"></div>
-
-        <div className="grid md:grid-rows-6">
-          {Array.from({ length: 6 }, (_, i) => (
-            <div className="flex flex-col md:grid md:grid-cols-4 md:mb-10 mb-12" key={i}>
-              <div className="text-xl mr-10 md:col-span-1 ml-2 mb-5">
-                {t(`howtouse.step${i + 1}title`)}
-              </div>
-              <div className="text-xl md:col-span-3 pl-2">{t(`howtouse.step${i + 1}content`)}</div>
+          {Array.from({ length: 4 }, (_, i) => (
+            <div key={i}>
+              <div className="text-xl mb-5">{t(`howtouse.subtitle${i + 1}`)}</div>
+              <div className="text-xl mb-10">{t(`howtouse.content${i + 1}`)}</div>
             </div>
           ))}
+
+          <div className="h-32"></div>
+
+          <div className="grid md:grid-rows-6">
+            {Array.from({ length: 6 }, (_, i) => (
+              <div className="flex flex-col md:grid md:grid-cols-4 md:mb-10 mb-12" key={i}>
+                <div className="text-xl mr-10 md:col-span-1 ml-2 mb-5">
+                  {t(`howtouse.step${i + 1}title`)}
+                </div>
+                <div className="text-xl md:col-span-3 pl-2">
+                  {t(`howtouse.step${i + 1}content`)}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <TryTry />
+    </>
   );
 };
 
