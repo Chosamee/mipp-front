@@ -62,7 +62,7 @@ const CommunityDetail = () => {
       </div>
       <div className="w-[750px] mx-auto px-5 text-3xl">{post.title}</div>
       <div className="w-[750px] mx-auto px-5 text-sm">
-        {post && getFormattedDate(post.created_at, i18n.language)}
+        {post.created_at && getFormattedDate(post.created_at, i18n.language)}
       </div>
       <div className="h-px w-[750px] bg-blue-500 my-10"></div>
       <p className="w-[750px] mx-auto px-5 mb-40">{post.content}</p>

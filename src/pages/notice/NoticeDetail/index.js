@@ -47,7 +47,8 @@ const NoticeDetail = () => {
           <div
             dangerouslySetInnerHTML={{
               __html: i18n.language === "en" ? notice.en_content : notice.ko_content,
-            }}></div>
+            }}
+            className="mt-20 text-lg"></div>
           {/* <div className="flex items-center text-lg mt-10">
             {i18n.language === "en" ? notice.en_content : notice.ko_content}
           </div> */}
