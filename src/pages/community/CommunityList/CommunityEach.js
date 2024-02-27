@@ -15,7 +15,7 @@ const CommunityEach = ({ item }) => {
         to={getLangUrl("/community/" + item.id)}>
         {i18n.language === "en" ? item.title : item.title}
       </Link>
-      <div className="desktop:w-[200px] px-3">{item.user_name}</div>
+      <div className="desktop:w-[200px] px-3">{item.nickname}</div>
       <div className="desktop:w-[120px] px-3">{formattedDate}</div>
       <div className="desktop:w-[60px] px-3">♡ {item.likes}</div>
     </div>

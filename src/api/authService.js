@@ -10,7 +10,7 @@ export const verifyToken = async () => {
     return {
       isValid: true,
       action: response.data.action === "Additional_info_needed" ? false : true,
-      user_id: response.data.user_id,
+      nickname: response.data.nickname,
     };
   } catch (error) {
     console.error("Token verification error:");

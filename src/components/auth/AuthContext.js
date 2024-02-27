@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     isLoggedIn: false,
     isLoading: true,
-    user_id: "",
+    nickname: "",
     // 여기에 추가적인 상태나 정보를 저장
   });
   const location = useLocation();
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
         ...authState,
         isLoggedIn: isTokenValid.isValid,
         isLoading: false,
-        user_id: isTokenValid.user_id,
+        nickname: isTokenValid.nickname,
       });
       if (!isTokenValid) {
         clearInterval(interval); // 인증 실패시 인터벌 중지
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         updateAuthState({
           ...authState,
           isLoggedIn: isTokenValid.isValid,
-          user_id: isTokenValid.user_id,
+          nickname: isTokenValid.nickname,
         });
       } catch (error) {
         console.error("Authentication error:");

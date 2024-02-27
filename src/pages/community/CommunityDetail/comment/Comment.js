@@ -17,7 +17,7 @@ const Comment = ({ comment, setReloadRequired }) => {
               {comment.parent_id && "↳"}
               {comment.content}
             </p>
-            {comment.user_id === authState.user_id && (
+            {comment.nickname === authState.nickname && (
               <CommentActions id={comment.id} setReloadRequired={setReloadRequired} />
             )}
           </div>
