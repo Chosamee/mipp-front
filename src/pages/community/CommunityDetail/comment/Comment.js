@@ -7,7 +7,6 @@ import CommentForm from "./CommentForm";
 const Comment = ({ comment, setReloadRequired }) => {
   const { authState } = useAuth();
   const [openChildInput, setOpenChildInput] = useState(false);
-
   return (
     <>
       <div className="flex border-b p-2">

@@ -75,7 +75,9 @@ const CommunityDetail = () => {
       <div className="h-px w-[750px] bg-blue-500 my-10"></div>
       <p className="w-[750px] mx-auto px-5 mb-40">{post.content}</p>
 
-      <div className="w-[750px] mx-auto px-5 mb-10 text-xl">Comments</div>
+      <div className="w-[750px] mx-auto px-5 mb-10 text-xl">
+        {i18n.language === "en" ? "Comments" : "댓글"}
+      </div>
       <div className="w-[700px]">
         <CommentForm post_id={post.id} setReloadRequired={setReloadRequired} />
       </div>

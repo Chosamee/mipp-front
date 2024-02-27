@@ -1,12 +1,15 @@
 import { addComment } from "pages/community/api";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const CommentForm = ({ post_id, parent_id = null, setReloadRequired }) => {
   const [content, setContent] = useState("");
+  const { i18n } = useTranslation();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addComment(post_id, content, parent_id);
     setReloadRequired(true);
+    setContent("");
   };
 
   return (
@@ -15,10 +18,24 @@ const CommentForm = ({ post_id, parent_id = null, setReloadRequired }) => {
         className="border p-2 overflow-y-auto h-16 w-full border-gray-300 rounded resize-none"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Write your comment..."
+        placeholder={
+          parent_id
+            ? i18n.language === "en"
+              ? "Reply..."
+              : "답글을 입력해주세요"
+            : i18n.language === "en"
+            ? "Write your comment..."
+            : "댓글을 입력해주세요"
+        }
         required></textarea>
       <button type="submit" className="bg-blue-500 text-white px-4 py-2">
-        Submit
+        {parent_id
+          ? i18n.language === "en"
+            ? "Reply"
+            : "답글 작성"
+          : i18n.language === "en"
+          ? "Submit"
+          : "댓글 작성"}
       </button>
     </form>
   );
