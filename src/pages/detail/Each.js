@@ -41,7 +41,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
       </div>
       <div className="flex px-3 w-[108px] desktop:w-[153px] h-full items-center text-[#171923] gap-[6px]">
         <div
-          className="hidden desktop:block w-4 h-4 rounded-[90px]"
+          className="w-4 h-4 rounded-[90px]"
           style={{ backgroundColor: getColorScore(file.plagiarism_rate) }}
         />
         <div>{file.plagiarism_rate} %</div>
