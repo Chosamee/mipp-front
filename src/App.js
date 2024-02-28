@@ -64,7 +64,7 @@ const App = () => {
               </div>
             }>
             <ScrollToTop />
-            <div className="flex flex-col min-h-screen min-w-72 ">
+            <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']">
               <Navbar />
               <div className="flex-grow desktop:mt-[125px] mt-[106px] ">
                 <Routes>

@@ -152,7 +152,8 @@
     "melody": "Inst.",
     "linkGuide": "You can upload YouTube and Soundcloud links.",
     "linkInputGuide": "Please enter the URL below.",
-    "uploadGuide": "Please upload file (WAV, MP3, AIFF, AAC, OGG, FLAC)",
+    "uploadGuide": "Drag and drop the file here. ",
+    "uploadGuide2": "or click to upload a file",
     "uploadError": "Invalid file format.",
     "submit": "Start Checking"
   },

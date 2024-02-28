@@ -13,8 +13,8 @@ const VoteBanner = ({ vote }) => {
   };
 
   return (
-    <div className="w-full py-[50px] font-['Pretendard'] leading-[normal] bg-[#001271]">
-      <div className="flex flex-col desktop:flex-row w-[326px] desktop:w-fit justify-center mx-auto ">
+    <div className="w-full py-[50px] font-['Pretendard-Regular'] leading-[normal] bg-[#001271]">
+      <div className="flex flex-col desktop:flex-row w-[326px] desktop:w-fit justify-center mx-auto px-2">
         <div className="flex flex-col" style={{ fontFeatureSettings: "'ss10' on" }}>
           <p className="text-[#E2E2E3] text-base leading-[27px] font-semibold mb-[10px] text-nowrap">
             {i18n.language === "en" ? (

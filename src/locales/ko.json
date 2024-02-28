@@ -149,7 +149,8 @@
     "melody": "Inst.",
     "linkGuide": "유튜브, 사운드 클라우드 링크 업로드 가능합니다.",
     "linkInputGuide": "URL을 입력하세요.",
-    "uploadGuide": "파일을 업로드해주세요 \n(WAV, MP3, AIFF, AAC, OGG, FLAC)",
+    "uploadGuide": "음원 파일을 이곳에 드래그하세요.",
+    "uploadGuide2": "혹은 클릭하여 파일 선택",
     "uploadError": "지원하지 않는 파일 형식입니다.",
     "submit": "검사 시작하기"
   },

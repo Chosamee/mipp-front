@@ -116,7 +116,7 @@ const ResultList = () => {
 
   return (
     <>
-      <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
+      <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
         <Notify />
         {/* Title 및 검색 하십시오.. */}
         <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">

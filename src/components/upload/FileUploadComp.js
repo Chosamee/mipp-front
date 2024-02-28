@@ -102,10 +102,17 @@ const FileUploadComp = ({ inst, bpm }) => {
           )}
 
           <div
-            className={`mt-[14px] text-[16px] font-medium leading-[24px] ${
+            className={`mt-[14px] text-[16px] font-medium leading-[24px] gap-[3px] ${
               fileName && "text-[#3B59FA]"
             }`}>
-            {fileName || t("home.uploadGuide")}
+            {fileName || (
+              <>
+                <p>{t("home.uploadGuide")}</p>
+                <p className="text-center text-[14px] underline leading-[24px] text-[#3553F3]">
+                  {t("home.uploadGuide2")}
+                </p>
+              </>
+            )}
           </div>
           <input
             type="file"

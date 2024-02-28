@@ -49,7 +49,7 @@ const CommunityList = () => {
   }, [location.search]);
 
   return (
-    <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-[Pretendard] leading-[normal]">
+    <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
       {/* Title 및 검색 하십시오.. */}
       <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
         <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">

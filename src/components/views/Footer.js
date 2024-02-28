@@ -9,7 +9,7 @@ import { getLangUrl } from "locales/utils";
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <footer className="relative flex w-full h-[350px] py-[53px] justify-center items-center gap-[558px] bg-[#1C1C1C] text-white dektop:max-w-[1536px] px-10">
+    <footer className="relative flex w-full desktop:h-[350px] desktop:py-[53px] justify-center items-center gap-[558px] bg-[#1C1C1C] text-white dektop:max-w-[1536px] px-10">
       <div className="justify-between items-start max-w-[1536px] hidden desktop:flex w-full">
         <div className="flex flex-col items-start ">
           <div className="flex flex-col justify-center items-start gap-[10px] text-[26px] font-bold leading-[22px] mb-8">
