@@ -5,7 +5,7 @@ import { fetchDetail } from "api/resultService";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
-import Details from "./Details";
+import DetailList from "./DetailList";
 import Criteria from "./Criteria";
 import { multiDownloadPDF } from "api/pdfService";
 
@@ -124,7 +124,7 @@ const DetailPage = () => {
       </div>
 
       {/* 비교 결과 */}
-      <Details
+      <DetailList
         files={resultData}
         sendCountFunc={handleCount}
         checkedFiles={checkedFiles}

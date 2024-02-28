@@ -40,7 +40,7 @@ import AskDetail from "pages/ask/AskDetail";
 import RegistrationForm from "pages/Regist";
 import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
-import DetailPage from "pages/detail/DetailPage";
+import Detail from "pages/result/Detail";
 import FAQs from "pages/FAQs";
 import TermsPage from "pages/docs/Terms";
 import PolicyPage from "pages/docs/Policy";
@@ -121,7 +121,7 @@ const App = () => {
                       element={<ProtectedRoute component={AskDetail} />}
                     />
                     <Route path="asks/create" element={<ProtectedRoute component={AskCreate} />} />
-                    <Route path="detail/:id" element={<ProtectedRoute component={DetailPage} />} />
+                    <Route path="detail/:id" element={<ProtectedRoute component={Detail} />} />
                   </Route>
                 </Routes>
               </div>

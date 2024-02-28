@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Each from "./Each";
 import { useTranslation } from "react-i18next";
 
-const Details = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => {
+const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -68,4 +68,4 @@ const Details = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => {
     </React.Fragment>
   );
 };
-export default Details;
+export default DetailList;
