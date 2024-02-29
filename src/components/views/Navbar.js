@@ -210,7 +210,7 @@ const NavBar = () => {
             <Link to={getLangUrl("/howtouse")} className="text-left mx-6">
               {t("nav.howToUse")}
             </Link>
-            <Link to={getLangUrl("/howtouse")} className="text-left mx-6">
+            <Link to={getLangUrl("/notice")} className="text-left mx-6">
               {t("nav.notice")}
             </Link>
           </div>

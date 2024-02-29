@@ -10,10 +10,10 @@ const NoticeEach = ({ item }) => {
   return (
     <div
       key={item.id}
-      className="flex w-[326px] desktop:w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
+      className="flex w-[326px] desktop:w-[920px] h-fit desktop:h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
       {/* <div className="w-5 desktop:w-10 px-1">{item.id}</div> */}
       <Link
-        className="flex w-[210px] desktop:w-[800px] h-[60px] pl-7 pr-3 text-start items-center"
+        className="flex w-[210px] desktop:w-[800px] h-full pl-7 pr-3 text-start items-center py-3"
         to={getLangUrl("/notice/" + item.id)}>
         {i18n.language === "en" ? item.en_title : item.ko_title}
       </Link>

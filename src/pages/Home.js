@@ -127,7 +127,7 @@ const Home = () => {
           <div className="flex justify-center mb-[30px]">
             <button
               onClick={() => setActiveTab("upload")}
-              className={`desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold shadow-[0_0_0_2px_#3553F3]
+              className={`desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold
               w-[162.5px] desktop:w-[210px] text-center ${
                 activeTab === "upload"
                   ? "shadow-[0_2px_0_0_#3553F3] text-[#3553F3]"
@@ -137,7 +137,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => setActiveTab("link")}
-              className={`desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold shadow-[0_0_0_2px_#3553F3]
+              className={`desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold
               w-[162.5px] desktop:w-[210px] text-center ${
                 activeTab === "link"
                   ? "shadow-[0_2px_0_0_#3553F3] text-[#3553F3]"

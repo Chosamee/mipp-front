@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import StepImage from "./StepImage";
-import StepText from "./StepText";
+import StepImage from "../components/StepImage";
+import StepText from "../components/StepText";
 import { useState } from "react";
 
 const Step2 = () => {
@@ -12,7 +12,7 @@ const Step2 = () => {
     return (
       <button
         onClick={() => setInst(selected)}
-        className={`flex px-5 py-3.5 text-[16px] font-medium rounded-[10px] w-[326px] desktop:w-[400px] gap-[10px] ${
+        className={`flex px-5 py-3 desktop:py-3.5 text-[14px] desktop:text-[16px] font-medium rounded-[10px] w-[280px] desktop:w-[400px] gap-[10px] ${
           isSelected
             ? "shadow-[0_0_0_2px_#3553F3] bg-white text-[#3553F3]"
             : "bg-[#F6F6F6] text-[#A9A9A9]"
@@ -50,26 +50,27 @@ const Step2 = () => {
         title={"2. 표절 검사 신청을 위한 옵션 선택"}
         text={
           <>
-            음원을 직접 업로드 하시려면 업로드, 유튜브 또는 사운드 클라우드 링크로 검사하시려면
-            링크를 선택해 주세요. <br /> 검사를 하려는 음악이 보컬이 있는 곡인지 없는 곡인지에 따라
-            Melody(보컬포함), Melody(보컬 미 포함) 옵션을 선택해 주세요.
+            음원을 직접 업로드 하시려면 업로드, 유튜브 또는 <br className="desktop:hidden" />
+            사운드 클라우드 링크로 검사하시려면 링크를 선택해 주세요. <br /> 검사를 하려는 음악이
+            보컬이 있는 곡인지 없는 곡인지에 따라 <br className="desktop:hidden" />
+            보컬, Inst. 등 옵션을 선택해 주세요.
           </>
         }
       />
       <StepImage
         contents={
-          <div className="flex flex-col p-[10px] items-center relative top-[38px]">
+          <div className="flex flex-col p-[10px] items-center">
             <div>
-              <div className="text-start mb-[10px] text-[20px] desktop:text-[22px] font-semibold">
+              <div className="text-start mb-[10px] text-[14px] desktop:text-[22px] font-semibold">
                 {t("home.step1")}
               </div>
               <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block">
                 {t("home.step1guide")}
               </div>
-              <div className="text-start mb-5 text-[15px] leading-[24px] text-[#9B9B9B] font-medium desktop:hidden">
+              <div className="text-start mb-5 text-[13px] leading-[24px] text-[#9B9B9B] font-medium desktop:hidden">
                 {t("home.step1guideMobile")}
               </div>
-              <div className="flex flex-col justify-center mb-4 gap-2">
+              <div className="flex flex-col justify-center gap-2">
                 <SelectMusicType selected={"vocal"} optionNum={1} />
                 <SelectMusicType selected={"melody"} optionNum={2} />
                 <SelectMusicType selected={"boundary"} optionNum={3} />
