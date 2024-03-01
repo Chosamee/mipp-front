@@ -23,20 +23,22 @@ const Step5 = () => {
       <StepImage
         contents={
           <div className="flex flex-col p-[10px] items-center">
-            <h1 className="text-[22px] mb-6 self-start font-semibold">{t("result.my")}</h1>
+            <h1 className="text-[16px] desktop:text-[22px] mb-6 self-start font-semibold">
+              {t("result.my")}
+            </h1>
 
-            <div className="flex w-[326px] desktop:w-[424px] h-14 items-center desktop:gap-6 gap-4 justify-between border-b-[1px] border-[#E5E8EB]">
+            <div className="flex w-[280px] desktop:w-[424px] h-14 items-center desktop:gap-6 gap-4 justify-between border-b-[1px] border-[#E5E8EB]">
               <div className="py-1 gap-[10px] flex">
                 <button className="flex rounded-[100px] border-[1px] border-[#E1E2E3] w-[18px] h-[18px] items-center justify-center">
                   <img src={down_vector} alt="Vector" />
                 </button>
 
                 {i18n.language === "en" ? (
-                  <div className="text-[14px] text-center font-medium leading-[20px] text-[#171923]">
+                  <div className="text-xs desktop:text-[14px] text-center font-medium leading-[20px] text-[#171923]">
                     Latest
                   </div>
                 ) : (
-                  <div className="text-[14px] text-center font-medium leading-[20px] text-[#171923]">
+                  <div className="text-xs desktop:text-[14px] text-center font-medium leading-[20px] text-[#171923]">
                     최신순
                   </div>
                 )}
@@ -45,7 +47,7 @@ const Step5 = () => {
                 {["all", "vocal", "melody", "boundary"].map((item, index) => {
                   return (
                     <button
-                      className={`h-7 text-sm leading-5 font-semibold  desktop:px-3 px-2.5 py-1 items-center justify-center ${
+                      className={`h-7 text-xs desktop:text-sm leading-5 font-semibold  desktop:px-3 px-2.5 py-1 items-center justify-center ${
                         inst === item
                           ? "rounded-[9999px] text-[#171923] bg-[#E2E8F0]"
                           : "text-[#999DA1]"

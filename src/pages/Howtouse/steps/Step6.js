@@ -1,9 +1,54 @@
 import { useTranslation } from "react-i18next";
 import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
+import { useEffect, useState } from "react";
+
+const desktopData = [
+  { title: "음악 제목 A", checked: true, plagiarism_rate: "00" },
+  {
+    title: "음악 제목 B",
+    checked: false,
+    plagiarism_rate: "00",
+  },
+  {
+    title: "음악 제목 C",
+    checked: false,
+    plagiarism_rate: "00",
+  },
+];
+
+const mobileData = [
+  { title: "음악 제목 A", checked: true, plagiarism_rate: "0" },
+  {
+    title: "음악 제목 B",
+    checked: false,
+    plagiarism_rate: "0",
+  },
+];
 
 const Step6 = () => {
   const { t } = useTranslation();
+  const [sampleData, setSampleData] = useState([]); // 기본 높이를 'auto'로 설정
+
+  useEffect(() => {
+    // 윈도우 크기에 따라 높이를 조정하는 리스너 함수
+    const handleResize = () => {
+      if (window.innerWidth < 550) {
+        setSampleData(mobileData);
+      } else {
+        setSampleData(desktopData);
+      }
+    };
+
+    // 윈도우 크기 변경 이벤트에 리스너 추가
+    window.addEventListener("resize", handleResize);
+
+    // 초기 렌더링에서도 높이 설정
+    handleResize();
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div className="flex flex-col gap-[30px] w-full">
       <StepText
@@ -13,7 +58,7 @@ const Step6 = () => {
       <StepImage
         inputHeight="380px"
         contents={
-          <div className="w-[375px] desktop:w-[463px] px-5 leading-[normal] text-[#171923]">
+          <div className="w-[310px] desktop:w-[463px] px-5 leading-[normal] text-[#171923]">
             {/* 노래 검사 유형 / 노래 제목 */}
             <div className="flex gap-[10px] items-center">
               <div
@@ -27,10 +72,12 @@ const Step6 = () => {
             </div>
 
             {/* 선택 파일 갯수/ 파일 다운로드 버튼 */}
-            <div className="flex mt-10 desktop:mt-6 items-center">
-              <div className="text-[17px] font-medium leading-[16px]">{t("detail.선택파일")}</div>
-              <div className="text-[17px] font-medium leading-[16px] text-[#3553F3] ml-1 w-[34px]">
-                1건
+            <div className="flex mt-4 desktop:mt-6 items-center">
+              <div className="text-sm desktop:text-[17px] font-medium leading-[16px]">
+                {t("detail.선택파일")}
+              </div>
+              <div className="text-sm desktop:text-[17px] font-medium leading-[16px] text-[#3553F3] ml-1 w-[34px]">
+                (1)
               </div>
               <button className="flex h-[30px] bg-[#3553F3] rounded-md px-3 items-center gap-1 ml-[18px]">
                 <DownloadIcon />
@@ -41,52 +88,40 @@ const Step6 = () => {
             </div>
 
             {/* 비교 결과 */}
-            <div className="flex w-full h-10 mt-4 items-center border-y-[1px] border-[#E5E8EB] text-[13px] text-[#828487]">
-              <div className="flex px-0 desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
+            <div className="flex w-full h-10 mt-2 desktop:mt-4 items-center border-y-[1px] border-[#E5E8EB] text-[13px] text-[#828487]">
+              <div className="flex desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
                 <input type="checkbox" checked={false} />
               </div>
-              <div className="flex px-3 w-[184px] desktop:w-[210px] h-full items-center">
+              <div className="flex px-3 w-[100px] desktop:w-[180px] h-full items-center">
                 {t("detail.이름")}
               </div>
-              <div className="flex w-[108px] desktop:w-[72px] h-full items-center">
+              <div className="flex px-3 w-[70px] desktop:w-[90px] h-full items-center">
                 {t("detail.표절률")}
               </div>
-              <div className="hidden w-[110px] desktop:flex pl-3 pr-5 h-full items-center">
+              <div className="flex pl-3 w-[92px] desktop:w-fit h-full items-center">
                 {t("detail.결과자료")}
               </div>
             </div>
-            {[
-              { title: "음악 제목 A", checked: true, plagiarism_rate: "00" },
-              {
-                title: "음악 제목 B",
-                checked: false,
-                plagiarism_rate: "00",
-              },
-              {
-                title: "음악 제목 C",
-                checked: false,
-                plagiarism_rate: "00",
-              },
-            ].map((file, index) => {
+            {sampleData.map((file, index) => {
               return (
                 <li
-                  className={`flex w-full desktop:h-[54px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
+                  className={`flex w-full h-[54px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
                     file.checked ? "bg-[#ECF2F8]" : ""
                   }`}>
-                  <div className="flex px-0 desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
+                  <div className="flex desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
                     <input type="checkbox" checked={file.checked} className="checked:bg-blue-600" />
                   </div>
-                  <div className="flex px-3 desktop:py-0 w-[184px] desktop:w-[210px] h-full items-center text-[#171923]">
+                  <div className="flex px-3 text-sm desktop:text-base desktop:py-0 w-[100px] desktop:w-[180px] h-full items-center text-[#171923]">
                     {file.title}
                   </div>
-                  <div className="flex px-3 w-[108px] desktop:w-[90px] h-full items-center text-[#171923] gap-[6px] text-[14px]">
+                  <div className="flex pl-3 desktop:px-3 text-sm desktop:text-base w-[70px] desktop:w-[90px] h-full items-center text-[#171923] gap-[6px] text-[14px]">
                     <div
                       className="w-4 h-4 rounded-[90px]"
                       style={{ backgroundColor: getColorScore(file.plagiarism_rate) }}
                     />
                     <div>{file.plagiarism_rate} %</div>
                   </div>
-                  <div className="hidden desktop:flex pl-3 pr-5 h-full items-center">
+                  <div className="flex w-[92px] desktop:w-fit pl-3 pr-5 h-full items-center">
                     <button className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md">
                       <div className="text-[#31353B] text-[12px] text-nowrap">
                         {t("detail.확인하기")}
@@ -101,16 +136,6 @@ const Step6 = () => {
                       </svg>
                     </button>
                   </div>
-                  <button className="desktop:hidden relative right-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="6"
-                      height="10"
-                      viewBox="0 0 6 10"
-                      fill="none">
-                      <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
-                    </svg>
-                  </button>
                 </li>
               );
             })}

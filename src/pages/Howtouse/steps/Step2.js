@@ -64,10 +64,10 @@ const Step2 = () => {
               <div className="text-start mb-[10px] text-[14px] desktop:text-[22px] font-semibold">
                 {t("home.step1")}
               </div>
-              <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block">
+              <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block leading-[18px]">
                 {t("home.step1guide")}
               </div>
-              <div className="text-start mb-5 text-[13px] leading-[24px] text-[#9B9B9B] font-medium desktop:hidden">
+              <div className="text-start mb-5 text-[13px] leading-[18px] text-[#9B9B9B] font-medium desktop:hidden ">
                 {t("home.step1guideMobile")}
               </div>
               <div className="flex flex-col justify-center gap-2">
