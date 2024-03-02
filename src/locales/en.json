@@ -112,27 +112,23 @@
     }
   },
   "howtouse": {
-    "title": "Discover How MIPP Elevates Your Music Experience",
-    "subtitle1": "For Composers",
-    "content1": "Get peace of mind before your big release! Our plagiarism checker ensures your tracks are unique. Avoid legal troubles and protect your music's identity with our easy-to-use, AI-powered tool.",
-    "subtitle2": "For Musicians",
-    "content2": "Buying a new composition? Double-check its originality with us. Our quick plagiarism checker gives you the confidence that your new music stands out from the crowd.",
-    "subtitle3": "For Music Fans",
-    "content3": "If you believe you've discovered a copycat of your favorite tune? Put your mind at ease by checking its originality with our service. It's fast, and could save the day for your beloved artist.",
-    "subtitle4": "For Music Investors",
-    "content4": "Investing in music? Make sure it's a hit, not a miss. Our plagiarism tool helps you invest smart by confirming the uniqueness of your next big music venture.",
-    "step1title": "Step 1: Easy Sign-Up",
-    "step1content": "Join us in a snap! Sign up and log in using your Google email for a quick start.",
-    "step2title": "Step 2: Check Your Option",
-    "step2content": "Select \"Music file(mp3, wav)\" or \"YouTube/SoundCloud link\" option. Choose whether your track includes vocals or is purely instrumental for a customized check.",
-    "step3title": "Step 3: Upload or Paste Link",
-    "step3content": "Upload your tracks or paste your music links – it's as simple as that.",
-    "step4title": "Step 4: Plagiarism Check and Monitoring",
-    "step4content": "Our system conducts an in-depth plagiarism analysis, comparing your music against the top 5 matches in our database. We focus on melody similarities over a 4-bar sequence, highlighting section with a suspected plagiarism",
-    "step5title": "Step 5: Instant Results",
-    "step5content": "We provide a detailed breakdown of similarities, pinpointing specific sections for your review. Plus, you can listen to snippets.",
-    "step6title": "Step 6: Get Your Report",
-    "step6content": "Grab your detailed plagiarism report in a handy PDF format. It's perfect for keeping records or sharing with your team."
+    "step1": {
+      "title": "1. Sign Up and Login",
+      "text": "Please sign up and login with your Google email account",
+      "signUp": "Sign Up",
+      "startWithGoogle": "Start with Google Account",
+      "alreadyAccount": "Already have an account? Login"
+    },
+    "step2": {
+      "title": "2. Selecting Options for Plagiarism Check",
+      "text": "Depending on whether the music you want to check has vocals or not, select the appropriate option: Vocal, Inst.",
+      "textMobile": "Depending on whether the music you want to check\n has vocals or not, select the appropriate option: Vocal, Inst."
+    },
+    "step3": {
+      "title": "3. Uploading Music Files and Music Links",
+      "text": "Depending on the selected option, upload the audio file (such as mp3, wav files) or enter the music link.",
+      "textMobile": "Depending on the selected option, \nupload the audio file (such as mp3, wav files) \nor enter the music link."
+    }
   },
   "home": {
     "title": "Check for Music Plagiarism,\nSimplified with just one click.",

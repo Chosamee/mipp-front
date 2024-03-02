@@ -2,10 +2,12 @@ import { useTranslation } from "react-i18next";
 import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
 import { useState } from "react";
+import useWindowWidth from "components/utils/useWindowWidth";
 
 const Step2 = () => {
   const { t } = useTranslation();
   const [inst, setInst] = useState("vocal");
+  const width = useWindowWidth();
   const SelectMusicType = ({ selected, optionNum }) => {
     const { t } = useTranslation();
     const isSelected = inst === selected;
@@ -47,15 +49,8 @@ const Step2 = () => {
   return (
     <div className="flex flex-col gap-[30px] w-full">
       <StepText
-        title={"2. 표절 검사 신청을 위한 옵션 선택"}
-        text={
-          <>
-            음원을 직접 업로드 하시려면 업로드, 유튜브 또는 <br className="desktop:hidden" />
-            사운드 클라우드 링크로 검사하시려면 링크를 선택해 주세요. <br /> 검사를 하려는 음악이
-            보컬이 있는 곡인지 없는 곡인지에 따라 <br className="desktop:hidden" />
-            보컬, Inst. 등 옵션을 선택해 주세요.
-          </>
-        }
+        title={t("howtouse.step2.title")}
+        text={width < 550 ? t("howtouse.step2.textMobile") : t("howtouse.step2.text")}
       />
       <StepImage
         contents={

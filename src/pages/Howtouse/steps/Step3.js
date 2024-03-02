@@ -2,19 +2,21 @@ import { useTranslation } from "react-i18next";
 import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
 import fileSelect from "assets/file_select.svg";
+import useWindowWidth from "components/utils/useWindowWidth";
 
 const Step3 = () => {
   const { t } = useTranslation();
+  const width = useWindowWidth();
   return (
     <div className="flex flex-col gap-[30px] w-full">
       <StepText
-        title={"3. 음원 업로드 및 음원 링크 등록"}
-        text={"선택한 옵션에 따라 음원(mp3,wav파일 등)을 업로드 하거나, 음원 링크를 입력해 주세요."}
+        title={t("howtouse.step3.title")}
+        text={width < 550 ? t("howtouse.step3.textMobile") : t("howtouse.step3.text")}
       />
       <StepImage
         contents={
           <div className="flex flex-col items-center">
-            <SelectBar />
+            <SelectBar selected={1} />
             <div className="mx-auto w-full flex flex-col justify-center items-center">
               <div className="desktop:w-[420px] w-[280px]">
                 <label
@@ -36,7 +38,7 @@ const Step3 = () => {
       <StepImage
         contents={
           <div className="flex flex-col items-center">
-            <SelectBar />
+            <SelectBar selected={2} />
             <input
               type="text"
               placeholder={t("home.linkInputGuide")}
@@ -56,18 +58,26 @@ const Step3 = () => {
   );
 };
 
-const SelectBar = () => {
+const SelectBar = ({ selected }) => {
   const { t } = useTranslation();
   return (
     <div className="flex justify-center mb-[30px]">
       <button
-        className="desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold shadow-[0_2px_0_0_#A9A9A9]
-                  w-[140px] desktop:w-[210px] text-center text-[#A9A9A9]">
+        className="desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold 
+                  w-[140px] desktop:w-[210px] text-center"
+        style={{
+          color: selected === 1 ? "#3553F3" : "#A9A9A9",
+          borderBottom: `2px solid ${selected === 1 ? "#3553F3" : "#A9A9A9"}`,
+        }}>
         {t("home.option1-1")}
       </button>
       <button
-        className="desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold shadow-[0_2px_0_0_#3553F3]
-                  w-[140px] desktop:w-[210px] text-center text-[#3553F3]">
+        className="desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold 
+                  w-[140px] desktop:w-[210px] text-center"
+        style={{
+          color: selected === 2 ? "#3553F3" : "#A9A9A9",
+          borderBottom: `2px solid ${selected === 2 ? "#3553F3" : "#A9A9A9"}`,
+        }}>
         {t("home.option1-2")}
       </button>
     </div>

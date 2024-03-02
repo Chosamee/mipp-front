@@ -1,25 +1,26 @@
+import { useTranslation } from "react-i18next";
 import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
 
 const Step1 = () => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-[30px] w-full">
-      <StepText
-        title={"1. 회원 가입 및 로그인"}
-        text={"구글 이메일 계정으로 회원가입과 로그인을 해주세요"}
-      />
+      <StepText title={t("howtouse.step1.title")} text={t("howtouse.step1.text")} />
       <StepImage
         contents={
           <div className="flex flex-col p-[10px] items-center">
-            <p className="text-[20px] desktop:text-[23px] font-semibold mb-[31px]">회원가입</p>
+            <p className="text-[20px] desktop:text-[23px] font-semibold mb-[31px]">
+              {t("howtouse.step1.signUp")}
+            </p>
             <div className="flex items-center py-3 gap-[10px] mb-[26px] bg-neutral-300 rounded-[4px] w-[263px] desktop:px-[69px] desktop:w-fit justify-center">
               <div> G</div>
               <div className="text-[15px] desktop:text-lg leading-[34px] font-medium">
-                구글 계정으로 시작하기
+                {t("howtouse.step1.startWithGoogle")}
               </div>
             </div>
             <p className="text-[14px] desktop:text-[17px] font-medium text-[#9B9B9B]">
-              이미 계정이 있으신가요? 로그인
+              {t("howtouse.step1.alreadyAccount")}
             </p>
           </div>
         }
