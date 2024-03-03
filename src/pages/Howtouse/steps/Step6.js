@@ -2,59 +2,30 @@ import { useTranslation } from "react-i18next";
 import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
 import { useEffect, useState } from "react";
-
-const desktopData = [
-  { title: "음악 제목 A", checked: true, plagiarism_rate: "00" },
-  {
-    title: "음악 제목 B",
-    checked: false,
-    plagiarism_rate: "00",
-  },
-  {
-    title: "음악 제목 C",
-    checked: false,
-    plagiarism_rate: "00",
-  },
-];
-
-const mobileData = [
-  { title: "음악 제목 A", checked: true, plagiarism_rate: "0" },
-  {
-    title: "음악 제목 B",
-    checked: false,
-    plagiarism_rate: "0",
-  },
-];
+import useWindowWidth from "components/utils/useWindowWidth";
 
 const Step6 = () => {
   const { t } = useTranslation();
-  const [sampleData, setSampleData] = useState([]); // 기본 높이를 'auto'로 설정
+  const [data, setData] = useState([]); // 기본 높이를 'auto'로 설정
+  const width = useWindowWidth();
 
   useEffect(() => {
-    // 윈도우 크기에 따라 높이를 조정하는 리스너 함수
-    const handleResize = () => {
-      if (window.innerWidth < 550) {
-        setSampleData(mobileData);
-      } else {
-        setSampleData(desktopData);
-      }
-    };
+    const newData = [
+      { title: t("howtouse.nameA"), checked: true, plagiarism_rate: "00" },
+      { title: t("howtouse.nameB"), checked: false, plagiarism_rate: "00" },
+      { title: t("howtouse.nameC"), checked: false, plagiarism_rate: "00" },
+    ];
+    const newMobileData = [
+      { title: t("howtouse.nameA"), checked: true, plagiarism_rate: "0" },
+      { title: t("howtouse.nameB"), checked: false, plagiarism_rate: "0" },
+    ];
+    setData(width < 550 ? newMobileData : newData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [t]);
 
-    // 윈도우 크기 변경 이벤트에 리스너 추가
-    window.addEventListener("resize", handleResize);
-
-    // 초기 렌더링에서도 높이 설정
-    handleResize();
-
-    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
     <div className="flex flex-col gap-[30px] w-full">
-      <StepText
-        title={"6. 결과 확인서 다운로드"}
-        text={"검사 결과는 PDF로 제공되며 다운로드 가능합니다."}
-      />
+      <StepText title={t("howtouse.step6.title")} text={t("howtouse.step6.text")} />
       <StepImage
         inputHeight="380px"
         contents={
@@ -67,7 +38,7 @@ const Step6 = () => {
                 {t(`home.vocal`)}
               </div>
               <div className="text-[22px] desktop:text-[24px] leading-[28px] font-semibold">
-                음악 트랙 A
+                {t("howtouse.trackA")}
               </div>
             </div>
 
@@ -102,7 +73,7 @@ const Step6 = () => {
                 {t("detail.결과자료")}
               </div>
             </div>
-            {sampleData.map((file, index) => {
+            {data.map((file, index) => {
               return (
                 <li
                   className={`flex w-full h-[54px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${

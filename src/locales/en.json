@@ -128,7 +128,26 @@
       "title": "3. Uploading Music Files and Music Links",
       "text": "Depending on the selected option, upload the audio file (such as mp3, wav files) or enter the music link.",
       "textMobile": "Depending on the selected option, \nupload the audio file (such as mp3, wav files) \nor enter the music link."
-    }
+    },
+    "step4": {
+      "title": "4. Plagiarism Check and Monitoring",
+      "text": "We extract the top songs with the highest plagiarism rate from the audio data we currently hold.\nThe plagiarism check is based on the melody plagiarism rate for 4 bars. \nThe detailed check results display the suspected plagiarism sections.",
+      "textMobile": "We extract the top songs with\n the highest plagiarism rate from the audio data \nwe currently hold. The plagiarism check is \nbased on the melody plagiarism rate for 4 bars. \nThe detailed check results display \nthe suspected plagiarism sections."
+    },
+    "step5": {
+      "title": "5. Check the Results",
+      "text": "Once the plagiarism check is complete, you can review the results.\nThe results provide the overall plagiarism rate, suspected plagiarism sections, \nsection plagiarism rate, melody, harmony, and the option to listen to the audio by section.",
+      "textMobile": "Once the plagiarism check is complete, \nyou can review the results.The results provide \nthe overall plagiarism rate, suspected plagiarism sections, section plagiarism rate, melody, harmony, and the option to listen to the audio by section."
+    },
+    "step6": {
+      "title": "6. Download Results",
+      "text": "The results are provided in PDF format."
+    },
+    "trackA": "Track A",
+    "nameA": "Music Title A",
+    "nameB": "Music Title B",
+    "nameC": "Music Title C",
+    "complete": "Complete"
   },
   "home": {
     "title": "Check for Music Plagiarism,\nSimplified with just one click.",

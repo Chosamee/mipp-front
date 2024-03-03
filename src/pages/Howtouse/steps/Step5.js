@@ -3,22 +3,17 @@ import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
 import down_vector from "assets/result/down_vector.svg";
 import { useState } from "react";
+import useWindowWidth from "components/utils/useWindowWidth";
 
 const Step5 = () => {
   const { t, i18n } = useTranslation();
   const [inst, setInst] = useState("all");
-
+  const width = useWindowWidth();
   return (
-    <>
+    <div className="flex flex-col gap-[30px] w-full">
       <StepText
-        title={"5. 검사 결과 확인"}
-        text={
-          <>
-            표절 검사가 완료되면 검사결과를 확인 할 수 있습니다. <br />
-            검사 결과는 전체 표절률, 표절 의심 구간, 구간 표절률, 멜로디, 화성, 구간별 음원 듣기
-            기능이 제공됩니다.
-          </>
-        }
+        title={t("howtouse.step5.title")}
+        text={width < 550 ? t("howtouse.step5.textMobile") : t("howtouse.step5.text")}
       />
       <StepImage
         contents={
@@ -62,20 +57,20 @@ const Step5 = () => {
               </div>
             </div>
             <div className="flex flex-col w-full py-6 px-3 gap-2.5 mx-auto text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
-              <button className="text-start">음악 트랙 A</button>
+              <button className="text-start">{t("howtouse.trackA")}</button>
               <div className="flex items-center justify-start gap-[10px]">
-                <div className="text-nowrap">기본</div>
+                <div className="text-nowrap">Vocal</div>
                 <div className="h-3 w-px bg-[#E3E3E3] self-center" />
                 <div className="text-center">2024.01.01</div>
                 <div className="h-3 w-px bg-[#E3E3E3] self-center" />
 
-                <div className="px-1">완료</div>
+                <div className="px-1">{t("howtouse.complete")}</div>
               </div>
             </div>
           </div>
         }
       />
-    </>
+    </div>
   );
 };
 

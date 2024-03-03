@@ -1,21 +1,16 @@
 import { useTranslation } from "react-i18next";
 import StepImage from "../components/StepImage";
 import StepText from "../components/StepText";
+import useWindowWidth from "components/utils/useWindowWidth";
 
 const Step4 = () => {
   const { t } = useTranslation();
+  const width = useWindowWidth();
   return (
     <div className="flex flex-col gap-[30px] w-full">
       <StepText
-        title={"4. 표절 검사 및 표절 모니터링"}
-        text={
-          <>
-            현재 저희가 보유하고 있는 음원 데이터들 중 가장 표절률이 높은 5개의 곡을 추출합니다.
-            <br />
-            표절 검사 기준은 4마디 기준으로 멜로디 표절률을 검사합니다. 상세 검사 결과에서 표절 의심
-            구간을 출력합니다.
-          </>
-        }
+        title={t("howtouse.step4.title")}
+        text={width < 550 ? t("howtouse.step4.textMobile") : t("howtouse.step4.text")}
       />
       <StepImage
         contents={
