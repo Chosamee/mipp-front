@@ -2,22 +2,20 @@ import bannerImg from "assets/intro/intro_banner.jpg";
 import bannerImgMobile from "assets/intro/intro_banner_mobile.jpg";
 
 import useWindowWidth from "components/utils/useWindowWidth";
+import { useTranslation } from "react-i18next";
 
 const Banner = () => {
   const width = useWindowWidth();
-
+  const { t } = useTranslation();
+  const bannerImage = width < 550 ? bannerImgMobile : bannerImg;
+  const mainTitle = width < 550 ? t("intro.mainTitleMobile") : t("intro.mainTitle");
   return (
     <div className="relative flex justify-center w-full h-[340px] desktop:h-[780px]">
-      <img
-        src={width < 550 ? bannerImg : bannerImgMobile}
-        alt="banner"
-        className="w-full h-full absolute inset-0 object-cover"
-      />
+      <img src={bannerImage} alt="banner" className="w-full h-full absolute inset-0 object-cover" />
       <div className="w-full h-full absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px] "></div>
       <div className="absolute flex flex-col items-center bottom-[45px] desktop:bottom-[100px]">
         <h1 className="text-[32px] desktop:text-[66px] font-bold leading-[46px] text-white text-center text-nowrap">
-          음악 표절검사의 기준, <br className="desktop:hidden" />
-          MIPP
+          {mainTitle}
         </h1>
         <div className="mt-10 desktop:mt-32">
           <DownVector />

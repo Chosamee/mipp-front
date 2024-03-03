@@ -1,48 +1,33 @@
-import React from "react";
-
-const data = [
-  {
-    title: "검사기준",
-    text: (
-      <>
-        AI가 수 만개의 노래를 각각 4마디 단위로 나누고
-        <br /> 실질적 유사성을 비교해 표절률이 높은 노래들을
-        <br className="desktop:hidden" />
-        찾아냅니다.
-      </>
-    ),
-  },
-  {
-    title: "비전",
-    text: (
-      <>
-        저희의 목표는 창작자의 저작권과
-        <br className="desktop:hidden" /> 지적 재산권을 보호하고
-        <br /> 나아가 창의성의 가치를 극대화시킬 수 있는
-        <br /> 음악 생태계를 만드는 것입니다.
-      </>
-    ),
-  },
-  {
-    title: "기술",
-    text: (
-      <>
-        AI 음악 분석 기술을 통해
-        <br className="desktop:hidden" /> 음악의 구조, 리듬, 멜로디, 화성 등을 분석해
-        <br />
-        표절노래를 찾아냅니다. 많은 노래들 중<br className="desktop:hidden" /> 표절 노래를 찾아내
-        <br className="hidden desktop:block" />
-        원작자의 음악 IP를 보호합니다.
-      </>
-    ),
-  },
-];
+import useWindowWidth from "components/utils/useWindowWidth";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Section1 = () => {
+  const { t } = useTranslation();
+  const [data, setData] = useState([]);
+  const width = useWindowWidth();
+  useEffect(() => {
+    const newData = [
+      {
+        title: t("intro.section1.title1"),
+        text: width < 550 ? t("intro.section1.content1Mobile") : t("intro.section1.content1"),
+      },
+      {
+        title: t("intro.section1.title2"),
+        text: width < 550 ? t("intro.section1.content2Mobile") : t("intro.section1.content2"),
+      },
+      {
+        title: t("intro.section1.title3"),
+        text: width < 550 ? t("intro.section1.content3Mobile") : t("intro.section1.content3"),
+      },
+    ];
+    setData(newData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [t]);
   return (
     <div className="flex flex-col py-20 desktop:py-[230px] w-[366px] desktop:w-[1300px] mx-auto px-5">
       <h2 className="text-xl desktop:text-2xl font-semibold leading-[normal] mb-[60px] desktop:mb-[86px]">
-        MIPP이 바꾸는 음악 생태계
+        {t("intro.section1.mainTitle")}
       </h2>
       <div className="flex flex-col gap-[50px] desktop:gap-[90px]">
         {data.map((item, index) => (
@@ -64,7 +49,7 @@ const Subtitle = ({ idx, title, text }) => {
         <div className="text-[#3553F3] text-2xl font-bold leading-8">{formattedNumber}</div>
         <h3 className="text-[57px] text-[#343434] font-bold leading-[normal]">{title}</h3>
       </div>
-      <div className="text-[#343434] text-base desktop:text-[28px] leading-[28px] desktop:leading-[52px]">
+      <div className="text-[#343434] text-base desktop:text-[28px] leading-[28px] desktop:leading-[52px] desktop:w-[860px]">
         {text}
       </div>
     </div>

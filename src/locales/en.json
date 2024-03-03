@@ -58,12 +58,20 @@
     }
   },
   "intro": {
-    "title1": "Plagiarism Test Standard",
-    "content1": "AI divides thousands of songs into four-bar segments and compares their substantive similarities to identify songs with high levels of plagiarism.",
-    "title2": "Vision",
-    "content2": "To protect creators' copyrights and intellectual property, and further to create a music ecosystem that maximizes the value of creativity.",
-    "title3": "Technology",
-    "content3": "Through AI music analysis technology, it analyzes the structure, rhythm, melody, harmony, and more to detect plagiarized songs. It identifies plagiarized songs among many and safeguards the original creators' music intellectual property (IP)."
+    "mainTitle": "The Standard of Music Plagiarism Check, MIPP",
+    "mainTitleMobile": "The Standard of \nMusic Plagiarism Check, \nMIPP",
+    "section1": {
+      "mainTitle": "Shaping the Future of Music Protection",
+      "title1": "Test Process",
+      "content1": "AI divides thousands of songs into 4-bar and compares their substantial similarities to find songs with high plagiarism rates.",
+      "content1Mobile": "AI divides thousands of songs into 4-bar and compares their substantial similarities to find songs with high plagiarism rates.",
+      "title2": "Vision",
+      "content2": "Our goal is to protect creators' copyright and intellectual property rights, and further, to create a music ecosystem that maximizes the creativity.",
+      "content2Mobile": "Our goal is to protect creators' copyright and intellectual property rights, and further, to create a music ecosystem that maximizes the creativity.",
+      "title3": "Technology",
+      "content3": " Through AI music analysis technology, it analyzes the song structure, rhythm, melody, harmony of music to detect plagiarized songs among many other songs.",
+      "content3Mobile": " Through AI music analysis technology, it analyzes the song structure, rhythm, melody, harmony of music to detect plagiarized songs among many other songs."
+    }
   },
   "index": {
     "mainTitle": "AI Music\n Plagiarism Checker",
