@@ -11,13 +11,13 @@ const IntroSEOKO = () => {
       <meta property="og:url" content="https://aimipp.com/ko/intro" />
       <meta property="og:title" content="MIPP 소개: 음악 저작권 보호의 새로운 시대" />
       <meta property="og:description" content="MIPP는 표절 검사의 새로운 기준을 제시하여 음악 저작권 보호의 새로운 지평을 열어가고자 합니다." />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content="https://aimipp.com/ko/intro" />
       <meta name="twitter:title" content="AIMIPP 소개: 음악 저작권 보호의 새로운 시대" />
       <meta name="twitter:description" content="MIPP는 표절 검사의 새로운 기준을 제시하여 음악 저작권 보호의 새로운 지평을 열어가고자 합니다." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
       <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko/intro" />
 
       <link rel="canonical" href="https://aimipp.com/ko/intro" />

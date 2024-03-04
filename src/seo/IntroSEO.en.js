@@ -11,13 +11,13 @@ const IntroSEOEN = () => {
       <meta property="og:url" content="https://aimipp.com/en/intro" />
       <meta property="og:title" content="Introduction to MIPP: A New Era in Music Copyright Protection" />
       <meta property="og:description" content="MIPP sets a new standard in plagiarism detection, aiming to open new horizons in music copyright protection." />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content="https://aimipp.com/en/intro" />
       <meta property="twitter:title" content="Introduction to MIPP: A New Era in Music Copyright Protection" />
       <meta property="twitter:description" content="MIPP sets a new standard in plagiarism detection, aiming to open new horizons in music copyright protection." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
       <link rel="alternate" hreflang="en" href="https://aimipp.com/en/intro" />
       <link rel="canonical" href="https://aimipp.com/en/intro" />
       <meta name="robots" content="index, follow" />

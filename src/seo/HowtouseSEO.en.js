@@ -11,13 +11,13 @@ const HowtouseSEOEN = () => {
       <meta property="og:url" content="https://aimipp.com/en/howtouse" />
       <meta property="og:title" content="Guide on How to Use MIPP" />
       <meta property="og:description" content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide." />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content="https://aimipp.com/en/howtouse" />
       <meta name="twitter:title" content="Guide on How to Use MIPP" />
       <meta name="twitter:description" content="Discover how to use MIPP for easy and effective music plagiarism checks with our step-by-step guide." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
       <link rel="alternate" hreflang="en" href="https://aimipp.com/en/howtouse" />
       <link rel="canonical" href="https://aimipp.com/en/howtouse" />
       <meta name="robots" content="index, follow" />

@@ -11,12 +11,12 @@ const HowtouseSEOKO = () => {
       <meta property="og:url" content="https://aimipp.com/ko/howtouse" />
       <meta property="og:title" content="MIPP 사용 방법" />
       <meta property="og:description" content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요." />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content="https://aimipp.com/ko/howtouse" />
       <meta name="twitter:title" content="MIPP 사용 방법" />
       <meta name="twitter:description" content="MIPP를 활용하여 음악 표절 검사를 쉽고 효과적으로 수행하는 방법을 단계별로 알아보세요." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
       <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko/howtouse" />
       <link rel="canonical" href="https://aimipp.com/ko/howtouse" />
       <meta name="robots" content="index, follow" />

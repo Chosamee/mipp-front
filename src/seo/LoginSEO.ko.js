@@ -10,13 +10,13 @@ const LoginSEOKO = () => {
       <meta property="og:title" content="MIPP 로그인" />
       <meta property="og:description" content="MIPP에 로그인하여 음악 표절 검사 서비스를 이용하세요. 구글 계정으로 3초안에 간편하게 로그인할 수 있습니다." />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
       <meta property="og:url" content="https://aimipp.com/ko/login" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="MIPP 로그인" />
       <meta name="twitter:description" content="MIPP에 로그인하여 음악 표절 검사 서비스를 이용하세요. 구글 계정으로 3초안에 간편하게 로그인할 수 있습니다." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
     </Helmet>
   );
 };
