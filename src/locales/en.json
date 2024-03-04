@@ -71,6 +71,21 @@
       "title3": "Technology",
       "content3": " Through AI music analysis technology, it analyzes the song structure, rhythm, melody, harmony of music to detect plagiarized songs among many other songs.",
       "content3Mobile": " Through AI music analysis technology, it analyzes the song structure, rhythm, melody, harmony of music to detect plagiarized songs among many other songs."
+    },
+    "section2": {
+      "mainTitle": "MIPP service changes your daily life",
+      "title1": "For Composers",
+      "content1": "Before releasing albums or selling musics, plagiarism checks can prepare you for plagiarism risks. AI automatically detects any accidental copy of your songs, protecting your music IP.",
+      "content1Mobile": "Before releasing albums or selling musics, plagiarism checks can prepare you for plagiarism risks. AI automatically detects any accidental copy of your songs, protecting your music IP.",
+      "title2": "For Singers",
+      "content2": "When buying songs from other composers, plagiarism checks ensure the song's originality, preventing any future plagiarism disputes before releasing your album.",
+      "content2Mobile": "When buying songs from other composers, plagiarism checks ensure the song's originality, preventing any future plagiarism disputes before releasing your album.",
+      "title3": "For Fans",
+      "content3": "If you discover a song that you suspect is a plagiarized version of your favorite artist's work, you can check for plagiarism.",
+      "content3Mobile": "If you discover a song that you suspect is a plagiarized version of your favorite artist's work, you can check for plagiarism.",
+      "title4": "For Music Copyright Investors",
+      "content4": "Before you invest in a song, check if it's original to prevent potential financial losses due to plagiarism risks.",
+      "content4Mobile": "Before you invest in a song, check if it's original to prevent potential financial losses due to plagiarism risks."
     }
   },
   "index": {
