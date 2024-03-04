@@ -14,7 +14,7 @@ const Banner = () => {
       <img src={bannerImage} alt="banner" className="w-full h-full absolute inset-0 object-cover" />
       <div className="w-full h-full absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px] "></div>
       <div className="absolute flex flex-col items-center bottom-[45px] desktop:bottom-[100px]">
-        <h1 className="text-[32px] desktop:text-[66px] font-bold leading-[46px] text-white text-center text-nowrap">
+        <h1 className="text-[32px] desktop:text-[66px] font-bold leading-[46px] desktop:leading-[80px] text-white text-center text-nowrap">
           {mainTitle}
         </h1>
         <div className="mt-10 desktop:mt-32">

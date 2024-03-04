@@ -58,7 +58,7 @@
     }
   },
   "intro": {
-    "mainTitle": "The Standard of Music Plagiarism Check, MIPP",
+    "mainTitle": "The Standard of\n Music Plagiarism Check, MIPP",
     "mainTitleMobile": "The Standard of \nMusic Plagiarism Check, \nMIPP",
     "section1": {
       "mainTitle": "Shaping the Future of Music Protection",
@@ -130,22 +130,22 @@
     "step2": {
       "title": "2. Selecting Options for Plagiarism Check",
       "text": "Depending on whether the music you want to check has vocals or not, select the appropriate option: Vocal, Inst.",
-      "textMobile": "Depending on whether the music you want to check\n has vocals or not, select the appropriate option: Vocal, Inst."
+      "textMobile": "Depending on whether the music you want to check has vocals or not, select the appropriate option: Vocal, Inst."
     },
     "step3": {
       "title": "3. Uploading Music Files and Music Links",
       "text": "Depending on the selected option, upload the audio file (such as mp3, wav files) or enter the music link.",
-      "textMobile": "Depending on the selected option, \nupload the audio file (such as mp3, wav files) \nor enter the music link."
+      "textMobile": "Depending on the selected option, upload the audio file (such as mp3, wav files) or enter the music link."
     },
     "step4": {
       "title": "4. Plagiarism Check and Monitoring",
       "text": "We extract the top songs with the highest plagiarism rate from the audio data we currently hold.\nThe plagiarism check is based on the melody plagiarism rate for 4 bars. \nThe detailed check results display the suspected plagiarism sections.",
-      "textMobile": "We extract the top songs with\n the highest plagiarism rate from the audio data \nwe currently hold. The plagiarism check is \nbased on the melody plagiarism rate for 4 bars. \nThe detailed check results display \nthe suspected plagiarism sections."
+      "textMobile": "We extract the top songs with the highest plagiarism rate from the audio data we currently hold. The plagiarism check is based on the melody plagiarism rate for 4 bars. The detailed check results display the suspected plagiarism sections."
     },
     "step5": {
       "title": "5. Check the Results",
       "text": "Once the plagiarism check is complete, you can review the results.\nThe results provide the overall plagiarism rate, suspected plagiarism sections, \nsection plagiarism rate, melody, harmony, and the option to listen to the audio by section.",
-      "textMobile": "Once the plagiarism check is complete, \nyou can review the results.The results provide \nthe overall plagiarism rate, suspected plagiarism sections, section plagiarism rate, melody, harmony, and the option to listen to the audio by section."
+      "textMobile": "Once the plagiarism check is complete, you can review the results.The results provide the overall plagiarism rate, suspected plagiarism sections, section plagiarism rate, melody, harmony, and the option to listen to the audio by section."
     },
     "step6": {
       "title": "6. Download Results",

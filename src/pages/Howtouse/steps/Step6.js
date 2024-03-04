@@ -21,7 +21,7 @@ const Step6 = () => {
     ];
     setData(width < 550 ? newMobileData : newData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [t]);
+  }, [t, width]);
 
   return (
     <div className="flex flex-col gap-[30px] w-full">
