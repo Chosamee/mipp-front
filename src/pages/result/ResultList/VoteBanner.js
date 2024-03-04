@@ -16,7 +16,7 @@ const VoteBanner = ({ vote }) => {
     <div className="w-full py-[50px] font-['Pretendard-Regular'] leading-[normal] bg-[#001271]">
       <div className="flex flex-col desktop:flex-row w-[326px] desktop:w-fit justify-center mx-auto px-2">
         <div className="flex flex-col" style={{ fontFeatureSettings: "'ss10' on" }}>
-          <p className="text-[#E2E2E3] text-base leading-[27px] font-semibold mb-[10px] text-nowrap">
+          <p className="text-[#E2E2E3] text-base leading-[27px] font-semibold mb-[20px] text-nowrap">
             {i18n.language === "en" ? (
               <>
                 How was your experience with the test? <br className="desktop:hidden" />
@@ -36,11 +36,11 @@ const VoteBanner = ({ vote }) => {
             )}
           </p>
           <button
-            className="flex gap-[10px] items-center w-fit"
+            className="flex gap-[10px] items-center w-fit py-2 px-5 bg-[#BAD6FF] rounded-lg"
             onClick={() => {
               handleVoteClicked();
             }}>
-            <p className="text-[#8296FF] text-base font-semibold leading-[27px]">
+            <p className="text-[#001271] text-base font-semibold leading-[27px]">
               {i18n.language === "en" ? "Go to the Survey" : "설문조사 하러가기"}
             </p>
             <RightArrowIcon />
