@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { useTranslation } from "react-i18next";
@@ -40,7 +40,17 @@ const App = () => {
   const { t, i18n } = useTranslation();
   const width = useWindowWidth();
   const mainImage = width < 550 ? mainMobile : main;
+  useEffect(() => {
+    const preloadLink = document.createElement("link");
+    preloadLink.href = mainImage;
+    preloadLink.rel = "preload";
+    preloadLink.as = "image";
+    document.head.appendChild(preloadLink);
 
+    return () => {
+      document.head.removeChild(preloadLink);
+    };
+  }, [mainImage]); // 이미지가 바뀔 때마다 `preload` 링크 업데이트
   return (
     <div className="flex flex-col min-h-screen items-center leading-[normal]">
       {i18n.language === "en" ? (
@@ -140,10 +150,6 @@ const App = () => {
           </script>
         </Helmet>
       )}
-      <Helmet>
-        <link rel="preload" href={mainMobile} as="image" />
-        <link rel="preload" href={main} as="image" />
-      </Helmet>
       {/** Section 1 Start */}
       <div className="flex desktop:px-[34px] px-0 desktop:max-w-[1852px] max-w-[100%] w-full min-w-fit mx-auto">
         {/* Background Image Start */}
