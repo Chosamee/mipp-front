@@ -4,6 +4,7 @@ import { useAuth } from "components/auth/AuthContext";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 import main from "assets/index/main.webp";
+import mainMobile from "assets/index/mainMobile.png";
 
 // section 1 assets
 import circle from "assets/index/section1/Ellipse 18.svg";
@@ -30,12 +31,15 @@ import tech from "assets/index/section3/Group 304.svg";
 // section 4 assets
 import lockSvg from "assets/index/Group 294.svg";
 import { Helmet } from "react-helmet";
+import useWindowWidth from "components/utils/useWindowWidth";
 //style="background: linear-gradient(0deg, #000000cf 5%, #000000ba 40%, #000000b0 58%, #0000008f 70%);
 // bg-opacity-50 bg-black
 const App = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+  const width = useWindowWidth();
+  const mainImage = width < 550 ? mainMobile : main;
 
   return (
     <div className="flex flex-col min-h-screen items-center leading-[normal]">
@@ -144,7 +148,7 @@ const App = () => {
           className="relative flex flex-col mx-auto px-8 w-full desktop:h-[620px] h-[340px] py-[100px] gap-[10px]
       desktop:rounded-[45px] justify-center bg-cover bg-center">
           <img
-            src={main}
+            src={mainImage}
             alt="Main"
             className="absolute inset-0 w-full h-full object-cover desktop:rounded-[45px]"
           />
