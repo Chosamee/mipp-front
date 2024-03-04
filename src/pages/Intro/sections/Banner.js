@@ -2,6 +2,7 @@ import bannerImg from "assets/intro/intro_banner.jpg";
 import bannerImgMobile from "assets/intro/intro_banner_mobile.jpg";
 
 import useWindowWidth from "components/utils/useWindowWidth";
+import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
 const Banner = () => {
@@ -11,6 +12,9 @@ const Banner = () => {
   const mainTitle = width < 550 ? t("intro.mainTitleMobile") : t("intro.mainTitle");
   return (
     <div className="relative flex justify-center w-full h-[340px] desktop:h-[780px]">
+      <Helmet>
+        <link rel="preload" href={bannerImage} as="image" />
+      </Helmet>
       <img src={bannerImage} alt="banner" className="w-full h-full absolute inset-0 object-cover" />
       <div className="w-full h-full absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px] "></div>
       <div className="absolute flex flex-col items-center bottom-[45px] desktop:bottom-[100px]">

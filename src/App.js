@@ -1,5 +1,5 @@
 // React 및 라우팅 관련 라이브러리
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -51,21 +51,26 @@ import CommunityDetail from "pages/community/CommunityDetail";
 import CommunityEditor from "pages/community/CommunityEditor";
 
 const App = () => {
+  const [showFallback, setShowFallback] = useState(false);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트된 후 일정 시간(예: 100ms)이 지나면 fallback 컨텐츠를 보여주도록 설정
+    const timer = setTimeout(() => setShowFallback(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <Provider store={store}>
       <Router>
         <AuthProvider>
-          <Suspense
-            fallback={
-              <div>
-                Page Loading... Wait a second. <br />
-                If the problem persists, please contact your network administrator or web page
-                administrator.
-              </div>
-            }>
-            <ScrollToTop />
-            <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']">
-              <Navbar />
+          <ScrollToTop />
+          <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']">
+            <Navbar />
+            <Suspense
+              fallback={
+                showFallback ? (
+                  <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
+                ) : null
+              }>
               <div className="flex-grow desktop:mt-[125px] mt-[106px] ">
                 <Routes>
                   <Route path="/" element={<Index />} />
@@ -125,9 +130,9 @@ const App = () => {
                   </Route>
                 </Routes>
               </div>
-              <Footer />
-            </div>
-          </Suspense>
+            </Suspense>
+            <Footer />
+          </div>
         </AuthProvider>
       </Router>
     </Provider>

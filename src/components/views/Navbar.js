@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { handleLogout } from "api/authService";
 import { getLangUrl } from "locales/utils";
@@ -73,13 +73,22 @@ const NavBar = () => {
           </Link>
           <div className="py-3 pr-6 text-[18px] gap-[40px] hidden desktop:flex">
             <div className="flex gap-[26px] px-2 items-center text-nowrap">
-              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/intro")}>
+              <Link
+                className="flex p-1 gap-[6px] items-center"
+                to={getLangUrl("/intro")}
+                onMouseOver={() => import("pages/Intro")}>
                 {t("nav.intro")}
               </Link>
-              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/howtouse")}>
+              <Link
+                className="flex p-1 gap-[6px] items-center"
+                to={getLangUrl("/howtouse")}
+                onMouseOver={() => import("pages/Howtouse")}>
                 {t("nav.howToUse")}
               </Link>
-              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/notice")}>
+              <Link
+                className="flex p-1 gap-[6px] items-center"
+                to={getLangUrl("/notice")}
+                onMouseOver={() => import("pages/notice/NoticeList")}>
                 {t("nav.notice")}
               </Link>
               <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/faqs")}>

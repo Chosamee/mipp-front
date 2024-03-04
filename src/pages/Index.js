@@ -140,7 +140,10 @@ const App = () => {
           </script>
         </Helmet>
       )}
-
+      <Helmet>
+        <link rel="preload" href={mainMobile} as="image" />
+        <link rel="preload" href={main} as="image" />
+      </Helmet>
       {/** Section 1 Start */}
       <div className="flex desktop:px-[34px] px-0 desktop:max-w-[1852px] max-w-[100%] w-full min-w-fit mx-auto">
         {/* Background Image Start */}
