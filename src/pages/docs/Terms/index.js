@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import TermsEN from "components/docs/Terms.en";
-import TermsKO from "components/docs/Terms.ko";
+import TermsEN from "pages/docs/Terms/Terms.en";
+import TermsKO from "pages/docs/Terms/Terms.ko";
 import TermsSEOKO from "seo/TermsSEO.ko";
 import TermsSEOEN from "seo/TermsSEO.en";
 

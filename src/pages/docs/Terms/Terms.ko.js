@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Content, Title } from "./Comp";
+import { Content, Title } from "pages/docs/Terms/Style";
 import React from "react";
 import { getLangUrl } from "locales/utils";
 

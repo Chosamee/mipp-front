@@ -1,5 +1,5 @@
-import PolicyEN from "components/docs/Policy.en";
-import PolicyKO from "components/docs/Policy.ko";
+import PolicyEN from "pages/docs/Policy/Policy.en";
+import PolicyKO from "pages/docs/Policy/Policy.ko";
 import { useTranslation } from "react-i18next";
 import PolicySEOEN from "seo/PolicySEO.en";
 import PolicySEOKO from "seo/PolicySEO.ko";
