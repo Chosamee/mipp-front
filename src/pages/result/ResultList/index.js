@@ -312,7 +312,7 @@ const Notify = () => {
   const { i18n } = useTranslation();
   return (
     <div className="bg-[#F7F8FB] px-10 py-6 flex mb-[88px] rounded-[10px] justify-center">
-      <div className="flex rounded-full bg-[#3553F3] w-[18px] h-[18px] text-white text-xs leading-5 justify-center mr-4 mt-[2px]">
+      <div className="flex rounded-full bg-[#3553F3] w-[18px] h-[18px] text-white text-xs leading-5 justify-center mr-4 mt-[2px] flex-shrink-0">
         !
       </div>
       <div className="text-sm leading-6 text-[#4D535B]">

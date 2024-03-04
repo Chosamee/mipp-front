@@ -6,6 +6,7 @@ import useWindowWidth from "components/utils/useWindowWidth";
 const Step4 = () => {
   const { t } = useTranslation();
   const width = useWindowWidth();
+  const { i18n } = useTranslation();
   return (
     <div className="flex flex-col gap-[30px] w-full">
       <StepText
@@ -48,7 +49,9 @@ const Step4 = () => {
                 </defs>
               </svg>
             </div>
-            <div className="text-[#3B59FA] text-lg">표절 검사 중</div>
+            <div className="text-[#3B59FA] text-lg">
+              {i18n.language === "en" ? "Plagiarism Checking..." : "표절 검사 중"}
+            </div>
           </div>
         }
       />

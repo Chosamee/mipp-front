@@ -43,7 +43,7 @@ const Step3 = () => {
               type="text"
               placeholder={t("home.linkInputGuide")}
               className="h-[60px] px-[33px] py-3 border rounded-[12px] mb-[14px] w-full border-black desktop:text-[16px] text-[14px]"
-              defaultValue="https://youtu.be/D1PvIWdJ8xo"
+              defaultValue="https://youtu.be/xXgsdyXMUHE"
             />
             <div className="flex w-[280px] desktop:w-[420px] text-start">
               <div className="text-[#D95E59] text-[14px] desktop:text-[16px] mr-[3px]">*</div>
