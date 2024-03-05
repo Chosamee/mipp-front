@@ -1,25 +1,32 @@
 events {}
 
 http {
-    include       /etc/nginx/mime.types; # MIME 타입 정의를 포함
-    default_type  application/octet-stream; # 기본 MIME 타입 설정
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
 
     server {
         listen 3000;
         root /usr/share/nginx/html;
         index index.html index.htm;
 
-        # 정적 리소스를 위한 캐싱 정책 및 액세스 권한 설정
-        location ~* ^/static/(css|js|media)/ {
+        # 정적 파일에 대한 캐싱 정책 설정
+        location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|otf|eot)$ {
             expires 1y;
             access_log off;
             add_header Cache-Control "public";
-            try_files $uri =404;
+        }
+
+        # Prerender 처리를 위한 별도의 location
+        location /prerender {
+            internal;
+            proxy_pass https://service.prerender.io;
+            proxy_set_header X-Prerender-Token ${PRERENDER_TOKEN};
+            proxy_set_header Host $host;
         }
 
         location / {
             set $prerender 0;
-            if ($http_user_agent ~* "(googlebot|bingbot|yandex|facebookexternalhit|twitterbot|linkedinbot)") {
+            if ($http_user_agent ~* "(googlebot|bingbot|yandex|facebookexternalhit|twitterbot|linkedinbot|kakaotalk-scrap)") {
                 set $prerender 1;
             }
             if ($args ~ "_escaped_fragment_") {
@@ -28,16 +35,13 @@ http {
             if ($http_user_agent ~ "Prerender") {
                 set $prerender 0;
             }
-            if ($prerender = 1) {
-                rewrite ^ /prerender last;
-            }
-            try_files $uri $uri/ /index.html;
-        }
 
-        location /prerender {
-            rewrite ^/prerender(.*) $1 break;
-            proxy_pass https://service.prerender.io;
-            proxy_set_header X-Prerender-Token ${PRERENDER_TOKEN};
+            if ($prerender = 1) {
+                rewrite .* /prerender break;
+            }
+            
+            # 끝에 슬래시 없이 접근했을 때의 처리
+            try_files $uri $uri/ /index.html;
         }
     }
 }
