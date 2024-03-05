@@ -84,11 +84,15 @@ RUN npm install
 # 애플리케이션 소스 추가
 COPY . .
 
-# React 앱 빌드
-RUN npm run build --verbose
+# 2단계: Nginx를 사용하여 빌드된 애플리케이션 서빙
+FROM nginx:alpine AS production-stage
 
-# 애플리케이션이 사용할 포트 설정
+# Nginx 설정 파일 복사
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# 빌드 단계에서 생성된 정적 파일을 Nginx 컨테이너로 복사
+COPY --from=build-stage /app/build /usr/share/nginx/html
+
 EXPOSE 3000
 
-# 애플리케이션 실행
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
