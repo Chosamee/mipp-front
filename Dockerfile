@@ -1,8 +1,8 @@
 # Node.js 이미지를 기반으로 설정
-FROM node:20
+FROM node:20 AS build-stage
 
 # 애플리케이션 디렉토리 생성
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # 빌드 환경 변수 설정
 ARG REACT_APP_MIPP_API_URL
@@ -84,8 +84,10 @@ RUN npm install
 # 애플리케이션 소스 추가
 COPY . .
 
+RUN npm run build
+
 # 2단계: Nginx를 사용하여 빌드된 애플리케이션 서빙
-FROM nginx:alpine AS production-stage
+FROM nginx:alpine
 
 # Nginx 설정 파일 복사
 COPY nginx.conf /etc/nginx/nginx.conf
