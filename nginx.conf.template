@@ -37,7 +37,7 @@ http {
             rewrite ^/prerender(.*) $1 break;
 
             proxy_pass https://service.prerender.io;
-            proxy_set_header X-Prerender-Token YOUR_TOKEN;
+            proxy_set_header X-Prerender-Token ${PRERENDER_TOKEN};
             # 다른 필요한 proxy_set_header 지시어
         }
     }
