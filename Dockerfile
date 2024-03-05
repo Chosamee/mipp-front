@@ -73,7 +73,7 @@ RUN apt-get update && apt-get install -y \
 RUN groupadd -r puppeteer && useradd -r -g puppeteer -G audio,video puppeteer \
     && mkdir -p /home/puppeteer/Downloads \
     && chown -R puppeteer:puppeteer /home/puppeteer \
-    && chown -R puppeteer:puppeteer /usr/src/app
+    && chown -R puppeteer:puppeteer /app
 
 # Puppeteer 사용자로 전환
 USER puppeteer
