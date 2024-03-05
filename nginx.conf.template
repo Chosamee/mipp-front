@@ -25,7 +25,7 @@ http {
                 }
                 if ($prerender = 1) {
                     rewrite .* /$scheme://$host$request_uri? break;
-                    proxy_pass https://service.prerender.io/;
+                    proxy_pass https://service.prerender.io;
                     proxy_set_header X-Prerender-Token ${PRERENDER_TOKEN};
                 }
             try_files $uri $uri/ /index.html;
