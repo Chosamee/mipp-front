@@ -16,15 +16,18 @@ http {
             add_header Cache-Control "public";
         }
 
-        # Prerender 처리를 위한 별도의 location
-        location /prerender {
-            internal;
-            proxy_pass https://service.prerender.io;
-            proxy_set_header X-Prerender-Token ${PRERENDER_TOKEN};
-            proxy_set_header Host $host;
+        # 정규화된 URL을 사용하여 슬래시 없이 요청이 왔을 때 슬래시를 포함한 URL로 리다이렉션
+        location / {
+            try_files $uri $uri/ @prerender;
         }
 
-        location / {
+        # 슬래시 없이 접근했을 때의 처리를 위한 location 추가
+        location ~ ^/([a-zA-Z0-9\-_]+)/$ {
+            try_files $uri $uri/ /$1/index.html;
+        }
+
+        # Prerender 처리를 위한 설정
+        location @prerender {
             set $prerender 0;
             if ($http_user_agent ~* "(googlebot|bingbot|yandex|facebookexternalhit|twitterbot|linkedinbot|kakaotalk-scrap)") {
                 set $prerender 1;
@@ -35,13 +38,15 @@ http {
             if ($http_user_agent ~ "Prerender") {
                 set $prerender 0;
             }
-
             if ($prerender = 1) {
-                rewrite .* /prerender break;
+                # Prerender 서비스에 요청 전달
+                proxy_pass https://service.prerender.io;
+                proxy_set_header X-Prerender-Token ${PRERENDER_TOKEN};
+                proxy_set_header Host $host;
             }
-            
-            # 끝에 슬래시 없이 접근했을 때의 처리
-            try_files $uri $uri/ /index.html;
+            if ($prerender = 0) {
+                rewrite .* /index.html break;
+            }
         }
     }
 }
