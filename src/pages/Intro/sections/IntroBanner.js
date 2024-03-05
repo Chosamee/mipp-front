@@ -24,7 +24,7 @@ const IntroBanner = () => {
   return (
     <div className="relative flex justify-center w-full h-[340px] desktop:h-[780px]">
       <img src={bannerImage} alt="banner" className="w-full h-full absolute inset-0 object-cover" />
-      <div className="w-full h-full absolute inset-0 bg-black bg-opacity-60 desktop:rounded-[45px] "></div>
+      <div className="w-full h-full absolute inset-0 bg-black bg-opacity-60 "></div>
       <div className="absolute flex flex-col items-center bottom-[45px] desktop:bottom-[100px]">
         <h1 className="text-[32px] desktop:text-[66px] font-bold leading-[46px] desktop:leading-[80px] text-white text-center text-nowrap">
           {mainTitle}
