@@ -89,12 +89,20 @@ RUN npm run build
 # 2단계: Nginx를 사용하여 빌드된 애플리케이션 서빙
 FROM nginx:alpine
 
-# Nginx 설정 파일 복사
-COPY nginx.conf /etc/nginx/nginx.conf
+ARG PRERENDER_TOKEN
+ENV PRERENDER_TOKEN=${PRERENDER_TOKEN}
+
+# nginx.conf.template 파일과 동적으로 환경변수를 적용하는 스크립트 복사
+COPY nginx.conf.template /etc/nginx/nginx.conf.template
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+# 실행 권한 부여
+RUN chmod +x /docker-entrypoint.sh
 
 # 빌드 단계에서 생성된 정적 파일을 Nginx 컨테이너로 복사
 COPY --from=build-stage /app/build /usr/share/nginx/html
 
 EXPOSE 3000
 
-CMD ["nginx", "-g", "daemon off;"]
+# 수정된 CMD를 사용하여 스크립트 실행
+CMD ["/docker-entrypoint.sh"]
