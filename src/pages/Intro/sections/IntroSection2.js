@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useWindowWidth from "components/utils/useWindowWidth";
 
-function Section2() {
+function IntroSection2() {
   const [data, setData] = useState([]);
   const { t } = useTranslation();
   const width = useWindowWidth();
@@ -15,22 +15,22 @@ function Section2() {
       {
         image: composerImg,
         who: t("intro.section2.title1"),
-        text: width < 550 ? t("intro.section2.content1Mobile") : t("intro.section2.content1"),
+        text: width < 768 ? t("intro.section2.content1Mobile") : t("intro.section2.content1"),
       },
       {
         image: singerImag,
         who: t("intro.section2.title2"),
-        text: width < 550 ? t("intro.section2.content2Mobile") : t("intro.section2.content2"),
+        text: width < 768 ? t("intro.section2.content2Mobile") : t("intro.section2.content2"),
       },
       {
         image: fanImg,
         who: t("intro.section2.title3"),
-        text: width < 550 ? t("intro.section2.content3Mobile") : t("intro.section2.content3"),
+        text: width < 768 ? t("intro.section2.content3Mobile") : t("intro.section2.content3"),
       },
       {
         image: investorImg,
         who: t("intro.section2.title4"),
-        text: width < 550 ? t("intro.section2.content4Mobile") : t("intro.section2.content4"),
+        text: width < 768 ? t("intro.section2.content4Mobile") : t("intro.section2.content4"),
       },
     ];
     setData(newData);
@@ -70,4 +70,4 @@ const Card = ({ image, who, text }) => {
   );
 };
 
-export default Section2;
+export default IntroSection2;

@@ -5,11 +5,11 @@ import useWindowWidth from "components/utils/useWindowWidth";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const Banner = () => {
+const IntroBanner = () => {
   const width = useWindowWidth();
   const { t } = useTranslation();
-  const bannerImage = width < 550 ? bannerImgMobile : bannerImg;
-  const mainTitle = width < 550 ? t("intro.mainTitleMobile") : t("intro.mainTitle");
+  const bannerImage = width < 768 ? bannerImgMobile : bannerImg;
+  const mainTitle = width < 768 ? t("intro.mainTitleMobile") : t("intro.mainTitle");
   useEffect(() => {
     const preloadLink = document.createElement("link");
     preloadLink.href = bannerImage;
@@ -45,4 +45,4 @@ const DownVector = () => {
   );
 };
 
-export default Banner;
+export default IntroBanner;

@@ -63,7 +63,7 @@ const App = () => {
       <Router>
         <AuthProvider>
           <ScrollToTop />
-          <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']">
+          <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular'] leading-[normal]">
             <Navbar />
             <Suspense
               fallback={

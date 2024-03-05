@@ -19,7 +19,7 @@ const Step6 = () => {
       { title: t("howtouse.nameA"), checked: true, plagiarism_rate: "0" },
       { title: t("howtouse.nameB"), checked: false, plagiarism_rate: "0" },
     ];
-    setData(width < 550 ? newMobileData : newData);
+    setData(width < 768 ? newMobileData : newData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, width]);
 

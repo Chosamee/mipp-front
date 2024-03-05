@@ -6,7 +6,7 @@ const StepImage = ({ contents, inputHeight }) => {
   useEffect(() => {
     // 윈도우 크기에 따라 높이를 조정하는 리스너 함수
     const handleResize = () => {
-      if (window.innerWidth < 550) {
+      if (window.innerWidth < 768) {
         setHeight("306px");
       } else {
         setHeight(inputHeight ? inputHeight : "360px");

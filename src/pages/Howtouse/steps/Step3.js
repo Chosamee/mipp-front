@@ -11,7 +11,7 @@ const Step3 = () => {
     <div className="flex flex-col gap-[30px] w-full">
       <StepText
         title={t("howtouse.step3.title")}
-        text={width < 550 ? t("howtouse.step3.textMobile") : t("howtouse.step3.text")}
+        text={width < 768 ? t("howtouse.step3.textMobile") : t("howtouse.step3.text")}
       />
       <StepImage
         contents={

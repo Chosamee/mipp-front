@@ -39,7 +39,7 @@ const App = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const width = useWindowWidth();
-  const mainImage = width < 550 ? mainMobile : main;
+  const mainImage = width < 768 ? mainMobile : main;
   useEffect(() => {
     const preloadLink = document.createElement("link");
     preloadLink.href = mainImage;
@@ -67,7 +67,7 @@ const App = () => {
           />
           <meta
             property="og:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
+            content="https://storage.googleapis.com/domainbucket/imageog.jpg"
           />
 
           <meta name="twitter:card" content="summary_large_image" />
@@ -79,7 +79,7 @@ const App = () => {
           />
           <meta
             name="twitter:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
+            content="https://storage.googleapis.com/domainbucket/imageog.jpg"
           />
           <link rel="alternate" hreflang="en" href="https://aimipp.com/en" />
           <link rel="canonical" href="https://aimipp.com/en" />
@@ -116,7 +116,7 @@ const App = () => {
           />
           <meta
             property="og:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
+            content="https://storage.googleapis.com/domainbucket/imageog.jpg"
           />
 
           <meta name="twitter:card" content="summary_large_image" />
@@ -129,7 +129,7 @@ const App = () => {
           />
           <meta
             name="twitter:image"
-            content="https://storage.googleapis.com/domainbucket/imageog.png"
+            content="https://storage.googleapis.com/domainbucket/imageog.jpg"
           />
           <link rel="alternate" hreflang="ko" href="https://aimipp.com/ko" />
           <link rel="canonical" href="https://aimipp.com/ko" />

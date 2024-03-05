@@ -2,7 +2,7 @@ import useWindowWidth from "components/utils/useWindowWidth";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const Section1 = () => {
+const IntroSection1 = () => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
   const width = useWindowWidth();
@@ -10,15 +10,15 @@ const Section1 = () => {
     const newData = [
       {
         title: t("intro.section1.title1"),
-        text: width < 550 ? t("intro.section1.content1Mobile") : t("intro.section1.content1"),
+        text: width < 768 ? t("intro.section1.content1Mobile") : t("intro.section1.content1"),
       },
       {
         title: t("intro.section1.title2"),
-        text: width < 550 ? t("intro.section1.content2Mobile") : t("intro.section1.content2"),
+        text: width < 768 ? t("intro.section1.content2Mobile") : t("intro.section1.content2"),
       },
       {
         title: t("intro.section1.title3"),
-        text: width < 550 ? t("intro.section1.content3Mobile") : t("intro.section1.content3"),
+        text: width < 768 ? t("intro.section1.content3Mobile") : t("intro.section1.content3"),
       },
     ];
     setData(newData);
@@ -56,4 +56,4 @@ const Subtitle = ({ idx, title, text }) => {
   );
 };
 
-export default Section1;
+export default IntroSection1;
