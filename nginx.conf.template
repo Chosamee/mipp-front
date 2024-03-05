@@ -52,10 +52,5 @@ http {
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-Host $host;
         }
-
-        # 슬래시 처리 관련 문제 해결을 위한 location 추가
-        location ~ ^/([a-zA-Z0-9\-_]+)$ {
-            try_files $uri/ /$1/ /index.html;
-        }
     }
 }
