@@ -20,9 +20,12 @@ http {
             try_files $uri $uri/ @prerender;
         }
 
-        # 슬래시 없이 접근했을 때 영구적으로 슬래시를 붙여 리다이렉션
         location ~ ^/([a-zA-Z0-9\-_]+)$ {
-            return 301 $scheme://$host/$1/;
+            try_files $uri $uri/ @addslash;
+        }
+
+        location @addslash {
+            return 301 $scheme://$host$request_uri/;
         }
 
         location @prerender {
