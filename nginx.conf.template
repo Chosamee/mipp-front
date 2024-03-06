@@ -20,14 +20,6 @@ http {
             try_files $uri $uri/ @prerender;
         }
 
-        location ~ ^/([a-zA-Z0-9\-_]+)$ {
-            try_files $uri $uri/ @addslash;
-        }
-
-        location @addslash {
-            return 301 $scheme://$host$request_uri/;
-        }
-
         location @prerender {
             # Prerender 조건 설정
             set $prerender 0;
@@ -39,6 +31,14 @@ http {
             }
             if ($http_user_agent ~ "Prerender") {
                 set $prerender 0;
+            }
+
+            # 슬래시 없이 접근했을 때의 리다이렉션 처리
+            # 요청 URI에 파일 확장자가 없고 Prerender가 필요하지 않는 경우 슬래시를 추가
+            if ($prerender = 0) {
+                if ($request_uri !~ /$) {
+                    return 301 $scheme://$host$request_uri/;
+                }
             }
 
             # Prerender가 필요한 경우 내부적으로 지정된 location으로 리다이렉트
