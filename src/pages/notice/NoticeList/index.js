@@ -6,6 +6,8 @@ import { fetchAllNotices } from "../api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import loupe from "assets/loupe.svg";
+import NoticeSEOEN from "seo/NoticeSEO.en";
+import NoticeSEOKO from "seo/NoticeSEO.ko";
 
 const NoticeList = () => {
   const [notices, setNotices] = useState("");
@@ -91,9 +93,15 @@ const NoticeList = () => {
     : notices;
 
   const { t, i18n } = useTranslation();
+  const seoFiles = {
+    en: <NoticeSEOEN />,
+    ko: <NoticeSEOKO />,
+  };
 
   return (
     <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
+      {seoFiles[i18n.language]}
+
       {/* Title 및 검색 하십시오.. */}
       <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
         <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">

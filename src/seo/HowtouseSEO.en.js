@@ -5,18 +5,18 @@ const HowtouseSEOEN = () => {
   return (
     <Helmet>
       <title>How to Use MIPP</title>
-      <meta name="description" content="Learn how to effectively use MIPP for detecting music plagiarism. Follow our step-by-step guide from simple registration to checking the results." />
+      <meta name="description" content="Learn how to use MIPP for detecting music plagiarism. Follow our step-by-step guide from simple login to checking the results." />
 
       <meta property="og:title" content="How to Use MIPP" />
-      <meta property="og:description" content="Learn how to effectively use MIPP for detecting music plagiarism. Follow our step-by-step guide from simple registration to checking the results." />
+      <meta property="og:description" content="Learn how to use MIPP for detecting music plagiarism. Follow our step-by-step guide from simple login to checking the results." />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
+      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
       <meta property="og:url" content="https://aimipp.com/en/howtouse" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="How to Use MIPP" />
-      <meta name="twitter:description" content="Learn how to effectively use MIPP for detecting music plagiarism. Follow our step-by-step guide from simple registration to checking the results." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.jpg" />
+      <meta name="twitter:description" content="Learn how to use MIPP for detecting music plagiarism. Follow our step-by-step guide from simple login to checking the results." />
+      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
 
       <script type="application/ld+json">
         {`
@@ -24,7 +24,7 @@ const HowtouseSEOEN = () => {
               "@context": "http://schema.org",
               "@type": "HowTo",
               "name": "How to Use MIPP",
-              "description": "Follow this guide to learn how to use MIPP for effective music plagiarism detection.",
+              "description": "Follow this guide to learn how to use MIPP for music plagiarism detection.",
               "step": [
                 {
                   "@type": "HowToStep",
@@ -36,14 +36,14 @@ const HowtouseSEOEN = () => {
                 },
                 {
                   "@type": "HowToStep",
-                  "text": "Run the plagiarism check and monitor the results. The system extracts the top 10 songs with the highest similarity from our database."
+                  "text": "Run the plagiarism check and monitor the results. The system extracts the top songs with the highest similarity from our database."
                 },
                 {
                   "@type": "HowToStep",
                   "text": "Check the results once the plagiarism check is complete. The report includes overall similarity, section-wise similarity, and allows you to listen to the music segments."
                 }
               ],
-              "image": "https://storage.googleapis.com/domainbucket/imageog.jpg",
+              "image": "https://storage.googleapis.com/domainbucket/imageog.png",
               "inLanguage": "en-US"
             }
           `}
