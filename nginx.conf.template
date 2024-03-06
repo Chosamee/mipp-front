@@ -6,7 +6,7 @@ http {
 
     server {
         listen 80;
-        server_name mipp.shop;
+        server_name aimipp.com;
         root /usr/share/nginx/html;
         index index.html index.htm;
 
@@ -23,7 +23,7 @@ http {
 
         location @prerender {
             if ($request_uri !~ /$) {
-                return 301 $scheme://mipp.shop$request_uri/;
+                return 301 $scheme://aimipp.com$request_uri/;
             }
 
             # Prerender 조건 설정
