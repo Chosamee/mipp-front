@@ -231,7 +231,7 @@ const NavBar = () => {
               </Link>
             ) : (
               <React.Fragment>
-                <Link to={getLangUrl("/board")} className="text-left mx-6">
+                <Link to={getLangUrl("/community")} className="text-left mx-6">
                   {t("nav.request")}
                 </Link>
                 <Link to={getLangUrl("/result")} className="text-left mx-6">
