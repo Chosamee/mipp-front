@@ -5,18 +5,18 @@ const IndexSEOKO = () => {
     <Helmet>
       <title>MIPP - AI 음악 표절 검사</title>
       <meta name="title" content="MIPP - AI 음악 표절 검사" />
-      <meta name="description" content="MIPP를 통해 음악 작품의 표절을 정밀하게 탐지하고 보호하세요. AI 음악 멜로디 분석을 통해 내 창작물의 가치를 올리는 솔루션을 제공합니다." />
+      <meta name="description" content="MIPP을 통해 노래 표절 검사를 진행해보세요. AI 음악 멜로디 분석을 통해 작곡 표절을 탐지하여 창작물의 가치를 올리는 솔루션을 제공합니다." />
 
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://aimipp.com/ko" />
       <meta property="og:title" content="MIPP - AI 음악 표절 검사" />
-      <meta property="og:description" content="MIPP를 통해 음악 작품의 표절을 정밀하게 탐지하고 보호하세요. AI 음악 멜로디 분석을 통해 내 창작물의 가치를 올리는 솔루션을 제공합니다." />
+      <meta property="og:description" content="MIPP을 통해 노래 표절 검사를 진행해보세요. AI 음악 멜로디 분석을 통해 작곡 표절을 탐지하여 창작물의 가치를 올리는 솔루션을 제공합니다." />
       <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://aimipp.com/ko" />
       <meta property="twitter:title" content="MIPP - AI 음악 표절 검사" />
-      <meta property="twitter:description" content="MIPP를 통해 음악 작품의 표절을 정밀하게 탐지하고 보호하세요. AI 음악 멜로디 분석을 통해 내 창작물의 가치를 올리는 솔루션을 제공합니다." />
+      <meta property="twitter:description" content="MIPP을 통해 노래 표절 검사를 진행해보세요. AI 음악 멜로디 분석을 통해 작곡 표절을 탐지하여 창작물의 가치를 올리는 솔루션을 제공합니다." />
       <meta property="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
 
       <script type="application/ld+json">
@@ -26,7 +26,7 @@ const IndexSEOKO = () => {
               "@type": "WebPage",
               "url": "https://aimipp.com/ko",
               "name": "Mipp",
-              "description": "MIPP를 통해 음악 작품의 표절을 정밀하게 탐지하고 보호하세요. AI 음악 멜로디 분석을 통해 내 창작물의 가치를 올리는 솔루션을 제공합니다.",
+              "description": "MIPP을 통해 노래 표절 검사를 진행해보세요. AI 음악 멜로디 분석을 통해 작곡 표절을 탐지하여 창작물의 가치를 올리는 솔루션을 제공합니다.",
               "publisher": {
                 "@type": "Organization",
                 "name": "더블에이치컴퍼니",
