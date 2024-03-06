@@ -21,6 +21,10 @@ http {
         }
 
         location @prerender {
+                    if ($request_uri !~ /$) {
+            return 301 $scheme://$host$request_uri/;
+        }
+
             # Prerender 조건 설정
             set $prerender 0;
             if ($http_user_agent ~* "(googlebot|bingbot|yandex|facebookexternalhit|twitterbot|linkedinbot|kakaotalk-scrap)") {
