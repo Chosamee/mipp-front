@@ -11,13 +11,13 @@ const IndexSEOEN = () => {
 
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://aimipp.com" />
-      <meta property="og:title" content="MIPP - Music IP Protector, Music Plagiarism Detection with AI" />
+      <meta property="og:title" content="MIPP - Music IP Protector, Music Plagiarism Checker with AI" />
       <meta property="og:description" content="Discover MIPP, the solution for detecting song plagiarism. Join us and protect your music copyright with AI audio analysis tool for song plagiarism checking." />
       <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://aimipp.com" />
-      <meta property="twitter:title" content="MIPP - Music IP Protector, Music Plagiarism Detection" />
+      <meta property="twitter:title" content="MIPP - Music IP Protector, Music Plagiarism Checker with AI" />
       <meta property="twitter:description" content="Discover MIPP, the solution for detecting song plagiarism. Join us and protect your music copyright with AI audio analysis tool for song plagiarism checking." />
       <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
 
