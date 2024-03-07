@@ -58,6 +58,22 @@ const App = () => {
     const timer = setTimeout(() => setShowFallback(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      console.log("설치 프롬프트가 표시되지 않습니다.");
+      // 여기에 필요한 로직 추가
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거하기 위한 정리 함수
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
+  }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트 마운트 시에만 실행되도록 함
+
   return (
     <Provider store={store}>
       <Router>

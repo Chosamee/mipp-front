@@ -8,20 +8,10 @@ import { useTranslation } from "react-i18next";
 import loupe from "assets/loupe.svg";
 import NoticeSEOEN from "seo/NoticeSEO.en";
 import NoticeSEOKO from "seo/NoticeSEO.ko";
+import { useQuery } from "react-query";
 
 const NoticeList = () => {
-  const [notices, setNotices] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAllNotices();
-        setNotices(data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  const { data: notices, isLoading, isError } = useQuery("fetchAllNotices", fetchAllNotices);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -117,7 +107,7 @@ const NoticeList = () => {
           <img src={loupe} alt="Loupe" />
         </div>
       </div>
-      {filteredData ? (
+      {!isLoading && filteredData ? (
         <Pagination
           data={filteredData}
           itemsPerPage={itemsPerPage}

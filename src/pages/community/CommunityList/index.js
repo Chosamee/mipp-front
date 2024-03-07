@@ -7,23 +7,10 @@ import loupe from "assets/loupe.svg";
 import Pagination from "components/views/Pagination";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { getLangUrl } from "locales/utils";
+import { useQuery } from "react-query";
 
 const CommunityList = () => {
-  const [originData, setOriginData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAllPosts();
-        console.log(data);
-        setOriginData(data.posts);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data: originData, loading, error } = useQuery("fetchAllPosts", fetchAllPosts);
 
   // 검색 기능
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -70,7 +57,8 @@ const CommunityList = () => {
           {i18n.language === "en" ? "Create" : "글쓰기"}
         </Link>
       </div>
-      {filteredData ? (
+      {error && <div>{error}</div>}
+      {!loading && filteredData ? (
         <Pagination
           data={filteredData}
           itemsPerPage={itemsPerPage}
