@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { addPost, fetchPost, updatePost } from "../api";
+import { addPost, fetchSinglePost, updatePost } from "../api";
 import { getLangUrl } from "locales/utils";
 
 const CommunityEditor = () => {
@@ -59,7 +59,7 @@ const CommunityEditor = () => {
       // 수정 모드일 경우, 기존 포스트 데이터를 불러옵니다.
       const fetchData = async () => {
         try {
-          const data = await fetchPost(id);
+          const data = await fetchSinglePost(id);
           if (data.owner === false) {
             navigate(getLangUrl("/community"));
           }

@@ -2,6 +2,11 @@
   "welcome": "우리 웹사이트에 오신 것을 환영합니다!",
   "startChecking": "지금 무료 검사하기",
   "language": "언어 선택",
+  "searchType": {
+    "both": "제목+내용",
+    "title": "제목",
+    "content": "내용"
+  },
   "search": {
     "search": "검색",
     "guide": "검색어를 입력하세요",

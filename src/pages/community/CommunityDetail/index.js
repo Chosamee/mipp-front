@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchPost } from "../api";
+import { fetchSinglePost } from "../api";
 import { useLocation, useParams } from "react-router-dom";
 import PostDeleteBtn from "./PostDeleteBtn";
 import PostEditBtn from "./PostEditBtn";
@@ -20,7 +20,7 @@ const CommunityDetail = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetchPost(id);
+      const data = await fetchSinglePost(id);
       setPost(data.post);
       setComments(data.comments);
       setIsOwner(data.owner);

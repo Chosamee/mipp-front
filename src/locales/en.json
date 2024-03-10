@@ -2,6 +2,11 @@
   "welcome": "Welcome to Our Website!",
   "startChecking": "Start Checking",
   "language": "Language",
+  "searchType": {
+    "both": "Title+Content",
+    "title": "Title",
+    "content": "Content"
+  },
   "search": {
     "search": "Search",
     "guide": "Enter Search Term",
