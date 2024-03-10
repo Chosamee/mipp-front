@@ -24,10 +24,10 @@ const IndexSEOEN = () => {
       <script type="application/ld+json">
         {`{
   "@context": "http://schema.org",
-  "@type": "WebPage",
+  "@type": "WebSite",
   "url": "https://aimipp.com",
   "name": "Mipp",
-  "description": "Discover MIPP, the solution for detecting song plagiarism. Join us and protect your music copyright with AI audio analysis tool for song plagiarism checking.",
+  "description": "Discover MIPP, the solution for detecting song plagiarism effectively. Join us and protect your music copyright with AI audio analysis song plagiarism checker.",
   "publisher": {
     "@type": "Organization",
     "name": "DoubleHCompany",
