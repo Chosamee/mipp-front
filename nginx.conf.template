@@ -23,7 +23,7 @@ http {
 
         location @prerender {
             if ($request_uri !~ /$) {
-                return 301 http://aimipp.com$request_uri/;
+                return 301 https://aimipp.com$request_uri/;
             }
 
             # Prerender 조건 설정
