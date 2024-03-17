@@ -2,12 +2,19 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
-export const fetchAllNotices = async () => {
+export const fetchAllNotices = async ({ queryKey }) => {
+  const [_key, { currentPage, pageSize, searchKeyword, searchType }] = queryKey;
   try {
-    const response = await axios.post(`${API_BASE_URL}/all_notices`, null, {
-      withCredentials: true,
-    });
-    return response.data.notices;
+    const response = await axios.post(
+      `${API_BASE_URL}/all_notices?page=${currentPage}&page_size=${pageSize}&search_query=${encodeURIComponent(
+        searchKeyword ? searchKeyword : ""
+      )}&search_type=${searchType}`,
+      null,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
   } catch (error) {
     console.error("Error fetching notices:", error);
     throw error;

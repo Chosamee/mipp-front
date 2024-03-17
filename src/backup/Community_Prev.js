@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/views/Pagination";
+import Pagination from "./Pagination_Prev";
 import LoadingSpinner from "../components/views/LoadingSpinner";
 import { addPosts, fetchPosts, deletePosts } from "../api/communityService";
 import { useTranslation } from "react-i18next";

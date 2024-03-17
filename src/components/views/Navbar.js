@@ -88,7 +88,7 @@ const NavBar = () => {
               <Link
                 className="flex p-1 gap-[6px] items-center"
                 to={getLangUrl("/notice")}
-                onMouseOver={() => import("pages/notice/NoticeList")}>
+                onMouseOver={() => import("pages/Support/notice/NoticeList")}>
                 {t("nav.notice")}
               </Link>
               <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/faqs")}>

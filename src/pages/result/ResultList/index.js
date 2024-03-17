@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Pagination from "components/views/Pagination";
+import Pagination from "backup/Pagination_Prev";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { deleteResult, fetchResults } from "api/resultService.js";
 import { getLangUrl } from "locales/utils";
