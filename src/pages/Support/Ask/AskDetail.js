@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchAsksDetail } from "../../api/askService";
-import LoadingSpinner from "../../components/views/LoadingSpinner";
+import { fetchAsksDetail } from "../../../api/askService";
+import LoadingSpinner from "../../../components/views/LoadingSpinner";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";

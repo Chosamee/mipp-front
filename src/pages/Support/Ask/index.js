@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Pagination from "../../components/views/Pagination";
-import LoadingSpinner from "../../components/views/LoadingSpinner";
-import { fetchAsks } from "../../api/askService";
+import Pagination from "../../../backup/Pagination_Prev";
+import LoadingSpinner from "../../../components/views/LoadingSpinner";
+import { fetchAsks } from "../../../api/askService";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
@@ -25,8 +25,6 @@ const Asks = () => {
         setResultData(response);
       } catch (error) {
         console.error("Error:", error);
-        updateAuthState({ isLoggedIn: false });
-        navigate(getLangUrl("/login"));
       }
     };
     fetchData();

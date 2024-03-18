@@ -130,7 +130,7 @@ const FAQs = () => {
         </div>
       ))}
       {/* Pagination */}
-      {FAQs && (
+      {FAQData && (
         <div className="flex justify-center items-center mt-8 space-x-4">
           {[...Array(Math.ceil(FAQData.length / ITEMS_PER_PAGE)).keys()].map((page, index) => (
             <button

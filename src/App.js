@@ -34,21 +34,24 @@ import Index from "pages/Index";
 import Login from "pages/Login";
 import ResultList from "pages/result/ResultList";
 import Howtouse from "pages/Howtouse";
-import Asks from "pages/ask/Asks";
-import AskCreate from "pages/ask/AskCreate";
-import AskDetail from "pages/ask/AskDetail";
+import Asks from "pages/Support/Ask";
+import AskCreate from "pages/Support/Ask/AskCreate";
+import AskDetail from "pages/Support/Ask/AskDetail";
 import RegistrationForm from "pages/Regist";
 import MyPage from "pages/MyPage";
 import Intro from "pages/Intro";
 import Detail from "pages/result/Detail";
-import FAQs from "pages/FAQs";
+import FAQs from "pages/Support/FAQs";
 import TermsPage from "pages/docs/Terms";
 import PolicyPage from "pages/docs/Policy";
-import NoticeLists from "pages/notice/NoticeList";
-import NoticeDetail from "pages/notice/NoticeDetail";
+import NoticeLists from "pages/Support/notice/NoticeList";
+import NoticeDetail from "pages/Support/notice/NoticeDetail";
 import CommunityList from "pages/community/CommunityList";
 import CommunityDetail from "pages/community/CommunityDetail";
 import CommunityEditor from "pages/community/CommunityEditor";
+import Support from "pages/Support";
+import { SearchParamsProvider } from "components/SearchParamsContext";
+import Dashboard from "pages/Dashboard";
 
 const App = () => {
   const [showFallback, setShowFallback] = useState(false);
@@ -134,7 +137,17 @@ const App = () => {
                       path="community/create"
                       element={<ProtectedRoute component={CommunityEditor} />}
                     />
+                    {/* Support */}
 
+                    <Route
+                      path="support"
+                      element={
+                        <SearchParamsProvider>
+                          <Support />
+                        </SearchParamsProvider>
+                      }
+                    />
+                    <Route path="dashboard" element={<ProtectedRoute component={Dashboard} />} />
                     <Route path="asks" element={<ProtectedRoute component={Asks} />} />
                     <Route path="faqs" element={<FAQs />} />
                     <Route
