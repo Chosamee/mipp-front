@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { handleLogout } from "api/authService";
 import { getLangUrl } from "locales/utils";
@@ -87,7 +87,7 @@ const NavBar = () => {
               </Link>
               <Link
                 className="flex p-1 gap-[6px] items-center"
-                to={getLangUrl("/notice")}
+                to={getLangUrl("/support")}
                 onMouseOver={() => import("pages/Support/notice/NoticeList")}>
                 {t("nav.notice")}
               </Link>
@@ -135,7 +135,7 @@ const NavBar = () => {
                 </Link>
               </button>
               <button className="flex items-center text-[18px] p-1">
-                <Link className="" to={getLangUrl("/mypage")}>
+                <Link className="" to={getLangUrl("/dashboard")}>
                   {t("nav.myAccount")}
                 </Link>
               </button>
@@ -219,8 +219,8 @@ const NavBar = () => {
             <Link to={getLangUrl("/howtouse")} className="text-left mx-6">
               {t("nav.howToUse")}
             </Link>
-            <Link to={getLangUrl("/notice")} className="text-left mx-6">
-              {t("nav.notice")}
+            <Link to={getLangUrl("/support")} className="text-left mx-6">
+              Support
             </Link>
           </div>
           <div className="bg-[#D9D9D9] h-px mx-6" />
@@ -240,7 +240,7 @@ const NavBar = () => {
                 <Link to={getLangUrl("/asks")} className="text-left mx-6">
                   {t("nav.ask")}
                 </Link>
-                <Link to={getLangUrl("/mypage")} className="text-left mx-6">
+                <Link to={getLangUrl("/dashboard")} className="text-left mx-6">
                   {t("nav.myAccount")}
                 </Link>
               </React.Fragment>
