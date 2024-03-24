@@ -7,18 +7,7 @@ import ResultDropdown from "./components/ResultDropdown";
 import { useUserInfo } from "stateStore/useUserInfo";
 import { useDashboardDataQuery } from "./api";
 import DashboardNotice from "./components/DashboardNotice";
-
-interface Result {
-  music_title: string;
-  results_rates: number[];
-  results_title: string[];
-}
-
-interface Alert {
-  content: string;
-  date: string;
-  status: string;
-}
+import { Alert, Result } from "./dashboardType";
 
 export interface DashboardData {
   user_info?: { nickname: string; email: string; membership: string; profile_link: string };

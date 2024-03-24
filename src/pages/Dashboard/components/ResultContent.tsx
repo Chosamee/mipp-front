@@ -1,10 +1,5 @@
 import React from "react";
-
-interface Result {
-  music_title: string;
-  results_rates: number[];
-  results_title: string[];
-}
+import { Result } from "../dashboardType";
 
 interface ResultProp {
   result: Result;

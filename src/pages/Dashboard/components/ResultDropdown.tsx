@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import ResultContent from "./ResultContent";
-
-interface Result {
-  music_title: string;
-  results_rates: number[];
-  results_title: string[];
-}
+import { Result } from "../dashboardType";
 
 interface ResultsProps {
   songs_results?: {

@@ -2,12 +2,7 @@ import getFormattedDate from "components/utils/getFormattedDate";
 import { getLangUrl } from "locales/utils";
 import React from "react";
 import { Link } from "react-router-dom";
-
-interface Alert {
-  content: string;
-  date: string;
-  status: string;
-}
+import { Alert } from "../dashboardType";
 
 interface DashboardNoticeProps {
   alerts: Alert[];
