@@ -22,7 +22,8 @@ const Asks = () => {
     const fetchData = async () => {
       try {
         const response = await fetchAsks();
-        setResultData(response);
+        console.log(response);
+        setResultData(response ? response : []);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -113,7 +114,9 @@ const Asks = () => {
                   <span className="font-bold text-blue-800">{item.title}</span>
                 </div>
                 <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "15%" }}>
-                  <span className="font-bold text-blue-800">{t(`ask.${item.responsed}`)}</span>
+                  <span className="font-bold text-blue-800">
+                    {!item.is_responsed ? t(`ask.답변 대기중`) : t(`ask.답변 완료`)}
+                  </span>
                 </div>
                 <div className="flex-grow text-blue-800 items-center" style={{ flexBasis: "25%" }}>
                   <span className="font-bold text-blue-800">{formattedDate}</span>

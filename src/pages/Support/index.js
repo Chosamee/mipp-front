@@ -14,7 +14,7 @@ const Support = () => {
     if (searchParams.get("menu")) {
       setMenu(searchParams.get("menu"));
     }
-  }, [searchParams]);
+  }, []);
 
   useEffect(() => {
     setSearchParams({ menu: menu });

@@ -2,7 +2,10 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { verifyToken } from "../../api/authService";
 import { useLocation } from "react-router-dom";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext({
+  authState: { isLoggedIn: false },
+  updateAuthState: (newAuthState) => {},
+});
 
 export const useAuth = () => useContext(AuthContext);
 

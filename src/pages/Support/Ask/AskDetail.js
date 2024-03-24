@@ -33,7 +33,7 @@ const AskDetail = () => {
         <div className="mx-auto p-4 border border-gray-300 rounded shadow-lg pt-32 max-w-7xl">
           <h2 className="text-[18px] font-bold">{ask.title}</h2>
           <p className="text-gray-600">{ask.content}</p>
-          {ask.responsed !== "답변 대기중" && (
+          {ask.is_responsed === true && (
             <div className="mt-4">
               <h3 className="text-md font-semibold">{t("ask.ans")} :</h3>
               <p className="text-gray-600">{ask.response}</p>
