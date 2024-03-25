@@ -27,7 +27,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: chosami/mipp-front:latest
+          tags: chosami/mipp-front:latest,
             chosami/mipp-front:v${{ github.run_number }}
           build-args: |
             REACT_APP_MIPP_API_URL=${{ secrets.REACT_APP_MIPP_API_URL }}
