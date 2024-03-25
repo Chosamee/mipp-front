@@ -3,8 +3,29 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import loupe from "assets/loupe.svg";
 import { useSearchParamsContext } from "./SearchParamsContext";
+import React from "react";
+interface SearchFormProps {
+  total_pages: number;
+  currentPage: number;
+  pageSize: number;
+  searchKeyword: string;
+  searchType: string;
+}
 
-const SearchForm = ({ total_pages, currentPage, pageSize, searchKeyword, searchType }) => {
+interface Params {
+  page: string;
+  page_size: string;
+  search_query: string;
+  search_type: string;
+}
+
+const SearchForm = ({
+  total_pages,
+  currentPage,
+  pageSize,
+  searchKeyword,
+  searchType,
+}: SearchFormProps) => {
   const navigate = useNavigate();
   const { searchParams, setSearchParams } = useSearchParamsContext();
   const { t } = useTranslation();
@@ -14,7 +35,7 @@ const SearchForm = ({ total_pages, currentPage, pageSize, searchKeyword, searchT
   const [tempSearchType, setTempSearchType] = useState(searchType);
 
   // 데이터 다시 불러오기 및 URL 파라미터 업데이트 함수
-  const fetchDataWithNewParams = (newParams) => {
+  const fetchDataWithNewParams = (newParams: Params) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
 
     // 모든 새로운 파라미터들을 URLSearchParams 객체에 설정
@@ -37,16 +58,16 @@ const SearchForm = ({ total_pages, currentPage, pageSize, searchKeyword, searchT
   };
 
   // 검색어 변경 핸들러
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTempSearchKeyword(e.target.value); // 임시 검색어 상태 업데이트
   };
 
-  const handleSearchTypeChange = (e) => {
+  const handleSearchTypeChange = (e: any) => {
     setTempSearchType(e.target.value); // 임시 검색 타입 상태 업데이트
   };
 
   // 폼 제출 핸들러
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e: any) => {
     e.preventDefault(); // 폼의 기본 제출 동작 방지
     handleSearchClick(); // 검색 실행 함수 호출
   };

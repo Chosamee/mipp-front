@@ -66,7 +66,7 @@ const Asks = () => {
     : resultData;
 
   return (
-    <div className="container mx-auto max-w-7xl p-5 pt-32">
+    <div className="container mx-auto max-w-7xl p-5 pb-32">
       <div className="flex justify-between ">
         <h1 className="mb-10">{t("ask.myask")}</h1>
         <button
