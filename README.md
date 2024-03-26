@@ -8,3 +8,4 @@ https://aimipp.com
 2. Fetch data use react-query
 3. Apply lazy-loading
 4. Optimize js
+5. zustand
