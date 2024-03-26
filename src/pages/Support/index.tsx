@@ -5,7 +5,8 @@ import NoticeList from "./notice/NoticeList";
 import { useTranslation } from "react-i18next";
 import { SearchParamsProvider, useSearchParamsContext } from "components/SearchParamsContext";
 import Ask from "./Ask";
-import { useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
+import { getLangUrl } from "locales/utils";
 
 const Support = () => {
   const [menu, setMenu] = useState("notice");
@@ -14,7 +15,7 @@ const Support = () => {
 
   useEffect(() => {
     let urlMenu = searchParams.get("menu");
-    if (!["notice", "faq", "contact"].includes(urlMenu)) {
+    if (!["notice", "faqs", "contact"].includes(urlMenu)) {
       setSearchParams({ menu: "notice" });
       urlMenu = "notice";
     }
@@ -37,6 +38,9 @@ const Support = () => {
     }
   }, [searchParams]); // menu 변경 시 useEffect 재실행
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="w-[375px] desktop:w-[960px] mx-auto relative pt-24">
@@ -49,6 +53,9 @@ const Support = () => {
                 onClick={() => {
                   setMenu(item);
                   setSearchParams({ menu: item });
+                  if (location.pathname !== getLangUrl("/support")) {
+                    navigate(getLangUrl(`/support/${item}`));
+                  }
                 }}>
                 {t(`nav.${item}`)}
               </button>
@@ -63,9 +70,18 @@ const Support = () => {
         <div className="absolute h-[2px] w-full bg-neutral-200 bottom-0 hidden desktop:block"></div>
       </div>
       <div className="h-12" />
-      {menu === "notice" && <NoticeList />}
-      {menu === "faq" && <FAQs />}
-      {menu === "contact" && <Ask />}
+      <Routes>
+        <Route path="notice" element={<NoticeList />} />
+        <Route path="faq" element={<FAQs />} />
+        <Route path="contact" element={<Ask />} />
+      </Routes>
+      {location.pathname === getLangUrl("/support") && (
+        <>
+          {menu === "notice" && <NoticeList />}
+          {menu === "faq" && <FAQs />}
+          {menu === "contact" && <Ask />}
+        </>
+      )}
     </>
   );
 };

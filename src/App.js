@@ -140,20 +140,30 @@ const App = () => {
                     />
                     {/* Support */}
 
+                    <Route path="dashboard" element={<ProtectedRoute component={Dashboard} />} />
+                    <Route
+                      path="profile/edit"
+                      element={<ProtectedRoute component={ProfileEditor} />}
+                    />
                     <Route
                       path="support"
                       element={
                         <SearchParamsProvider>
                           <Support />
                         </SearchParamsProvider>
-                      }
-                    />
-                    <Route path="dashboard" element={<ProtectedRoute component={Dashboard} />} />
-                    <Route
-                      path="profile/edit"
-                      element={<ProtectedRoute component={ProfileEditor} />}
-                    />
-                    <Route path="faqs" element={<FAQs />} />
+                      }>
+                      <Route path="notice" element={<Support />} />
+                      <Route path="faq" element={<Support />} />
+                      <Route path="contact" element={<Support />} />
+                      <Route
+                        index
+                        element={
+                          <SearchParamsProvider>
+                            <Support />
+                          </SearchParamsProvider>
+                        }
+                      />
+                    </Route>
                     <Route
                       path="support/contact"
                       element={<ProtectedRoute component={AskCreate} />}

@@ -89,7 +89,9 @@
       "/ko/login",
       "/en/login",
       "/ko/faqs",
-      "/en/faqs"
+      "/en/faqs",
+      "/ko/support?menu=faqs",
+      "/en/support?menu=faqs"
     ]
   }
 }
