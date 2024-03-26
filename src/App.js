@@ -119,7 +119,6 @@ const App = () => {
                     <Route path="howtouse" element={<Howtouse />} />
                     <Route path="intro" element={<Intro />} />
                     {/* Notice */}
-                    <Route path="notice" element={<NoticeLists />} />
                     <Route path="notice/:id" element={<NoticeDetail />} />
                     {/* Community */}
                     <Route
