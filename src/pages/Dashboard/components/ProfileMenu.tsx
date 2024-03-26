@@ -2,15 +2,17 @@ import { handleLogout } from "api/authService";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserInfo } from "stateStore/useUserInfo";
 
 const ProfileMenu = () => {
+  const { t } = useTranslation();
   const userInfo = useUserInfo((state) => state.userInfo);
   const { updateAuthState, authState } = useAuth();
   const navigate = useNavigate();
   const handleLogoutClick = async () => {
-    if (!window.confirm("로그아웃 하시겠습니까?")) {
+    if (!window.confirm(t("dashboard.로그아웃 하시겠습니까?"))) {
       return;
     }
     try {
@@ -27,7 +29,7 @@ const ProfileMenu = () => {
       {userInfo && (
         <div className="flex flex-col">
           <img
-            src={userInfo.profile_link}
+            src={userInfo.profileImage}
             alt="profile_image"
             width={54}
             className="rounded-full"
@@ -38,11 +40,11 @@ const ProfileMenu = () => {
         </div>
       )}
       <div className="flex flex-col gap-3 items-start">
-        <Link to="/mypage" className="text-[#8D8D8D] text-sm">
-          회원정보 수정하기
+        <Link to={getLangUrl("/profile/edit")} className="text-[#8D8D8D] text-sm">
+          {t("dashboard.회원정보 수정하기")}
         </Link>
         <button onClick={handleLogoutClick} className="text-[#8D8D8D] text-sm">
-          로그아웃
+          {t("dashboard.로그아웃")}
         </button>
       </div>
     </div>

@@ -34,11 +34,11 @@ import Index from "pages/Index";
 import Login from "pages/Login";
 import ResultList from "pages/result/ResultList";
 import Howtouse from "pages/Howtouse";
-import Asks from "pages/Support/Ask";
+import Ask from "pages/Support/Ask";
 import AskCreate from "pages/Support/Ask/AskCreate";
 import AskDetail from "pages/Support/Ask/AskDetail";
 import RegistrationForm from "pages/Regist";
-import MyPage from "pages/MyPage";
+import MyPage from "backup/MyPage";
 import Intro from "pages/Intro";
 import Detail from "pages/result/Detail";
 import FAQs from "pages/Support/FAQs";
@@ -52,6 +52,7 @@ import CommunityEditor from "pages/community/CommunityEditor";
 import Support from "pages/Support";
 import { SearchParamsProvider } from "components/SearchParamsContext";
 import Dashboard from "pages/Dashboard";
+import ProfileEditor from "pages/Dashboard/ProfileEditor";
 
 const App = () => {
   const [showFallback, setShowFallback] = useState(false);
@@ -148,13 +149,19 @@ const App = () => {
                       }
                     />
                     <Route path="dashboard" element={<ProtectedRoute component={Dashboard} />} />
-                    <Route path="asks" element={<ProtectedRoute component={Asks} />} />
+                    <Route
+                      path="profile/edit"
+                      element={<ProtectedRoute component={ProfileEditor} />}
+                    />
                     <Route path="faqs" element={<FAQs />} />
                     <Route
-                      path="asks/detail/:id"
+                      path="support/contact"
+                      element={<ProtectedRoute component={AskCreate} />}
+                    />
+                    <Route
+                      path="support/contact/detail/:id"
                       element={<ProtectedRoute component={AskDetail} />}
                     />
-                    <Route path="asks/create" element={<ProtectedRoute component={AskCreate} />} />
                     <Route path="detail/:id" element={<ProtectedRoute component={Detail} />} />
                   </Route>
                 </Routes>

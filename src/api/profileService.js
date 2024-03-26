@@ -14,17 +14,17 @@ export const fetchProfile = async () => {
   }
 };
 
-export const updateProfile = async (userInfo) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/modify_profile`, userInfo, {
-      withCredentials: true,
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Error fetchProfile Api:", error);
-    throw error;
-  }
-};
+// export const updateProfile = async (userInfo) => {
+//   try {
+//     const response = await axios.post(`${API_BASE_URL}/modify_profile`, userInfo, {
+//       withCredentials: true,
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error fetchProfile Api:", error);
+//     throw error;
+//   }
+// };
 
 export const deleteUser = async () => {
   try {

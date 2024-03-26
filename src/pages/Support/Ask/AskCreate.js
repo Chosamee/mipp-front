@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { addAsks } from "../../../api/askService";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 import { useAuth } from "components/auth/AuthContext";
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
 
-const AskCreate = () => {
+const AskCreate = ({ isGuest }) => {
   const [inquiry, setInquiry] = useState({
+    email: "",
     title: "",
     contents: "",
     files: [],
@@ -55,6 +56,13 @@ const AskCreate = () => {
     setInquiry({ ...inquiry, files: newFiles });
   };
   const { updateAuthState } = useAuth();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  // 'randState' 쿼리 파라미터의 값을 가져옴 (값이 없으면 '0'을 기본값으로 함)
+  const currentRandState = queryParams.get("randState") || "0";
+
+  const { authState } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inquiry.title || !inquiry.contents) {
@@ -75,7 +83,13 @@ const AskCreate = () => {
         updateAuthState({ isLoggedIn: false });
       }
       setIsDirty(false);
-      navigate(getLangUrl("/asks"));
+      if (authState.isLoggedIn) {
+        navigate(getLangUrl("/support?menu=contact"));
+      } else {
+        alert(t("ask.create.success"));
+        const nextRandState = currentRandState === "0" ? "1" : "0";
+        navigate(`${location.pathname}?menu=contact&randState=${nextRandState}`);
+      }
     } else {
       console.log("cancelled");
     }
@@ -97,6 +111,15 @@ const AskCreate = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
+
+  useEffect(() => {
+    setInquiry({
+      email: "",
+      title: "",
+      contents: "",
+      files: [],
+    });
+  }, [currentRandState]);
 
   const renderFileList = () => {
     return (
@@ -127,6 +150,22 @@ const AskCreate = () => {
     <form
       onSubmit={handleSubmit}
       className="w-96 min-w-96 mx-auto p-8 bg-white rounded shadow-lg my-20">
+      {isGuest && (
+        <div className="mb-6">
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
+            {t("ask.email")}
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder={t("ask.emailGuide")}
+            value={inquiry.email}
+            onChange={handleInputChange}
+          />
+        </div>
+      )}
       <div className="mb-6">
         <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">
           {t("ask.title")}

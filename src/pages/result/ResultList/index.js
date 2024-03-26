@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "backup/Pagination_Prev";
 import LoadingSpinner from "components/views/LoadingSpinner";
-import { deleteResult, fetchResults } from "api/resultService.js";
+import { deleteResult, fetchResults } from "pages/result/resultService.js";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
@@ -10,29 +10,35 @@ import { useAuth } from "components/auth/AuthContext";
 import loupe from "assets/loupe.svg";
 import down_vector from "assets/result/down_vector.svg";
 import VoteBanner from "./VoteBanner";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const ResultList = () => {
-  const [resultData, setresultData] = useState([]);
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
   const { updateAuthState } = useAuth();
   const navigate = useNavigate();
-  const fetchData = async () => {
-    try {
-      const data = await fetchResults();
-      setresultData(data);
-    } catch (error) {
-      console.error("Error:", error);
-      updateAuthState({ isLoggedIn: false });
-      navigate(getLangUrl("/login"));
-    }
-  };
-  useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 10000);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+  const {
+    data: resultData,
+    error,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery("results", fetchResults, {
+    // 실패 시 자동 재시도 방지
+    // retry: false,
+    refetchInterval: 10000,
+    refetchIntervalInBackground: true,
+    refetchOnMount: true,
+    onSuccess: (data) => {
+      // 데이터 불러오기 성공 시 필요한 작업 수행
+      console.log("Data fetched successfully:", data);
+    },
+    onError: (error) => {
+      // 에러 핸들링
+      // console.error("Error fetching results:", error);
+    },
+  });
 
   // 검색 기능
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -102,12 +108,19 @@ const ResultList = () => {
     "표절곡이 없거나 파일 생성에 문제가 있습니다",
   ];
 
+  const queryClient = useQueryClient();
+
+  const deleteMutation = useMutation(deleteResult, {
+    onSuccess: () => {
+      queryClient.refetchQueries("results"); // 삭제 작업 성공 후 관련 쿼리를 다시 가져옵니다.
+    },
+  });
+
   const handleDeleteResult = async (id) => {
     const confirmSubmit = window.confirm(t("request.confirmDelete"));
     if (confirmSubmit) {
       try {
-        await deleteResult(id);
-        fetchData();
+        await deleteMutation.mutateAsync(id);
       } catch (error) {
         console.error("delete front error: ", error);
       }
@@ -318,22 +331,22 @@ const Notify = () => {
       <div className="text-sm leading-6 text-[#4D535B]">
         {i18n.language === "en" ? (
           <>
-            Welcome to beta test version of AIMIPP! The Checking will take about 10 minutes, but it
+            Welcome to beta test version of MIPP! The Checking will take about 10 minutes, but it
             may take longer <br />
-            if there are many applicants. If errors persist, please apply through a
-            <Link to={getLangUrl("/asks")} className="underline">
-              one-on-one support
+            if there are many applicants. If errors persist, please apply through a{" "}
+            <Link to={getLangUrl("/support?menu=contact")} className="underline text-blue-600">
+              Contact
             </Link>
             . <br />
             You can only request up to 10 songs within 24 hours per account.
           </>
         ) : (
           <>
-            AIMIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! 검사는 10분 내외, 혹은
+            MIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! 검사는 10분 내외, 혹은
             신청자가 많다면 더 오래 걸릴 수도 있습니다.
             <br />
             오류가 지속적으로 생긴다면,{" "}
-            <Link to={getLangUrl("/asks")} className="underline">
+            <Link to={getLangUrl("/support?menu=contact")} className="underline text-blue-600">
               1대1 문의하기
             </Link>
             를 통해 신청해주세요. 한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.

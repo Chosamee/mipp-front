@@ -89,10 +89,7 @@ const NavBar = () => {
                 className="flex p-1 gap-[6px] items-center"
                 to={getLangUrl("/support")}
                 onMouseOver={() => import("pages/Support/notice/NoticeList")}>
-                {t("nav.notice")}
-              </Link>
-              <Link className="flex p-1 gap-[6px] items-center" to={getLangUrl("/faqs")}>
-                FAQ
+                {t("nav.support")}
               </Link>
 
               <div className="flex gap-[14px] p-1">
@@ -130,13 +127,8 @@ const NavBar = () => {
                 {t("nav.request")}
               </Link>
               <button className="flex items-center text-[18px] p-1">
-                <Link className="" to={getLangUrl("/asks")}>
-                  {t("nav.ask")}
-                </Link>
-              </button>
-              <button className="flex items-center text-[18px] p-1">
                 <Link className="" to={getLangUrl("/dashboard")}>
-                  {t("nav.myAccount")}
+                  {t("nav.dashboard")}
                 </Link>
               </button>
               <button className="flex items-center text-[18px] p-1">
@@ -220,7 +212,7 @@ const NavBar = () => {
               {t("nav.howToUse")}
             </Link>
             <Link to={getLangUrl("/support")} className="text-left mx-6">
-              Support
+              {t("nav.support")}
             </Link>
           </div>
           <div className="bg-[#D9D9D9] h-px mx-6" />
@@ -237,11 +229,8 @@ const NavBar = () => {
                 <Link to={getLangUrl("/result")} className="text-left mx-6">
                   {t("nav.result")}
                 </Link>
-                <Link to={getLangUrl("/asks")} className="text-left mx-6">
-                  {t("nav.ask")}
-                </Link>
                 <Link to={getLangUrl("/dashboard")} className="text-left mx-6">
-                  {t("nav.myAccount")}
+                  {t("nav.dashboard")}
                 </Link>
               </React.Fragment>
             )}

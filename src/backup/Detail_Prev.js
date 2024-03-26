@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "../components/views/LoadingSpinner";
 import PDFViewer from "../components/views/PDFViewer";
-import { fetchDetail } from "api/resultService";
+import { fetchDetail } from "pages/result/resultService";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";

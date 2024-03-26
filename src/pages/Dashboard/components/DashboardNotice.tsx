@@ -3,6 +3,7 @@ import { getLangUrl } from "locales/utils";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Alert } from "../dashboardType";
+import { useTranslation } from "react-i18next";
 
 interface DashboardNoticeProps {
   alerts: Alert[];
@@ -10,12 +11,13 @@ interface DashboardNoticeProps {
 }
 
 const DashboardNotice = ({ alerts, total_plagiarism_checks }: DashboardNoticeProps) => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col bg-slate-100 p-10 gap-10">
       <div className="flex flex-col gap-5 ">
         {alerts.map((item) => (
           <div key={item.date} className="flex flex-row gap-3 rounded-md">
-            <div className="bg-blue-200 text-blue-600 rounded-md w-12 text-center">
+            <div className="bg-blue-200 text-blue-600 rounded-md w-16 text-center">
               {item.status}
             </div>
             <div className="text-sm w-20 text-center">{getFormattedDate(item.date)}</div>
@@ -27,13 +29,15 @@ const DashboardNotice = ({ alerts, total_plagiarism_checks }: DashboardNoticePro
       <div className="h-px w-full bg-black" />
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-col gap-2">
-          <div className="text-base font-medium">내가 진행한 표절 검사 결과</div>
-          <div className="text-3xl font-semibold">{total_plagiarism_checks} 개</div>
+          <div className="text-base font-medium">{t("dashboard.내가 진행한 표절 검사 결과")}</div>
+          <div className="text-3xl font-semibold">
+            {total_plagiarism_checks} {t("dashboard.개")}
+          </div>
         </div>
         <Link
           to={getLangUrl("/result")}
           className="py-3 px-6 bg-neutral-300 rounded-full font-semibold text-sm">
-          검사 결과 목록 보기
+          {t("dashboard.검사 결과 목록 보기")}
         </Link>
       </div>
     </div>

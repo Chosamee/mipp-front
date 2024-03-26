@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
 interface UserInfo {
-  nickname: string;
-  email: string;
-  membership: string;
-  profile_link: string;
+  nickname?: string;
+  email?: string;
+  membership?: string;
+  profileImage?: string;
 }
 
 interface UserInfoState {

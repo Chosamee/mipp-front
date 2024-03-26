@@ -24,7 +24,7 @@
     "표절률": "Plagiarism Rate",
     "확인하기": "Check",
     "결과자료": "Result PDF",
-    "표절률 기준": "Plagiarism Rate Standard",
+    "표절률 기준": "Plagiarism Rate Criteria",
     "장르에 따라서 차이가 있을 수 있습니다": "Differences may exist depending on the genre",
     "다른 음악 표절 검사 결과도 궁금하다면?": "Interested in plagiarism checks for other tracks?",
     "다시 검사하기": "Check Again",
@@ -44,7 +44,7 @@
   },
   "ask": {
     "myask": "My questions",
-    "submit": "Submit one-on-one question",
+    "submit": "Submit Contact",
     "title": "Question Title",
     "titleGuide": "Enter Question Title",
     "content": "Question Content",
@@ -59,8 +59,11 @@
       "volumeError": "Total attachment size cannot exceed 30MB.",
       "require": "Please enter both inquiry title and content.",
       "confirmExit": "You have unsaved content. Are you sure you want to leave this page?",
-      "confirm": "Do you want to post this content?"
-    }
+      "confirm": "Do you want to post this content?",
+      "success": "Your question has been submitted successfully."
+    },
+    "email": "Email",
+    "emailGuide": "Enter email to receive reply"
   },
   "intro": {
     "mainTitle": "The Standard of\n Music Plagiarism Check, MIPP",
@@ -223,9 +226,9 @@
     "requiredLogin": "Sign in with Google"
   },
   "profile": {
-    "title": "Profile",
+    "title": "Edit Profile",
     "name": "Name",
-    "nickname": "Nickname",
+    "nickname": "Name",
     "phone": "Phone Number",
     "email": "Email",
     "checkDuplicate": "Check Duplicate",
@@ -237,7 +240,17 @@
     "errorNicknameDuplicate": "This nickname is already in use.",
     "errorNicknameCheck": "An error occurred during nickname verification.",
     "possibleNickname": "This nickname is available.",
-    "deleteGuide": "Please type \"Delete Account\" to confirm:"
+    "deleteGuide": "Please type \"Delete Account\" to confirm:",
+    "profileImageGuide": "You can zoom in/out of the photo with mouse wheel, and drag the area to crop the image.\n If there's no adjustments,  the center part will be selected automatically.",
+    "프로필 이미지": "Profile Image",
+    "이미지 업로드": "Upload Image",
+    "이미지 자르기": "Crop Image",
+    "이미지를 업로드 해주세요": "Please upload an image",
+    "잘린 이미지": "Cropped Image",
+    "중복 검사가 필요합니다": "Need check duplicate",
+    "중복된 닉네임입니다": "Duplicate nickname",
+    "사용 가능": "Available",
+    "submit": "Submit"
   },
   "request": {
     "title": "Community",
@@ -250,13 +263,33 @@
   "nav": {
     "intro": "Introduce MIPP",
     "howToUse": "How To Use",
-    "myAccount": "My Account",
+    "dashboard": "Dashboard",
     "request": "Community",
     "logout": "Logout",
     "result": "My Results",
     "login": "Login",
-    "ask": "Support",
-    "notice": "Notice"
+    "support": "Support",
+    "notice": "Notice",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "dashboard": {
+    "회원정보 수정하기": "Edit Profile",
+    "로그아웃": "Log Out",
+    "커뮤니티": "Community",
+    "게시판": "Community",
+    "내 활동 (출시 예정)": "My Activities (Coming Soon)",
+    "결제": "Payment",
+    "멤버십 관리 (출시 예정)": "Membership Management \n(Coming Soon)",
+    "고객센터": "Customer Service",
+    "문의내역": "1:1 Support",
+    "공지사항": "Notice",
+    "가입을 환영합니다!": "Welcome!",
+    "내가 진행한 표절 검사 결과": "My plagiarism test results",
+    "검사 결과 목록 보기": "View test results",
+    "표절 검사 결과": "Plagiarism test results",
+    "로그아웃 하시겠습니까?": "Are you sure you want to log out?",
+    "개": "Songs"
   },
   "footer": {
     "email": "Email: mippcomp@gmail.com",
