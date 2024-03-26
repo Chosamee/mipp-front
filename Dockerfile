@@ -79,7 +79,7 @@ RUN groupadd -r puppeteer && useradd -r -g puppeteer -G audio,video puppeteer \
 USER puppeteer
 
 # npm 의존성 설치
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # 애플리케이션 소스 추가
 COPY . .
