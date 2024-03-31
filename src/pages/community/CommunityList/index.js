@@ -118,19 +118,19 @@ const CommunityList = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
+    <div className="mx-auto px-5 w-[375px] md:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
       {/* Title 및 검색 하십시오.. */}
-      <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
+      <div className="gap-[26px] flex md:flex-row flex-col md:items-center mb-9 md:h-10">
         <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
           {i18n.language === "en" ? "Community" : "커뮤니티"}
         </h1>
-        <form className="flex gap-4 desktop:flex-row flex-col" onSubmit={handleSearchSubmit}>
+        <form className="flex gap-4 md:flex-row flex-col" onSubmit={handleSearchSubmit}>
           <select value={tempSearchType} onChange={handleSearchTypeChange}>
             <option value="both">{t("searchType.both")}</option>
             <option value="title">{t("searchType.title")}</option>
             <option value="content">{t("searchType.content")}</option>
           </select>
-          <div className="w-[326px] desktop:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
+          <div className="w-[326px] md:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
             <input
               className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[264px] focus:outline-none ml-4"
               type="text"
@@ -144,7 +144,7 @@ const CommunityList = () => {
           </div>
         </form>
         <Link
-          className="flex ml-auto items-center border-2 rounded-md px-4 desktop:h-full h-10 flex-shrink-0"
+          className="flex ml-auto items-center border-2 rounded-md px-4 md:h-full h-10 flex-shrink-0"
           to={getLangUrl("/community/create")}>
           {i18n.language === "en" ? "Create" : "글쓰기"}
         </Link>

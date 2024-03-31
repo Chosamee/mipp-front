@@ -7,8 +7,8 @@ const StartCheckBtn = ({ textColor }) => {
   return (
     <Link
       to={getLangUrl("/home")}
-      className={`py-[22px] px-[46px] items-center bg-white font-semibold desktop:font-bold
-      leading-[normal] desktop:text-[23px] text-[16px] text-[${textColor}]
+      className={`py-[22px] px-[46px] items-center bg-white font-semibold md:font-bold
+      leading-[normal] md:text-[23px] text-[16px] text-[${textColor}]
       rounded-[100px] w-fit`}>
       {t("startChecking")}
     </Link>

@@ -25,10 +25,10 @@ const Each = ({ file, handleCheckboxChange, index }) => {
   };
   return (
     <li
-      className={`flex w-full min-h-[88px] h-fit desktop:h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
+      className={`flex w-full min-h-[88px] h-fit md:h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
         file.checked ? "bg-[#ECF2F8]" : ""
       }`}>
-      <div className="flex px-0 desktop:px-5 items-center h-full font-medium w-[30px] desktop:w-fit justify-center">
+      <div className="flex px-0 md:px-5 items-center h-full font-medium w-[30px] md:w-fit justify-center">
         <input
           type="checkbox"
           checked={file.checked}
@@ -36,17 +36,17 @@ const Each = ({ file, handleCheckboxChange, index }) => {
           className="checked:bg-blue-600"
         />
       </div>
-      <div className="flex px-3 py-6 desktop:py-0 w-[184px] desktop:w-[520px] h-full items-center text-[#171923]">
+      <div className="flex px-3 py-6 md:py-0 w-[184px] md:w-[520px] h-full items-center text-[#171923]">
         {file.title}
       </div>
-      <div className="flex px-3 w-[108px] desktop:w-[153px] h-full items-center text-[#171923] gap-[6px]">
+      <div className="flex px-3 w-[108px] md:w-[153px] h-full items-center text-[#171923] gap-[6px]">
         <div
           className="w-4 h-4 rounded-[90px]"
           style={{ backgroundColor: getColorScore(file.plagiarism_rate) }}
         />
         <div>{file.plagiarism_rate} %</div>
       </div>
-      <div className="hidden desktop:flex pl-3 pr-5 h-full items-center">
+      <div className="hidden md:flex pl-3 pr-5 h-full items-center">
         {isLoading ? (
           <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
         ) : (
@@ -68,7 +68,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
         )}
       </div>
       <button
-        className="desktop:hidden relative right-0"
+        className="md:hidden relative right-0"
         onClick={() => {
           handlePreview();
         }}>

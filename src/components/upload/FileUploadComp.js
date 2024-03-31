@@ -71,7 +71,7 @@ const FileUploadComp = ({ inst, bpm }) => {
 
   return (
     <React.Fragment>
-      <div className="desktop:w-[420px] w-[335px]">
+      <div className="md:w-[420px] w-[335px]">
         <label
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
@@ -127,7 +127,7 @@ const FileUploadComp = ({ inst, bpm }) => {
       ) : (
         <button
           onClick={handleSubmit}
-          className="w-[326px] desktop:w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
+          className="w-[326px] md:w-[420px] px-4 py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 ">
           {t("home.submit")}
         </button>
       )}

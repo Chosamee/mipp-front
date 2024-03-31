@@ -29,7 +29,7 @@ const NoticeDetail = () => {
   const formattedDate = notice && getFormattedDate(notice.created_at, i18n.language);
 
   return (
-    <div className="mx-auto pt-[50px] pb-[70px] desktop:pt-[150px] desktop:pb-[120px] w-[375px] desktop:w-[854px] px-5 leading-[normal] text-[#171923]">
+    <div className="mx-auto pt-[50px] pb-[70px] md:pt-[150px] md:pb-[120px] w-[375px] md:w-[854px] px-5 leading-[normal] text-[#171923]">
       {/* 전체 검사결과 뒤로가기 */}
       <div className="flex items-center gap-[10px] mb-[50px]">
         <BackArrowIcon />
@@ -41,7 +41,7 @@ const NoticeDetail = () => {
       {notice ? (
         <>
           <div className="flex flex-col gap-4">
-            <div className="flex items-center text-[22px] desktop:text-[24px] leading-[28px] font-semibold">
+            <div className="flex items-center text-[22px] md:text-[24px] leading-[28px] font-semibold">
               {i18n.language === "en" ? notice.en_title : notice.ko_title}
             </div>
             <div className="flex justify-end">{formattedDate}</div>

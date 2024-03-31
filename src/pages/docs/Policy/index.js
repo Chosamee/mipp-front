@@ -7,7 +7,7 @@ import PolicySEOKO from "seo/PolicySEO.ko";
 const PolicyPage = () => {
   const { i18n } = useTranslation();
   return (
-    <div className="w-[375px] desktop:w-[1050px] mx-auto px-5 pb-32 pt-10">
+    <div className="w-[375px] md:w-[1050px] mx-auto px-5 pb-32 pt-10">
       {i18n.language === "en" ? <PolicySEOEN /> : <PolicySEOKO />}
 
       <div className="h-20"></div>

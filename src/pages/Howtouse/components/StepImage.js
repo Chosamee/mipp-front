@@ -24,10 +24,10 @@ const StepImage = ({ contents, inputHeight }) => {
   }, []);
 
   return (
-    <div className="desktop:px-5">
-      <div className="flex w-full h-[360px] desktop:h-[420px] bg-[#F5F6F8] desktop:rounded-[30px]">
+    <div className="md:px-5">
+      <div className="flex w-full h-[360px] md:h-[420px] bg-[#F5F6F8] md:rounded-[30px]">
         <div
-          className="flex flex-col w-[326px] desktop:w-[493px] mx-auto mt-auto rounded-t-[10px] bg-white shadow-[0px_-11px_17px_2px_rgba(0,0,0,0.03)]"
+          className="flex flex-col w-[326px] md:w-[493px] mx-auto mt-auto rounded-t-[10px] bg-white shadow-[0px_-11px_17px_2px_rgba(0,0,0,0.03)]"
           style={{ height: height }}>
           <div className="flex w-full h-7 flex-shrink-0 bg-[#E9EAED] pl-[13px] pt-[10px] rounded-t-[10px]">
             <CircleTab />

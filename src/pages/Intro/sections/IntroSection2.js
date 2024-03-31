@@ -37,13 +37,13 @@ function IntroSection2() {
   }, [t, width]);
   return (
     <div className="w-full bg-[#F4F6FA]">
-      <div className="flex flex-col py-[60px] desktop:py-[230px] w-[326px] desktop:w-[1340px] desktop:px-5 mx-auto">
-        <h2 className="text-xl desktop:text-2xl font-semibold leading-9 desktop:leading-[normal]">
+      <div className="flex flex-col py-[60px] md:py-[230px] w-[326px] md:w-[1340px] md:px-5 mx-auto">
+        <h2 className="text-xl md:text-2xl font-semibold leading-9 md:leading-[normal]">
           {t("intro.section2.mainTitle")}
         </h2>
         <div
-          className="mt-[60px] desktop:mt-[120px]
-        desktop:grid desktop:grid-cols-2 desktop:grid-rows-2 gap-5
+          className="mt-[60px] md:mt-[120px]
+        md:grid md:grid-cols-2 md:grid-rows-2 gap-5
         flex flex-col ">
           {data.map((item, index) => {
             return <Card key={index} image={item.image} who={item.who} text={item.text} />;
@@ -57,13 +57,13 @@ function IntroSection2() {
 const Card = ({ image, who, text }) => {
   return (
     <div
-      className="flex flex-col items-center justify-center w-[326px] h-[400px] desktop:w-[640px] desktop:h-[460px] bg-white rounded-[30px]"
+      className="flex flex-col items-center justify-center w-[326px] h-[400px] md:w-[640px] md:h-[460px] bg-white rounded-[30px]"
       style={{ boxShadow: "0px 8px 10px -6px rgba(0, 0, 0, 0.05)" }}>
-      <div className="flex desktop:w-[46px] desktop:h-[46px] items-center justify-center">
+      <div className="flex md:w-[46px] md:h-[46px] items-center justify-center">
         <img src={image} alt="usertypes" />
       </div>
       <h3 className="flex text-center mt-5 text-[40px] font-bold leading-[normal]">{who}</h3>
-      <p className="mt-[30px] text-center desktop:text-[22px] leading-7 desktop:leading-10 desktop:px-16 px-4">
+      <p className="mt-[30px] text-center md:text-[22px] leading-7 md:leading-10 md:px-16 px-4">
         {text}
       </p>
     </div>

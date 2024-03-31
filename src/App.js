@@ -91,7 +91,7 @@ const App = () => {
                   <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
                 ) : null
               }>
-              <div className="flex-grow desktop:mt-[125px] mt-[106px] ">
+              <div className="flex-grow md:mt-[125px] mt-[106px] ">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   {/* <Route path="/" element={<Index />} /> */}

@@ -40,7 +40,7 @@ const Home = () => {
     return (
       <button
         onClick={() => setInst(selected)}
-        className={`flex px-5 py-3.5 text-[16px] font-medium rounded-[10px] w-[326px] desktop:w-[400px] gap-[10px] ${
+        className={`flex px-5 py-3.5 text-[16px] font-medium rounded-[10px] w-[326px] md:w-[400px] gap-[10px] ${
           isSelected
             ? "shadow-[0_0_0_2px_#3553F3] bg-white text-[#3553F3]"
             : "bg-[#F6F6F6] text-[#A9A9A9]"
@@ -74,17 +74,17 @@ const Home = () => {
   };
 
   return (
-    <div className="px-[20px] pb-[70px] desktop:px-[60px] desktop:pb-[150px]">
-      <div className="flex flex-col w-[335px] desktop:w-[520px] mx-auto leading-[normal] py-[100px] justify-center items-center">
-        <div className="flex flex-col py-6 desktop:pt-[99px] desktop:pb-[60px] mx-auto gap-[11px] desktop:gap-[14px] text-center desktop:px-5">
+    <div className="px-[20px] pb-[70px] md:px-[60px] md:pb-[150px]">
+      <div className="flex flex-col w-[335px] md:w-[520px] mx-auto leading-[normal] py-[100px] justify-center items-center">
+        <div className="flex flex-col py-6 md:pt-[99px] md:pb-[60px] mx-auto gap-[11px] md:gap-[14px] text-center md:px-5">
           <div
             className="leading-[34px] text-[24px]
-          desktop:leading-[56px] desktop:text-[40px] font-semibold text-nowrap">
+          md:leading-[56px] md:text-[40px] font-semibold text-nowrap">
             {t("home.title")}
           </div>
           <div
             className="leading-[27px] text-[16px]
-          desktop:leading-[35px] font-medium desktop:text-[22px]">
+          md:leading-[35px] font-medium md:text-[22px]">
             {t("home.guide")}
           </div>
         </div>
@@ -96,13 +96,13 @@ const Home = () => {
             Your Usage Limit: {remain} / {totalNum}
           </div>
 
-          <div className="text-start mb-[10px] text-[20px] desktop:text-[22px] font-semibold">
+          <div className="text-start mb-[10px] text-[20px] md:text-[22px] font-semibold">
             {t("home.step1")}
           </div>
-          <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block">
+          <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden md:block">
             {t("home.step1guide")}
           </div>
-          <div className="text-start mb-5 text-[15px] leading-[24px] text-[#9B9B9B] font-medium desktop:hidden">
+          <div className="text-start mb-5 text-[15px] leading-[24px] text-[#9B9B9B] font-medium md:hidden">
             {t("home.step1guideMobile")}
           </div>
           <div className="flex flex-col justify-center mb-4 gap-2">
@@ -114,21 +114,21 @@ const Home = () => {
 
         {/* 업로드 방식 선택 */}
         <div className="flex flex-col mx-auto">
-          <div className="text-start text-[20px] mb-[11px] desktop:text-[22px] font-semibold">
+          <div className="text-start text-[20px] mb-[11px] md:text-[22px] font-semibold">
             {t("home.step2")}
           </div>
-          <div className="text-start mb-7 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block">
+          <div className="text-start mb-7 text-[17px] text-[#9B9B9B] font-medium hidden md:block">
             {t("home.step2guide")}
           </div>
-          <div className="text-start mb-7 text-[15px] leading-[24px]  text-[#9B9B9B] font-medium desktop:hidden">
+          <div className="text-start mb-7 text-[15px] leading-[24px]  text-[#9B9B9B] font-medium md:hidden">
             {t("home.step2guideMobile")}
           </div>
           {/* Select Bar */}
           <div className="flex justify-center mb-[30px]">
             <button
               onClick={() => setActiveTab("upload")}
-              className={`desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold
-              w-[162.5px] desktop:w-[210px] text-center ${
+              className={`md:px-[60px] py-3 text-[15px] md:text-[16px] mb-2 font-semibold
+              w-[162.5px] md:w-[210px] text-center ${
                 activeTab === "upload"
                   ? "shadow-[0_2px_0_0_#3553F3] text-[#3553F3]"
                   : "shadow-[0_2px_0_0_#A9A9A9] text-[#A9A9A9]"
@@ -137,8 +137,8 @@ const Home = () => {
             </button>
             <button
               onClick={() => setActiveTab("link")}
-              className={`desktop:px-[60px] py-3 text-[15px] desktop:text-[16px] mb-2 font-semibold
-              w-[162.5px] desktop:w-[210px] text-center ${
+              className={`md:px-[60px] py-3 text-[15px] md:text-[16px] mb-2 font-semibold
+              w-[162.5px] md:w-[210px] text-center ${
                 activeTab === "link"
                   ? "shadow-[0_2px_0_0_#3553F3] text-[#3553F3]"
                   : "shadow-[0_2px_0_0_#A9A9A9] text-[#A9A9A9]"

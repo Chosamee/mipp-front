@@ -129,14 +129,14 @@ const ResultList = () => {
 
   return (
     <>
-      <div className="mx-auto px-5 w-[375px] desktop:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
+      <div className="mx-auto px-5 w-[375px] md:w-[960px] py-[150px] font-['Pretendard-Regular'] leading-[normal]">
         <Notify />
         {/* Title 및 검색 하십시오.. */}
-        <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
+        <div className="gap-[26px] flex md:flex-row flex-col md:items-center mb-9 md:h-10">
           <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
             {t("result.my")}
           </h1>
-          <div className="w-[326px] desktop:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
+          <div className="w-[326px] md:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
             <input
               className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[264px] focus:outline-none ml-4"
               type="text"
@@ -148,7 +148,7 @@ const ResultList = () => {
         </div>
 
         {/* 선택 버튼 */}
-        <div className="flex w-[326px] desktop:w-[920px] h-14 items-center desktop:gap-6 gap-4">
+        <div className="flex w-[326px] md:w-[920px] h-14 items-center md:gap-6 gap-4">
           <div className="py-1 gap-[10px] flex">
             <button>
               <img src={down_vector} alt="Vector" />
@@ -169,7 +169,7 @@ const ResultList = () => {
             {["all", "vocal", "melody", "boundary"].map((item, index) => {
               return (
                 <button
-                  className={`h-7 text-sm leading-5 font-semibold  desktop:px-3 px-2.5 py-1 items-center justify-center ${
+                  className={`h-7 text-sm leading-5 font-semibold  md:px-3 px-2.5 py-1 items-center justify-center ${
                     inst === item
                       ? "rounded-[9999px] text-[#171923] bg-[#E2E8F0]"
                       : "text-[#999DA1]"
@@ -188,7 +188,7 @@ const ResultList = () => {
           600   100   120   100
       */}
         {i18n.language === "en" ? (
-          <div className="w-[920px] h-10 hidden desktop:flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+          <div className="w-[920px] h-10 hidden md:flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
             <div className="w-[460px] pl-7 pr-3">Name</div>
             <div className="w-[160px] px-3">Type</div>
             <div className="w-[120px] px-3">Upload Date</div>
@@ -196,7 +196,7 @@ const ResultList = () => {
             <div className="w-[60px] px-3">Delete</div>
           </div>
         ) : (
-          <div className="w-[920px] h-10 hidden desktop:flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+          <div className="w-[920px] h-10 hidden md:flex mx-auto items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
             <div className="w-[460px] pl-7 pr-3">이름</div>
             <div className="w-[160px] px-3">타입</div>
             <div className="w-[120px] px-3">업로드 날짜</div>
@@ -233,7 +233,7 @@ const ResultList = () => {
                 <React.Fragment>
                   <div
                     key={`desktop-${item.id}`}
-                    className="hidden desktop:flex w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
+                    className="hidden md:flex w-[920px] h-[60px] mx-auto items-center text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
                     <button
                       className="w-[460px] h-[60px] pl-7 pr-3 text-start"
                       onClick={() => navigate(getLangUrl("/detail/" + item.id))}
@@ -259,7 +259,7 @@ const ResultList = () => {
                   </div>
                   <div
                     key={`mobile-${item.id}`}
-                    className="flex flex-col desktop:hidden w-[326px]  py-6 px-3 gap-2.5 mx-auto text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
+                    className="flex flex-col md:hidden w-[326px]  py-6 px-3 gap-2.5 mx-auto text-[#171923] text-sm font-medium border-b-[1px] border-[#E5E8EB] hover:bg-[#ECF2F8]">
                     <button
                       className="w-[302px] text-start"
                       onClick={() => navigate(getLangUrl("/detail/" + item.id))}

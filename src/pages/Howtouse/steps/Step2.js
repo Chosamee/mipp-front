@@ -14,7 +14,7 @@ const Step2 = () => {
     return (
       <button
         onClick={() => setInst(selected)}
-        className={`flex px-5 py-3 desktop:py-3.5 text-[14px] desktop:text-[16px] font-medium rounded-[10px] w-[280px] desktop:w-[400px] gap-[10px] ${
+        className={`flex px-5 py-3 md:py-3.5 text-[14px] md:text-[16px] font-medium rounded-[10px] w-[280px] md:w-[400px] gap-[10px] ${
           isSelected
             ? "shadow-[0_0_0_2px_#3553F3] bg-white text-[#3553F3]"
             : "bg-[#F6F6F6] text-[#A9A9A9]"
@@ -56,13 +56,13 @@ const Step2 = () => {
         contents={
           <div className="flex flex-col p-[10px] items-center">
             <div>
-              <div className="text-start mb-[10px] text-[14px] desktop:text-[22px] font-semibold">
+              <div className="text-start mb-[10px] text-[14px] md:text-[22px] font-semibold">
                 {t("home.step1")}
               </div>
-              <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden desktop:block leading-[18px]">
+              <div className="text-start mb-5 text-[17px] text-[#9B9B9B] font-medium hidden md:block leading-[18px]">
                 {t("home.step1guide")}
               </div>
-              <div className="text-start mb-5 text-[13px] leading-[18px] text-[#9B9B9B] font-medium desktop:hidden ">
+              <div className="text-start mb-5 text-[13px] leading-[18px] text-[#9B9B9B] font-medium md:hidden ">
                 {t("home.step1guideMobile")}
               </div>
               <div className="flex flex-col justify-center gap-2">

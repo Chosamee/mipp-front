@@ -25,11 +25,11 @@ const IntroSection1 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t]);
   return (
-    <div className="flex flex-col py-20 desktop:py-[230px] w-[366px] desktop:w-[1300px] mx-auto px-5">
-      <h2 className="text-xl desktop:text-2xl font-semibold leading-[normal] mb-[60px] desktop:mb-[86px]">
+    <div className="flex flex-col py-20 md:py-[230px] w-[366px] md:w-[1300px] mx-auto px-5">
+      <h2 className="text-xl md:text-2xl font-semibold leading-[normal] mb-[60px] md:mb-[86px]">
         {t("intro.section1.mainTitle")}
       </h2>
-      <div className="flex flex-col gap-[50px] desktop:gap-[90px]">
+      <div className="flex flex-col gap-[50px] md:gap-[90px]">
         {data.map((item, index) => (
           <React.Fragment key={index}>
             <Subtitle idx={index + 1} title={item.title} text={item.text} />
@@ -44,12 +44,12 @@ const IntroSection1 = () => {
 const Subtitle = ({ idx, title, text }) => {
   const formattedNumber = String(idx).padStart(2, "0");
   return (
-    <div className="flex flex-col desktop:flex-row gap-[22px] desktop:gap-[10px]">
-      <div className="flex flex-col gap-[10px] desktop:w-[440px]">
+    <div className="flex flex-col md:flex-row gap-[22px] md:gap-[10px]">
+      <div className="flex flex-col gap-[10px] md:w-[440px]">
         <div className="text-[#3553F3] text-2xl font-bold leading-8">{formattedNumber}</div>
         <h3 className="text-[57px] text-[#343434] font-bold leading-[normal]">{title}</h3>
       </div>
-      <div className="text-[#343434] text-base desktop:text-[28px] leading-[28px] desktop:leading-[52px] desktop:w-[860px]">
+      <div className="text-[#343434] text-base md:text-[28px] leading-[28px] md:leading-[52px] md:w-[860px]">
         {text}
       </div>
     </div>

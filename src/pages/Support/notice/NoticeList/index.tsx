@@ -39,10 +39,10 @@ const NoticeList = () => {
   };
 
   return (
-    <div className="mx-auto px-5 w-[375px] desktop:w-[960px] pb-[150px] font-['Pretendard-Regular'] leading-[normal]">
+    <div className="mx-auto px-5 w-[375px] md:w-[960px] pb-[150px] font-['Pretendard-Regular'] leading-[normal]">
       {seoFiles[i18n.language]}
 
-      <div className="gap-[26px] flex desktop:flex-row flex-col desktop:items-center mb-9 desktop:h-10">
+      <div className="gap-[26px] flex md:flex-row flex-col md:items-center mb-9 md:h-10">
         <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
           {i18n.language === "en" ? "Notice" : "공지사항"}
         </h1>

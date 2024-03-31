@@ -107,13 +107,13 @@ const SearchForm = ({
   }, [currentPage, pageSize, searchType, searchParams, setSearchParams, total_pages]);
 
   return (
-    <form className="flex gap-4 desktop:flex-row flex-col" onSubmit={handleSearchSubmit}>
+    <form className="flex gap-4 md:flex-row flex-col" onSubmit={handleSearchSubmit}>
       <select value={tempSearchType} onChange={handleSearchTypeChange}>
         <option value="both">{t("searchType.both")}</option>
         <option value="title">{t("searchType.title")}</option>
         <option value="content">{t("searchType.content")}</option>
       </select>
-      <div className="w-[326px] desktop:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
+      <div className="w-[326px] md:w-[360px] gap-[14px] h-10 flex rounded-[6px] items-center border-[#E0E4E8] border-[1px]">
         <input
           className="overflow-ellipsis text-[14px] font-medium leading-[18px] tracking-[0.203px] w-[264px] focus:outline-none ml-4"
           type="text"

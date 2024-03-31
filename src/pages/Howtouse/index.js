@@ -14,7 +14,7 @@ const Howtouse = () => {
     ko: <HowtouseSEOKO />,
   };
   return (
-    <div className="flex flex-col justify-center items-center py-20 desktop:pt-[180px] desktop:pb-[200px] font-['Pretendard-Regular'] leading-[normal] max-w-[1116px] mx-auto">
+    <div className="flex flex-col justify-center items-center py-20 md:pt-[180px] md:pb-[200px] font-['Pretendard-Regular'] leading-[normal] max-w-[1116px] mx-auto">
       {seoFiles[i18n.language]}
       <h1 className="text-center text-[52px] leading-[66px] font-semibold mb-[86px]">
         {i18n.language === "en" ? "How to use" : "이용방법"}

@@ -71,7 +71,7 @@ const NavBar = () => {
           <Link to={getLangUrl("/")} className="self-center text-[36px] font-bold">
             MIPP
           </Link>
-          <div className="py-3 pr-6 text-[18px] gap-[40px] hidden desktop:flex">
+          <div className="py-3 pr-6 text-[18px] gap-[40px] hidden md:flex">
             <div className="flex gap-[26px] px-2 items-center text-nowrap">
               <Link
                 className="flex p-1 gap-[6px] items-center"
@@ -120,7 +120,7 @@ const NavBar = () => {
         </div>
 
         {/* 우측 subMenu */}
-        <div className="font-bold py-3 pr-6 gap-[30px] hidden desktop:flex ">
+        <div className="font-bold py-3 pr-6 gap-[30px] hidden md:flex ">
           {authState.isLoggedIn ? (
             <div className="flex px-2 gap-[26px] items-center justify-end text-nowrap">
               <Link className="flex items-center text-[18px] p-1" to={getLangUrl("/community")}>
@@ -151,7 +151,7 @@ const NavBar = () => {
               </Link>
             </div>
           ) : (
-            <div className="desktop:flex px-2 gap-[30px] hidden text-nowrap">
+            <div className="md:flex px-2 gap-[30px] hidden text-nowrap">
               <Link className="flex p-4 gap-[6px] text-[18px] leading-6" to={getLangUrl("/login")}>
                 {t("nav.login")}
               </Link>
@@ -166,8 +166,8 @@ const NavBar = () => {
         </div>
         {/* 드롭다운 메뉴 */}
 
-        <div className="relative desktop:hidden flex">
-          <div className="flex gap-[14px] p-1 desktop:hidden mr-5">
+        <div className="relative md:hidden flex">
+          <div className="flex gap-[14px] p-1 md:hidden mr-5">
             <Link
               className={`flex p-1 gap-[6px] items-center ${
                 i18n.language === "ko" ? "text-black" : "text-[#A5A5A5]"

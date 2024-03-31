@@ -99,7 +99,7 @@ const FAQs = () => {
   };
 
   return (
-    <div className="px-2 desktop:w-[750px] w-[375px] pb-16 mx-auto">
+    <div className="px-2 md:w-[750px] w-[375px] pb-16 mx-auto">
       {i18n.language === "en" ? <FAQsSEOEN /> : <FAQsSEOKO />}
 
       <h1 className="text-2xl font-bold pt-2 pb-2 mt-4 mb-6">FAQs</h1>

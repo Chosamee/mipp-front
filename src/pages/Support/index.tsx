@@ -43,8 +43,8 @@ const Support = () => {
 
   return (
     <>
-      <div className="w-[375px] desktop:w-[960px] mx-auto relative pt-24">
-        <div className="flex desktop:flex-row flex-col justify-center mx-auto gap-5">
+      <div className="w-[375px] md:w-[960px] mx-auto relative pt-24">
+        <div className="flex md:flex-row flex-col justify-center mx-auto gap-5">
           {["notice", "faq", "contact"].map((item) => (
             <div className="relative flex flex-col justify-center items-center">
               <button
@@ -63,11 +63,11 @@ const Support = () => {
                 className="h-[2px] w-48 z-10"
                 style={menu === item ? { backgroundColor: "#F56226" } : {}}
               />
-              <div className="absolute bottom-0 h-[2px] w-full desktop:hidden bg-neutral-300" />
+              <div className="absolute bottom-0 h-[2px] w-full md:hidden bg-neutral-300" />
             </div>
           ))}
         </div>
-        <div className="absolute h-[2px] w-full bg-neutral-200 bottom-0 hidden desktop:block"></div>
+        <div className="absolute h-[2px] w-full bg-neutral-200 bottom-0 hidden md:block"></div>
       </div>
       <div className="h-12" />
       <Routes>

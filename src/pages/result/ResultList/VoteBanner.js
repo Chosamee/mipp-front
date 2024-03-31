@@ -14,23 +14,23 @@ const VoteBanner = ({ vote }) => {
 
   return (
     <div className="w-full py-[50px] font-['Pretendard-Regular'] leading-[normal] bg-[#001271]">
-      <div className="flex flex-col desktop:flex-row w-[326px] desktop:w-fit justify-center mx-auto px-2">
+      <div className="flex flex-col md:flex-row w-[326px] md:w-fit justify-center mx-auto px-2">
         <div className="flex flex-col" style={{ fontFeatureSettings: "'ss10' on" }}>
           <p className="text-[#E2E2E3] text-base leading-[27px] font-semibold mb-[20px] text-nowrap">
             {i18n.language === "en" ? (
               <>
-                How was your experience with the test? <br className="desktop:hidden" />
+                How was your experience with the test? <br className="md:hidden" />
                 We'd love to hear your feedback!
                 <br />
-                Your responses to this survey <br className="desktop:hidden" />
+                Your responses to this survey <br className="md:hidden" />
                 will help us continually improve our service.
               </>
             ) : (
               <>
-                검사 결과는 어떠셨나요? <br className="desktop:hidden" />
+                검사 결과는 어떠셨나요? <br className="md:hidden" />
                 사용 후기에 대한 의견을 알려주세요!
                 <br />
-                설문조사 내용를 통해 <br className="desktop:hidden" />
+                설문조사 내용를 통해 <br className="md:hidden" />
                 서비스를 지속적으로 개선합니다.
               </>
             )}
@@ -46,7 +46,7 @@ const VoteBanner = ({ vote }) => {
             <RightArrowIcon />
           </button>
         </div>
-        <div className="mt-5 desktop:mt-0 desktop:ml-[41px]">
+        <div className="mt-5 md:mt-0 md:ml-[41px]">
           <VoteIcon />
         </div>
       </div>

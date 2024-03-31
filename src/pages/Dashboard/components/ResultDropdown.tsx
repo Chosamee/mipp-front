@@ -23,7 +23,7 @@ const ResultDropdown = ({ songs_results }: ResultsProps) => {
     <div className="flex flex-col items-center">
       <div className="relative mb-8">
         <button
-          className="flex bg-slate-300 desktop:w-[700px] py-2 px-4 rounded-md items-center justify-center"
+          className="flex bg-slate-300 md:w-[700px] py-2 px-4 rounded-md items-center justify-center"
           onClick={() => setIsOpen(!isOpen)}>
           <span className="p-2 truncate">
             {selectedItem ? selectedItem.music_title : "Select a title"}
@@ -31,7 +31,7 @@ const ResultDropdown = ({ songs_results }: ResultsProps) => {
           <span className="p-2">{isOpen ? "▲" : "▼"}</span>
         </button>
         {isOpen && (
-          <div className="flex flex-col gap-2 absolute desktop:w-[700px]  z-50 bg-slate-100 p-2 rounded-md ">
+          <div className="flex flex-col gap-2 absolute md:w-[700px]  z-50 bg-slate-100 p-2 rounded-md ">
             {songs_results?.result_list?.map((item) => (
               <button key={item.music_title} onClick={() => handleItemClick(item)} className="p-1">
                 {item.music_title}
