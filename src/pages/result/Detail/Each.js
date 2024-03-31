@@ -52,10 +52,12 @@ const Each = ({ file, handleCheckboxChange, index }) => {
           </div>
           <div className="hidden md:flex h-full items-center">
             {isLoading ? (
-              <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
+              <div className="flex w-20 items-center justify-center">
+                <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 flex-shrink-0" />
+              </div>
             ) : (
               <button
-                className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
+                className="flex w-20 h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
                 onClick={() => {
                   handlePreview();
                 }}>
@@ -77,7 +79,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
               handlePreview();
             }}>
             {isLoading ? (
-              <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-blue-500" />
+              <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
             ) : (
               <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
                 {i18n.language === "ko" ? "결과 보기" : "View Result"}
