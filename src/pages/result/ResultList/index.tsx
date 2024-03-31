@@ -35,7 +35,7 @@ const ResultList = () => {
     refetchOnMount: true,
     onSuccess: (data) => {
       // 데이터 불러오기 성공 시 필요한 작업 수행
-      console.log("Data fetched successfully:", data);
+      // console.log("Data fetched successfully:", data);
     },
     onError: (error) => {
       // 에러 핸들링

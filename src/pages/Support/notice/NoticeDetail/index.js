@@ -17,7 +17,6 @@ const NoticeDetail = () => {
       try {
         const response = await fetchNotice(id);
         setNotice(response);
-        console.log(response);
       } catch (error) {
         console.error(error);
       }

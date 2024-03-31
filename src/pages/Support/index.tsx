@@ -27,7 +27,6 @@ const Support = () => {
 
   useEffect(() => {
     const urlMenu = searchParams.get("menu");
-    console.log(urlMenu);
 
     if (!urlMenu && menu !== "notice") {
       setSearchParams({ menu: menu });

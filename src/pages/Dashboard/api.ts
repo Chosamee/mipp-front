@@ -23,7 +23,6 @@ export const updateProfileImage = async (image: File) => {
         },
       }
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error update profile image:", error);
@@ -34,7 +33,6 @@ const fetchDashboardData = async (lang: string): Promise<DashboardData> => {
   const response = await axios.post(`${API_BASE_URL}/dashboard?lang=${lang}`, null, {
     withCredentials: true,
   });
-  console.log(response.data);
   return response.data;
 };
 
@@ -56,7 +54,6 @@ export const updateProfile = async ({
     const response = await axios.put(`${API_BASE_URL}/profile`, formData, {
       withCredentials: true,
     });
-    console.log(response);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

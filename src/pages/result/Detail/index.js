@@ -21,8 +21,6 @@ const DetailPage = () => {
   const [downloadLoading, setDownloadLoading] = useState(false);
 
   useEffect(() => {
-    console.log(i18n.language);
-    console.log(prevLangRef.current);
     const fetchData = async () => {
       try {
         const response = await fetchDetail(id, i18n.language);

@@ -22,7 +22,6 @@ const MemberAsk = () => {
     const fetchData = async () => {
       try {
         const response = await fetchAsks();
-        console.log(response);
         setResultData(response ? response : []);
       } catch (error) {
         console.error("Error:", error);

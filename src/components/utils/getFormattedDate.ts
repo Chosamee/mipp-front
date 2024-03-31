@@ -1,5 +1,4 @@
 const getFormattedDate = (date: string, language: string): string => {
-  console.log("date: ", date);
   // Date 객체로 변환
   const datetoDate = new Date(date);
 
