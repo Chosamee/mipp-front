@@ -1,6 +1,13 @@
 const completeList = ["완료"];
 const waitingList = ["처리 대기 중"];
-const taskList = ["음원 분리 중", "구조 분석 중", "악보 분석 중", "음원 분석 중", "pdf 생성 중"];
+const taskList = [
+  "음원 분리 중",
+  "구조 분석 중",
+  "악보 분석 중",
+  "음원 분석 중",
+  "pdf 생성 중",
+  "음원 비교 중",
+];
 const errorList = [
   "해당 악기가 없습니다",
   "링크 혹은 파일에 문제가 있습니다",
@@ -26,7 +33,7 @@ export const getStatusFieldColor = (status: string) => {
 };
 
 export const getStatusText = (status: string) => {
-  if (!isNaN(Number(status))) return "음원 비교 중";
+  if (!isNaN(Number(status))) return "percent";
   if (errorList.includes(status)) return "오류";
   if (completeList.includes(status)) return "결과 보기";
   if (waitingList.includes(status)) return "처리 대기 중";
