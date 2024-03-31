@@ -47,17 +47,19 @@ const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => 
   return (
     <React.Fragment>
       {/* 비교 결과 목차 */}
-      <div className="flex w-full h-10 mt-4 items-center border-y-[1px] border-[#E5E8EB]">
-        <div className="flex px-0 md:px-5 items-center h-full font-medium w-[30px] md:w-fit justify-center">
+      <div className="flex w-full h-16 mt-4 items-center border-y-[1px] border-[#E5E8EB]">
+        <div className="flex items-center h-full font-medium w-[30px] justify-center">
           <input type="checkbox" checked={isAllChecked} onChange={handleSelectAll} />
         </div>
-        <div className="flex px-3 w-[184px] md:w-[520px] h-full items-center">
-          {t("detail.이름")}
+        <div className="flex flex-col md:flex-row gap-2 w-full">
+          <div className="flex px-3 w-full md:max-w-4xl h-full items-center flex-grow">
+            {t("detail.이름")}
+          </div>
+          <div className="flex px-3 w-full md:w-64 h-full items-center">{t("detail.표절률")}</div>
         </div>
-        <div className="flex px-3 w-[108px] md:w-[153px] h-full items-center">
-          {t("detail.표절률")}
+        <div className="hidden md:flex w-24 h-full items-center text-nowrap">
+          {t("detail.결과자료")}
         </div>
-        <div className="hidden md:flex pl-3 pr-5 h-full items-center">{t("detail.결과자료")}</div>
       </div>
       {/* 찐 결과 */}
       {checkedFiles.map((file, index) => (

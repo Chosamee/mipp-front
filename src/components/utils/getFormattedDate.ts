@@ -1,9 +1,10 @@
-const getFormattedDate = (date, language) => {
+const getFormattedDate = (date: string, language: string): string => {
+  console.log("date: ", date);
   // Date 객체로 변환
   const datetoDate = new Date(date);
 
   // 사용자의 지역 시간대에 맞춰 포맷팅
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",

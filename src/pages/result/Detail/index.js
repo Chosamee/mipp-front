@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchDetail } from "pages/result/resultService";
+import { fetchDetail } from "pages/result/api";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
@@ -93,11 +93,13 @@ const DetailPage = () => {
       {/* 노래 검사 유형 / 노래 제목 */}
       <div className="flex gap-[10px] items-center">
         <div
-          className="flex bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit
+          className="flex bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit flex-shrink-0
         text-[#171923] text-[14px] leading-[20px] font-semibold h-fit">
           {t(`detail.${musicData.inst}`)}
         </div>
-        <div className="text-[22px] md:text-[24px] leading-[28px] font-semibold">
+        <div
+          className="text-[22px] md:text-2xl leading-[28px] font-semibold truncate"
+          title={musicData.title}>
           {musicData.title}
         </div>
       </div>

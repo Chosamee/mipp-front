@@ -6,14 +6,14 @@ import { ProfileEditorResponse } from "./ProfileEditor";
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL as string;
 
 export const updateProfileImage = async (image: File) => {
-  interface result {
+  interface Iresult {
     data: { profile_link: string };
   }
   const formData = new FormData();
   formData.append("file", image);
 
   try {
-    const response: AxiosResponse<result> = await axios.post(
+    const response: AxiosResponse<Iresult> = await axios.post(
       `${API_BASE_URL}/add_profile_image`,
       formData,
       {

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import ResultContent from "./ResultContent";
-import { Result } from "../dashboardType";
+import { IResult } from "../dashboardType";
 
 interface ResultsProps {
   songs_results?: {
-    result_list: Result[];
+    result_list: IResult[];
   };
 }
 
 const ResultDropdown = ({ songs_results }: ResultsProps) => {
-  const [selectedItem, setSelectedItem] = useState<Result | null>(
+  const [selectedItem, setSelectedItem] = useState<IResult | null>(
     songs_results?.result_list[0] || null
   );
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleItemClick = (item: Result) => {
+  const handleItemClick = (item: IResult) => {
     setSelectedItem(item);
     setIsOpen(false);
   };

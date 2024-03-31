@@ -7,7 +7,7 @@ import ResultDropdown from "./components/ResultDropdown";
 import { useUserInfo } from "stateStore/useUserInfo";
 import { useDashboardDataQuery } from "./api";
 import DashboardNotice from "./components/DashboardNotice";
-import { Alert, Result } from "./dashboardType";
+import { Alert, IResult } from "./dashboardType";
 import { useTranslation } from "react-i18next";
 import LoadingSpinner from "components/views/LoadingSpinner";
 
@@ -19,7 +19,7 @@ export interface DashboardData {
     unseen_asks_count: number;
   };
   songs_result?: {
-    result_list: Result[];
+    result_list: IResult[];
   };
   alerts?: Alert[];
 }

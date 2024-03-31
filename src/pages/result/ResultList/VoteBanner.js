@@ -2,7 +2,7 @@ import bling from "assets/result/bling.svg";
 import paper from "assets/result/paper.png";
 import { useTranslation } from "react-i18next";
 
-const VoteBanner = ({ vote }) => {
+const VoteBanner = () => {
   const { i18n } = useTranslation();
   const handleVoteClicked = () => {
     const voteUrl =

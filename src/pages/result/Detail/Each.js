@@ -1,11 +1,11 @@
 import { downloadPDF } from "api/pdfService";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const Each = ({ file, handleCheckboxChange, index }) => {
   const [fileUrl, setFileUrl] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handlePreview = async () => {
     if (isLoading) return;
@@ -23,68 +23,69 @@ const Each = ({ file, handleCheckboxChange, index }) => {
     }
     setIsLoading(false);
   };
+
   return (
     <li
-      className={`flex w-full min-h-[88px] h-fit md:h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium ${
+      className={`flex w-[335px] h-24 md:h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium md:w-full ${
         file.checked ? "bg-[#ECF2F8]" : ""
       }`}>
-      <div className="flex px-0 md:px-5 items-center h-full font-medium w-[30px] md:w-fit justify-center">
+      <div className="flex px-0 items-center h-full font-medium w-[30px] justify-center ">
         <input
           type="checkbox"
           checked={file.checked}
           onChange={() => handleCheckboxChange(index)}
-          className="checked:bg-blue-600"
+          className="checked:bg-blue-600 "
         />
       </div>
-      <div className="flex px-3 py-6 md:py-0 w-[184px] md:w-[520px] h-full items-center text-[#171923]">
-        {file.title}
-      </div>
-      <div className="flex px-3 w-[108px] md:w-[153px] h-full items-center text-[#171923] gap-[6px]">
-        <div
-          className="w-4 h-4 rounded-[90px]"
-          style={{ backgroundColor: getColorScore(file.plagiarism_rate) }}
-        />
-        <div>{file.plagiarism_rate} %</div>
-      </div>
-      <div className="hidden md:flex pl-3 pr-5 h-full items-center">
-        {isLoading ? (
-          <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
-        ) : (
+      <div className="flex flex-col md:flex-row gap-2 flex-grow">
+        <div className="flex md:py-0 w-[305px] min-w-0 md:max-w-5xl mr-auto items-center text-[#171923] px-2">
+          <div className="truncate">{file.title}</div>
+        </div>
+
+        <div className="flex flex-row items-center justify-between gap-3 px-2">
+          <div className="flex w-[108px] md:w-40 h-full items-center text-[#171923] gap-[6px]">
+            <div
+              className="w-4 h-4 rounded-[90px]"
+              style={{ backgroundColor: getColorScore(file.plagiarism_rate) }}
+            />
+            <div>{file.plagiarism_rate} %</div>
+          </div>
+          <div className="hidden md:flex h-full items-center">
+            {isLoading ? (
+              <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
+            ) : (
+              <button
+                className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
+                onClick={() => {
+                  handlePreview();
+                }}>
+                <div className="text-[#31353B] text-[12px] text-nowrap">{t("detail.확인하기")}</div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="6"
+                  height="10"
+                  viewBox="0 0 6 10"
+                  fill="none">
+                  <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
+                </svg>
+              </button>
+            )}
+          </div>
           <button
-            className="flex h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
+            className="md:hidden relative right-0"
             onClick={() => {
               handlePreview();
             }}>
-            <div className="text-[#31353B] text-[12px] text-nowrap">{t("detail.확인하기")}</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="6"
-              height="10"
-              viewBox="0 0 6 10"
-              fill="none">
-              <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
-            </svg>
+            {isLoading ? (
+              <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-blue-500" />
+            ) : (
+              <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
+                {i18n.language === "ko" ? "결과 보기" : "View Result"}
+              </div>
+            )}
           </button>
-        )}
+        </div>
       </div>
-      <button
-        className="md:hidden relative right-0"
-        onClick={() => {
-          handlePreview();
-        }}>
-        {isLoading ? (
-          <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-blue-500" />
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="6"
-            height="10"
-            viewBox="0 0 6 10"
-            fill="none">
-            <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
-          </svg>
-        )}
-      </button>
     </li>
   );
 };

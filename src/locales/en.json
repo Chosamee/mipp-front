@@ -20,7 +20,7 @@
     "melody": "Inst.",
     "선택파일": "Selected Files",
     "파일 다운로드": "Download Files",
-    "이름": "Title",
+    "이름": "Music Title",
     "표절률": "Plagiarism Rate",
     "확인하기": "Check",
     "결과자료": "Result PDF",
@@ -206,7 +206,7 @@
   "result": {
     "my": "My Results",
     "음원 분석 중": "Music Analyzing",
-    "음원 비교 중": "Music Comparing",
+    "음원 비교 중": "Comparing",
     "해당 악기를 발견하지 못함": "Instrument Not Found",
     "오류가 발생했습니다": "Error Occured",
     "pdf 생성 중": "PDF processing",
@@ -218,9 +218,13 @@
     "링크 혹은 파일에 문제가 있습니다": " Link or file error",
     "해당 악기가 없습니다": "Given instrument track not found",
     "표절곡이 없거나 파일 생성에 문제가 있습니다": "No plagiarism or file generation error",
-    "percent": "Music Comparing",
+    "percent": "Comparing",
     "처리 대기 중": "In Queue",
-    "업로드 중": "Uploading"
+    "업로드 중": "Uploading",
+
+    "오류": "Error",
+    "진행중": "Processing",
+    "결과 보기": "View Results →"
   },
   "login": {
     "requiredLogin": "Sign in with Google"

@@ -1,8 +1,8 @@
 import React from "react";
-import { Result } from "../dashboardType";
+import { IResult } from "../dashboardType";
 
 interface ResultProp {
-  result: Result;
+  result: IResult;
 }
 // truncate css {
 //   width: 100%; /* 부모 컨테이너의 너비에 따라 조절될 수 있도록 설정 */

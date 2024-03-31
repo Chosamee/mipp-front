@@ -4,7 +4,7 @@ export interface Alert {
   status: string;
 }
 
-export interface Result {
+export interface IResult {
   music_title: string;
   results_rates: number[];
   results_title: string[];

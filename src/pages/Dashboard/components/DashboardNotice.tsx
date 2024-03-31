@@ -11,7 +11,7 @@ interface DashboardNoticeProps {
 }
 
 const DashboardNotice = ({ alerts, total_plagiarism_checks }: DashboardNoticeProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="flex flex-col bg-slate-100 p-10 gap-10">
       <div className="flex flex-col gap-5 ">
@@ -20,7 +20,9 @@ const DashboardNotice = ({ alerts, total_plagiarism_checks }: DashboardNoticePro
             <div className="bg-blue-200 text-blue-600 rounded-md w-16 text-center">
               {item.status}
             </div>
-            <div className="text-sm w-20 text-center">{getFormattedDate(item.date)}</div>
+            <div className="text-sm w-20 text-center">
+              {getFormattedDate(item.date, i18n.language)}
+            </div>
             <div className="h-full w-px bg-black" />
             <div className="text-sm truncate">{item.content}</div>
           </div>
