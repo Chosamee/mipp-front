@@ -31,6 +31,8 @@ const ResultItem = ({
   const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, status: string) => {
     if (status !== "완료") {
       event.preventDefault(); // 상태가 "완료"가 아니면 기본 이벤트 방지
+    }
+    if (isNaN(Number(status))) {
       alert(t(`result.${status}`));
     }
   };
