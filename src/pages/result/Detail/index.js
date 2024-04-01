@@ -83,7 +83,7 @@ const DetailPage = () => {
   return (
     <div className="mx-auto pt-[50px] pb-[70px] md:pt-[150px] md:pb-[120px] w-[375px] md:w-[854px] px-5 leading-[normal] text-[#171923]">
       {/* 전체 검사결과 뒤로가기 */}
-      <div className="hidden md:flex items-center gap-[10px] mb-[50px]">
+      <div className="flex items-center gap-[10px] mb-[50px]">
         <BackArrowIcon />
         <div className="text-[15px] font-medium">{t("detail.전체 검사결과")}</div>
       </div>

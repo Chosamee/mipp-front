@@ -142,28 +142,24 @@ const ResultList = () => {
         </div>
 
         {/* 선택 버튼 */}
-        <div className="flex w-[326px] md:w-[920px] h-14 items-center md:gap-6 gap-4">
-          <div className="py-1 gap-[10px] flex">
-            <button>
+        <div className="flex w-full md:w-[920px] h-14 items-center md:gap-6 px-2 gap-4">
+          <div className="gap-2 flex">
+            <button className="py-1 flex-shrink-0">
               <img src={down_vector} alt="Vector" />
             </button>
 
             {i18n.language === "en" ? (
-              <div className="text-[14px] text-center font-medium leading-[20px] text-[#171923]">
-                Latest
-              </div>
+              <div className="text-sm text-center font-medium text-[#171923]">Latest</div>
             ) : (
-              <div className="text-[14px] text-center font-medium leading-[20px] text-[#171923]">
-                최신순
-              </div>
+              <div className="text-sm text-center font-medium text-[#171923]">최신순</div>
             )}
           </div>
-          <div className="h-[13px] w-px bg-[#E5E8EB] flex-shrink-0" />
-          <div className="flex">
+          <div className="h-4 w-px bg-[#E5E8EB] flex-shrink-0" />
+          <div className="flex justify-between flex-grow">
             {["all", "vocal", "melody", "boundary"].map((item, index) => {
               return (
                 <button
-                  className={`h-7 text-sm leading-5 font-semibold  md:px-3 px-2.5 py-1 items-center justify-center ${
+                  className={`h-7 text-sm font-semibold  md:px-3 px-2.5 py-1 items-center justify-center ${
                     inst === item
                       ? "rounded-[9999px] text-[#171923] bg-[#E2E8F0]"
                       : "text-[#999DA1]"

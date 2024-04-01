@@ -38,7 +38,7 @@ const ResultItem = ({
   };
 
   return (
-    <div className="flex flex-row hover:bg-[#ECF2F8] mx-auto w-full px-5">
+    <div className="flex flex-row hover:bg-[#ECF2F8] mx-auto w-full md:px-5 px-2">
       <div
         key={musicId}
         className="flex md:flex-row md:h-[60px] h-20 flex-col w-full items-center justify-center
@@ -53,14 +53,16 @@ const ResultItem = ({
           <div className="truncate">
             {title === "처리 대기 중" || title === "업로드 중" ? t(`result.${title}`) : title}
           </div>
-          <div className="flex w-20 flex-shrink-0 md:hidden justify-end">{t(`home.${inst}`)}</div>
+          <div className="flex w-20 flex-shrink-0 md:hidden justify-end items-center font-semibold">
+            {t(`home.${inst}`)}
+          </div>
         </Link>
-        <div className="flex md:flex-row md:h-full h-1/2 items-center md:gap-6 self-start">
+        <div className="flex md:flex-row md:h-full h-1/2 items-center md:gap-6 self-start w-full justify-between">
           <Link
             to={getLangUrl("/detail/" + musicId)}
             aria-disabled={status !== "완료"}
             onClick={(e) => handleLinkClick(e, status)}
-            className={`flex flex-row gap-6 h-full items-center ${
+            className={`flex flex-row gap-8 h-full items-center ${
               status !== "완료" ? "cursor-default" : ""
             }`}>
             <div className="w-20 flex-shrink-0 hidden md:block">{t(`home.${inst}`)}</div>
