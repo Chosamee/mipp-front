@@ -200,7 +200,8 @@ const NavBar = () => {
         <div
           className={`absolute top-[106px] bg-white w-full text-[16px] font-medium pb-[40px] flex flex-col gap-6 z-30 ${
             isMenuOpen ? "block" : "hidden"
-          }`}>
+          }`}
+          style={{ overflowY: "auto", maxHeight: "calc(100vh - 106px)" }}>
           <div className="mt-[21px] flex flex-col justify-center gap-[30px]">
             <Link to={getLangUrl("/home")} className="text-left mx-6">
               {t("startChecking")}
