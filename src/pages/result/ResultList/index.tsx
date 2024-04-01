@@ -14,6 +14,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getStatusFieldColor, getStatusText, getStatusTextColor } from "./utils";
 import ResultItem from "./ResultItem";
 import { IResultItem } from "../types";
+import ResultNotice from "./ResultNotice";
 
 const ResultList = () => {
   const itemsPerPage = 10;
@@ -124,7 +125,7 @@ const ResultList = () => {
   return (
     <>
       <div className="mx-auto px-5 w-[375px] md:w-full max-w-5xl py-[150px] font-['Pretendard-Regular']">
-        <Notify />
+        <ResultNotice />
         {/* Title 및 검색 하십시오.. */}
         <div className="gap-[26px] flex md:flex-row flex-col md:items-center mb-9 md:h-10">
           <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
@@ -142,7 +143,7 @@ const ResultList = () => {
         </div>
 
         {/* 선택 버튼 */}
-        <div className="flex w-full md:w-[920px] h-14 items-center md:gap-6 px-2 gap-4">
+        <div className="flex w-full md:w-full md:h-14 h-20 md:items-center md:gap-6 px-2 md:flex-row flex-col items-start justify-between md:justify-start">
           <div className="gap-2 flex">
             <button className="py-1 flex-shrink-0">
               <img src={down_vector} alt="Vector" />
@@ -154,24 +155,30 @@ const ResultList = () => {
               <div className="text-sm text-center font-medium text-[#171923]">최신순</div>
             )}
           </div>
-          <div className="h-4 w-px bg-[#E5E8EB] flex-shrink-0" />
-          <div className="flex justify-between flex-grow">
+          {/* <div className="h-4 w-px bg-[#E5E8EB] flex-shrink-0" /> */}
+
+          <div className="flex justify-between w-full items-center md:w-fit">
             {["all", "vocal", "melody", "boundary"].map((item, index) => {
               return (
-                <button
-                  className={`h-7 text-sm font-semibold  md:px-3 px-2.5 py-1 items-center justify-center ${
-                    inst === item
-                      ? "rounded-[9999px] text-[#171923] bg-[#E2E8F0]"
-                      : "text-[#999DA1]"
-                  }`}
-                  onClick={() => {
-                    setInst(item);
-                  }}>
-                  {t(`home.${item}`)}
-                </button>
+                <>
+                  <div className="flex flex-col w-fit">
+                    <button
+                      className={`h-7 text-sm font-semibold md:px-3 px-3 py-1 items-center justify-center ${
+                        inst === item ? "rounded-[9999px] text-blue-700 " : "text-[#999DA1]"
+                      }`}
+                      onClick={() => {
+                        setInst(item);
+                      }}>
+                      {t(`home.${item}`)}
+                    </button>
+                    <div className={`w-full h-0.5  ${inst === item ? "bg-blue-700" : ""}`}></div>
+                  </div>
+                  {index !== 3 && <div className="h-4 w-px bg-[#E5E8EB] flex-shrink-0 md:hidden" />}
+                </>
               );
             })}
           </div>
+          <div className="h-px w-full bg-[#E5E8EB] flex-shrink-0 md:hidden" />
         </div>
 
         {/* 이름/ 타입/ 업로드 날짜/ 진행상황/ 삭제 
@@ -227,42 +234,6 @@ const ResultList = () => {
       </div>
       <VoteBanner />
     </>
-  );
-};
-
-const Notify = () => {
-  const { i18n } = useTranslation();
-  return (
-    <div className="bg-[#F7F8FB] px-10 py-6 flex mb-[88px] rounded-[10px] justify-center">
-      <div className="flex rounded-full bg-[#3553F3] w-[18px] h-[18px] text-white text-xs leading-5 justify-center mr-4 mt-[2px] flex-shrink-0">
-        !
-      </div>
-      <div className="text-sm leading-6 text-[#4D535B]">
-        {i18n.language === "en" ? (
-          <>
-            Welcome to beta test version of MIPP! The Checking will take about 10 minutes, but it
-            may take longer <br />
-            if there are many applicants. If errors persist, please apply through a{" "}
-            <Link to={getLangUrl("/support?menu=contact")} className="underline text-blue-600">
-              Contact
-            </Link>
-            . <br />
-            You can only request up to 10 songs within 24 hours per account.
-          </>
-        ) : (
-          <>
-            MIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! 검사는 10분 내외, 혹은
-            신청자가 많다면 더 오래 걸릴 수도 있습니다.
-            <br />
-            오류가 지속적으로 생긴다면,{" "}
-            <Link to={getLangUrl("/support?menu=contact")} className="underline text-blue-600">
-              1대1 문의하기
-            </Link>
-            를 통해 신청해주세요. 한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.
-          </>
-        )}
-      </div>
-    </div>
   );
 };
 
