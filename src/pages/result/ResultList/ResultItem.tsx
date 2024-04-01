@@ -57,7 +57,7 @@ const ResultItem = ({
             {t(`home.${inst}`)}
           </div>
         </Link>
-        <div className="flex md:flex-row md:h-full h-1/2 items-center md:gap-6 self-start w-full justify-between">
+        <div className="flex md:flex-row md:h-full h-1/2 items-center md:gap-8 self-start justify-between">
           <Link
             to={getLangUrl("/detail/" + musicId)}
             aria-disabled={status !== "완료"}

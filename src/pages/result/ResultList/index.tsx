@@ -185,19 +185,19 @@ const ResultList = () => {
           600   100   120   100
       */}
         {i18n.language === "en" ? (
-          <div className="hidden md:flex w-full px-5 h-10 gap-6 items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+          <div className="hidden md:flex w-full px-5 h-10 gap-8 items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
             <div className="flex-grow">Name</div>
             <div className="w-20">Type</div>
             <div className="w-24">Upload Date</div>
-            <div className="w-32">Progress</div>
+            <div className="w-32 pl-2">Progress</div>
             <div className="w-11 text-center">Delete</div>
           </div>
         ) : (
-          <div className="hidden md:flex w-full px-5 h-10 gap-6 items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
+          <div className="hidden md:flex w-full px-5 h-10 gap-8 items-center text-[#828487] text-sm font-medium border-y-[1px] border-[#E5E8EB]">
             <div className="flex-grow">이름</div>
             <div className="w-20">타입</div>
             <div className="w-24">업로드 날짜</div>
-            <div className="w-32">진행상황</div>
+            <div className="w-32 pl-2">진행상황</div>
             <div className="w-11 text-center">삭제</div>
           </div>
         )}
