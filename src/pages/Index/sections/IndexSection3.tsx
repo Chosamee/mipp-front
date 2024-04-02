@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import realArrow from "assets/index/section3/Group 300.svg";

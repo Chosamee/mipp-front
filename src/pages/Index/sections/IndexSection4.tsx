@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import lockSvg from "assets/index/Group 294.svg";
 import { getLangUrl } from "locales/utils";
@@ -9,7 +10,7 @@ const IndexSection4 = () => {
   return (
     <div className="md:py-[120px] py-[70px] px-[23px] flex md:px-2 flex-col items-center bg-[#19275F] w-full md:min-w-[1536px] mx-auto">
       <img src={lockSvg} alt="Lock" className="mb-[22px]" />
-      <h2 className="text-white md:text-[50px] text-[24px] font-semibold md:leading-[70px] text-center mb-[20px]">
+      <h2 className="text-white md:text-5xl text-[24px] font-semibold text-center mb-[20px]">
         {t("index.4.title")}
       </h2>
       <div className="text-white text-[22px] leading-[36px] text-center mb-[54px] md:block hidden">

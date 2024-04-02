@@ -1,4 +1,14 @@
 declare module "*.svg" {
-  const content: string;
-  export default content;
+  const value: string;
+  export = value;
+}
+
+declare module "*.png" {
+  const value: string;
+  export = value;
+}
+
+declare module "*.webp" {
+  const value: string;
+  export = value;
 }

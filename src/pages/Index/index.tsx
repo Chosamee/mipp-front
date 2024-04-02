@@ -1,3 +1,4 @@
+import React from "react";
 import IndexSEOKO from "seo/IndexSEO.ko";
 import IndexSEOEN from "seo/IndexSEO.en";
 import { useTranslation } from "react-i18next";
@@ -9,7 +10,7 @@ import IndexSection4 from "./sections/IndexSection4";
 
 const Index = () => {
   const { i18n } = useTranslation();
-  const seoFiles = {
+  const seoFiles: { [key: string]: JSX.Element } = {
     en: <IndexSEOEN />,
     ko: <IndexSEOKO />,
   };

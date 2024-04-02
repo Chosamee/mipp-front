@@ -3,7 +3,7 @@ import arrow from "assets/index/section2/Polygon 14.svg";
 
 const IncomeImg = () => {
   return (
-    <div className="md:w-[529px] md:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px]  bg-white">
+    <div className="flex-shrink-0 md:w-[529px] md:h-[413px] w-[326px] h-[270px] relative shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] rounded-[22px]  bg-white">
       <div className="md:top-[52px] md:left-[34px] top-[35px] left-[25px] absolute">
         <img src={circle3} alt="Circle 3" className="md:w-[28px] w-[22px]"></img>
         <div className="text-white md:text-[20px] text-[14px] font-medium absolute top-[2px] md:left-[8px] left-[7px]">

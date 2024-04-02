@@ -4,7 +4,7 @@ import right_elipse from "assets/index/section2/cont1/Ellipse 34.svg";
 
 const TestReportImg = () => {
   return (
-    <div className="md:w-[529px] md:h-[413px] w-[326px] h-[270px] relative rounded-[22px] shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] bg-white">
+    <div className="flex-shrink-0 md:w-[529px] md:h-[413px] w-[326px] h-[270px] relative rounded-[22px] shadow-[10px_10px_20px_0px_rgba(0,0,0,0.05)] bg-white">
       <div
         className="absolute md:text-[22px] text-[17px] md:left-[37px] md:top-[53px]
           left-[23px] top-[25px] font-medium leading-[22px] md:leading-[normal] ">

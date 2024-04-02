@@ -1,3 +1,4 @@
+import React from "react";
 import useWindowWidth from "components/utils/useWindowWidth";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -24,7 +25,7 @@ const IndexBanner = () => {
   }, [mainImage]); // 이미지가 바뀔 때마다 `preload` 링크 업데이트
 
   return (
-    <div className="flex md:px-[34px] px-0 md:max-w-[1852px] max-w-[100%] w-full min-w-fit mx-auto">
+    <div className="flex px-0 md:px-8 md:max-w-full w-full mx-auto">
       {/* Background Image Start */}
       <div
         className="relative flex flex-col mx-auto px-8 w-full md:h-[620px] h-[340px] py-[100px] gap-[10px]
