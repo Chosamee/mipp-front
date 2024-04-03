@@ -33,7 +33,7 @@ const IndexSection2 = () => {
           {/* Content 3 Start */}
           <div className="flex lg:flex-row flex-col md:items-center w-fit md:w-full md:justify-between gap-12 md:gap-10">
             <IncomeImg />
-            <ContentText num={1} />
+            <ContentText num={3} />
           </div>
           {/* Content 3 End */}
         </div>
@@ -49,11 +49,8 @@ const ContentText = ({ num }: { num: number }) => {
       <div className="md:text-[34px] text-[22px] font-semibold leading-[32px] text-[#2E2E2E] py-[10px]">
         {t(`index.1.subtitle${num}`)}
       </div>
-      <div className="md:block hidden text-[22px] leading-[35px] text-[#7A7A7A] py-[10px] font-medium break-keep text-pretty">
+      <div className="md:text-[22px] md:leading-[35px] text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium break-keep text-balance md:text-pretty">
         {t(`index.1.content${num}`)}
-      </div>
-      <div className="md:hidden text-[15px] leading-[25px] text-[#7A7A7A] py-[10px] font-medium break-keep">
-        {t(`index.1.content${num}mobile`)}
       </div>
     </div>
   );

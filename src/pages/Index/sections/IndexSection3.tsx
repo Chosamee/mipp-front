@@ -36,11 +36,8 @@ const IndexSection3 = () => {
               <div className="text-[#343434] md:text-[34px] text-[20px] font-semibold leading-[32px]">
                 {t("index.3.title2")}
               </div>
-              <div className="md:block hidden text-[#777A80] text-[22px] font-medium leading-[36px]">
+              <div className=" text-[#777A80] font-medium md:text-[22px] md:leading-[36px] text-[15px] leading-[25px] break-keep">
                 {t("index.3.content2")}
-              </div>
-              <div className="md:hidden text-[#777A80] text-[15px] font-medium leading-[25px]">
-                {t("index.3.content2mobile")}
               </div>
             </div>
           </div>
@@ -55,11 +52,8 @@ const IndexSection3 = () => {
               <div className="text-[#343434] md:text-[34px] text-[20px] font-semibold leading-[32px]">
                 {t("index.3.title3")}
               </div>
-              <div className="md:block hidden text-[#777A80] md:text-[22px] font-medium leading-[36px]">
+              <div className="text-[#777A80] font-medium md:text-[22px] md:leading-[36px] text-[15px] leading-[25px] break-keep">
                 {t("index.3.content3")}
-              </div>
-              <div className="md:hidden text-[#777A80] text-[15px] font-medium leading-[25px]">
-                {t("index.3.content3mobile")}
               </div>
             </div>
           </div>
