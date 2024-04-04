@@ -27,32 +27,55 @@ import store from "stateStore/store";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import LoginCallbackPage from "components/auth/LoginCallbackPage";
+import { SearchParamsProvider } from "components/SearchParamsContext";
 
 // 페이지: 애플리케이션의 각 페이지
-import Home from "pages/Home";
-import Index from "pages/Index";
-import Login from "pages/Login";
-import ResultList from "pages/result/ResultList";
-import Howtouse from "pages/Howtouse";
-import Ask from "pages/Support/Ask";
-import AskCreate from "pages/Support/Ask/AskCreate";
-import AskDetail from "pages/Support/Ask/AskDetail";
-import RegistrationForm from "pages/Regist";
-import MyPage from "backup/MyPage";
-import Intro from "pages/Intro";
-import Detail from "pages/result/Detail";
-import FAQs from "pages/Support/FAQs";
-import TermsPage from "pages/docs/Terms";
-import PolicyPage from "pages/docs/Policy";
-import NoticeLists from "pages/Support/notice/NoticeList";
-import NoticeDetail from "pages/Support/notice/NoticeDetail";
-import CommunityList from "pages/community/CommunityList";
-import CommunityDetail from "pages/community/CommunityDetail";
-import CommunityEditor from "pages/community/CommunityEditor";
-import Support from "pages/Support";
-import { SearchParamsProvider } from "components/SearchParamsContext";
-import Dashboard from "pages/Dashboard";
-import ProfileEditor from "pages/Dashboard/ProfileEditor";
+// import Home from "pages/Home";
+// import Login from "pages/Login";
+// import ResultList from "pages/result/ResultList";
+// import Index from "pages/Index";
+// import Intro from "pages/Intro";
+// import Howtouse from "pages/Howtouse";
+// import Ask from "pages/Support/Ask";
+// import AskCreate from "pages/Support/Ask/AskCreate";
+// import AskDetail from "pages/Support/Ask/AskDetail";
+// import RegistrationForm from "pages/Regist";
+// import MyPage from "backup/MyPage";
+// import Detail from "pages/result/Detail";
+// import FAQs from "pages/Support/FAQs";
+// import TermsPage from "pages/docs/Terms";
+// import PolicyPage from "pages/docs/Policy";
+// import NoticeLists from "pages/Support/notice/NoticeList";
+// import NoticeDetail from "pages/Support/notice/NoticeDetail";
+// import CommunityList from "pages/community/CommunityList";
+// import CommunityDetail from "pages/community/CommunityDetail";
+// import CommunityEditor from "pages/community/CommunityEditor";
+// import Support from "pages/Support";
+// import Dashboard from "pages/Dashboard";
+// import ProfileEditor from "pages/Dashboard/ProfileEditor";
+
+const Home = React.lazy(() => import("pages/Home"));
+const Login = React.lazy(() => import("pages/Login"));
+const ResultList = React.lazy(() => import("pages/result/ResultList"));
+const Index = React.lazy(() => import("pages/Index"));
+const Intro = React.lazy(() => import("pages/Intro"));
+const Howtouse = React.lazy(() => import("pages/Howtouse"));
+const Ask = React.lazy(() => import("pages/Support/Ask"));
+const AskCreate = React.lazy(() => import("pages/Support/Ask/AskCreate"));
+const AskDetail = React.lazy(() => import("pages/Support/Ask/AskDetail"));
+const RegistrationForm = React.lazy(() => import("pages/Regist"));
+const Detail = React.lazy(() => import("pages/result/Detail"));
+const FAQs = React.lazy(() => import("pages/Support/FAQs"));
+const TermsPage = React.lazy(() => import("pages/docs/Terms"));
+const PolicyPage = React.lazy(() => import("pages/docs/Policy"));
+const NoticeLists = React.lazy(() => import("pages/Support/notice/NoticeList"));
+const NoticeDetail = React.lazy(() => import("pages/Support/notice/NoticeDetail"));
+const CommunityList = React.lazy(() => import("pages/community/CommunityList"));
+const CommunityDetail = React.lazy(() => import("pages/community/CommunityDetail"));
+const CommunityEditor = React.lazy(() => import("pages/community/CommunityEditor"));
+const Support = React.lazy(() => import("pages/Support"));
+const Dashboard = React.lazy(() => import("pages/Dashboard"));
+const ProfileEditor = React.lazy(() => import("pages/Dashboard/ProfileEditor"));
 
 const App = () => {
   const [showFallback, setShowFallback] = useState(false);
@@ -64,7 +87,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (e) => {
+    const handleBeforeInstallPrompt = (e: any) => {
       e.preventDefault();
       console.log("설치 프롬프트가 표시되지 않습니다.");
       // 여기에 필요한 로직 추가
@@ -91,7 +114,7 @@ const App = () => {
                   <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
                 ) : null
               }>
-              <div className="flex-grow md:mt-[125px] mt-[106px] ">
+              <div className="flex-grow md:mt-[91px] mt-[92px] ">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   {/* <Route path="/" element={<Index />} /> */}
@@ -108,7 +131,7 @@ const App = () => {
                       path="regist"
                       element={<ProtectedRoute component={RegistrationForm} />}
                     />
-                    <Route path="mypage" element={<ProtectedRoute component={MyPage} />} />
+                    {/* <Route path="mypage" element={<ProtectedRoute component={MyPage} />} /> */}
                     <Route path="result" element={<ProtectedRoute component={ResultList} />} />
                     <Route path="home" element={<ProtectedRoute component={Home} />} />
                     {/* <Route path="regist" element={<RegistrationForm />} />
@@ -196,7 +219,7 @@ const LanguageRedirector = () => {
   useEffect(() => {
     const browserLang = navigator.language.split("-")[0];
     const defaultLang = supportedLanguages.includes(browserLang) ? browserLang : "en";
-    const targetLang = supportedLanguages.includes(lang) ? lang : defaultLang;
+    const targetLang = lang && supportedLanguages.includes(lang) ? lang : defaultLang;
 
     // URL에 설정된 언어가 i18n의 현재 언어와 다른 경우에만 언어 변경을 시도
     if (i18n.language !== targetLang) {

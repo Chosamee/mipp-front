@@ -25,7 +25,7 @@ const NavBar = () => {
   };
 
   // 언어 변경
-  const changeLanguage = (language) => {
+  const changeLanguage = (language: string) => {
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const pathParts = location.pathname.split("/");
     pathParts[1] = language; // URL의 언어 부분을 변경
@@ -61,32 +61,32 @@ const NavBar = () => {
 
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
-    <nav
-      className=" text-black fixed top-0 left-0 right-0 z-30 bg-white
-        tracking-[0.0096em] leading-[normal] 
-      ">
-      <div className="flex items-center justify-between py-5 w-full">
+    <nav className=" text-black fixed top-0 left-0 right-0 z-30 bg-white">
+      <div className="flex items-center justify-between py-3 w-full">
         {/* GNB 메인*/}
-        <div className="flex font-bold gap-[60px] py-3 pl-6 pr-5">
-          <Link to={getLangUrl("/")} className="self-center text-[36px] font-bold">
+        <div className="flex font-bold gap-[60px] pl-6 pr-5">
+          <Link
+            to={getLangUrl("/")}
+            className="self-center text-[36px] font-bold"
+            onMouseOver={() => import("pages/Index")}>
             MIPP
           </Link>
           <div className="py-3 pr-6 text-[18px] gap-[40px] hidden md:flex">
-            <div className="flex gap-[26px] px-2 items-center text-nowrap">
+            <div className="flex gap-[26px] items-center text-nowrap">
               <Link
-                className="flex p-1 gap-[6px] items-center"
+                className="p-1"
                 to={getLangUrl("/intro")}
                 onMouseOver={() => import("pages/Intro")}>
                 {t("nav.intro")}
               </Link>
               <Link
-                className="flex p-1 gap-[6px] items-center"
+                className="p-1"
                 to={getLangUrl("/howtouse")}
                 onMouseOver={() => import("pages/Howtouse")}>
                 {t("nav.howToUse")}
               </Link>
               <Link
-                className="flex p-1 gap-[6px] items-center"
+                className="p-1"
                 to={getLangUrl("/support")}
                 onMouseOver={() => import("pages/Support/notice/NoticeList")}>
                 {t("nav.support")}
@@ -120,7 +120,7 @@ const NavBar = () => {
         </div>
 
         {/* 우측 subMenu */}
-        <div className="font-bold py-3 pr-6 gap-[30px] hidden md:flex ">
+        <div className="font-bold pr-6 gap-[30px] hidden md:flex ">
           {authState.isLoggedIn ? (
             <div className="flex px-2 gap-[26px] items-center justify-end text-nowrap">
               <Link className="flex items-center text-[18px] p-1" to={getLangUrl("/community")}>
