@@ -2,11 +2,10 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
-export const downloadPDF = async (filepath, language) => {
+export const downloadPDF = async (filepath) => {
   const url = `${API_BASE_URL}/download`;
   const formData = new FormData();
   formData.append("filepath", filepath);
-  formData.append("lang", language);
 
   try {
     const response = await axios.post(url, formData, {
