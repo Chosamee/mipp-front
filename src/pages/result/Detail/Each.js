@@ -12,7 +12,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
     setIsLoading(true);
     if (!fileUrl) {
       try {
-        const url = await downloadPDF(file.path); // 서버로부터 PDF 파일 받아오기
+        const url = await downloadPDF(file.path, i18n.language); // 서버로부터 PDF 파일 받아오기
         window.open(url, "_blank"); // 새 창에서 PDF 파일 열기
         setFileUrl(url); // 받아온 URL을 상태에 저장
       } catch (error) {
