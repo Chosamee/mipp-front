@@ -9,22 +9,34 @@ interface NameEditorProps {
   setNameAvailable: (nameAvailable: boolean) => void;
 }
 
-const regex = /^[ㄱ-힣a-zA-Z0-9]{0,8}$/;
+const regex = /^[\p{L}\p{N}\s]{2,30}$/u;
+const errorMessage: { [key: string]: string } = {
+  duplicate: "중복된 닉네임입니다",
+  needCheck: "중복 검사가 필요합니다",
+  regexError: "errorNicknameRegex",
+};
 
 const NameEditor = ({ name, setName, nameAvailable, setNameAvailable }: NameEditorProps) => {
   const { t } = useTranslation();
-  const [checkStatus, setCheckStatus] = useState<boolean>(false); // 닉네임 중복 검사 여부 [true: 검사 완료, false: 미검사]
+  const [errorCode, setErrorCode] = useState<string>(""); // 에러 메시지 [duplicate: 중복, needCheck: 중복 검사 필요, regexError: 정규식 오류
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!regex.test(e.target.value)) return;
     setNameAvailable(false);
-    setCheckStatus(false);
     setName(e.target.value);
+    if (!regex.test(e.target.value)) {
+      setErrorCode("regexError");
+    } else {
+      setErrorCode("needCheck");
+    }
   };
 
   const handleCheckNameDuplicate = async () => {
+    if (!regex.test(name)) {
+      setNameAvailable(false);
+      return;
+    }
     const response = await checkNameDuplicate(name);
+    setErrorCode(response ? "duplicate" : "needCheck");
     setNameAvailable(response);
-    setCheckStatus(true);
   };
 
   return (
@@ -41,11 +53,7 @@ const NameEditor = ({ name, setName, nameAvailable, setNameAvailable }: NameEdit
           />
         </div>
         <div className="text-sm" style={{ color: nameAvailable ? "green" : "red" }}>
-          {nameAvailable
-            ? t("profile.사용 가능")
-            : checkStatus
-            ? t("profile.중복된 닉네임입니다")
-            : t("profile.중복 검사가 필요합니다")}
+          {nameAvailable ? t("profile.사용 가능") : t("profile.사용 불가능")}
         </div>
         <button
           type="button"
@@ -55,7 +63,9 @@ const NameEditor = ({ name, setName, nameAvailable, setNameAvailable }: NameEdit
         </button>
       </div>
       <div className="flex flex-row justify-between w-full">
-        <div className="text-sm">{t("profile.errorNickname")}</div>
+        <div className="text-sm" style={{ color: nameAvailable ? "green" : "red" }}>
+          {nameAvailable ? "" : t(`profile.${errorMessage[errorCode]}`)}
+        </div>
       </div>
     </div>
   );
