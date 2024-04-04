@@ -21,7 +21,7 @@ import { AuthProvider } from "components/auth/AuthContext";
 
 // Redux 관련
 import { Provider } from "react-redux";
-import store from "stateStore/store.js";
+import store from "stateStore/store";
 
 // 국제화 및 번역 관련
 import "./i18n";
