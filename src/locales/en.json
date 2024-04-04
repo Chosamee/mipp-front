@@ -235,7 +235,7 @@
     "confirmDelete": "Are you sure you want to delete your account?",
     "submitDelete": "Account deleted",
     "errorDelete": "Please enter the correct text to delete your account.",
-    "errorNicknameRegex": "Nickname should be 2-30 characters including English, and numbers etc.",
+    "errorNickname": "Nickname should be 2-30 characters excluding special characters.",
     "errorNicknameDuplicate": "This nickname is already in use.",
     "errorNicknameCheck": "An error occurred during nickname verification.",
     "possibleNickname": "This nickname is available.",
