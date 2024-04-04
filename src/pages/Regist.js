@@ -29,7 +29,7 @@ const RegistrationForm = () => {
   };
   const checkNicknameAvailability = async () => {
     if (!validateNickname(formData.nickname)) {
-      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+      setNicknameError("닉네임은 특수문자를 제외한 2~30자여야 합니다.");
       setIsNicknameValid(false);
       return;
     }
@@ -58,7 +58,7 @@ const RegistrationForm = () => {
     }));
     setIsNicknameValid(false);
     if (!validateNickname(value)) {
-      setNicknameError("닉네임은 한글, 영어, 숫자를 포함한 2~8자여야 합니다.");
+      setNicknameError("닉네임은 특수문자를 제외한 2~30자여야 합니다.");
     } else {
       setNicknameError("");
     }
