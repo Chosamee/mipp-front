@@ -232,7 +232,7 @@
     "confirmDelete": "정말로 계정을 삭제하시겠습니까?",
     "submitDelete": "계정이 삭제되었습니다.",
     "errorDelete": "계정 삭제를 위해 올바른 텍스트를 입력해주세요.",
-    "errorNickname": "닉네임은 특수문자를 제외한 2~30자여야 합니다.",
+    "errorNicknameRegex": "닉네임은 특수문자를 제외한 2~30자여야 합니다.",
     "errorNicknameDuplicate": "이미 사용 중인 닉네임입니다.",
     "errorNicknameCheck": "닉네임 검사 중 오류가 발생했습니다.",
     "possibleNickname": "사용 가능한 닉네임입니다.",
