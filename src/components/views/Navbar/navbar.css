@@ -1,0 +1,12 @@
+.Navbar-linkHoverEffect a:hover {
+  @apply ring-2 ring-opacity-50 ring-blue-500;
+}
+
+.Navbar-linkHoverEffect a {
+  @apply py-1 px-2 md:px-3 md:py-2 rounded-lg;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.Navbar-linkHoverEffect a:focus {
+  @apply outline-none;
+}
