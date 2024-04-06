@@ -12,28 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: chosami/mipp-front:latest,
-            chosami/mipp-front:v${{ github.run_number }}
-          build-args: |
-            REACT_APP_MIPP_API_URL=${{ secrets.REACT_APP_MIPP_API_URL }}
-            REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
-            PRERENDER_TOKEN=${{ secrets.PRERENDER_TOKEN }}
-
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
