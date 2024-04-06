@@ -10,7 +10,7 @@ interface ILanguageChangerProps {
 const NavLanguageChanger = ({ changeLanguage, className }: ILanguageChangerProps) => {
   const { i18n } = useTranslation();
   return (
-    <div className="flex md:text-lg text-base gap-1 font-medium">
+    <div className="flex text-base gap-1 font-medium">
       <Link
         className={i18n.language === "ko" ? "text-black" : "text-[#A5A5A5]"}
         to={changeLanguage("ko")}

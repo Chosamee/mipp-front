@@ -11,7 +11,7 @@ const LeftNavItems = () => {
   }, []);
   return (
     <>
-      <div className="hidden lg:flex text-lg gap-2 items-center text-nowrap font-medium">
+      <div className="flex gap-2 items-center text-nowrap font-medium">
         <Link to={getLangUrl("/intro")} onMouseOver={() => import("pages/Intro")}>
           {t("nav.intro")}
         </Link>

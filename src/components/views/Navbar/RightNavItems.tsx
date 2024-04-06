@@ -12,7 +12,7 @@ interface IRightNavItemsProps {
 const RightNavItems = ({ isLoggedIn, handleLogoutClick }: IRightNavItemsProps) => {
   const { t } = useTranslation();
   return (
-    <div className="font-bold flex items-center text-lg gap-5">
+    <div className="font-bold flex items-center gap-5">
       {isLoggedIn ? (
         <div className="flex gap-2 items-center justify-end text-nowrap Navbar-linkHoverEffect">
           <Link className="" to={getLangUrl("/dashboard")}>
@@ -39,7 +39,7 @@ const RightNavItems = ({ isLoggedIn, handleLogoutClick }: IRightNavItemsProps) =
         </div>
       )}
       <Link
-        className="py-3 px-7 flex-shrink-0 rounded-full font-semibold text-lg bg-[#3553F3] text-white"
+        className="py-3 px-7 flex-shrink-0 rounded-full font-semibold bg-[#3553F3] text-white"
         to={getLangUrl("/home")}>
         {t("startChecking")}
       </Link>

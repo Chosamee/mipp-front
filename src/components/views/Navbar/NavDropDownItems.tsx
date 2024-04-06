@@ -26,6 +26,7 @@ const NavDropDownItems = ({ isLoggedIn, handleLogoutClick, isMenuOpen }: IRightN
           </Link>
           <Link to={getLangUrl("/intro")}>{t("nav.intro")}</Link>
           <Link to={getLangUrl("/howtouse")}>{t("nav.howToUse")}</Link>
+          <Link to={getLangUrl("/community")}>{t("nav.request")}</Link>
           <Link to={getLangUrl("/support")}>{t("nav.support")}</Link>
         </div>
         <div className="bg-[#D9D9D9] h-px" />
@@ -34,7 +35,6 @@ const NavDropDownItems = ({ isLoggedIn, handleLogoutClick, isMenuOpen }: IRightN
             <Link to={getLangUrl("/login")}>{t("nav.login")}</Link>
           ) : (
             <>
-              <Link to={getLangUrl("/community")}>{t("nav.request")}</Link>
               <Link to={getLangUrl("/result")}>{t("nav.result")}</Link>
               <Link to={getLangUrl("/dashboard")}>{t("nav.dashboard")}</Link>
               <div className="bg-[#D9D9D9] h-px" />

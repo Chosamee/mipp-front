@@ -63,7 +63,7 @@ const NavBar = () => {
 
   //bg-gradient-to-r from-purple-500/50 to-blue-600/50 backdrop-blur
   return (
-    <nav className="text-black fixed top-0 left-0 right-0 z-30 bg-white flex items-center md:h-20 h-16 px-6">
+    <nav className="text-black fixed top-0 left-0 right-0 z-30 bg-white flex items-center h-20 px-6">
       <div className="flex items-center justify-between w-full linkHoverEffect">
         <div className="flex  font-bold md:gap-6 gap-6 items-center h-full">
           <Link
@@ -72,22 +72,20 @@ const NavBar = () => {
             onMouseOver={() => import("pages/Index")}>
             MIPP
           </Link>
-          <div className="flex gap-6 self-start my-auto Navbar-linkHoverEffect">
+          <div className="hidden xl:flex gap-6 self-start my-auto Navbar-linkHoverEffect">
             <LeftNavItems />
-            <div className="md:flex hidden">
-              <NavLanguageChanger changeLanguage={changeLanguage} />
-            </div>
+            <NavLanguageChanger changeLanguage={changeLanguage} />
           </div>
         </div>
-        <div className="flex">
+        <div className="hidden xl:flex">
           <RightNavItems isLoggedIn={authState.isLoggedIn} handleLogoutClick={handleLogoutClick} />
-          <NavDropDownItems
-            isLoggedIn={authState.isLoggedIn}
-            handleLogoutClick={handleLogoutClick}
-            isMenuOpen={isMenuOpen}
-          />
         </div>
-        <div className="relative md:hidden flex items-center Navbar-linkHoverEffect">
+        <NavDropDownItems
+          isLoggedIn={authState.isLoggedIn}
+          handleLogoutClick={handleLogoutClick}
+          isMenuOpen={isMenuOpen}
+        />
+        <div className="relative xl:hidden flex items-center Navbar-linkHoverEffect">
           {/* <Link
             className="flex items-center  px-[30px] gap-[6px]
                     rounded-[100px] font-semibold text-[18px] text-blue-500 underline flex-shrink-0"
@@ -101,7 +99,7 @@ const NavBar = () => {
             onClick={() => {
               setIsMenuOpen(!isMenuOpen);
             }}
-            className="justify-end p-2 rounded-md text-sm font-medium focus:outline-none hover:ring hover:ring-opacity-50 transition flex-shrink-0">
+            className="justify-end p-2 rounded-md font-medium focus:outline-none hover:ring hover:ring-opacity-50 transition flex-shrink-0">
             <img src={hamberger} alt="Hamberger Bar" />
           </button>
         </div>
