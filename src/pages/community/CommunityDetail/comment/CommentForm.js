@@ -1,12 +1,22 @@
+import { useAuth } from "components/auth/AuthContext";
 import { addComment } from "pages/community/api";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const CommentForm = ({ post_id, parent_id = null, setReloadRequired }) => {
   const [content, setContent] = useState("");
+  const { authState } = useAuth();
   const { i18n } = useTranslation();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!authState.isLoggedIn) {
+      alert(
+        i18n.language === "en"
+          ? "Please log in to write a comment."
+          : "로그인 후 댓글을 작성해주세요."
+      );
+      return;
+    }
     await addComment(post_id, content, parent_id);
     setReloadRequired(true);
     setContent("");
