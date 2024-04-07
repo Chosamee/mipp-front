@@ -14,7 +14,7 @@ interface SiteMenuProps {
 const SiteMenu = ({ dashboard_data }: SiteMenuProps) => {
   const { t, i18n } = useTranslation();
   return (
-    <div className="flex flex-col gap-12 w-64">
+    <div className="flex flex-col gap-12 w-48">
       <div className="flex flex-col gap-5">
         <div className="font-semibold text-lg">{t("dashboard.커뮤니티")}</div>
         <div className="flex flex-col gap-3">

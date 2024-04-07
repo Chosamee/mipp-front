@@ -33,6 +33,7 @@ const fetchDashboardData = async (lang: string): Promise<DashboardData> => {
   const response = await axios.post(`${API_BASE_URL}/dashboard?lang=${lang}`, null, {
     withCredentials: true,
   });
+  console.log(response.data);
   return response.data;
 };
 
