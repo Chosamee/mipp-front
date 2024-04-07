@@ -144,14 +144,8 @@ const App = () => {
                     {/* Notice */}
                     <Route path="notice/:id" element={<NoticeDetail />} />
                     {/* Community */}
-                    <Route
-                      path="community"
-                      element={<ProtectedRoute component={CommunityList} />}
-                    />
-                    <Route
-                      path="community/:id"
-                      element={<ProtectedRoute component={CommunityDetail} />}
-                    />
+                    <Route path="community" element={<CommunityList />} />
+                    <Route path="community/:id" element={<CommunityDetail />} />
                     <Route
                       path="community/:id/edit"
                       element={<ProtectedRoute component={CommunityEditor} />}

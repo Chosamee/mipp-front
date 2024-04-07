@@ -12,13 +12,13 @@ interface ResultProp {
 // }
 const ResultContent = ({ result }: ResultProp) => {
   return (
-    <div className="grid grid-cols-2 grid-rows-5 gap-y-3 gap-x-10 items-center p-1 w-fit">
+    <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-5 gap-y-3 gap-x-10 items-center p-1 md:w-fit w-full">
       {[...Array(result.results_rates.length)].map((_, index) => (
-        <div key={index} className="flex flex-col gap-1">
-          <h4 className="w-[300px] truncate" title={result.results_title[index]}>
+        <div key={index} className="flex flex-col gap-1 w-full md:max-w-80">
+          <h4 className="w-full truncate" title={result.results_title[index]}>
             {result.results_title[index]}
           </h4>
-          <div className="w-[300px] h-5 bg-slate-200 rounded-full relative">
+          <div className="w-full h-5 bg-slate-200 rounded-full relative">
             <div
               style={{
                 width: result.results_rates[index] + "%",
