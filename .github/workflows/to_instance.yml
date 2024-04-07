@@ -22,9 +22,9 @@ jobs:
         run: |
           # 인스턴스에 SSH 접속하여 기존 Docker 컨테이너 정지 및 삭제
           gcloud compute ssh ${{ secrets.GCP_INSTANCE_NAME }} --zone asia-northeast3-a --command "\
-          sudo docker stop $(sudo docker ps -aq) && \
-          sudo docker rm $(sudo docker ps -aq) && \
-          sudo docker rmi $(sudo docker images -q) --force || true"
+          sudo docker stop \$(sudo docker ps -aq) && \
+          sudo docker rm \$(sudo docker ps -aq) && \
+          sudo docker rmi \$(sudo docker images -q) --force || true"
 
           # 새 Docker 이미지 실행
           gcloud compute ssh ${{ secrets.GCP_INSTANCE_NAME }} --zone asia-northeast3-a --command "\
