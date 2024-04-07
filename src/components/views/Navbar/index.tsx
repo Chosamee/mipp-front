@@ -39,8 +39,6 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleWindowSizeChange = () => {
-    console.log(window.innerWidth);
-
     if (window.innerWidth >= 1280) {
       // 데스크톱 사이즈 기준 너비
       setIsMenuOpen(false); // 메뉴 닫기
