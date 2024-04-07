@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "components/auth/AuthContext";
 import { handleLogout } from "api/authService";
 import { getLangUrl } from "locales/utils";
-import { useTranslation } from "react-i18next";
 
 import hamberger from "assets/햄버거바.svg";
 import LeftNavItems from "./LeftNavItems";
@@ -14,7 +13,6 @@ import "./navbar.css";
 
 const NavBar = () => {
   const { authState, updateAuthState } = useAuth();
-  const { t, i18n } = useTranslation();
   // navigate 기능
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,7 +39,9 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleWindowSizeChange = () => {
-    if (window.innerWidth >= 441) {
+    console.log(window.innerWidth);
+
+    if (window.innerWidth >= 1280) {
       // 데스크톱 사이즈 기준 너비
       setIsMenuOpen(false); // 메뉴 닫기
     }
@@ -86,12 +86,6 @@ const NavBar = () => {
           isMenuOpen={isMenuOpen}
         />
         <div className="relative xl:hidden flex items-center Navbar-linkHoverEffect">
-          {/* <Link
-            className="flex items-center  px-[30px] gap-[6px]
-                    rounded-[100px] font-semibold text-[18px] text-blue-500 underline flex-shrink-0"
-            to={getLangUrl("/home")}>
-            {t("startChecking")}
-          </Link> */}{" "}
           <div className="mr-10">
             <NavLanguageChanger changeLanguage={changeLanguage} />
           </div>

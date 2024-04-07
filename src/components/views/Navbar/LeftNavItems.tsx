@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 
 const LeftNavItems = () => {
   const { t } = useTranslation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, []);
+
   return (
     <>
       <div className="flex gap-2 items-center text-nowrap font-medium">
