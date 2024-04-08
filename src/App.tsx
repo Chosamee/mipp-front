@@ -76,6 +76,7 @@ const CommunityEditor = React.lazy(() => import("pages/community/CommunityEditor
 const Support = React.lazy(() => import("pages/Support"));
 const Dashboard = React.lazy(() => import("pages/Dashboard"));
 const ProfileEditor = React.lazy(() => import("pages/Dashboard/ProfileEditor"));
+const Visual = React.lazy(() => import("pages/Visual"));
 
 const App = () => {
   const [showFallback, setShowFallback] = useState(false);
@@ -168,6 +169,7 @@ const App = () => {
                       element={<ProtectedRoute component={AskDetail} />}
                     />
                     <Route path="detail/:id" element={<ProtectedRoute component={Detail} />} />
+                    <Route path="visual/:id" element={<ProtectedRoute component={Visual} />} />
                   </Route>
                 </Routes>
               </div>

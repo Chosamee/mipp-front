@@ -1,6 +1,8 @@
 import { downloadPDF } from "api/pdfService";
+import { getLangUrl } from "locales/utils";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Each = ({ file, handleCheckboxChange, index }) => {
   const [fileUrl, setFileUrl] = useState();
@@ -38,9 +40,11 @@ const Each = ({ file, handleCheckboxChange, index }) => {
         />
       </div>
       <div className="flex flex-col md:flex-row gap-2 flex-grow">
-        <div className="flex md:py-0 w-[305px] min-w-0 md:max-w-5xl mr-auto items-center text-[#171923] px-2">
+        <Link
+          to={getLangUrl(`/visual/${file.id}`)}
+          className="flex md:py-0 w-[305px] min-w-0 md:max-w-5xl mr-auto items-center text-[#171923] px-2">
           <div className="truncate">{file.title}</div>
-        </div>
+        </Link>
 
         <div className="flex flex-row items-center justify-between gap-3 px-2">
           <div className="flex w-[108px] md:w-40 h-full items-center text-[#171923] gap-[6px]">
