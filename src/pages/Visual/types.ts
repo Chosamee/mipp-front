@@ -12,17 +12,19 @@ export interface IVisualData3 {
   test_time: string;
 }
 
+export interface IVisualData1 {
+  comp_title: string;
+  paired_duration_song1: number;
+  paired_duration_song2: number;
+  test_title: string;
+  total_duration_song1: number;
+  total_duration_song2: number;
+  total_ratio: number;
+}
+
 // comp가 아래, test가 위
 export interface IVisualData {
-  data1: {
-    comp_title: string;
-    paired_duration_song1: number;
-    paired_duration_song2: number;
-    test_title: string;
-    total_duration_song1: number;
-    total_duration_song2: number;
-    total_ratio: number;
-  };
+  data1: IVisualData1;
   data2: {
     comp_gap: number;
     comp_plag: number[]; // 색칠

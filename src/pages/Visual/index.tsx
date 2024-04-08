@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { fetchVisualData } from "./api";
-import { IVisualData } from "./types";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import SamplePieChart from "./components/SamplePiechart";
+import RatioOverview from "./components/RatioOverview";
 
 const Visual = () => {
   const { id } = useParams();
@@ -21,7 +20,9 @@ const Visual = () => {
 
   return (
     <div className="max-w-7xl flex flex-col w-full h-auto">
-      <h1>Visualize</h1>
+      <h1 className="w-full text-center text-2xl font-semibold">Visualize</h1>
+
+      {data && <RatioOverview {...data.data1} />}
     </div>
   );
 };
