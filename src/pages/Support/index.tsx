@@ -5,62 +5,42 @@ import NoticeList from "./notice/NoticeList";
 import { useTranslation } from "react-i18next";
 import { SearchParamsProvider, useSearchParamsContext } from "components/SearchParamsContext";
 import Ask from "./Ask";
-import { Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { getLangUrl } from "locales/utils";
+import AskCreate from "./Ask/AskCreate";
 
 const Support = () => {
-  const [menu, setMenu] = useState("notice");
   const { t } = useTranslation();
   const { searchParams, setSearchParams } = useSearchParamsContext();
-
-  useEffect(() => {
-    let urlMenu = searchParams.get("menu");
-    if (!["notice", "faqs", "contact"].includes(urlMenu)) {
-      setSearchParams({ menu: "notice" });
-      urlMenu = "notice";
-    }
-    if (urlMenu && urlMenu !== menu) {
-      // 현재 URL의 'menu' 파라미터와 상태가 다를 때만 상태 업데이트
-      setMenu(urlMenu);
-    }
-  }, []); // searchParams 변경 시 useEffect 재실행
-
-  useEffect(() => {
-    const urlMenu = searchParams.get("menu");
-
-    if (!urlMenu && menu !== "notice") {
-      setSearchParams({ menu: menu });
-    } else if (urlMenu === "contact") {
-      setSearchParams({ ...searchParams, menu: menu });
-    } else if (urlMenu) {
-      setSearchParams({ menu: menu });
-    }
-  }, [searchParams]); // menu 변경 시 useEffect 재실행
 
   const location = useLocation();
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="w-[375px] md:w-[960px] mx-auto relative pt-24">
+      <div className="w-cp md:w-[960px] mx-auto relative pt-24">
         <div className="flex md:flex-row flex-col justify-center mx-auto gap-5">
           {["notice", "faq", "contact"].map((item) => (
             <div className="relative flex flex-col justify-center items-center">
-              <button
+              <Link
                 key={item}
                 className="flex text-lg p-2 w-72 justify-center"
-                onClick={() => {
-                  setMenu(item);
-                  setSearchParams({ menu: item });
-                  if (location.pathname !== getLangUrl("/support")) {
-                    navigate(getLangUrl(`/support/${item}`));
-                  }
-                }}>
+                to={getLangUrl(`/support/${item}`)}>
                 {t(`nav.${item}`)}
-              </button>
+              </Link>
               <div
                 className="h-[2px] w-48 z-10"
-                style={menu === item ? { backgroundColor: "#F56226" } : {}}
+                style={
+                  location.pathname.split("/")[3] === item ? { backgroundColor: "#F56226" } : {}
+                }
               />
               <div className="absolute bottom-0 h-[2px] w-full md:hidden bg-neutral-300" />
             </div>
@@ -73,14 +53,9 @@ const Support = () => {
         <Route path="notice" element={<NoticeList />} />
         <Route path="faq" element={<FAQs />} />
         <Route path="contact" element={<Ask />} />
+        <Route path="contact/create" element={<AskCreate isGuest={false} />} />
+        <Route path="*" element={<Navigate to={"notice"} replace />} />
       </Routes>
-      {location.pathname === getLangUrl("/support") && (
-        <>
-          {menu === "notice" && <NoticeList />}
-          {menu === "faq" && <FAQs />}
-          {menu === "contact" && <Ask />}
-        </>
-      )}
     </>
   );
 };

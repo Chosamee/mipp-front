@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "../../../backup/Pagination_Prev";
 import LoadingSpinner from "../../../components/views/LoadingSpinner";
 import { fetchAsks } from "../../../api/askService";
@@ -69,13 +69,11 @@ const MemberAsk = () => {
     <div className="flex flex-col  mx-auto max-w-4xl p-5 pb-32">
       <div className="flex justify-between items-center mb-6">
         <span className="text-xl">My Contacts</span>
-        <button
-          onClick={() => {
-            navigate(getLangUrl("/support/contact"));
-          }}
-          className="border-2 px-2 rounded-xl w-36 h-10">
+        <Link
+          to={getLangUrl("/support/contact/create")}
+          className="flex border-2 px-2 rounded-xl w-36 h-10 items-center justify-center">
           {t("ask.submit")}
-        </button>
+        </Link>
       </div>
 
       {filteredData ? (

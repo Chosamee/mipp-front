@@ -16,7 +16,7 @@ const ResultNotice = () => {
             Welcome to beta test version of MIPP! The Checking will take about 10 minutes, but it
             may take longer <br />
             if there are many applicants. If errors persist, please apply through a{" "}
-            <Link to={getLangUrl("/support?menu=contact")} className="underline text-blue-600">
+            <Link to={getLangUrl("/support/contact")} className="underline text-blue-600">
               Contact
             </Link>
             . <br />
@@ -28,7 +28,7 @@ const ResultNotice = () => {
             신청자가 많다면 더 오래 걸릴 수도 있습니다.
             <br />
             오류가 지속적으로 생긴다면,{" "}
-            <Link to={getLangUrl("/support?menu=contact")} className="underline text-blue-600">
+            <Link to={getLangUrl("/support/contact")} className="underline text-blue-600">
               1대1 문의하기
             </Link>
             를 통해 신청해주세요. 한 계정당 24시간 이내에 10번의 곡만 신청할 수 있습니다.

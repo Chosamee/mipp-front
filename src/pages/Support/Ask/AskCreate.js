@@ -84,11 +84,11 @@ const AskCreate = ({ isGuest }) => {
       }
       setIsDirty(false);
       if (authState.isLoggedIn) {
-        navigate(getLangUrl("/support?menu=contact"));
+        navigate(getLangUrl("/support/contact"));
       } else {
         alert(t("ask.create.success"));
         const nextRandState = currentRandState === "0" ? "1" : "0";
-        navigate(`${location.pathname}?menu=contact&randState=${nextRandState}`);
+        navigate(`${location.pathname}/contact&randState=${nextRandState}`);
       }
     } else {
       console.log("cancelled");

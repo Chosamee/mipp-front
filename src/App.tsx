@@ -131,17 +131,12 @@ const App = () => {
                       path="regist"
                       element={<ProtectedRoute component={RegistrationForm} />}
                     />
-                    {/* <Route path="mypage" element={<ProtectedRoute component={MyPage} />} /> */}
                     <Route path="result" element={<ProtectedRoute component={ResultList} />} />
                     <Route path="home" element={<ProtectedRoute component={Home} />} />
-                    {/* <Route path="regist" element={<RegistrationForm />} />
-                  <Route path="mypage" element={<MyPage />} />
-                  <Route path="board" element={<Suggestion />} />
-                  <Route path="result" element={<Result />} /> */}
-                    {/* <Route path="home" element={<Home />} /> */}
+
                     <Route path="howtouse" element={<Howtouse />} />
                     <Route path="intro" element={<Intro />} />
-                    {/* Notice */}
+
                     <Route path="notice/:id" element={<NoticeDetail />} />
                     {/* Community */}
                     <Route path="community" element={<CommunityList />} />
@@ -162,28 +157,12 @@ const App = () => {
                       element={<ProtectedRoute component={ProfileEditor} />}
                     />
                     <Route
-                      path="support"
+                      path="support/*"
                       element={
                         <SearchParamsProvider>
                           <Support />
                         </SearchParamsProvider>
-                      }>
-                      <Route path="notice" element={<Support />} />
-                      <Route path="faq" element={<Support />} />
-                      <Route path="contact" element={<Support />} />
-                      <Route
-                        index
-                        element={
-                          <SearchParamsProvider>
-                            <Support />
-                          </SearchParamsProvider>
-                        }
-                      />
-                    </Route>
-                    <Route
-                      path="support/contact"
-                      element={<ProtectedRoute component={AskCreate} />}
-                    />
+                      }></Route>
                     <Route
                       path="support/contact/detail/:id"
                       element={<ProtectedRoute component={AskDetail} />}

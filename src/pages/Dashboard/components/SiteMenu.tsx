@@ -39,7 +39,7 @@ const SiteMenu = ({ dashboard_data }: SiteMenuProps) => {
         <div className="font-semibold text-lg">{t("dashboard.고객센터")}</div>
         <div className="flex flex-col gap-3">
           <div className="flex flex-row gap-2 items-center">
-            <Link to={getLangUrl("/support?menu=contact")} className="text-base">
+            <Link to={getLangUrl("/support/contact")} className="text-base">
               {t("dashboard.문의내역")}
             </Link>
             {dashboard_data && dashboard_data?.unseen_asks_count > 0 && (
@@ -50,7 +50,7 @@ const SiteMenu = ({ dashboard_data }: SiteMenuProps) => {
           </div>
           <div className="bg-neutral-200 h-px w-full" />
           <div className="flex flex-row gap-2 items-center">
-            <Link to={getLangUrl("/support?menu=notice")}>{t("dashboard.공지사항")}</Link>
+            <Link to={getLangUrl("/support/notice")}>{t("dashboard.공지사항")}</Link>
             {dashboard_data && dashboard_data?.new_notice_available && (
               <div className="flex items-center justify-center bg-blue-500 rounded-full h-5 text-white w-5 text-center text-sm">
                 N
