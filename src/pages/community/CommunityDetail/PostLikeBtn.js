@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { updateServerLikeStatus } from "../api";
-import { useAuth } from "components/auth/AuthContext";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "hooks/useAuth";
 
 const PostLikeBtn = ({ initialLikeStatus, initialLikeCount, postId }) => {
   const [liked, setLiked] = useState(initialLikeStatus);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
   const { i18n } = useTranslation();
-  const { authState } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     // 초기값 설정
@@ -16,7 +16,7 @@ const PostLikeBtn = ({ initialLikeStatus, initialLikeCount, postId }) => {
   }, [initialLikeStatus, initialLikeCount]);
 
   const handleLikeClick = async () => {
-    if (!authState.isLoggedIn) {
+    if (!isLoggedIn) {
       window.alert(i18n.language === "en" ? "Please log in first." : "먼저 로그인해주세요.");
       return;
     }

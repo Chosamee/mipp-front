@@ -11,6 +11,8 @@ export const verifyToken = async () => {
       isValid: true,
       action: response.data.action === "Additional_info_needed" ? false : true,
       nickname: response.data.nickname,
+      profileImage: response.data?.profile_image,
+      email: response.data?.email,
     };
   } catch (error) {
     console.error("Token verification error:");
@@ -43,7 +45,7 @@ export const handleSessionState = async () => {
   }
 };
 
-export const handleOauthLogin = async (code, state) => {
+export const handleOauthLogin = async ({ code, state }) => {
   const formData = new FormData();
   formData.append("code", code);
   formData.append("state", state);

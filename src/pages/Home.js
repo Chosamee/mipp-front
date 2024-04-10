@@ -4,7 +4,6 @@ import YoutubeLinkComp from "../components/upload/YoutubeLinkComp";
 import { useTranslation } from "react-i18next";
 import { getRemain } from "api/uploadService";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
 
 const Home = () => {
@@ -15,7 +14,6 @@ const Home = () => {
   const [totalNum, setTotalNum] = useState(10); // [임시] 총 사용가능 횟수 [임시]
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { updateAuthState } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +23,7 @@ const Home = () => {
         setTotalNum(data.total_num);
       } catch (error) {
         console.error("Error:", error);
-        updateAuthState({ isLoggedIn: false });
-        navigate(getLangUrl("/login"));
+        navigate(getLangUrl("/"));
       }
     };
 

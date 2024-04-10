@@ -3,13 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchAsksDetail } from "../../../api/askService";
 import LoadingSpinner from "../../../components/views/LoadingSpinner";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
 
 const AskDetail = () => {
   const { id } = useParams();
   const [ask, setAsk] = useState(null);
-  const { updateAuthState } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -20,8 +18,7 @@ const AskDetail = () => {
         setAsk(response.asks);
       } catch (error) {
         console.error("print detail asks error: ", error);
-        updateAuthState({ isLoggedIn: false });
-        navigate(getLangUrl("/login"));
+        navigate(getLangUrl("/"));
       }
     };
     fetchDetail();

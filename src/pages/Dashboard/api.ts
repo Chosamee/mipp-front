@@ -43,9 +43,10 @@ export const updateProfile = async ({
   imageFile: File | null;
 }): Promise<ProfileEditorResponse> => {
   const formData = new FormData();
+  console.log(nickname, imageFile);
   if (imageFile) formData.append("profile_image", imageFile);
   formData.append("info_json", JSON.stringify({ nickname: nickname }));
-
+  console.log("formData:", formData.get("profile_image"));
   try {
     const response = await axios.put(`${API_BASE_URL}/profile`, formData, {
       withCredentials: true,

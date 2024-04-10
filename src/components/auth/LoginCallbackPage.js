@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleOauthLogin } from "api/authService";
-import { useAuth } from "./AuthContext";
 import { getLangUrl } from "locales/utils";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "hooks/useAuth";
 
 const LoginCallbackPage = () => {
-  const { updateAuthState } = useAuth();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   useEffect(() => {
     const handleAuthentication = async () => {
@@ -20,10 +19,9 @@ const LoginCallbackPage = () => {
       if (code && state) {
         i18n.changeLanguage(localStorage.getItem("language")); // 로컬 스토리지에 언어 설정 저장
         localStorage.removeItem("language");
+        console.log(code, state);
         try {
-          const response = await handleOauthLogin(code, state);
-          updateAuthState({ isLoggedIn: true, nickname: response.nickname });
-          navigate(getLangUrl("/home"));
+          login(code, state);
         } catch (error) {
           console.error("Authentication error:", error);
           navigate(getLangUrl("/login")); // 오류 시 로그인 페이지로 리디렉션

@@ -5,13 +5,11 @@ import LoadingSpinner from "../../../components/views/LoadingSpinner";
 import { fetchAsks } from "../../../api/askService";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 
 const MemberAsk = () => {
   const [resultData, setResultData] = useState([]);
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
-  const { updateAuthState } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const handleNavLinkClick = (path: string) => {

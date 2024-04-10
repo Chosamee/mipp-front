@@ -3,7 +3,6 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetail } from "pages/result/api";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
 import DetailList from "./DetailList";
 import Criteria from "./Criteria";
@@ -14,7 +13,6 @@ const DetailPage = () => {
   const [resultData, setresultData] = useState([]);
   const [musicData, setMusicData] = useState([]);
   const { t } = useTranslation();
-  const { updateAuthState } = useAuth();
   const navigate = useNavigate();
   const { i18n } = useTranslation();
   const [checkedFiles, setCheckedFiles] = useState([]);
@@ -28,8 +26,7 @@ const DetailPage = () => {
         setMusicData(response.music);
       } catch (error) {
         console.error(error);
-        updateAuthState({ isLoggedIn: false });
-        navigate(getLangUrl("/login"));
+        navigate(getLangUrl("/"));
       }
     };
     fetchData();

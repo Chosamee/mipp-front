@@ -1,10 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import ProfileMenu from "./components/ProfileMenu";
-import ProfileImageEdit from "./ProfileEditor/ImageEditor";
 import SiteMenu from "./components/SiteMenu";
 import ResultDropdown from "./components/ResultDropdown";
-import { useUserInfo } from "stateStore/useUserInfo";
 import DashboardNotice from "./components/DashboardNotice";
 import { IAlert, ICommunity, IResult } from "./dashboardType";
 import { useTranslation } from "react-i18next";
@@ -14,6 +12,7 @@ import { Link } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDashboardData } from "./api";
+import { useAuth } from "hooks/useAuth";
 
 export interface DashboardData {
   user_info?: { nickname: string; email: string; membership: string; profileImage: string };
@@ -38,13 +37,13 @@ const Dashboard = () => {
       return fetchDashboardData(lang);
     },
   });
-  const setUserInfo = useUserInfo((state) => state.setUserInfo);
+  const { updateUserInfo } = useAuth();
 
   useEffect(() => {
     if (data?.user_info) {
-      setUserInfo(data.user_info);
+      updateUserInfo(data.user_info);
     }
-  }, [data, setUserInfo]);
+  }, [data, updateUserInfo]);
 
   if (isLoading)
     return (

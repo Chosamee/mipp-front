@@ -1,12 +1,11 @@
-import { useAuth } from "components/auth/AuthContext";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import GuestAsk from "./GuestAsk";
 import MemberAsk from "./MemberAsk";
+import { useAuth } from "hooks/useAuth";
 
 const Ask = () => {
-  const { authState } = useAuth();
-  return <>{authState.isLoggedIn ? <MemberAsk /> : <GuestAsk />}</>;
+  const { isLoggedIn } = useAuth();
+  return <>{isLoggedIn ? <MemberAsk /> : <GuestAsk />}</>;
 };
 
 export default Ask;

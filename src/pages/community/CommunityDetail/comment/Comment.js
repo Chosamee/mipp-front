@@ -1,11 +1,11 @@
-import { useAuth } from "components/auth/AuthContext";
 import CommentActions from "./CommentActions";
 import getFormattedDate from "components/utils/getFormattedDate";
 import { useState } from "react";
 import CommentForm from "./CommentForm";
+import { useAuth } from "hooks/useAuth";
 
 const Comment = ({ comment, setReloadRequired }) => {
-  const { authState } = useAuth();
+  const { nickname } = useAuth();
   const [openChildInput, setOpenChildInput] = useState(false);
   return (
     <>
@@ -16,7 +16,7 @@ const Comment = ({ comment, setReloadRequired }) => {
               {comment.parent_id && "↳"}
               {comment.content}
             </p>
-            {comment.nickname === authState.nickname && (
+            {comment.nickname === nickname && (
               <CommentActions id={comment.id} setReloadRequired={setReloadRequired} />
             )}
           </div>

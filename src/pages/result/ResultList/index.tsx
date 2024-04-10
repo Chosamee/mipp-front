@@ -5,7 +5,6 @@ import LoadingSpinner from "components/views/LoadingSpinner";
 import { deleteResult, fetchResults } from "pages/result/api";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 
 import loupe from "assets/loupe.svg";
 import down_vector from "assets/result/down_vector.svg";
@@ -19,7 +18,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const ResultList = () => {
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
-  const { updateAuthState } = useAuth();
   const navigate = useNavigate();
 
   const {

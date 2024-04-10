@@ -1,26 +1,26 @@
 import React, { useEffect } from "react";
 import GoogleLoginButton from "../components/auth/GoogleLoginButton";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 import { getLangUrl } from "locales/utils";
 import { Navigate, useNavigate } from "react-router-dom";
 import LoginSEOEN from "seo/LoginSEO.en";
 import LoginSEOKO from "seo/LoginSEO.ko";
+import { useAuth } from "hooks/useAuth";
 
 const Login = () => {
   // Google Client ID
   const { t, i18n } = useTranslation();
-  const { authState } = useAuth();
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    if (authState.isLoggedIn === true) {
+    if (isLoggedIn === true) {
       navigate(getLangUrl("/home"));
     }
   });
 
   return (
     <React.Fragment>
-      {authState.isLoggedIn ? (
+      {isLoggedIn ? (
         <Navigate to={getLangUrl("/index")} />
       ) : (
         <div className="flex h-full items-center justify-center my-auto px-5 ">
