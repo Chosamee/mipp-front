@@ -6,9 +6,10 @@ import { fetchAllNotices } from "../api";
 import { useTranslation } from "react-i18next";
 import NoticeSEOEN from "seo/NoticeSEO.en";
 import NoticeSEOKO from "seo/NoticeSEO.ko";
-import { useQuery } from "react-query";
 import SearchForm from "components/SearchForm.tsx";
 import { useSearchParamsContext } from "components/SearchParamsContext";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { ISearchParams, getSearchQueryKey } from "api/utils";
 
 const NoticeList = () => {
   const { searchParams, setSearchParams } = useSearchParamsContext();
@@ -23,20 +24,31 @@ const NoticeList = () => {
   const searchKeyword = searchParams.get("search_query") || "";
   const searchType = searchParams.get("search_type") || "both";
 
-  const { data, isLoading, error } = useQuery(
-    ["fetchAllNotices", { currentPage, pageSize, searchKeyword, searchType }],
-    fetchAllNotices,
-    {
-      keepPreviousData: true,
-      refetchOnWindowFocus: true,
-    }
-  );
+  const { data, isLoading, error } = useQuery<INoticeList | undefined>({
+    queryKey: getSearchQueryKey("fetchNotices", {
+      currentPage,
+      pageSize,
+      searchKeyword,
+      searchType,
+    }),
+    queryFn: () =>
+      fetchAllNotices({
+        currentPage,
+        pageSize,
+        searchKeyword,
+        searchType,
+      }),
+    placeholderData: keepPreviousData,
+    refetchOnWindowFocus: true,
+  });
 
   const { i18n } = useTranslation();
   const seoFiles: { [key: string]: JSX.Element } = {
     en: <NoticeSEOEN />,
     ko: <NoticeSEOKO />,
   };
+
+  if (error) return <div>Error: Server Error</div>;
 
   return (
     <div className="mx-auto px-5 w-[375px] md:w-[960px] pb-[150px] font-['Pretendard-Regular'] leading-[normal]">
@@ -46,7 +58,7 @@ const NoticeList = () => {
         <h1 className="text-[24px] leading-[28px] font-semibold text-[#171923]">
           {i18n.language === "en" ? "Notice" : "공지사항"}
         </h1>
-        {data && (
+        {data ? (
           <SearchForm
             total_pages={data.total_pages}
             currentPage={currentPage}
@@ -54,6 +66,8 @@ const NoticeList = () => {
             searchKeyword={searchKeyword}
             searchType={searchType}
           />
+        ) : (
+          <></>
         )}
       </div>
 

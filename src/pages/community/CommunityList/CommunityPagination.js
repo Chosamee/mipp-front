@@ -9,6 +9,9 @@ const CommunityPagination = ({ data, totalPage, renderItem, currentPage, setCurr
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   };
 
+  if (!data) {
+    return <div>Loading...</div>; // 또는 다른 로딩 표시, 에러 처리 등
+  }
   // const navigate = useNavigate();
   // const location = useLocation();
   // // currentPage 값이 변경될 때만 실행되는 useEffect

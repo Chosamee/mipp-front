@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import ImageCropUpload from "./ImageEditor";
 import { useUserInfo } from "stateStore/useUserInfo";
-import { useMutation, useQueryClient } from "react-query";
 import NameEditor from "./NameEditor";
 import { updateProfile } from "../api";
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export interface ProfileEditorResponse {
   info: {
@@ -27,14 +27,14 @@ const ProfileEditor = () => {
   const [croppedImageFile, setCroppedImageFile] = useState<File | null>(null);
   const navigate = useNavigate();
 
-  const profileUpdateMutation = useMutation(updateProfile, {
+  const profileUpdateMutation = useMutation({
+    mutationFn: updateProfile,
     onMutate: async (data) => {
       // Optimistic Update를 위해 현재 상태를 임시로 저장
       const previousUserInfo = userInfo;
 
       // UI를 미리 업데이트하기
       setUserInfo({
-        ...userInfo,
         nickname: data.nickname,
         profileImage: croppedImage || imageSrc || userInfo?.profileImage,
       });
@@ -42,7 +42,7 @@ const ProfileEditor = () => {
       // 실패했을 때를 대비해 이전 상태를 반환
       return { previousUserInfo };
     },
-    onError: (err, newData, context) => {
+    onError: (error, newData, context) => {
       // 요청이 실패하면 이전 상태로 롤백
       if (context?.previousUserInfo) {
         setUserInfo(context.previousUserInfo);
@@ -50,7 +50,9 @@ const ProfileEditor = () => {
     },
     onSettled: () => {
       // 성공하든 실패하든 최종적으로 캐시를 무효화하고 최신 데이터로 리프레시
-      queryClient.invalidateQueries("dashboardData");
+      queryClient.invalidateQueries({
+        queryKey: ["dashboardData"],
+      });
     },
   });
 

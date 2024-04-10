@@ -14,5 +14,11 @@ interface UserInfoState {
 
 export const useUserInfo = create<UserInfoState>((set) => ({
   userInfo: undefined,
-  setUserInfo: (userInfo: UserInfo) => set({ userInfo }),
+  setUserInfo: (newUserInfo: Partial<UserInfo>) =>
+    set((state) => ({
+      userInfo: {
+        ...state.userInfo,
+        ...newUserInfo,
+      },
+    })),
 }));

@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { useQuery } from "react-query";
 import { DashboardData } from ".";
 import { ProfileEditorResponse } from "./ProfileEditor";
 
@@ -29,15 +28,12 @@ export const updateProfileImage = async (image: File) => {
   }
 };
 
-const fetchDashboardData = async (lang: string): Promise<DashboardData> => {
+export const fetchDashboardData = async (lang: string): Promise<DashboardData> => {
   const response = await axios.post(`${API_BASE_URL}/dashboard?lang=${lang}`, null, {
     withCredentials: true,
   });
   return response.data;
 };
-
-export const useDashboardDataQuery = (lang: string) =>
-  useQuery<DashboardData, Error>(["dashboardData", lang], () => fetchDashboardData(lang));
 
 export const updateProfile = async ({
   nickname,
