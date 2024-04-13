@@ -22,7 +22,7 @@ const Visual = () => {
   if (error) return <div>Error</div>;
 
   return (
-    <div className="max-w-7xl flex flex-col w-full h-auto items-center">
+    <div className="max-w-7xl flex flex-col w-full h-auto items-center mx-auto py-20">
       <h1 className="w-full text-center text-2xl font-semibold">Visualize</h1>
       {data && data.message === errorMessage && (
         <p className="max-w-xl text-2xl px-5 py-20">

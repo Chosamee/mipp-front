@@ -4,17 +4,29 @@ import { verifyToken, handleLogout, handleOauthLogin } from "../api/authService"
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { updateProfile } from "pages/Dashboard/api";
+import { useEffect } from "react";
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
 
   // 사용자 인증 상태 확인
-  const { data: authData, isLoading } = useQuery({
+  const {
+    data: authData,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
     queryKey: ["authStatus"],
     queryFn: verifyToken,
     staleTime: Infinity,
     select: (data) => data ?? { isValid: false }, // 데이터가 없으면 isValid를 false로 설정
   });
+
+  useEffect(() => {
+    if (isError) {
+      queryClient.setQueryData(["authStatus"], { isValid: false });
+    }
+  }, [isError]);
 
   const navigate = useNavigate();
 
@@ -29,6 +41,7 @@ export const useAuth = () => {
     onError: (error) => {
       // 로그인 실패 처리
       console.error("Login failed:", error);
+      navigate(getLangUrl("/login"));
     },
   });
 
@@ -103,6 +116,7 @@ export const useAuth = () => {
     login: (code: string, state: string) => loginMutation.mutate({ code, state }),
     logout,
     updateUserInfo,
+    refetch: refetch,
     profileUpdateMutation,
   };
 };

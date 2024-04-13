@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 import renderCustomizedLabel from "./Labal";
 
