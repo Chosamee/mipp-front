@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Pagination from "backup/Pagination_Prev";
+import { useLocation, useNavigate } from "react-router-dom";
+import PaginationAllData from "components/PaginationAllData";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { deleteResult, fetchResults } from "pages/result/api";
-import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 
 import loupe from "assets/loupe.svg";
 import down_vector from "assets/result/down_vector.svg";
 import VoteBanner from "./VoteBanner";
-import { getStatusFieldColor, getStatusText, getStatusTextColor } from "./utils";
 import ResultItem from "./ResultItem";
 import { IResultItem } from "../types";
 import ResultNotice from "./ResultNotice";
@@ -196,7 +194,7 @@ const ResultList = () => {
         )}
 
         {filteredData ? (
-          <Pagination
+          <PaginationAllData
             data={filteredData}
             itemsPerPage={itemsPerPage}
             currentPage={currentPage}

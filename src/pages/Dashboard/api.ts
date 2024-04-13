@@ -37,16 +37,14 @@ export const fetchDashboardData = async (lang: string): Promise<DashboardData> =
 
 export const updateProfile = async ({
   nickname,
-  imageFile,
+  profileImage,
 }: {
   nickname: string;
-  imageFile: File | null;
+  profileImage: File | null;
 }): Promise<ProfileEditorResponse> => {
   const formData = new FormData();
-  console.log(nickname, imageFile);
-  if (imageFile) formData.append("profile_image", imageFile);
+  if (profileImage) formData.append("profile_image", profileImage);
   formData.append("info_json", JSON.stringify({ nickname: nickname }));
-  console.log("formData:", formData.get("profile_image"));
   try {
     const response = await axios.put(`${API_BASE_URL}/profile`, formData, {
       withCredentials: true,

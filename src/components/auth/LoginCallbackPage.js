@@ -19,7 +19,6 @@ const LoginCallbackPage = () => {
       if (code && state) {
         i18n.changeLanguage(localStorage.getItem("language")); // 로컬 스토리지에 언어 설정 저장
         localStorage.removeItem("language");
-        console.log(code, state);
         try {
           login(code, state);
         } catch (error) {

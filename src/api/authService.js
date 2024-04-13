@@ -11,7 +11,7 @@ export const verifyToken = async () => {
       isValid: true,
       action: response.data.action === "Additional_info_needed" ? false : true,
       nickname: response.data.nickname,
-      profileImage: response.data?.profile_image,
+      profileImage: response.data?.profileImage,
       email: response.data?.email,
     };
   } catch (error) {

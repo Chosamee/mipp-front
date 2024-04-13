@@ -3,11 +3,10 @@ import { getLangUrl } from "locales/utils";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useUserInfo } from "stateStore/useUserInfo";
 
 const ProfileMenu = () => {
   const { t } = useTranslation();
-  const { updateUserInfo, userInfo } = useAuth();
+  const { userInfo } = useAuth();
   const { logout } = useAuth();
   const handleLogoutClick = async () => {
     if (!window.confirm(t("dashboard.로그아웃 하시겠습니까?"))) {

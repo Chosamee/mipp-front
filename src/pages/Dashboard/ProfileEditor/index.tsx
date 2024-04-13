@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import ImageCropUpload from "./ImageEditor";
-import { useUserInfo } from "stateStore/useUserInfo";
 import NameEditor from "./NameEditor";
-import { updateProfile } from "../api";
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "hooks/useAuth";
 
 export interface ProfileEditorResponse {
@@ -18,8 +15,7 @@ export interface ProfileEditorResponse {
 const regex = /^[\p{L}\p{N}\s]{2,30}$/u;
 
 const ProfileEditor = () => {
-  const queryClient = useQueryClient();
-  const { updateUserInfo, userInfo, profileUpdateMutation } = useAuth();
+  const { userInfo, profileUpdateMutation } = useAuth();
   const [name, setName] = useState(userInfo?.nickname || "");
   const [nameAvailable, setNameAvailable] = useState<boolean>(true); // 닉네임 중복 검사 결과 [true: 사용 가능, false: 중복]
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -37,9 +33,8 @@ const ProfileEditor = () => {
     }
     profileUpdateMutation.mutate({
       nickname: name,
-      imageFile: croppedImageFile || imageFile || null,
+      profileImage: croppedImageFile || imageFile || null,
     });
-    navigate(getLangUrl("/dashboard"));
   };
 
   const { t } = useTranslation();

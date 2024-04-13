@@ -15,7 +15,6 @@ import { fetchDashboardData } from "./api";
 import { useAuth } from "hooks/useAuth";
 
 export interface DashboardData {
-  user_info?: { nickname: string; email: string; membership: string; profileImage: string };
   dashboard_data?: {
     new_notice_available: false;
     total_plagiarism_checks: number;
@@ -37,13 +36,6 @@ const Dashboard = () => {
       return fetchDashboardData(lang);
     },
   });
-  const { updateUserInfo } = useAuth();
-
-  useEffect(() => {
-    if (data?.user_info) {
-      updateUserInfo(data.user_info);
-    }
-  }, [data, updateUserInfo]);
 
   if (isLoading)
     return (

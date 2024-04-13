@@ -22,7 +22,6 @@ const Support = () => {
   const { searchParams, setSearchParams } = useSearchParamsContext();
 
   const location = useLocation();
-  const navigate = useNavigate();
 
   return (
     <>

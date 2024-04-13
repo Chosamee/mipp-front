@@ -55,27 +55,44 @@ export const useAuth = () => {
     onMutate: async (newData) => {
       await queryClient.cancelQueries({ queryKey: ["authStatus"] });
 
-      const previousUserInfo = queryClient.getQueryData(["authStatus"]);
-      const safePreviousUserInfo = previousUserInfo || {};
+      const previousUserInfo = queryClient.getQueryData<{
+        nickname: string;
+        profileImage?: string;
+      }>(["authStatus"]);
 
-      // 낙관적 업데이트를 수행합니다.
-      updateUserInfo({
+      const safePreviousUserInfo = previousUserInfo || { nickname: "", profileImage: undefined };
+
+      console.log(newData);
+      // optimisticData 초기화: nickname은 항상 업데이트, profileImage는 조건에 따라 업데이트
+      const optimisticData: { nickname: string; profileImage?: string } = {
         ...safePreviousUserInfo,
-        ...newData,
-      });
+        nickname: newData.nickname, // nickname은 항상 업데이트
+      };
+      // profileImage가 null이 아닐 때만 업데이트
+      if (newData.profileImage !== null) {
+        optimisticData.profileImage = URL.createObjectURL(newData.profileImage);
+      }
+      console.log("optimisticData: ", optimisticData);
 
-      return { previousUserInfo };
+      updateUserInfo(optimisticData);
+      navigate(getLangUrl("/dashboard"));
+
+      return { previousUserInfo, profileImageURL: optimisticData.profileImage };
     },
     onError: (err, newData, context) => {
+      navigate(getLangUrl("/profile/edit")); // 에러 발생 시 프로필 수정 페이지로 이동
       // 롤백
       if (context?.previousUserInfo) {
         updateUserInfo(context.previousUserInfo);
       }
+      if (context?.profileImageURL) {
+        URL.revokeObjectURL(context.profileImageURL);
+      }
     },
-    onSettled: () => {
+    onSettled: (optimisticData) => {
       // 성공 또는 에러 후에 실행
       queryClient.invalidateQueries({ queryKey: ["authStatus"] });
-      queryClient.invalidateQueries({ queryKey: ["dashboardData"] });
+      if (optimisticData) URL.revokeObjectURL(optimisticData.profileImage);
     },
   });
 

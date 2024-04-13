@@ -7,6 +7,5 @@ export const fetchVisualData = async (result_id: number): Promise<IVisualData> =
   const response = await axios.post(`${API_BASE_URL}/visualize/${result_id}`, {
     withCredentials: true,
   });
-  console.log(response.data);
   return response.data;
 };

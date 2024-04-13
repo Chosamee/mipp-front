@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Pagination from "../../../backup/Pagination_Prev";
+import PaginationAllData from "components/PaginationAllData";
 import LoadingSpinner from "../../../components/views/LoadingSpinner";
 import { fetchAsks } from "../../../api/askService";
 import { getLangUrl } from "locales/utils";
@@ -75,7 +75,7 @@ const MemberAsk = () => {
       </div>
 
       {filteredData ? (
-        <Pagination
+        <PaginationAllData
           data={filteredData}
           itemsPerPage={itemsPerPage}
           currentPage={currentPage}

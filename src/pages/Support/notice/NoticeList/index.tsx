@@ -1,8 +1,8 @@
 import React from "react";
-import Pagination from "components/Pagination";
 import NoticeEach from "./NoticeEach";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { fetchAllNotices } from "../api";
+import Pagination from "components/Pagination";
 import { useTranslation } from "react-i18next";
 import NoticeSEOEN from "seo/NoticeSEO.en";
 import NoticeSEOKO from "seo/NoticeSEO.ko";

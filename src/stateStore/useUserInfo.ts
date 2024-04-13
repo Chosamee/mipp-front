@@ -12,7 +12,7 @@ interface UserInfoState {
   setUserInfo: (userInfo: UserInfo) => void;
 }
 
-export const useUserInfo = create<UserInfoState>((set) => ({
+const useUserInfo = create<UserInfoState>((set) => ({
   userInfo: undefined,
   setUserInfo: (newUserInfo: Partial<UserInfo>) =>
     set((state) => ({
