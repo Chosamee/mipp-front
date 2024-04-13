@@ -18,9 +18,6 @@ import ScrollToTop from "components/utils/ScrollToTop";
 // 인증 관련 컴포넌트: 보호된 라우트, 인증 컨텍스트
 import ProtectedRoute from "components/auth/ProtectedRoute";
 
-// Redux 관련
-import { Provider } from "react-redux";
-
 // 국제화 및 번역 관련
 import "./i18n";
 import { useTranslation } from "react-i18next";
@@ -58,15 +55,11 @@ const ResultList = React.lazy(() => import("pages/result/ResultList"));
 const Index = React.lazy(() => import("pages/Index"));
 const Intro = React.lazy(() => import("pages/Intro"));
 const Howtouse = React.lazy(() => import("pages/Howtouse"));
-const Ask = React.lazy(() => import("pages/Support/Ask"));
-const AskCreate = React.lazy(() => import("pages/Support/Ask/AskCreate"));
 const AskDetail = React.lazy(() => import("pages/Support/Ask/AskDetail"));
 const RegistrationForm = React.lazy(() => import("pages/Regist"));
 const Detail = React.lazy(() => import("pages/result/Detail"));
-const FAQs = React.lazy(() => import("pages/Support/FAQs"));
 const TermsPage = React.lazy(() => import("pages/docs/Terms"));
 const PolicyPage = React.lazy(() => import("pages/docs/Policy"));
-const NoticeLists = React.lazy(() => import("pages/Support/notice/NoticeList"));
 const NoticeDetail = React.lazy(() => import("pages/Support/notice/NoticeDetail"));
 const CommunityList = React.lazy(() => import("pages/community/CommunityList"));
 const CommunityDetail = React.lazy(() => import("pages/community/CommunityDetail"));

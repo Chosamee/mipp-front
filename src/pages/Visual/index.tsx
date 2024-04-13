@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { fetchVisualData } from "./api";
 import { useParams } from "react-router-dom";
 import RatioOverview from "./components/RatioOverview";
 import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "components/views/LoadingSpinner";
+
+const errorMessage = "No data pkl file found";
 
 const Visual = () => {
   const { id } = useParams();
@@ -12,15 +15,22 @@ const Visual = () => {
     queryFn: () => fetchVisualData(numericId),
     enabled: numericId !== 0, // id가 존재할 때만 쿼리 실행
     staleTime: Infinity, // 캐시를 무한히 유지
+    refetchInterval: 10000, // 10초마다 새로고침
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <div>Error</div>;
 
   return (
-    <div className="max-w-7xl flex flex-col w-full h-auto">
+    <div className="max-w-7xl flex flex-col w-full h-auto items-center">
       <h1 className="w-full text-center text-2xl font-semibold">Visualize</h1>
-
-      {data && <RatioOverview {...data.data1} />}
+      {data && data.message === errorMessage && (
+        <p className="max-w-xl text-2xl px-5 py-20">
+          This songs used old version service. <br />
+          Please download PDF.
+        </p>
+      )}
+      {data && data.message !== errorMessage && <RatioOverview {...data.data1} />}
     </div>
   );
 };

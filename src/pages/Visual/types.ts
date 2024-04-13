@@ -24,6 +24,7 @@ export interface IVisualData1 {
 
 // comp가 아래, test가 위
 export interface IVisualData {
+  message: string;
   data1: IVisualData1;
   data2: {
     comp_gap: number;

@@ -7,57 +7,55 @@ import { getLangUrl } from "locales/utils";
 import DetailList from "./DetailList";
 import Criteria from "./Criteria";
 import { multiDownloadPDF } from "api/pdfService";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
+interface IMusicData {
+  title: string;
+  inst: string;
+}
+
+interface IResultItem {
+  music_id: number;
+  title: string;
+  path: string;
+  checked: boolean;
+  plagiarism_rate: number;
+}
 
 const DetailPage = () => {
   const { id } = useParams();
   const [resultData, setresultData] = useState([]);
-  const [musicData, setMusicData] = useState([]);
+  const [musicData, setMusicData] = useState<IMusicData | undefined>(undefined);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-  const [checkedFiles, setCheckedFiles] = useState([]);
+  const [checkedFiles, setCheckedFiles] = useState<IResultItem[] | undefined>([]);
   const [downloadLoading, setDownloadLoading] = useState(false);
 
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["detailResult", id, i18n.language],
+    queryFn: () => (id ? fetchDetail(id, i18n.language) : Promise.reject("No ID")),
+    enabled: !!id, // id가 존재할 때만 쿼리 활성화
+  });
+
+  const queryClient = useQueryClient();
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchDetail(id, i18n.language);
-        setresultData(response.results);
-        setMusicData(response.music);
-      } catch (error) {
-        console.error(error);
-        navigate(getLangUrl("/"));
-      }
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const currentLang = i18n.language;
-  const prevLangRef = useRef(currentLang);
-
-  useEffect(() => {
-    const prevLang = prevLangRef.current;
-
-    // 언어가 변경되었는지 확인
-    if (prevLang !== currentLang) {
-      // 필요한 경우 페이지 새로고침 수행
-      window.location.reload();
+    queryClient.invalidateQueries({
+      queryKey: ["detailResult", id, i18n.language],
+    }); // 활성 쿼리를 즉시 다시 가져옴
+    if (data) {
+      setresultData(data.results);
+      setMusicData(data.music);
     }
-    // 현재 언어를 이전 언어 참조로 업데이트
-    prevLangRef.current = currentLang;
-  }, [currentLang]); // 현재 언어가 변경될 때마다 이 효과를 실행
+    console.log(queryClient.getQueryData(["detailResult", id, i18n.language]));
+  }, [data, i18n.language, queryClient, id]);
 
   const [checkedCount, setCheckedCount] = useState(0);
-  const handleCount = (calculatedResult) => {
-    // 자식 컴포넌트에서 계산된 결과를 사용
-    setCheckedCount(calculatedResult);
-  };
 
   const getMultiDowndladPDF = async () => {
     if (downloadLoading) return;
-    const checkedPaths = checkedFiles.filter((item) => item.checked).map((item) => item.path);
-    if (checkedPaths.length === 0) {
+    const checkedPaths = checkedFiles?.filter((item) => item.checked).map((item) => item.path);
+    if (checkedPaths?.length === 0) {
       alert("Select Files");
       return;
     }
@@ -66,7 +64,7 @@ const DetailPage = () => {
       const url = await multiDownloadPDF(checkedPaths);
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", `${musicData.title}.zip`);
+      link.setAttribute("download", `${musicData?.title}.zip`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -90,12 +88,12 @@ const DetailPage = () => {
         <div
           className="flex bg-[#E2E8F0] rounded-[9999px] px-3 py-1 items-center justify-center w-fit flex-shrink-0
         text-[#171923] text-[14px] leading-[20px] font-semibold h-fit">
-          {t(`detail.${musicData.inst}`)}
+          {t(`detail.${musicData?.inst}`)}
         </div>
         <div
           className="text-[22px] md:text-2xl leading-[28px] font-semibold truncate"
-          title={musicData.title}>
-          {musicData.title}
+          title={musicData?.title}>
+          {musicData?.title}
         </div>
       </div>
 
@@ -123,7 +121,7 @@ const DetailPage = () => {
       {/* 비교 결과 */}
       <DetailList
         files={resultData}
-        sendCountFunc={handleCount}
+        sendCountFunc={setCheckedCount}
         checkedFiles={checkedFiles}
         setCheckedFiles={setCheckedFiles}
       />
