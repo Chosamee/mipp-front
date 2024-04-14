@@ -1,9 +1,11 @@
 import React from "react";
 import { fetchVisualData } from "./api";
 import { useParams } from "react-router-dom";
-import RatioOverview from "./components/RatioOverview";
+import RatioOverview from "./RatioOverview";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "components/views/LoadingSpinner";
+import PartOverview from "./PartOverview";
+import MelodyDetails from "./MelodyDetails";
 
 const errorMessage = "No data pkl file found";
 
@@ -30,7 +32,13 @@ const Visual = () => {
           Please download PDF.
         </p>
       )}
-      {data && data.message !== errorMessage && <RatioOverview {...data.data1} />}
+      {data && data.message !== errorMessage && (
+        <div className="flex flex-col gap-20 mx-auto w-full max-w-3xl">
+          <RatioOverview {...data.data1} />
+          <PartOverview {...data.data2} />
+          <MelodyDetails {...data.data3} />
+        </div>
+      )}
     </div>
   );
 };

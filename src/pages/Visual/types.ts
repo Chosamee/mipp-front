@@ -22,18 +22,20 @@ export interface IVisualData1 {
   total_ratio: number;
 }
 
+export interface IVisualData2 {
+  comp_gap: number;
+  comp_plag: number[]; // 색칠
+  comp_start: number;
+  plag_pair: number[][]; // mapping
+  test_gap: number;
+  test_plag: number[]; // 색칠
+  test_start: number;
+}
+
 // comp가 아래, test가 위
 export interface IVisualData {
   message: string;
   data1: IVisualData1;
-  data2: {
-    comp_gap: number;
-    comp_plag: number[]; // 색칠
-    comp_start: number;
-    plag_pair: number[]; // mapping
-    test_gap: number;
-    test_plag: number[]; // 색칠
-    test_start: number;
-  };
+  data2: IVisualData2;
   data3: IVisualData3[];
 }
