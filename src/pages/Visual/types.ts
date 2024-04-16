@@ -37,5 +37,5 @@ export interface IVisualData {
   message: string;
   data1: IVisualData1;
   data2: IVisualData2;
-  data3: IVisualData3[];
+  data3: { [key: string]: IVisualData3 };
 }
