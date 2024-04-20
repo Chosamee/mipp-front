@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { verifyToken } from "../../api/authService";
+import { verifyToken } from "../api/authService";
 import { useLocation } from "react-router-dom";
 
 const AuthContext = createContext({
@@ -7,11 +7,11 @@ const AuthContext = createContext({
   updateAuthState: (newAuthState) => {},
 });
 
-export const useAuth = () => useContext(AuthContext);
+const useAuth = () => useContext(AuthContext);
 
 const protectedRoutes = ["/mypage", "/board", "/result", "/home", "/asks", "/detail"];
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     isLoggedIn: false,
     isLoading: true,

@@ -18,5 +18,5 @@
     // jsx 자동 import..
     "allowJs": true
   },
-  "include": ["src"]
+  "include": ["src", "backup"]
 }

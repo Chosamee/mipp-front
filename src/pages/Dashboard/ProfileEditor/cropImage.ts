@@ -40,6 +40,6 @@ export async function getCroppedImg(imageSrc: string, pixelCrop: Area): Promise<
       }
       window.URL.revokeObjectURL(imageSrc);
       resolve(window.URL.createObjectURL(blob));
-    }, "image/jpeg");
+    }, "image/png");
   });
 }

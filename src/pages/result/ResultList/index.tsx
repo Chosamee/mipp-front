@@ -1,25 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Pagination from "backup/Pagination_Prev";
+import { useLocation, useNavigate } from "react-router-dom";
+import PaginationAllData from "components/PaginationAllData";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { deleteResult, fetchResults } from "pages/result/api";
-import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 
 import loupe from "assets/loupe.svg";
 import down_vector from "assets/result/down_vector.svg";
 import VoteBanner from "./VoteBanner";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { getStatusFieldColor, getStatusText, getStatusTextColor } from "./utils";
 import ResultItem from "./ResultItem";
 import { IResultItem } from "../types";
 import ResultNotice from "./ResultNotice";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const ResultList = () => {
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
-  const { updateAuthState } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -28,20 +24,14 @@ const ResultList = () => {
     isLoading,
     isError,
     refetch,
-  } = useQuery("results", fetchResults, {
+  } = useQuery({
+    queryKey: ["results"],
+    queryFn: fetchResults,
     // 실패 시 자동 재시도 방지
     // retry: false,
     refetchInterval: 10000,
     refetchIntervalInBackground: true,
     refetchOnMount: true,
-    onSuccess: (data) => {
-      // 데이터 불러오기 성공 시 필요한 작업 수행
-      // console.log("Data fetched successfully:", data);
-    },
-    onError: (error) => {
-      // 에러 핸들링
-      // console.error("Error fetching results:", error);
-    },
   });
 
   // 검색 기능
@@ -105,9 +95,10 @@ const ResultList = () => {
 
   const queryClient = useQueryClient();
 
-  const deleteMutation = useMutation(deleteResult, {
+  const deleteMutation = useMutation({
+    mutationFn: deleteResult,
     onSuccess: () => {
-      queryClient.refetchQueries("results"); // 삭제 작업 성공 후 관련 쿼리를 다시 가져옵니다.
+      queryClient.refetchQueries({ queryKey: ["results"] }); // 삭제 작업 성공 후 관련 쿼리를 다시 가져옵니다.
     },
   });
 
@@ -203,7 +194,7 @@ const ResultList = () => {
         )}
 
         {filteredData ? (
-          <Pagination
+          <PaginationAllData
             data={filteredData}
             itemsPerPage={itemsPerPage}
             currentPage={currentPage}

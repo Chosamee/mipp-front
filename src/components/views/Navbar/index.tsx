@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "components/auth/AuthContext";
-import { handleLogout } from "api/authService";
 import { getLangUrl } from "locales/utils";
 
 import hamberger from "assets/햄버거바.svg";
@@ -10,16 +8,16 @@ import RightNavItems from "./RightNavItems";
 import NavLanguageChanger from "./NavLanguageChanger";
 import NavDropDownItems from "./NavDropDownItems";
 import "./navbar.css";
+import { useAuth } from "hooks/useAuth";
 
 const NavBar = () => {
-  const { authState, updateAuthState } = useAuth();
+  const { logout, isLoggedIn } = useAuth();
   // navigate 기능
   const navigate = useNavigate();
   const location = useLocation();
   const handleLogoutClick = async () => {
     try {
-      await handleLogout();
-      updateAuthState({ ...authState, isLoggedIn: false });
+      logout();
       navigate(getLangUrl("/"));
       setIsMenuOpen(false); // 메뉴 닫기
     } catch (error) {
@@ -76,10 +74,10 @@ const NavBar = () => {
           </div>
         </div>
         <div className="hidden xl:flex">
-          <RightNavItems isLoggedIn={authState.isLoggedIn} handleLogoutClick={handleLogoutClick} />
+          <RightNavItems isLoggedIn={isLoggedIn} handleLogoutClick={handleLogoutClick} />
         </div>
         <NavDropDownItems
-          isLoggedIn={authState.isLoggedIn}
+          isLoggedIn={isLoggedIn}
           handleLogoutClick={handleLogoutClick}
           isMenuOpen={isMenuOpen}
         />

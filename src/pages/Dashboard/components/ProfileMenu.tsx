@@ -1,24 +1,19 @@
-import { handleLogout } from "api/authService";
-import { useAuth } from "components/auth/AuthContext";
+import { useAuth } from "hooks/useAuth";
 import { getLangUrl } from "locales/utils";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
-import { useUserInfo } from "stateStore/useUserInfo";
+import { Link } from "react-router-dom";
 
 const ProfileMenu = () => {
   const { t } = useTranslation();
-  const userInfo = useUserInfo((state) => state.userInfo);
-  const { updateAuthState, authState } = useAuth();
-  const navigate = useNavigate();
+  const { userInfo } = useAuth();
+  const { logout } = useAuth();
   const handleLogoutClick = async () => {
     if (!window.confirm(t("dashboard.로그아웃 하시겠습니까?"))) {
       return;
     }
     try {
-      await handleLogout();
-      updateAuthState({ ...authState, isLoggedIn: false });
-      navigate(getLangUrl("/"));
+      logout();
     } catch (error) {
       console.error("logout error: ", error);
     }

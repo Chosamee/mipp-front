@@ -5,7 +5,7 @@ import LoadingSpinner from "../components/views/LoadingSpinner";
 import { addPosts, fetchPosts, deletePosts } from "../api/communityService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
-import { useAuth } from "components/auth/AuthContext";
+import { useAuth } from "backup/AuthContext_Prev";
 
 const Suggestion = () => {
   const [myData, setMyData] = useState({});

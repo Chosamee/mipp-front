@@ -7,7 +7,7 @@ import loupe from "assets/loupe.svg";
 import CommunityPagination from "./CommunityPagination";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import { getLangUrl } from "locales/utils";
-import { useQuery } from "react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 const CommunityList = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const CommunityList = () => {
   const [tempSearchKeyword, setTempSearchKeyword] = useState(searchKeyword);
   const [tempSearchType, setTempSearchType] = useState(searchType);
 
-  const setCurrentPage = (page) => {
+  const setCurrentPage = (page: number) => {
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.set("page", page.toString());
     setSearchParams(newParams);
@@ -38,19 +38,21 @@ const CommunityList = () => {
     data: originData,
     isLoading,
     error,
-  } = useQuery(["fetchPosts", { currentPage, pageSize, searchKeyword, searchType }], fetchPosts, {
-    keepPreviousData: true,
+  } = useQuery({
+    queryKey: ["fetchPosts", { currentPage, pageSize, searchKeyword, searchType }],
+    queryFn: () => fetchPosts({ currentPage, pageSize, searchKeyword, searchType }),
     refetchOnWindowFocus: true,
+    placeholderData: keepPreviousData,
   });
 
   // 데이터 다시 불러오기 및 URL 파라미터 업데이트 함수
-  const fetchDataWithNewParams = (newParams) => {
+  const fetchDataWithNewParams = (newParams: any) => {
     const newSearchParams = new URLSearchParams();
 
     // 모든 새로운 파라미터들을 URLSearchParams 객체에 설정
     for (const [key, value] of Object.entries(newParams)) {
       if (value !== undefined) {
-        newSearchParams.set(key, value);
+        newSearchParams.set(key, String(value)); // Convert value to string
       }
     }
 
@@ -58,11 +60,11 @@ const CommunityList = () => {
   };
 
   // 검색어 변경 핸들러
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: any) => {
     setTempSearchKeyword(e.target.value); // 임시 검색어 상태 업데이트
   };
 
-  const handleSearchTypeChange = (e) => {
+  const handleSearchTypeChange = (e: any) => {
     setTempSearchType(e.target.value); // 임시 검색 타입 상태 업데이트
   };
 
@@ -76,7 +78,7 @@ const CommunityList = () => {
     });
   };
   // 폼 제출 핸들러
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e: any) => {
     e.preventDefault(); // 폼의 기본 제출 동작 방지
     handleSearchClick(); // 검색 실행 함수 호출
   };
@@ -154,10 +156,9 @@ const CommunityList = () => {
         <CommunityPagination
           data={originData.posts}
           totalPage={originData.total_pages === 0 ? 1 : originData.total_pages}
-          pageSize={pageSize}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          renderItem={(item) => {
+          renderItem={(item: any) => {
             return <CommunityEach key={item.id} item={item} />;
           }}
         />

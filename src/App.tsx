@@ -17,11 +17,6 @@ import ScrollToTop from "components/utils/ScrollToTop";
 
 // 인증 관련 컴포넌트: 보호된 라우트, 인증 컨텍스트
 import ProtectedRoute from "components/auth/ProtectedRoute";
-import { AuthProvider } from "components/auth/AuthContext";
-
-// Redux 관련
-import { Provider } from "react-redux";
-import store from "stateStore/store";
 
 // 국제화 및 번역 관련
 import "./i18n";
@@ -60,15 +55,11 @@ const ResultList = React.lazy(() => import("pages/result/ResultList"));
 const Index = React.lazy(() => import("pages/Index"));
 const Intro = React.lazy(() => import("pages/Intro"));
 const Howtouse = React.lazy(() => import("pages/Howtouse"));
-const Ask = React.lazy(() => import("pages/Support/Ask"));
-const AskCreate = React.lazy(() => import("pages/Support/Ask/AskCreate"));
 const AskDetail = React.lazy(() => import("pages/Support/Ask/AskDetail"));
 const RegistrationForm = React.lazy(() => import("pages/Regist"));
 const Detail = React.lazy(() => import("pages/result/Detail"));
-const FAQs = React.lazy(() => import("pages/Support/FAQs"));
 const TermsPage = React.lazy(() => import("pages/docs/Terms"));
 const PolicyPage = React.lazy(() => import("pages/docs/Policy"));
-const NoticeLists = React.lazy(() => import("pages/Support/notice/NoticeList"));
 const NoticeDetail = React.lazy(() => import("pages/Support/notice/NoticeDetail"));
 const CommunityList = React.lazy(() => import("pages/community/CommunityList"));
 const CommunityDetail = React.lazy(() => import("pages/community/CommunityDetail"));
@@ -76,6 +67,7 @@ const CommunityEditor = React.lazy(() => import("pages/community/CommunityEditor
 const Support = React.lazy(() => import("pages/Support"));
 const Dashboard = React.lazy(() => import("pages/Dashboard"));
 const ProfileEditor = React.lazy(() => import("pages/Dashboard/ProfileEditor"));
+const Visual = React.lazy(() => import("pages/Visual"));
 
 const App = () => {
   const [showFallback, setShowFallback] = useState(false);
@@ -102,81 +94,133 @@ const App = () => {
   }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트 마운트 시에만 실행되도록 함
 
   return (
-    <Provider store={store}>
-      <Router>
-        <AuthProvider>
-          <ScrollToTop />
-          <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']">
-            <Navbar />
-            <Suspense
-              fallback={
-                showFallback ? (
-                  <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
-                ) : null
-              }>
-              <div className="flex-grow mt-20 ">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  {/* <Route path="/" element={<Index />} /> */}
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                  <Route path="login/callback" element={<LoginCallbackPage />} />
-                  <Route path="/:lang" element={<LanguageRedirector />}>
-                    <Route path="*" element={<Navigate to="." replace />} />
-                    {/* 공통된 경로들을 배치 */}
-                    <Route index element={<Index />} />
-                    <Route path="docs/terms" element={<TermsPage />} />
-                    <Route path="docs/policy" element={<PolicyPage />} />
-                    <Route path="login" element={<Login />} />
-                    <Route
-                      path="regist"
-                      element={<ProtectedRoute component={RegistrationForm} />}
-                    />
-                    <Route path="result" element={<ProtectedRoute component={ResultList} />} />
-                    <Route path="home" element={<ProtectedRoute component={Home} />} />
+    <Router>
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']">
+        <Navbar />
+        <Suspense
+          fallback={
+            showFallback ? (
+              <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
+            ) : null
+          }>
+          <div className="flex-grow mt-20 ">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              {/* <Route path="/" element={<Index />} /> */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="login/callback" element={<LoginCallbackPage />} />
+              <Route path="/:lang" element={<LanguageRedirector />}>
+                <Route path="*" element={<Navigate to="." replace />} />
+                {/* 공통된 경로들을 배치 */}
+                <Route index element={<Index />} />
+                <Route path="docs/terms" element={<TermsPage />} />
+                <Route path="docs/policy" element={<PolicyPage />} />
+                <Route path="login" element={<Login />} />
+                <Route
+                  path="regist"
+                  element={
+                    <ProtectedRoute>
+                      <RegistrationForm />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="result"
+                  element={
+                    <ProtectedRoute>
+                      <ResultList />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="home"
+                  element={
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                  }
+                />
 
-                    <Route path="howtouse" element={<Howtouse />} />
-                    <Route path="intro" element={<Intro />} />
+                <Route path="howtouse" element={<Howtouse />} />
+                <Route path="intro" element={<Intro />} />
 
-                    <Route path="notice/:id" element={<NoticeDetail />} />
-                    {/* Community */}
-                    <Route path="community" element={<CommunityList />} />
-                    <Route path="community/:id" element={<CommunityDetail />} />
-                    <Route
-                      path="community/:id/edit"
-                      element={<ProtectedRoute component={CommunityEditor} />}
-                    />
-                    <Route
-                      path="community/create"
-                      element={<ProtectedRoute component={CommunityEditor} />}
-                    />
-                    {/* Support */}
+                <Route path="notice/:id" element={<NoticeDetail />} />
+                {/* Community */}
+                <Route path="community" element={<CommunityList />} />
+                <Route path="community/:id" element={<CommunityDetail />} />
+                <Route
+                  path="community/:id/edit"
+                  element={
+                    <ProtectedRoute>
+                      <CommunityEditor />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="community/create"
+                  element={
+                    <ProtectedRoute>
+                      <CommunityEditor />
+                    </ProtectedRoute>
+                  }
+                />
+                {/* Support */}
 
-                    <Route path="dashboard" element={<ProtectedRoute component={Dashboard} />} />
-                    <Route
-                      path="profile/edit"
-                      element={<ProtectedRoute component={ProfileEditor} />}
-                    />
-                    <Route
-                      path="support/*"
-                      element={
-                        <SearchParamsProvider>
-                          <Support />
-                        </SearchParamsProvider>
-                      }></Route>
-                    <Route
-                      path="support/contact/detail/:id"
-                      element={<ProtectedRoute component={AskDetail} />}
-                    />
-                    <Route path="detail/:id" element={<ProtectedRoute component={Detail} />} />
-                  </Route>
-                </Routes>
-              </div>
-            </Suspense>
-            <Footer />
+                <Route
+                  path="dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="profile/edit"
+                  element={
+                    <ProtectedRoute>
+                      <ProfileEditor />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="support/*"
+                  element={
+                    <SearchParamsProvider>
+                      <Support />
+                    </SearchParamsProvider>
+                  }></Route>
+                <Route
+                  path="support/contact/detail/:id"
+                  element={
+                    <ProtectedRoute>
+                      <AskDetail />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="detail/:id"
+                  element={
+                    <ProtectedRoute>
+                      <Detail />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="visual/:id"
+                  element={
+                    <ProtectedRoute>
+                      <Visual />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
+            </Routes>
           </div>
-        </AuthProvider>
-      </Router>
-    </Provider>
+        </Suspense>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
