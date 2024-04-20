@@ -24,7 +24,7 @@ const MelodyDetails = ({
         <button
           className={`bg-blue-500 text-white py-1 px-2 rounded ${
             viewAll ? "opacity-75" : ""
-          } break-keep flex-shrink-0 w-80`}
+          } break-keep flex-shrink-0 w-80 md:w-40`}
           onClick={() => setViewAll(true)}>
           {t("visual.전체 보기")}
         </button>
