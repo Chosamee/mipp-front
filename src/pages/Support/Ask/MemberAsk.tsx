@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Pagination from "../../../backup/Pagination_Prev";
+import PaginationAllData from "components/PaginationAllData";
 import LoadingSpinner from "../../../components/views/LoadingSpinner";
 import { fetchAsks } from "../../../api/askService";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
 
 const MemberAsk = () => {
   const [resultData, setResultData] = useState([]);
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
-  const { updateAuthState } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const handleNavLinkClick = (path: string) => {
@@ -77,7 +75,7 @@ const MemberAsk = () => {
       </div>
 
       {filteredData ? (
-        <Pagination
+        <PaginationAllData
           data={filteredData}
           itemsPerPage={itemsPerPage}
           currentPage={currentPage}

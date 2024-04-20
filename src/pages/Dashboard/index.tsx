@@ -1,11 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import ProfileMenu from "./components/ProfileMenu";
-import ProfileImageEdit from "./ProfileEditor/ImageEditor";
 import SiteMenu from "./components/SiteMenu";
 import ResultDropdown from "./components/ResultDropdown";
-import { useUserInfo } from "stateStore/useUserInfo";
-import { useDashboardDataQuery } from "./api";
 import DashboardNotice from "./components/DashboardNotice";
 import { IAlert, ICommunity, IResult } from "./dashboardType";
 import { useTranslation } from "react-i18next";
@@ -13,9 +10,11 @@ import LoadingSpinner from "components/views/LoadingSpinner";
 import DashboardCommunity from "./components/DashboardCommunity";
 import { Link } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
+import { useQuery } from "@tanstack/react-query";
+import { fetchDashboardData } from "./api";
+import { useAuth } from "hooks/useAuth";
 
 export interface DashboardData {
-  user_info?: { nickname: string; email: string; membership: string; profileImage: string };
   dashboard_data?: {
     new_notice_available: false;
     total_plagiarism_checks: number;
@@ -30,14 +29,13 @@ export interface DashboardData {
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
-  const { data, isError, isLoading } = useDashboardDataQuery(i18n.language);
-  const setUserInfo = useUserInfo((state) => state.setUserInfo);
-
-  useEffect(() => {
-    if (data?.user_info) {
-      setUserInfo(data.user_info);
-    }
-  }, [data, setUserInfo]);
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["dashboardData", i18n.language],
+    queryFn: ({ queryKey }) => {
+      const [, lang] = queryKey as [string, string];
+      return fetchDashboardData(lang);
+    },
+  });
 
   if (isLoading)
     return (

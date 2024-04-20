@@ -7,7 +7,6 @@ import PostLikeBtn from "./PostLikeBtn";
 import getFormattedDate from "components/utils/getFormattedDate";
 import { useTranslation } from "react-i18next";
 import Comment from "./comment/Comment";
-import { useAuth } from "components/auth/AuthContext";
 import CommentForm from "./comment/CommentForm";
 
 const CommunityDetail = () => {

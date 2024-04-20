@@ -17,7 +17,7 @@ const LeftNavItems = () => {
         </Link>
         <Link to={getLangUrl("/community")}>{t("nav.request")}</Link>
         <Link
-          to={getLangUrl("/support")}
+          to={getLangUrl("/support/notice")}
           onMouseOver={() => import("pages/Support/notice/NoticeList")}>
           {t("nav.support")}
         </Link>

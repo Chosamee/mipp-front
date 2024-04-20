@@ -1,28 +1,16 @@
-import { useEffect, useState } from "react";
 import React from "react";
 import FAQs from "./FAQs";
 import NoticeList from "./notice/NoticeList";
 import { useTranslation } from "react-i18next";
-import { SearchParamsProvider, useSearchParamsContext } from "components/SearchParamsContext";
 import Ask from "./Ask";
-import {
-  Link,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import AskCreate from "./Ask/AskCreate";
 
 const Support = () => {
   const { t } = useTranslation();
-  const { searchParams, setSearchParams } = useSearchParamsContext();
 
   const location = useLocation();
-  const navigate = useNavigate();
 
   return (
     <>

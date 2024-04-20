@@ -2,8 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
-export const fetchPosts = async ({ queryKey }) => {
-  const [_key, { currentPage, pageSize, searchKeyword, searchType }] = queryKey;
+export const fetchPosts = async ({ currentPage, pageSize, searchKeyword, searchType }) => {
   try {
     const response = await axios.post(
       `${API_BASE_URL}/all_posts/?page=${currentPage}&page_size=${pageSize}&search_query=${encodeURIComponent(

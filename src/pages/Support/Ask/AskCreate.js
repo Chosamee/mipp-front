@@ -3,7 +3,7 @@ import { addAsks } from "../../../api/askService";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
-import { useAuth } from "components/auth/AuthContext";
+import { useAuth } from "hooks/useAuth";
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
 
@@ -17,6 +17,7 @@ const AskCreate = ({ isGuest }) => {
   const [isDirty, setIsDirty] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isLoggedIn } = useAuth();
 
   const handleInputChange = (e) => {
     setInquiry({ ...inquiry, [e.target.name]: e.target.value });
@@ -55,14 +56,12 @@ const AskCreate = ({ isGuest }) => {
     const newFiles = inquiry.files.filter((_, fileIndex) => fileIndex !== index);
     setInquiry({ ...inquiry, files: newFiles });
   };
-  const { updateAuthState } = useAuth();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   // 'randState' 쿼리 파라미터의 값을 가져옴 (값이 없으면 '0'을 기본값으로 함)
   const currentRandState = queryParams.get("randState") || "0";
 
-  const { authState } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inquiry.title || !inquiry.contents) {
@@ -80,10 +79,9 @@ const AskCreate = ({ isGuest }) => {
         });
       } catch (error) {
         console.error("add asks error:", error);
-        updateAuthState({ isLoggedIn: false });
       }
       setIsDirty(false);
-      if (authState.isLoggedIn) {
+      if (isLoggedIn) {
         navigate(getLangUrl("/support/contact"));
       } else {
         alert(t("ask.create.success"));

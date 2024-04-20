@@ -1,27 +1,69 @@
+import React from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { downloadPDF } from "api/pdfService";
-import { useEffect, useRef, useState } from "react";
+import { getLangUrl } from "locales/utils";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-const Each = ({ file, handleCheckboxChange, index }) => {
-  const [fileUrl, setFileUrl] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+const Each = ({
+  file,
+  handleCheckboxChange,
+  index,
+}: {
+  file: any;
+  handleCheckboxChange: any;
+  index: any;
+}) => {
   const { t, i18n } = useTranslation();
+
+  const {
+    data: fileUrl,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["pdfUrl", i18n.language === "en" ? file.en_path : file.ko_path],
+    queryFn: () => downloadPDF(i18n.language === "en" ? file.en_path : file.ko_path),
+    staleTime: Infinity, // 파일 URL은 캐시에서 만료되지 않도록 설정
+    enabled: false, // 자동 실행 비활성화
+    gcTime: 1000 * 60 * 3, // 3분마다 캐시 삭제
+  });
+
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    // 컴포넌트가 언마운트될 때 다운받았던 파일들 캐시 모두 삭제
+    return () => {
+      queryClient.removeQueries({
+        predicate: (query) => query.queryKey[0] === "pdfUrl",
+        exact: true,
+      });
+    };
+  }, [queryClient]);
 
   const handlePreview = async () => {
     if (isLoading) return;
-    setIsLoading(true);
     if (!fileUrl) {
       try {
-        const url = await downloadPDF(file.path, i18n.language); // 서버로부터 PDF 파일 받아오기
-        window.open(url, "_blank"); // 새 창에서 PDF 파일 열기
-        setFileUrl(url); // 받아온 URL을 상태에 저장
+        // const url = await downloadPDF(file.path, i18n.language); // 서버로부터 PDF 파일 받아오기
+        // window.open(url, "_blank"); // 새 창에서 PDF 파일 열기
+        queryClient
+          .fetchQuery({
+            queryKey: ["pdfUrl", i18n.language === "en" ? file.en_path : file.ko_path],
+            queryFn: () => downloadPDF(i18n.language === "en" ? file.en_path : file.ko_path),
+          })
+          .then((newUrl: string) => {
+            window.open(newUrl, "_blank");
+          })
+          .catch((error) => {
+            console.error("Preview error:", error);
+          });
       } catch (error) {
         console.error("Preview error:", error);
       }
     } else {
       window.open(fileUrl, "_blank");
     }
-    setIsLoading(false);
   };
 
   return (
@@ -38,9 +80,11 @@ const Each = ({ file, handleCheckboxChange, index }) => {
         />
       </div>
       <div className="flex flex-col md:flex-row gap-2 flex-grow">
-        <div className="flex md:py-0 w-[305px] min-w-0 md:max-w-5xl mr-auto items-center text-[#171923] px-2">
+        <Link
+          to={getLangUrl(`/visual/${file.id}`)}
+          className="flex md:py-0 w-[305px] min-w-0 md:max-w-5xl mr-auto items-center text-[#171923] px-2">
           <div className="truncate">{file.title}</div>
-        </div>
+        </Link>
 
         <div className="flex flex-row items-center justify-between gap-3 px-2">
           <div className="flex w-[108px] md:w-40 h-full items-center text-[#171923] gap-[6px]">
@@ -92,7 +136,7 @@ const Each = ({ file, handleCheckboxChange, index }) => {
   );
 };
 
-const getColorScore = (score) => {
+const getColorScore = (score: number) => {
   if (score >= 60) return "#FE5BBD"; // 60 이상일 경우
   else if (score >= 50) return "#FFA3FB"; // 50 이상 60 미만
   else if (score >= 40) return "#F3D3FF"; // 40 이상 50 미만

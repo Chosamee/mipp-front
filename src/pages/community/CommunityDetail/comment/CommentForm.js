@@ -1,15 +1,15 @@
-import { useAuth } from "components/auth/AuthContext";
+import { useAuth } from "hooks/useAuth";
 import { addComment } from "pages/community/api";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const CommentForm = ({ post_id, parent_id = null, setReloadRequired }) => {
   const [content, setContent] = useState("");
-  const { authState } = useAuth();
+  const { isLoggedIn } = useAuth();
   const { i18n } = useTranslation();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!authState.isLoggedIn) {
+    if (!isLoggedIn) {
       alert(
         i18n.language === "en"
           ? "Please log in to write a comment."

@@ -8,7 +8,9 @@ const Pagination = ({ data, totalPage, renderItem, currentPage, setCurrentPage }
     const end = Math.min(currentPage <= 3 ? 5 : currentPage + 2, totalPage);
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   };
-
+  if (!data) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       {data.map(renderItem)}

@@ -5,7 +5,7 @@ import LoadingSpinner from "../components/views/LoadingSpinner";
 import PDFViewer from "../components/views/PDFViewer";
 import { fetchDetail } from "pages/result/api";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "components/auth/AuthContext";
+import { useAuth } from "backup/AuthContext_Prev";
 import { getLangUrl } from "locales/utils";
 
 const Detail = () => {
