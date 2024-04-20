@@ -5,7 +5,7 @@ import PieChartComp from "./PiechartComp";
 const RatioOverview = (data1: IVisualData1) => {
   return (
     <div className="flex flex-col px-5 mx-auto gap-6 ">
-      <h2 className="text-xl font-semibold">Ratio Overview</h2>
+      <h2 className="text-xl font-semibold">Overview</h2>
       <div>Plagiarism Rate: {data1.total_ratio}%</div>
       <div className="relative flex h-10 w-full">
         <div className="h-full bg-red-600 flex px-3" style={{ width: `${data1.total_ratio}%` }} />

@@ -7,9 +7,9 @@ const PartOverview = (data2: IVisualData2) => {
   return (
     <div className="flex flex-col px-5 mx-auto gap-6 w-full">
       <div className="flex flex-row gap-5">
-        <h2 className="text-xl font-semibold">Ratio Overview</h2>
+        <h2 className="text-xl font-semibold">Timeline</h2>
         <button
-          className="bg-blue-400 px-2 rounded-lg"
+          className="bg-blue-500 px-2 rounded-lg text-white"
           onClick={() => {
             setIsOpen(!isOpen);
           }}>

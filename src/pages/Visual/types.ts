@@ -10,6 +10,8 @@ export interface IVisualData3 {
   test_link: string;
   test_note: number[][];
   test_time: string;
+  test_title: string;
+  comp_title: string;
 }
 
 export interface IVisualData1 {
