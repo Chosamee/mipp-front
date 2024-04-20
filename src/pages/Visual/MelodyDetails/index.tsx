@@ -6,10 +6,12 @@ const MelodyDetails = ({
   data3,
   testTitle,
   compTitle,
+  inst,
 }: {
   data3: { [key: string]: IVisualData3 };
   testTitle: string;
   compTitle: string;
+  inst: string;
 }) => {
   const [viewAll, setViewAll] = React.useState(true);
   const data = Object.values(data3);
@@ -42,9 +44,11 @@ const MelodyDetails = ({
         {data.map((item, index) => {
           const isRender = viewAll || item.test_title !== item.comp_title;
           return (
-            <div className={`flex flex-col gap-16 w-full ${isRender ? "block" : "hidden"}`}>
+            <div
+              key={index}
+              className={`flex flex-col gap-16 w-full ${isRender ? "block" : "hidden"}`}>
               <div className="h-px w-full bg-black"></div>
-              <MelodyItem key={index} data={{ ...item }} viewAll={viewAll} />
+              <MelodyItem data={{ ...item }} inst={inst} />
             </div>
           );
         })}

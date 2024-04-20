@@ -2,15 +2,17 @@ import useWindowWidth from "components/utils/useWindowWidth";
 import React, { useMemo, useState } from "react";
 import NoteBlock from "./NoteBlock";
 import { getNoteName, isBlackKey } from "./utils";
+import { useTranslation } from "react-i18next";
 
 interface PianoRollProps {
   testNotes: number[][];
   compNotes: number[][];
   minNote: number;
   maxNote: number;
+  inst: string;
 }
 
-const PianoRoll = ({ testNotes, compNotes, minNote, maxNote }: PianoRollProps) => {
+const PianoRoll = ({ testNotes, compNotes, minNote, maxNote, inst }: PianoRollProps) => {
   const [view, setView] = useState("all"); // all, test, comp, overlaps
 
   const gap = maxNote - minNote + 1;
@@ -57,6 +59,7 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote }: PianoRollProps) =
   }, [testNotes, compNotes]);
 
   const overlaps = calculateOverlaps;
+  const { i18n } = useTranslation();
 
   return (
     <>
@@ -94,12 +97,23 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote }: PianoRollProps) =
             ))}
           </div>
           <div className="relative" style={{ width: `${width}px`, height: `${height}px` }}>
+            {testNotes.length === 0 && (
+              <div
+                className={`absolute z-20 w-96 text-center p-3 text-lg bg-blue-600 text-white rounded-lg`}
+                style={{ left: `${(width - 384) / 2}px`, bottom: `${height / 2}px` }}>
+                {i18n.language === "en"
+                  ? `No ${inst} Notes found.`
+                  : `발견된 ${inst} 음이 없습니다.`}
+              </div>
+            )}
+
             <div className="relative z-0">{keysBackground}</div>
 
             {Array.from({ length: 65 }, (_, i) => {
               if (i % 4 === 0) {
                 return (
                   <div
+                    key={i}
                     style={{ left: `${(width / 64) * i}px` }}
                     className="absolute top-0 ring-neutral-400 ring-1 h-full"
                   />
@@ -107,6 +121,7 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote }: PianoRollProps) =
               }
               return (
                 <div
+                  key={i}
                   style={{ left: `${(width / 64) * i}px` }}
                   className="absolute top-0 ring-neutral-300 ring-1 h-full md:block hidden"
                 />

@@ -36,6 +36,7 @@ export interface IVisualData2 {
 
 // comp가 아래, test가 위
 export interface IVisualData {
+  inst: string;
   message: string;
   data1: IVisualData1;
   data2: IVisualData2;

@@ -44,6 +44,7 @@ const Visual = () => {
             data3={{ ...data.data3 }}
             testTitle={data.data1.test_title}
             compTitle={data.data1.comp_title}
+            inst={data.inst}
           />
         </div>
       )}

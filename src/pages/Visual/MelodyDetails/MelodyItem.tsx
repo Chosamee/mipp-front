@@ -3,7 +3,7 @@ import { IVisualData3 } from "../types";
 import PianoRoll from "./PianoRoll";
 import DetailTable from "./DetailTable";
 
-const MelodyItem = ({ data, viewAll }: { data: IVisualData3; viewAll: boolean }) => {
+const MelodyItem = ({ data, inst }: { data: IVisualData3; inst: string }) => {
   return (
     <div className={`flex flex-col gap-6 w-full`}>
       <PianoRoll
@@ -11,6 +11,7 @@ const MelodyItem = ({ data, viewAll }: { data: IVisualData3; viewAll: boolean })
         compNotes={data.comp_note}
         minNote={data.min_note}
         maxNote={data.max_note}
+        inst={inst}
       />
       <DetailTable
         comp_chord={data.comp_chord}
