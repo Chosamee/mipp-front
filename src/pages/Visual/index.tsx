@@ -35,7 +35,11 @@ const Visual = () => {
       {data && data.message !== errorMessage && (
         <div className="flex flex-col gap-20 mx-auto w-full">
           <RatioOverview {...data.data1} />
-          <PartOverview {...data.data2} />
+          <PartOverview
+            data2={{ ...data.data2 }}
+            testTitle={data.data1.test_title}
+            compTitle={data.data1.comp_title}
+          />
           <MelodyDetails
             data3={{ ...data.data3 }}
             testTitle={data.data1.test_title}

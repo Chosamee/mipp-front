@@ -9,65 +9,65 @@ const Graph = ({ data }: { data: IVisualData2 }) => {
   const testWidth = 100 / test_plag.length;
   const compWidth = 100 / comp_plag.length;
   return (
-    <div className="flex flex-row h-[1500px] mx-auto">
-      <div className="flex flex-col h-full">
+    <div className="flex flex-col w-full mx-auto">
+      <div className="flex flex-row w-full justify-between">
         {testLabels.map((label, idx) => (
           <div
             key={idx}
-            className={`mr-2`}
-            style={{ lineHeight: "32px", textAlign: "center", height: `${testWidth}%` }}>
+            className={`mb-2 md:block ${idx % 4 !== 0 ? "hidden" : ""}`}
+            style={{ width: `${testWidth}%` }}>
             {label}
           </div>
         ))}
         <div>{Math.round(test_start + test_gap * test_plag.length)}</div>
       </div>
 
-      <div className="flex flex-col h-full mt-2">
+      <div className="flex flex-row w-full mt-2">
         {test_plag.map((filled, idx) => (
           <div
             key={idx}
-            className={`w-7 md:w-20 border ${filled ? "bg-blue-500" : "bg-transparent"}`}
-            style={{ lineHeight: "32px", textAlign: "center", height: `${testWidth}%` }}></div>
+            className={`h-7 md:h-20 border ${filled ? "bg-blue-500" : "bg-transparent"}`}
+            style={{ lineHeight: "32px", textAlign: "center", width: `${testWidth}%` }}></div>
         ))}
       </div>
 
-      <svg width="200" height={1500}>
-        {plag_pair.map(([tIdx, cIdx]) => (
-          <line
-            key={`${tIdx}-${cIdx}`}
-            x1={0}
-            y1={`${testWidth * (tIdx + 0.5)}%`}
-            x2={200}
-            y2={`${compWidth * (cIdx + 0.5)}%`}
-            stroke="black"
-          />
-        ))}
-      </svg>
+      <div className="w-full md:h-[200px] h-[100px]">
+        <svg width={`100%`} height={`100%`}>
+          {plag_pair.map(([tIdx, cIdx]) => (
+            <line
+              key={`${tIdx}-${cIdx}`}
+              x1={`${testWidth * (tIdx + 0.5)}%`}
+              y1={0}
+              x2={`${compWidth * (cIdx + 0.5)}%`}
+              y2={`100%`}
+              stroke="black"
+            />
+          ))}
+        </svg>
+      </div>
 
-      <div className="flex flex-col h-full">
+      <div className="flex flex-row w-full">
         {comp_plag.map((filled, idx) => (
           <div
             key={idx}
-            className={`w-7 md:w-20 border ${filled ? "bg-green-500" : "bg-transparent"}`}
+            className={`h-7 md:h-20 border ${filled ? "bg-green-500" : "bg-transparent"}`}
             style={{
-              lineHeight: "32px",
-              textAlign: "center",
-              height: `${compWidth}%`,
+              width: `${compWidth}%`,
             }}
           />
         ))}
       </div>
 
-      <div className="flex flex-col h-full">
+      <div className="flex flex-row w-full justify-between">
         {compLabels.map((label, idx) => (
           <div
             key={idx}
-            className={`relative top-[-2] mr-2`}
-            style={{ lineHeight: "32px", textAlign: "center", height: `${testWidth}%` }}>
+            className={`mt-2 md:block ${idx % 4 !== 0 ? "hidden" : ""}`}
+            style={{ width: `${compWidth}%` }}>
             {label}
           </div>
         ))}
-        <div>{Math.round(comp_start + comp_gap * comp_plag.length)}</div>
+        <div className="mt-2">{Math.round(comp_start + comp_gap * comp_plag.length)}</div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import PieChartComp from "./PiechartComp";
 
 const RatioOverview = (data1: IVisualData1) => {
   return (
-    <div className="flex flex-col px-5 mx-auto gap-6 ">
+    <div className="flex flex-col px-5 mx-auto gap-6">
       <h2 className="text-xl font-semibold">Overview</h2>
       <div>Plagiarism Rate: {data1.total_ratio}%</div>
       <div className="relative flex h-10 w-full">
@@ -20,13 +20,13 @@ const RatioOverview = (data1: IVisualData1) => {
       <div className="flex flex-col md:flex-row gap-10 w-full justify-between">
         <CircleSection
           description="원본 음원 표절 의심 구간"
-          dataTitle={data1.comp_title}
+          dataTitle={data1.test_title}
           paired={data1.paired_duration_song1}
           total={data1.total_duration_song1}
         />
         <CircleSection
           description="비교 음원 표절 의심 구간"
-          dataTitle={data1.test_title}
+          dataTitle={data1.comp_title}
           paired={data1.paired_duration_song2}
           total={data1.total_duration_song2}
         />
