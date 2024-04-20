@@ -14,7 +14,7 @@ const Graph = ({ data }: { data: IVisualData2 }) => {
         {testLabels.map((label, idx) => (
           <div
             key={idx}
-            className={`mb-2 md:block ${idx % 4 !== 0 ? "hidden" : ""}`}
+            className={`mb-2 text-sm ${idx % 4 !== 0 ? "hidden" : ""}`}
             style={{ width: `${testWidth}%` }}>
             {label}
           </div>
@@ -62,7 +62,7 @@ const Graph = ({ data }: { data: IVisualData2 }) => {
         {compLabels.map((label, idx) => (
           <div
             key={idx}
-            className={`mt-2 md:block ${idx % 4 !== 0 ? "hidden" : ""}`}
+            className={`mt-2 text-sm ${idx % 4 !== 0 ? "hidden" : ""}`}
             style={{ width: `${compWidth}%` }}>
             {label}
           </div>

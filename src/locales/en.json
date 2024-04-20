@@ -294,5 +294,30 @@
   "footer": {
     "email": "Email: mippcomp@gmail.com",
     "company": "DoubleHCompany"
+  },
+  "visual": {
+    "결과": "Result",
+    "요약": "Overview",
+    "표절률": "Plagiarism Rate",
+    "검사 음원 표절 의심 구간": "Test Music Suspected Plagiarism Rate",
+    "비교 음원 표절 의심 구간": "Comp. Music Suspected Plagiarism Rate",
+    "표절 의심 구간 요약": "Plagiarism Suspected Parts",
+    "보기": "View",
+    "숨기기": "Hide",
+    "멜로디 상세 보기": "Melody Details",
+    "전체 보기": "All",
+    "표절 의심": "Plagiarism Suspected",
+    "겹치는 부분": "overlaps",
+    "all": "all",
+    "test": "Test Music",
+    "comp": "Comp. Music",
+    "overlaps": "overlaps",
+    "구간 표절률": "Part Plagiarism Rate",
+    "검사 음원 시간": "Test Music Time",
+    "비교 음원 시간": "Comp. Music Time",
+    "검사 음원 화성": "Test Music Chord",
+    "비교 음원 화성": "Comp. Music Chord",
+    "원곡 음원 확인": "Test Music Link",
+    "비교 음원 확인": "Comp. Music Link"
   }
 }

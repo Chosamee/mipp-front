@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "components/views/LoadingSpinner";
 import PartOverview from "./PartOverview";
 import MelodyDetails from "./MelodyDetails";
+import { useTranslation } from "react-i18next";
 
 const errorMessage = "No data pkl file found";
 
@@ -20,12 +21,13 @@ const Visual = () => {
     refetchInterval: 10000, // 10초마다 새로고침
   });
 
+  const { t } = useTranslation();
   if (isLoading) return <LoadingSpinner />;
   if (error) return <div>Error</div>;
 
   return (
     <div className="max-w-7xl flex flex-col w-full h-auto items-center mx-auto py-20">
-      <h1 className="w-full text-center text-2xl font-semibold pb-10">Visualize</h1>
+      <h1 className="w-full text-center text-2xl font-semibold pb-10">{t("visual.결과")}</h1>
       {data && data.message === errorMessage && (
         <p className="max-w-xl text-2xl px-5 py-20">
           This songs used old version service. <br />
@@ -48,6 +50,13 @@ const Visual = () => {
           />
         </div>
       )}
+      <button
+        className="fixed bottom-10 right-5 w-10 h-10 bg-blue-600 text-white rounded-lg z-30"
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}>
+        Top
+      </button>
     </div>
   );
 };

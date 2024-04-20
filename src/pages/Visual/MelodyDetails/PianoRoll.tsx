@@ -59,7 +59,7 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote, inst }: PianoRollPr
   }, [testNotes, compNotes]);
 
   const overlaps = calculateOverlaps;
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -71,7 +71,7 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote, inst }: PianoRollPr
             className={`bg-blue-500 text-white p-1 rounded ${
               view === v ? "opacity-75" : ""
             } w-1/4 break-keep`}>
-            {v.charAt(0).toUpperCase() + v.slice(1)} {v !== "all" ? "Only" : ""}
+            {t(`visual.${v}`)}
           </button>
         ))}
       </div>

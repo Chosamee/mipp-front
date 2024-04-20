@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export interface IDetailDataProps {
   comp_chord: string;
@@ -25,12 +26,12 @@ const DetailTable = ({
   const handleLinkClick = (url: string) => {
     window.open(url, "_blank");
   };
-
+  const { t } = useTranslation();
   return (
     <div className="flex w-full md:flex-row flex-col gap-6">
       <div className="flex md:flex-col flex-row md:w-1/3 md:justify-center gap-4 flex-shrink-0 items-center">
-        <span className="text-blue-800 font-bold text-4xl flex-shrink-0 text-nowrap">
-          구간 표절률
+        <span className="text-blue-800 font-bold text-4xl flex-shrink-0 break-keep text-center">
+          {t("visual.구간 표절률")}
         </span>
         <span className="text-blue-800 font-bold text-5xl flex-shrink-0">{plag_ratio}%</span>
       </div>
@@ -38,23 +39,25 @@ const DetailTable = ({
         <table className="w-full break-keep">
           <tbody>
             <tr className="border-b">
-              <th className="text-left py-2 px-3 bg-gray-100 text-nowrap">검사 음원 시간</th>
+              <th className="text-left py-2 px-3 bg-gray-100 text-nowrap">
+                {t("visual.검사 음원 시간")}
+              </th>
               <td className="py-2 px-3">{test_time}</td>
             </tr>
             <tr className="border-b">
-              <th className="text-left py-2 px-3 bg-gray-100">비교 음원 시간</th>
+              <th className="text-left py-2 px-3 bg-gray-100">{t("visual.비교 음원 시간")}</th>
               <td className="py-2 px-3">{comp_time}</td>
             </tr>
             <tr className="border-b">
-              <th className="text-left py-2 px-3 bg-gray-100">검사 음원 화성</th>
+              <th className="text-left py-2 px-3 bg-gray-100">{t("visual.검사 음원 화성")}</th>
               <td className="py-2 px-3">{test_chord}</td>
             </tr>
             <tr className="border-b">
-              <th className="text-left py-2 px-3 bg-gray-100">비교 음원 화성</th>
+              <th className="text-left py-2 px-3 bg-gray-100">{t("visual.비교 음원 화성")}</th>
               <td className="py-2 px-3">{comp_chord}</td>
             </tr>
             <tr className="border-b">
-              <th className="text-left py-2 px-3 bg-gray-100">원곡 음원 확인</th>
+              <th className="text-left py-2 px-3 bg-gray-100">{t("visual.원곡 음원 확인")}</th>
               <td
                 className="py-2 px-3 text-blue-600 cursor-pointer"
                 onClick={() => handleLinkClick(test_link)}>
@@ -62,7 +65,7 @@ const DetailTable = ({
               </td>
             </tr>
             <tr>
-              <th className="text-left py-2 px-3 bg-gray-100">비교 음원 확인</th>
+              <th className="text-left py-2 px-3 bg-gray-100">{t("visual.비교 음원 확인")}</th>
               <td
                 className="py-2 px-3 text-blue-600 cursor-pointer"
                 onClick={() => handleLinkClick(comp_link)}>
