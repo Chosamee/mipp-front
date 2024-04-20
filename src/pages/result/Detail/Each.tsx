@@ -15,19 +15,20 @@ const Each = ({
   handleCheckboxChange: any;
   index: any;
 }) => {
+  const { t, i18n } = useTranslation();
+
   const {
     data: fileUrl,
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ["pdfUrl", file.path],
-    queryFn: () => downloadPDF(file.path),
+    queryKey: ["pdfUrl", i18n.language === "en" ? file.en_path : file.ko_path],
+    queryFn: () => downloadPDF(i18n.language === "en" ? file.en_path : file.ko_path),
     staleTime: Infinity, // 파일 URL은 캐시에서 만료되지 않도록 설정
     enabled: false, // 자동 실행 비활성화
     gcTime: 1000 * 60 * 3, // 3분마다 캐시 삭제
   });
 
-  const { t, i18n } = useTranslation();
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -48,8 +49,8 @@ const Each = ({
         // window.open(url, "_blank"); // 새 창에서 PDF 파일 열기
         queryClient
           .fetchQuery({
-            queryKey: ["pdfUrl", file.path],
-            queryFn: () => downloadPDF(file.path),
+            queryKey: ["pdfUrl", i18n.language === "en" ? file.en_path : file.ko_path],
+            queryFn: () => downloadPDF(i18n.language === "en" ? file.en_path : file.ko_path),
           })
           .then((newUrl: string) => {
             window.open(newUrl, "_blank");

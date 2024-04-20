@@ -17,9 +17,10 @@ interface IMusicData {
 interface IResultItem {
   music_id: number;
   title: string;
-  path: string;
   checked: boolean;
   plagiarism_rate: number;
+  ko_path: string;
+  en_path: string;
 }
 
 const DetailPage = () => {
@@ -54,7 +55,9 @@ const DetailPage = () => {
 
   const getMultiDowndladPDF = async () => {
     if (downloadLoading) return;
-    const checkedPaths = checkedFiles?.filter((item) => item.checked).map((item) => item.path);
+    const checkedPaths = checkedFiles
+      ?.filter((item) => item.checked)
+      .map((item) => (i18n.language === "en" ? item.en_path : item.ko_path));
     if (checkedPaths?.length === 0) {
       alert("Select Files");
       return;
