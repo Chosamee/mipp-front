@@ -99,8 +99,13 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote, inst }: PianoRollPr
           <div className="relative" style={{ width: `${width}px`, height: `${height}px` }}>
             {testNotes.length === 0 && (
               <div
-                className={`absolute z-20 w-96 text-center p-3 text-lg bg-blue-600 text-white rounded-lg`}
-                style={{ left: `${(width - 384) / 2}px`, bottom: `${height / 2}px` }}>
+                className={`absolute z-20 md:w-96 w-60 text-center p-3 text-lg bg-blue-600 text-white rounded-lg break-keep`}
+                style={{
+                  ...(width > 768
+                    ? { left: `${(width - 384) / 2}px` }
+                    : { left: `${(width - 240) / 2}px` }),
+                  bottom: `${height / 2}px`,
+                }}>
                 {i18n.language === "en"
                   ? `No ${inst} Notes found.`
                   : `발견된 ${inst} 음이 없습니다.`}
