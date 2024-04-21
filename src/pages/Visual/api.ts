@@ -9,3 +9,10 @@ export const fetchVisualData = async (result_id: number): Promise<IVisualData> =
   });
   return response.data;
 };
+
+export const shareVisualResult = async (result_id: number): Promise<any> => {
+  const response = await axios.post(`${API_BASE_URL}/share/${result_id}`, null, {
+    withCredentials: true,
+  });
+  return response.data;
+};

@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchVisualData } from "./api";
+import { fetchVisualData, shareVisualResult } from "./api";
 import { useParams } from "react-router-dom";
 import RatioOverview from "./RatioOverview";
 import { useQuery } from "@tanstack/react-query";
@@ -21,6 +21,14 @@ const Visual = () => {
     refetchInterval: 10000, // 10초마다 새로고침
   });
 
+  const handleShare = async () => {
+    try {
+      await shareVisualResult(Number(id));
+    } catch (error) {
+      console.error("Error sharing visual result:", error);
+    }
+  };
+
   const { t } = useTranslation();
   if (isLoading) return <LoadingSpinner />;
   if (error) return <div>Error</div>;
@@ -28,6 +36,11 @@ const Visual = () => {
   return (
     <div className="max-w-7xl flex flex-col w-full h-auto items-center mx-auto py-20">
       <h1 className="w-full text-center text-2xl font-semibold pb-10">{t("visual.결과")}</h1>
+      <button
+        className="fixed top-20 right-5 w-20 h-10 text-white bg-blue-500 rounded-xl"
+        onClick={handleShare}>
+        share
+      </button>
       {data && data.message === errorMessage && (
         <p className="max-w-xl text-2xl px-5 py-20">
           This songs used old version service. <br />
