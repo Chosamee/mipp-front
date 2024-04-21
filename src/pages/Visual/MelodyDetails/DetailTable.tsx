@@ -30,7 +30,7 @@ const DetailTable = ({
   return (
     <div className="flex w-full md:flex-row flex-col gap-6">
       <div className="flex md:flex-col flex-row md:w-1/3 md:justify-center gap-4 flex-shrink-0 items-center">
-        <span className="text-blue-800 font-bold text-4xl flex-shrink-0 break-keep text-center">
+        <span className="text-blue-800 font-bold text-4xl break-keep text-center">
           {t("visual.구간 표절률")}
         </span>
         <span className="text-blue-800 font-bold text-5xl flex-shrink-0">{plag_ratio}%</span>
