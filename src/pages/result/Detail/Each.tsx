@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { downloadPDF } from "api/pdfService";
 import { getLangUrl } from "locales/utils";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { generatePDF } from "../api";
 
 const Each = ({
   file,
@@ -66,6 +67,19 @@ const Each = ({
     }
   };
 
+  const [genLoading, setGenLoading] = useState(false);
+  const handleGeneratePDF = async () => {
+    if (genLoading) return;
+    try {
+      setGenLoading(true);
+      await generatePDF(file.id); // 서버로부터 PDF 파일 생성 요청
+    } catch (error) {
+      console.error("Generate PDF error:", error);
+    } finally {
+      setGenLoading(false);
+    }
+  };
+
   return (
     <li
       className={`flex w-[335px] h-24 md:h-[70px] items-center border-b-[1px] border-[#E5E8EB] font-medium md:w-full ${
@@ -117,16 +131,47 @@ const Each = ({
               </button>
             )}
           </div>
+          {i18n.language === "ko"
+            ? file.ko_path && (
+                <button
+                  className="md:hidden relative right-0"
+                  onClick={() => {
+                    handlePreview();
+                  }}>
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
+                  ) : (
+                    <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
+                      {i18n.language === "ko" ? "결과 보기" : "View Result"}
+                    </div>
+                  )}
+                </button>
+              )
+            : file.en_path && (
+                <button
+                  className="md:hidden relative right-0"
+                  onClick={() => {
+                    handlePreview();
+                  }}>
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
+                  ) : (
+                    <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
+                      {i18n.language === "ko" ? "결과 보기" : "View Result"}
+                    </div>
+                  )}
+                </button>
+              )}
           <button
-            className="md:hidden relative right-0"
+            className="relative right-0"
             onClick={() => {
-              handlePreview();
+              handleGeneratePDF();
             }}>
-            {isLoading ? (
+            {genLoading ? (
               <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
             ) : (
               <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
-                {i18n.language === "ko" ? "결과 보기" : "View Result"}
+                pdf 생성
               </div>
             )}
           </button>

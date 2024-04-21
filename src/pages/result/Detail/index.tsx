@@ -48,7 +48,7 @@ const DetailPage = () => {
       setresultData(data.results);
       setMusicData(data.music);
     }
-    console.log(queryClient.getQueryData(["detailResult", id, i18n.language]));
+    // console.log(queryClient.getQueryData(["detailResult", id, i18n.language]));
   }, [data, i18n.language, queryClient, id]);
 
   const [checkedCount, setCheckedCount] = useState(0);
