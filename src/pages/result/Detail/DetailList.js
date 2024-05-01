@@ -45,7 +45,7 @@ const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => 
   }, [checkedCount]);
 
   return (
-    <React.Fragment>
+    <>
       {/* 비교 결과 목차 */}
       <div className="flex w-full h-16 mt-4 items-center border-y-[1px] border-[#E5E8EB]">
         <div className="flex items-center h-full font-medium w-[30px] justify-center">
@@ -57,15 +57,20 @@ const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => 
           </div>
           <div className="flex px-3 w-full md:w-64 h-full items-center">{t("detail.표절률")}</div>
         </div>
-        <div className="hidden md:flex w-24 h-full items-center text-nowrap">
-          {t("detail.결과자료")}
+        <div className="flex flex-row justify-between">
+          <div className="hidden md:flex w-20 h-full items-center text-nowrap">
+            {t("detail.결과자료")}
+          </div>
+          <div className="hidden md:flex w-24 h-full items-center text-nowrap justify-center">
+            PDF
+          </div>
         </div>
       </div>
       {/* 찐 결과 */}
       {checkedFiles.map((file, index) => (
         <Each key={index} file={file} handleCheckboxChange={handleCheckboxChange} index={index} />
       ))}
-    </React.Fragment>
+    </>
   );
 };
 export default DetailList;

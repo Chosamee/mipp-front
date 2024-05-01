@@ -19,7 +19,7 @@
     "vocal": "Vocal",
     "melody": "Inst.",
     "선택파일": "Selected Files",
-    "파일 다운로드": "Download Files",
+    "파일 다운로드": "Download Files (Coming Soon)",
     "이름": "Music Title",
     "표절률": "Plagiarism Rate",
     "확인하기": "Check",
@@ -32,7 +32,8 @@
     "낮음": "Low",
     "보통": "Medium",
     "높음": "High",
-    "아주 높음": "Very High"
+    "아주 높음": "Very High",
+    "PDF 보기": "PDF File"
   },
   "pagination": {
     "tot": "Total",
