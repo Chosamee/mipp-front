@@ -12,6 +12,13 @@ interface PianoRollProps {
   inst: string;
 }
 
+const partColor: { [key: string]: string } = {
+  all: "bg-blue-500",
+  test: "bg-blue-500",
+  comp: "bg-green-500",
+  overlaps: "bg-purple-500",
+};
+
 const PianoRoll = ({ testNotes, compNotes, minNote, maxNote, inst }: PianoRollProps) => {
   const [view, setView] = useState("all"); // all, test, comp, overlaps
 
@@ -68,9 +75,9 @@ const PianoRoll = ({ testNotes, compNotes, minNote, maxNote, inst }: PianoRollPr
           <button
             key={v}
             onClick={() => setView(v)}
-            className={`bg-blue-500 text-white p-1 rounded ${
-              view === v ? "opacity-75" : ""
-            } w-1/4 break-keep`}>
+            className={`text-white p-1 rounded ${view === v ? "opacity-75" : ""} w-1/4 break-keep ${
+              partColor[v]
+            }`}>
             {t(`visual.${v}`)}
           </button>
         ))}

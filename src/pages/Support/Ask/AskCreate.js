@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { addAsks } from "../../../api/askService";
+import { addAsks } from "./api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
