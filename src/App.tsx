@@ -206,14 +206,7 @@ const App = () => {
                     </ProtectedRoute>
                   }
                 />
-                <Route
-                  path="visual/:id"
-                  element={
-                    <ProtectedRoute>
-                      <Visual />
-                    </ProtectedRoute>
-                  }
-                />
+                <Route path="visual/:id" element={<Visual />} />
               </Route>
             </Routes>
           </div>

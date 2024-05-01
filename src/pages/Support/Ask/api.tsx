@@ -14,7 +14,15 @@ export const fetchAsks = async () => {
   }
 };
 
-export const addAsks = async ({ title, contents, files }) => {
+export const addAsks = async ({
+  title,
+  contents,
+  files,
+}: {
+  title: string;
+  contents: string;
+  files: File[];
+}) => {
   const formData = new FormData();
   formData.append("title", title);
   formData.append("contents", contents);
@@ -30,11 +38,9 @@ export const addAsks = async ({ title, contents, files }) => {
   }
 };
 
-export const fetchAsksDetail = async (id) => {
-  const formData = new FormData();
-  formData.append("ask_id", id);
+export const fetchAsksDetail = async (id: string) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/ask_detail`, formData, {
+    const response = await axios.post(`${API_BASE_URL}/ask_detail/${id}`, null, {
       withCredentials: true,
     });
     return response.data;

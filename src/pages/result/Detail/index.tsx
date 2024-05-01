@@ -28,7 +28,6 @@ const DetailPage = () => {
   const [resultData, setresultData] = useState([]);
   const [musicData, setMusicData] = useState<IMusicData | undefined>(undefined);
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { i18n } = useTranslation();
   const [checkedFiles, setCheckedFiles] = useState<IResultItem[] | undefined>([]);
   const [downloadLoading, setDownloadLoading] = useState(false);
@@ -48,7 +47,7 @@ const DetailPage = () => {
       setresultData(data.results);
       setMusicData(data.music);
     }
-    console.log(queryClient.getQueryData(["detailResult", id, i18n.language]));
+    // console.log(queryClient.getQueryData(["detailResult", id, i18n.language]));
   }, [data, i18n.language, queryClient, id]);
 
   const [checkedCount, setCheckedCount] = useState(0);
@@ -112,7 +111,7 @@ const DetailPage = () => {
             getMultiDowndladPDF();
           }}>
           <DownloadIcon />
-          <div className="text-white text-[12px] leading-[16px] font-medium">
+          <div className="text-white text-[12px] leading-[16px] font-medium text-nowrap">
             {t("detail.파일 다운로드")}
           </div>
         </button>
