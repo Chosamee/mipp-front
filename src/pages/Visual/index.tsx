@@ -30,7 +30,12 @@ const Visual = () => {
   };
 
   const { t } = useTranslation();
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading)
+    return (
+      <div className="flex min-h-screen flex-grow">
+        <LoadingSpinner />
+      </div>
+    );
   if (error) return <div>Error</div>;
 
   return (

@@ -4,7 +4,7 @@ import { downloadPDF } from "api/pdfService";
 import { getLangUrl } from "locales/utils";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { generatePDF } from "../api";
 
 const Each = ({
@@ -67,17 +67,21 @@ const Each = ({
     }
   };
 
-  const [genLoading, setGenLoading] = useState(false);
-  const handleGeneratePDF = async () => {
-    if (genLoading) return;
-    try {
-      setGenLoading(true);
-      await generatePDF(file.id); // 서버로부터 PDF 파일 생성 요청
-    } catch (error) {
-      console.error("Generate PDF error:", error);
-    } finally {
-      setGenLoading(false);
-    }
+  // const [genLoading, setGenLoading] = useState(false);
+  // const handleGeneratePDF = async () => {
+  //   if (genLoading) return;
+  //   try {
+  //     setGenLoading(true);
+  //     await generatePDF(file.id); // 서버로부터 PDF 파일 생성 요청
+  //   } catch (error) {
+  //     console.error("Generate PDF error:", error);
+  //   } finally {
+  //     setGenLoading(false);
+  //   }
+  // };
+  const navigate = useNavigate();
+  const handleRouteVisual = () => {
+    navigate(getLangUrl("/visual") + `/${file.id}`);
   };
 
   return (
@@ -109,69 +113,55 @@ const Each = ({
             <div>{file.plagiarism_rate} %</div>
           </div>
           <div className="hidden md:flex h-full items-center">
-            {isLoading ? (
-              <div className="flex w-20 items-center justify-center">
-                <div className="ml-5 animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 flex-shrink-0" />
-              </div>
-            ) : (
-              <button
-                className="flex w-20 h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
-                onClick={() => {
-                  handlePreview();
-                }}>
-                <div className="text-[#31353B] text-[12px] text-nowrap">{t("detail.확인하기")}</div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="6"
-                  height="10"
-                  viewBox="0 0 6 10"
-                  fill="none">
-                  <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
-                </svg>
-              </button>
-            )}
+            <button
+              className="flex w-20 h-[30px] px-[11px] gap-[7px] flex-shrink-0 items-center justify-center bg-white border-[1px] border-[#D9DADB] rounded-md"
+              onClick={() => {
+                handleRouteVisual();
+              }}>
+              <div className="text-[#31353B] text-[12px] text-nowrap">{t("detail.확인하기")}</div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="6"
+                height="10"
+                viewBox="0 0 6 10"
+                fill="none">
+                <path d="M1 1L5 5L1 9" stroke="#31353B" stroke-linecap="round" />
+              </svg>
+            </button>
           </div>
           {i18n.language === "ko"
             ? file.ko_path && (
                 <button
                   className="md:hidden relative right-0"
                   onClick={() => {
-                    handlePreview();
+                    handleRouteVisual();
                   }}>
-                  {isLoading ? (
-                    <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
-                  ) : (
-                    <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
-                      {i18n.language === "ko" ? "결과 보기" : "View Result"}
-                    </div>
-                  )}
+                  <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
+                    {i18n.language === "ko" ? "결과 보기" : "View Result"}
+                  </div>
                 </button>
               )
             : file.en_path && (
                 <button
                   className="md:hidden relative right-0"
                   onClick={() => {
-                    handlePreview();
+                    handleRouteVisual();
                   }}>
-                  {isLoading ? (
-                    <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
-                  ) : (
-                    <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
-                      {i18n.language === "ko" ? "결과 보기" : "View Result"}
-                    </div>
-                  )}
+                  <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
+                    {i18n.language === "ko" ? "결과 보기" : "View Result"}
+                  </div>
                 </button>
               )}
           <button
             className="relative right-0"
             onClick={() => {
-              handleGeneratePDF();
+              handlePreview();
             }}>
-            {genLoading ? (
+            {isLoading ? (
               <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-blue-500" />
             ) : (
               <div className="flex w-fit rounded-md px-2 items-center justify-center bg-[#4565D8] text-[#EBF3FA] py-1">
-                pdf 생성
+                {i18n.language === "ko" ? "PDF 생성" : "View PDF"}
               </div>
             )}
           </button>
