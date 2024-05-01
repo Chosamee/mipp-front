@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PaginationAllData from "components/PaginationAllData";
 import LoadingSpinner from "../../../components/views/LoadingSpinner";
-import { fetchAsks } from "../../../api/askService";
+import { fetchAsks } from "./api";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
 
 const MemberAsk = () => {
-  const [resultData, setResultData] = useState([]);
   const itemsPerPage = 10;
   const { t, i18n } = useTranslation();
   const location = useLocation();
@@ -16,18 +16,11 @@ const MemberAsk = () => {
     navigate(path);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchAsks();
-        setResultData(response ? response : []);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const {
+    data: resultData,
+    isLoading,
+    error,
+  } = useQuery({ queryKey: ["askDatas"], queryFn: fetchAsks });
 
   const queryParams = new URLSearchParams(location.search);
   const [currentPage, setCurrentPage] = useState(parseInt(queryParams.get("page") || "1", 10));
@@ -57,7 +50,7 @@ const MemberAsk = () => {
 
   const filteredData = searchKeyword
     ? resultData.filter(
-        (item) =>
+        (item: any) =>
           item[searchType] &&
           (item[searchType] as string).toLowerCase().includes(searchKeyword.toLowerCase())
       )
