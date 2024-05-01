@@ -58,19 +58,27 @@ const DetailTable = ({
             </tr>
             <tr className="border-b">
               <th className="text-left py-2 px-3 bg-gray-100">{t("visual.원곡 음원 확인")}</th>
-              <td
-                className="py-2 px-3 text-blue-600 cursor-pointer"
-                onClick={() => handleLinkClick(test_link)}>
-                Music Link
-              </td>
+              {test_link === null || test_link === "-" ? (
+                <td className="py-2 px-3">No Link</td>
+              ) : (
+                <td
+                  className="py-2 px-3 text-blue-600 cursor-pointer"
+                  onClick={() => handleLinkClick(test_link)}>
+                  Music Link
+                </td>
+              )}
             </tr>
             <tr>
               <th className="text-left py-2 px-3 bg-gray-100">{t("visual.비교 음원 확인")}</th>
-              <td
-                className="py-2 px-3 text-blue-600 cursor-pointer"
-                onClick={() => handleLinkClick(comp_link)}>
-                Music Link
-              </td>
+              {comp_link === null || comp_link === "-" ? (
+                <td className="py-2 px-3">No Link</td>
+              ) : (
+                <td
+                  className="py-2 px-3 text-blue-600 cursor-pointer"
+                  onClick={() => handleLinkClick(test_link)}>
+                  Music Link
+                </td>
+              )}
             </tr>
           </tbody>
         </table>
