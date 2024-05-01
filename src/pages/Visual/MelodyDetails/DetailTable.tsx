@@ -75,7 +75,7 @@ const DetailTable = ({
               ) : (
                 <td
                   className="py-2 px-3 text-blue-600 cursor-pointer"
-                  onClick={() => handleLinkClick(test_link)}>
+                  onClick={() => handleLinkClick(comp_link)}>
                   Music Link
                 </td>
               )}

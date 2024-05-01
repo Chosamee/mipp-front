@@ -115,7 +115,8 @@ const ResultList = () => {
 
   return (
     <>
-      <div className="mx-auto px-5 w-[375px] md:w-full max-w-5xl py-[150px] font-['Pretendard-Regular']">
+      <VoteBanner />
+      <div className="mx-auto px-5 w-[375px] md:w-full max-w-5xl pb-[150px] pt-20 font-['Pretendard-Regular']">
         <ResultNotice />
         {/* Title 및 검색 하십시오.. */}
         <div className="gap-[26px] flex md:flex-row flex-col md:items-center mb-9 md:h-10">
@@ -223,7 +224,7 @@ const ResultList = () => {
         </select>
       </div> */}
       </div>
-      <VoteBanner />
+      {/* <VoteBanner /> */}
     </>
   );
 };
