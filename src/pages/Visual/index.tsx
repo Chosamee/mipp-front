@@ -65,7 +65,7 @@ const Visual = () => {
         onClick={handleShare}>
         share
       </button> */}
-      <ShareModal numericId={numericId} />
+      {isLoggedIn && <ShareModal numericId={numericId} />}
       {data && data.message === errorMessage && (
         <p className="max-w-xl text-2xl px-5 py-20">
           This songs used old version service. <br />

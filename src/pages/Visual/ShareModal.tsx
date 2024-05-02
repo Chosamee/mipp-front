@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { shareVisualResult } from "./api";
+import { useAuth } from "hooks/useAuth";
 
 const ShareModal = ({ numericId }: { numericId: number }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = () => setIsOpen(!isOpen);
+  const { isLoggedIn } = useAuth();
 
   const { data } = useQuery({
     queryKey: ["shareToken", numericId],
     queryFn: () => shareVisualResult(numericId),
-    enabled: numericId !== 0, // id가 존재할 때만 쿼리 실행
+    enabled: numericId !== 0 && isLoggedIn, // id가 존재할 때만 쿼리 실행
     staleTime: Infinity,
   });
 
