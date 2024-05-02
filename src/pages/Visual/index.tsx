@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { fetchVisualData, shareVisualResult } from "./api";
+import React, { useEffect } from "react";
+import { fetchVisualData } from "./api";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import RatioOverview from "./RatioOverview";
 import { useQuery } from "@tanstack/react-query";
@@ -9,6 +9,7 @@ import MelodyDetails from "./MelodyDetails";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "hooks/useAuth";
 import { getLangUrl } from "locales/utils";
+import ShareModal from "./ShareModal";
 
 const errorMessage = "No data pkl file found";
 
@@ -64,7 +65,7 @@ const Visual = () => {
         onClick={handleShare}>
         share
       </button> */}
-      <CustomAlert numericId={numericId} />
+      <ShareModal numericId={numericId} />
       {data && data.message === errorMessage && (
         <p className="max-w-xl text-2xl px-5 py-20">
           This songs used old version service. <br />
@@ -94,59 +95,6 @@ const Visual = () => {
         }}>
         Top
       </button>
-    </div>
-  );
-};
-
-const CustomAlert = ({ numericId }: { numericId: number }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleModal = () => setIsOpen(!isOpen);
-
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["shareToken", numericId],
-    queryFn: () => shareVisualResult(numericId),
-    enabled: numericId !== 0, // id가 존재할 때만 쿼리 실행
-    staleTime: Infinity,
-  });
-
-  const url = window.location.href.split("?")[0];
-  const copyToClipboard = async (textToCopy: string) => {
-    try {
-      await navigator.clipboard.writeText(textToCopy);
-      alert("Text copied to clipboard!"); // 성공 메시지
-    } catch (error) {
-      console.error("Failed to copy:", error); // 실패 메시지
-    }
-  };
-
-  return (
-    <div className="fixed flex flex-col top-20 right-5 z-20">
-      <button
-        className="relative w-20 h-10 text-white bg-blue-500 rounded-xl z-20 justify-end items-end ml-auto"
-        onClick={toggleModal}>
-        Share
-      </button>
-      {data && isOpen && (
-        <div className="relative flex flex-col w-80 md:w-96 text-white bg-gray-600 rounded-xl z-20 p-5 gap-3">
-          <p>Please click or copy the link below:</p>
-          <a
-            href={`${url}?token=${data.share_token}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="break-all">
-            {`${url}?token=${data.share_token}`}
-          </a>
-          <button
-            onClick={() => {
-              copyToClipboard(`${url}?token=${data.share_token}`);
-            }}>
-            Copy
-          </button>
-          <button onClick={toggleModal} className="">
-            Close
-          </button>
-        </div>
-      )}
     </div>
   );
 };

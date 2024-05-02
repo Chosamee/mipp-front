@@ -21,7 +21,6 @@ const DetailItem = ({
 
   const {
     data: fileUrl,
-    isError,
     isLoading,
     refetch,
   } = useQuery({

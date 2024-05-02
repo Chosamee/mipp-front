@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetail } from "pages/result/api";
@@ -9,7 +9,6 @@ import Criteria from "./Criteria";
 import { multiDownloadPDF } from "api/pdfService";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { IFile } from "../types";
-import LoadingSpinner from "components/views/LoadingSpinner";
 import PageLoadingSpinner from "components/views/PageLoadingSpinner";
 
 interface IMusicData {

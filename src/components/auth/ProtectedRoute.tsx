@@ -8,6 +8,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { isLoggedIn, isLoading, refetch } = useAuth();
   useEffect(() => {
     refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (isLoading) return <PageLoadingSpinner />;
 
