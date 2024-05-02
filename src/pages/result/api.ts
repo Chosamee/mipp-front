@@ -33,7 +33,7 @@ export const fetchDetail = async (id: string, language: string) => {
 
 export const deleteResult = async (id: string) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/result/${id}`, {
+    await axios.delete(`${API_BASE_URL}/result/${id}`, {
       withCredentials: true,
     });
   } catch (error) {

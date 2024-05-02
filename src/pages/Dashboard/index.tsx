@@ -1,18 +1,16 @@
 import React from "react";
-import { useEffect } from "react";
 import ProfileMenu from "./components/ProfileMenu";
 import SiteMenu from "./components/SiteMenu";
 import ResultDropdown from "./components/ResultDropdown";
 import DashboardNotice from "./components/DashboardNotice";
 import { IAlert, ICommunity, IResult } from "./dashboardType";
 import { useTranslation } from "react-i18next";
-import LoadingSpinner from "components/views/LoadingSpinner";
 import DashboardCommunity from "./components/DashboardCommunity";
 import { Link } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDashboardData } from "./api";
-import { useAuth } from "hooks/useAuth";
+import PageLoadingSpinner from "components/views/PageLoadingSpinner";
 
 export interface DashboardData {
   dashboard_data?: {
@@ -37,12 +35,7 @@ const Dashboard = () => {
     },
   });
 
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center pt-20">
-        <LoadingSpinner />
-      </div>
-    );
+  if (isLoading) return <PageLoadingSpinner />;
   if (isError) return <div>Error occurred!</div>;
 
   return (

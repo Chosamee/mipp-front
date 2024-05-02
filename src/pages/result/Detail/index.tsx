@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetail } from "pages/result/api";
@@ -8,19 +8,12 @@ import DetailList from "./DetailList";
 import Criteria from "./Criteria";
 import { multiDownloadPDF } from "api/pdfService";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { IFile } from "../types";
+import PageLoadingSpinner from "components/views/PageLoadingSpinner";
 
 interface IMusicData {
   title: string;
   inst: string;
-}
-
-interface IResultItem {
-  music_id: number;
-  title: string;
-  checked: boolean;
-  plagiarism_rate: number;
-  ko_path: string;
-  en_path: string;
 }
 
 const DetailPage = () => {
@@ -29,7 +22,7 @@ const DetailPage = () => {
   const [musicData, setMusicData] = useState<IMusicData | undefined>(undefined);
   const { t } = useTranslation();
   const { i18n } = useTranslation();
-  const [checkedFiles, setCheckedFiles] = useState<IResultItem[] | undefined>([]);
+  const [checkedFiles, setCheckedFiles] = useState<IFile[]>([]);
   const [downloadLoading, setDownloadLoading] = useState(false);
 
   const { data, isError, isLoading } = useQuery({
@@ -76,6 +69,9 @@ const DetailPage = () => {
     }
     setDownloadLoading(false);
   };
+
+  if (isError) return <div>Error...</div>;
+  if (isLoading) return <PageLoadingSpinner />;
 
   return (
     <div className="mx-auto pt-[50px] pb-[70px] md:pt-[150px] md:pb-[120px] w-[375px] md:w-[854px] px-5 leading-[normal] text-[#171923]">
