@@ -5,15 +5,17 @@ import { getLangUrl } from "locales/utils";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { getColorScore } from "./utils";
+import { IFile } from "../types";
 
-const Each = ({
+const DetailItem = ({
   file,
   handleCheckboxChange,
   index,
 }: {
-  file: any;
-  handleCheckboxChange: any;
-  index: any;
+  file: IFile;
+  handleCheckboxChange: (index: number) => void;
+  index: number;
 }) => {
   const { t, i18n } = useTranslation();
 
@@ -153,12 +155,4 @@ const Each = ({
   );
 };
 
-const getColorScore = (score: number) => {
-  if (score >= 60) return "#FE5BBD"; // 60 이상일 경우
-  else if (score >= 50) return "#FFA3FB"; // 50 이상 60 미만
-  else if (score >= 40) return "#F3D3FF"; // 40 이상 50 미만
-  else if (score >= 30) return "#BDC4FF"; // 30 이상 40 미만
-  else return "#3553F3"; // 30 미만
-};
-
-export default Each;
+export default DetailItem;

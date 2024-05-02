@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Each from "./Each";
+import DetailItem from "./DetailItem";
 import { useTranslation } from "react-i18next";
+import { IDetailListProps } from "../types";
 
-const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => {
+const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }: IDetailListProps) => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -17,14 +18,14 @@ const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => 
 
   const [isAllChecked, setIsAllChecked] = useState(false);
 
-  const handleSelectAll = (event) => {
+  const handleSelectAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newChecked = event.target.checked;
     setIsAllChecked(newChecked);
     const newCheckedFiles = checkedFiles.map((file) => ({ ...file, checked: newChecked }));
     setCheckedFiles(newCheckedFiles);
   };
 
-  const handleCheckboxChange = (index) => {
+  const handleCheckboxChange = (index: number) => {
     const newCheckedFiles = [...checkedFiles];
     newCheckedFiles[index].checked = !newCheckedFiles[index].checked;
     setCheckedFiles(newCheckedFiles);
@@ -68,7 +69,12 @@ const DetailList = ({ files, sendCountFunc, checkedFiles, setCheckedFiles }) => 
       </div>
       {/* 찐 결과 */}
       {checkedFiles.map((file, index) => (
-        <Each key={index} file={file} handleCheckboxChange={handleCheckboxChange} index={index} />
+        <DetailItem
+          key={index}
+          file={file}
+          handleCheckboxChange={handleCheckboxChange}
+          index={index}
+        />
       ))}
     </>
   );
