@@ -19,7 +19,7 @@ const Login = () => {
   });
 
   return (
-    <React.Fragment>
+    <>
       {isLoggedIn ? (
         <Navigate to={getLangUrl("/index")} />
       ) : (
@@ -34,7 +34,7 @@ const Login = () => {
           </div>
         </div>
       )}
-    </React.Fragment>
+    </>
   );
 };
 

@@ -85,7 +85,7 @@ const LanguageSeletor = () => {
   const { i18n } = useTranslation();
   const location = useLocation();
   // 언어 변경
-  const changeLanguage = (language) => {
+  const changeLanguage = (language: string) => {
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const pathParts = location.pathname.split("/");
     pathParts[1] = language; // URL의 언어 부분을 변경
