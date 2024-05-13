@@ -29,7 +29,7 @@ const IntroSEOKO = () => {
               "description": "MIPP이 어떻게 자동으로 음원 표절 검사를 하는지 알려드립니다. 작곡가, 가수, 팬, 음원 투자자. 당신이 음악인이라면 어떤 도움을 받을 수 있는지 알아보세요.",
               "publisher": {
                 "@type": "Organization",
-                "name": "더블에이치컴퍼니",
+                "name": "미피아",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://storage.googleapis.com/domainbucket/imageog.png"
