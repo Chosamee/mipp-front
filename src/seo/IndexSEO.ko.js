@@ -29,7 +29,7 @@ const IndexSEOKO = () => {
             "description": "MIPP을 통해 노래 표절 검사를 진행해보세요. AI 음악 멜로디 분석을 통해 작곡 표절을 탐지하여 창작물의 가치를 올리는 솔루션을 제공합니다.",
             "publisher": {
               "@type": "Organization",
-              "name": "더블에이치컴퍼니",
+              "name": "미피아",
               "logo": {
                 "@type": "ImageObject",
                 "url": "https://storage.googleapis.com/domainbucket/imageog.png"
