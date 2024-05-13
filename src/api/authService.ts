@@ -2,6 +2,12 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
+/** 토큰 검증 함수 */
+// isValid: 유효한 토큰인지 여부
+// action: 추가 정보 입력이 필요한지 여부
+// nickname: 사용자 닉네임
+// profileImage: 사용자 프로필 이미지
+// email: 사용자 이메일
 export const verifyToken = async () => {
   try {
     const response = await axios.post(`${API_BASE_URL}/verifyToken`, null, {
@@ -23,9 +29,10 @@ export const verifyToken = async () => {
   }
 };
 
+/** 로그아웃 함수 */
 export const handleLogout = async () => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/logout`, null, { withCredentials: true });
+    await axios.post(`${API_BASE_URL}/logout`, null, { withCredentials: true });
     console.log("Logout Success:");
   } catch (error) {
     console.error("Logout api error:", error);
@@ -33,6 +40,7 @@ export const handleLogout = async () => {
   }
 };
 
+/** 로그인 전 xss 방지를 위한 state 생성 함수 */
 export const handleSessionState = async () => {
   try {
     const response = await axios.post(`${API_BASE_URL}/session_state`, null, {
@@ -45,7 +53,10 @@ export const handleSessionState = async () => {
   }
 };
 
-export const handleOauthLogin = async ({ code, state }) => {
+/**  구글 로그인 함수 */
+// code: 구글에서 받은 code
+// state: xss 방지를 위한 state
+export const handleOauthLogin = async ({ code, state }: { code: string; state: string }) => {
   const formData = new FormData();
   formData.append("code", code);
   formData.append("state", state);
@@ -62,7 +73,9 @@ export const handleOauthLogin = async ({ code, state }) => {
   }
 };
 
-export const handleRegist = async (registForm) => {
+/** 회원가입 함수 */
+// 추가정보 입력
+export const handleRegist = async (registForm: any) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/additional_info`, registForm, {
       withCredentials: true,
@@ -75,7 +88,8 @@ export const handleRegist = async (registForm) => {
   }
 };
 
-export const handleCheckNicknameDuplicate = async (nickname) => {
+/*** 닉네임 중복 확인 함수 */
+export const handleCheckNicknameDuplicate = async (nickname: string) => {
   const formData = new FormData();
   formData.append("nickname", nickname);
   try {

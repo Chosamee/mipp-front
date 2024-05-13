@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { uploadMedia } from "../../api/uploadService";
+import { uploadMedia } from "../api";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
+import { IUploadProps } from "./types";
 
-const YoutubeLinkComp = ({ inst, bpm }) => {
+const YoutubeLinkComp = ({ inst, bpm }: IUploadProps) => {
   // 유튜브 링크 값 입력 인식
   const [isSubmit, setIsSubmit] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
   };
   const { t } = useTranslation();
@@ -34,7 +35,7 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <input
         type="text"
         value={inputValue}
@@ -52,7 +53,7 @@ const YoutubeLinkComp = ({ inst, bpm }) => {
         className="w-[326px] md:w-[420px] py-[20px] bg-blue-500 text-white rounded-[10px] hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
         {t("home.submit")}
       </button>
-    </React.Fragment>
+    </>
   );
 };
 

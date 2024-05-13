@@ -1,15 +1,16 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fileSelect from "../../assets/file_select.svg";
-import fileSelected from "../../assets/file_selected.svg";
-import fileSelectHover from "../../assets/file_select_hover.svg";
+import fileSelect from "assets/file_select.svg";
+import fileSelected from "assets/file_selected.svg";
+import fileSelectHover from "assets/file_select_hover.svg";
 
-import { uploadMedia } from "../../api/uploadService";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 import LoadingSpinner from "components/views/LoadingSpinner";
+import { IUploadProps } from "./types";
+import { uploadMedia } from "../api";
 
-const FileUploadComp = ({ inst, bpm }) => {
+const FileUploadComp = ({ inst, bpm }: IUploadProps) => {
   const [uploadFile, setUploadFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
@@ -17,7 +18,7 @@ const FileUploadComp = ({ inst, bpm }) => {
   const { t } = useTranslation();
 
   const handleFileChange = useCallback(
-    (file) => {
+    (file: any) => {
       if (file) {
         // 파일 확장자 체크
         const allowedExtensions = ["wav", "mp3", "aiff", "aif", "flac", "ogg"];
@@ -36,7 +37,7 @@ const FileUploadComp = ({ inst, bpm }) => {
   );
   const [isDragOver, setIsDragOver] = useState(false); // 드래그 상태 관리
 
-  const onDragOver = (event) => {
+  const onDragOver = (event: any) => {
     event.preventDefault(); // 기본 이벤트 방지
     setIsDragOver(true); // 드래그 상태를 true로 설정
   };
@@ -46,7 +47,7 @@ const FileUploadComp = ({ inst, bpm }) => {
   };
 
   const onDrop = useCallback(
-    (event) => {
+    (event: any) => {
       event.preventDefault();
       event.stopPropagation();
       const file = event.dataTransfer.files[0]; // 드래그된 파일 중 첫 번째 파일 사용
@@ -117,7 +118,9 @@ const FileUploadComp = ({ inst, bpm }) => {
           <input
             type="file"
             accept=".wav, .mp3, .aiff, .aif, .flac, .ogg"
-            onChange={(event) => handleFileChange(event.target.files[0])}
+            onChange={(event) => {
+              if (event.target.files) handleFileChange(event.target.files[0]);
+            }}
             className="hidden"
           />
         </label>

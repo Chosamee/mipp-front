@@ -3,13 +3,21 @@ import i18n from "i18n";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
-export const uploadMedia = async ({ file, url, inst }) => {
+interface IUploadMediaParams {
+  file?: File;
+  url?: string;
+  inst: string;
+}
+
+export const uploadMedia = async ({ file, url, inst }: IUploadMediaParams) => {
   const formData = new FormData();
 
   if (file) {
     formData.append("file", file);
   } else if (url) {
     formData.append("url", url);
+  } else {
+    throw new Error("No file or url");
   }
 
   formData.append("inst", inst);

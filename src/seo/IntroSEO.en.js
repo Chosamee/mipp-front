@@ -30,7 +30,7 @@ const IntroSEOEN = () => {
               "description": "Find out how MIPP detects the music plagiarism. Composers, singers, fans, and music investors: Discover our services available to you, as a musician.",
               "publisher": {
                 "@type": "Organization",
-                "name": "DoubleHCompany",
+                "name": "MIPPIA",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://storage.googleapis.com/domainbucket/imageog.png"

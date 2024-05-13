@@ -9,9 +9,9 @@ const TermsEn = () => {
       <Title>1 Purpose</Title>
       <Content>
         These Terms and Conditions are established to clarify the basic matters such as rights,
-        duties, and responsibilities between "Users" (hereafter referred to as 'Members') and
-        DoubleH Company Ltd. (hereafter referred to as "the Company") regarding the use of various
-        services provided by the Company.
+        duties, and responsibilities between "Users" (hereafter referred to as 'Members') and MIPPIA
+        Ltd. (hereafter referred to as "the Company") regarding the use of various services provided
+        by the Company.
       </Content>
       <Title>2 Effectiveness and Amendment of the Terms</Title>
       <Content>

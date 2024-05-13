@@ -30,7 +30,7 @@ const IndexSEOEN = () => {
   "description": "Discover MIPP, the solution for detecting song plagiarism effectively. Join us and protect your music copyright with AI audio analysis song plagiarism checker.",
   "publisher": {
     "@type": "Organization",
-    "name": "DoubleHCompany",
+    "name": "MIPPIA",
     "logo": {
       "@type": "ImageObject",
       "url": "https://storage.googleapis.com/domainbucket/imageog.png"

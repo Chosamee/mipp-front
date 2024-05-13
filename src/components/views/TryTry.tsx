@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import StartCheckBtn from "./StartCheckBtn";
 import useWindowWidth from "components/utils/useWindowWidth";

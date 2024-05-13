@@ -13,11 +13,11 @@ const Footer = () => {
       <div className="justify-between items-start max-w-[1536px] hidden md:flex w-full">
         <div className="flex flex-col items-start ">
           <div className="flex flex-col justify-center items-start gap-[10px] text-[26px] font-bold leading-[22px] mb-8">
-            Double H Company.
+            MIPPIA
           </div>
           <div className="flex flex-col items-start gap-2 text-[17px] leading-[31px] text-nowrap mb-4">
             E-mail : mippcomp@gmail.com
-            <br /> Copyright © 2024. DoubleHCompany. All Rights Reserved
+            <br /> Copyright © 2024. MIPPIA. All Rights Reserved
           </div>
           <div className="w-72 h-px bg-gray-300"></div>
           <div className="flex mt-4 gap-10">
@@ -52,11 +52,10 @@ const Footer = () => {
           <LanguageSeletor />
 
           <div className="flex flex-col justify-center items-start text-[18px] font-bold leading-[22px] text-[#EAECEE]">
-            Double H Company.
+            MIPPIA
           </div>
           <div className="flex flex-col items-start text-[15px] leading-[24px] text-[#EAECEE]">
-            E-mail : mippcomp@gmail.com <br /> Copyright © 2024. DoubleHCompany. <br /> All Rights
-            Reserved
+            E-mail : mippcomp@gmail.com <br /> Copyright © 2024. MIPPIA. <br /> All Rights Reserved
           </div>
         </div>
         <div className="w-72 h-px bg-gray-300 mt-4"></div>
@@ -85,7 +84,7 @@ const LanguageSeletor = () => {
   const { i18n } = useTranslation();
   const location = useLocation();
   // 언어 변경
-  const changeLanguage = (language) => {
+  const changeLanguage = (language: string) => {
     // 현재 경로를 가져온 후, 언어 코드 부분만 변경
     const pathParts = location.pathname.split("/");
     pathParts[1] = language; // URL의 언어 부분을 변경

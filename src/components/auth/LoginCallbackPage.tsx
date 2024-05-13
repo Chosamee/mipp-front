@@ -17,7 +17,7 @@ const LoginCallbackPage = () => {
       const state = urlParams.get("state");
 
       if (code && state) {
-        i18n.changeLanguage(localStorage.getItem("language")); // 로컬 스토리지에 언어 설정 저장
+        i18n.changeLanguage(localStorage.getItem("language") ?? undefined); // 로컬 스토리지에 언어 설정 저장
         localStorage.removeItem("language");
         try {
           login(code, state);

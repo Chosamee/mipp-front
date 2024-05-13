@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import FileUploadComp from "../components/upload/FileUploadComp";
-import YoutubeLinkComp from "../components/upload/YoutubeLinkComp";
+import FileUploadComp from "./components/FileUploadComp";
+import YoutubeLinkComp from "./components/YoutubeLinkComp";
 import { useTranslation } from "react-i18next";
-import { getRemain } from "api/uploadService";
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
+import { getRemain } from "./api";
 
 const Home = () => {
   // 탭 선택
@@ -31,7 +31,7 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
-  const SelectMusicType = ({ selected, optionNum }) => {
+  const SelectMusicType = ({ selected, optionNum }: { selected: string; optionNum: number }) => {
     const { t } = useTranslation();
     const isSelected = inst === selected;
     return (
