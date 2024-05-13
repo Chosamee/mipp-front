@@ -24,6 +24,9 @@ import { useTranslation } from "react-i18next";
 import LoginCallbackPage from "components/auth/LoginCallbackPage";
 import { SearchParamsProvider } from "components/SearchParamsContext";
 
+import PaymentForm from "pages/Payment";
+import PaymentComplete from "pages/Payment/Complete";
+
 // 페이지: 애플리케이션의 각 페이지
 // import Home from "pages/Home";
 // import Login from "pages/Login";
@@ -207,6 +210,8 @@ const App = () => {
                   }
                 />
                 <Route path="visual/:id" element={<Visual />} />
+                <Route path="payment" element={<PaymentForm />} />
+                <Route path="payment/complete" element={<PaymentComplete />} />
               </Route>
             </Routes>
           </div>
