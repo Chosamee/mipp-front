@@ -16,12 +16,12 @@ import Footer from "components/views/Footer";
 import ScrollToTop from "components/utils/ScrollToTop";
 
 // 인증 관련 컴포넌트: 보호된 라우트, 인증 컨텍스트
-import ProtectedRoute from "components/auth/ProtectedRoute";
+import ProtectedRoute from "components/ProtectedRoute";
 
 // 국제화 및 번역 관련
 import "./i18n";
 import { useTranslation } from "react-i18next";
-import LoginCallbackPage from "components/auth/LoginCallbackPage";
+import LoginCallbackPage from "pages/Login/Callback";
 import { SearchParamsProvider } from "components/SearchParamsContext";
 
 // 페이지: 애플리케이션의 각 페이지
