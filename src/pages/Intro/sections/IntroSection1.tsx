@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 const IntroSection1 = () => {
   const { t } = useTranslation();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([{ title: "", text: "" }]);
   const width = useWindowWidth();
   useEffect(() => {
     const newData = [
@@ -41,7 +41,7 @@ const IntroSection1 = () => {
   );
 };
 
-const Subtitle = ({ idx, title, text }) => {
+const Subtitle = ({ idx, title, text }: { idx: number; title: string; text: string }) => {
   const formattedNumber = String(idx).padStart(2, "0");
   return (
     <div className="flex flex-col md:flex-row gap-[22px] md:gap-[10px]">

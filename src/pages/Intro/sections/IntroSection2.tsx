@@ -1,3 +1,4 @@
+import React from "react";
 import composerImg from "assets/intro/composer.png";
 import singerImag from "assets/intro/singer.png";
 import fanImg from "assets/intro/fan.png";
@@ -7,7 +8,8 @@ import { useTranslation } from "react-i18next";
 import useWindowWidth from "components/utils/useWindowWidth";
 
 function IntroSection2() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([{ image: "", who: "", text: "" }]);
+
   const { t } = useTranslation();
   const width = useWindowWidth();
   useEffect(() => {
@@ -46,7 +48,7 @@ function IntroSection2() {
         md:grid md:grid-cols-2 md:grid-rows-2 gap-5
         flex flex-col ">
           {data.map((item, index) => {
-            return <Card key={index} image={item.image} who={item.who} text={item.text} />;
+            return <Card key={index} {...item} />;
           })}
         </div>
       </div>
@@ -54,7 +56,7 @@ function IntroSection2() {
   );
 }
 
-const Card = ({ image, who, text }) => {
+const Card = ({ image, who, text }: { image: string; who: string; text: string }) => {
   return (
     <div
       className="flex flex-col items-center justify-center w-[326px] h-[400px] md:w-[640px] md:h-[460px] bg-white rounded-[30px]"

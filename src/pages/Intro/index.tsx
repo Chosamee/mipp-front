@@ -1,4 +1,5 @@
-import TryTry from "components/views/TryTry";
+import React from "react";
+import TryTry from "pages/Intro/sections/IntroSection3";
 import IntroBanner from "./sections/IntroBanner";
 import IntroSection1 from "./sections/IntroSection1";
 import IntroSection2 from "./sections/IntroSection2";
@@ -8,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const Intro = () => {
   const { i18n } = useTranslation();
-  const seoFiles = {
+  const seoFiles: { [key: string]: JSX.Element } = {
     en: <IntroSEOEN />,
     ko: <IntroSEOKO />,
   };
