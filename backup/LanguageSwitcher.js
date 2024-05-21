@@ -28,7 +28,6 @@ const LanguageSwitcher = () => {
       <option value="ko" className="bg-black">
         한국어
       </option>
-      {/* 추가 언어 옵션을 여기에 추가할 수 있습니다. */}
     </select>
   );
 };
