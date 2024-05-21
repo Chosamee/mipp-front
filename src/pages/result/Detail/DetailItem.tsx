@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { downloadPDF } from "api/pdfService";
+import { downloadPDF } from "pages/result/Detail/pdfService";
 import { getLangUrl } from "locales/utils";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -31,7 +31,11 @@ const DetailItem = ({
       i18n.language,
     ],
     queryFn: () =>
-      downloadPDF(i18n.language === "en" ? file.en_path : file.ko_path, file.id, i18n.language),
+      downloadPDF(
+        i18n.language === "en" ? file.en_path : file.ko_path,
+        String(file.id),
+        i18n.language
+      ),
     staleTime: Infinity, // 파일 URL은 캐시에서 만료되지 않도록 설정
     enabled: false, // 자동 실행 비활성화
     gcTime: 1000 * 60 * 3, // 3분마다 캐시 삭제

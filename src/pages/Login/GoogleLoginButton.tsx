@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import googleBrandIcon from "assets/web_light_sq_SI@3x.png";
-import { handleSessionState } from "api/authService";
+import { handleSessionState } from "pages/Login/api";
 import { useTranslation } from "react-i18next";
 
 const GoogleLoginButton = () => {

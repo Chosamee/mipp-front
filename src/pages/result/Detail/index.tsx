@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 import DetailList from "./DetailList";
 import Criteria from "./Criteria";
-import { multiDownloadPDF } from "api/pdfService";
+import { multiDownloadPDF } from "pages/result/Detail/pdfService";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { IFile } from "../types";
 import PageLoadingSpinner from "components/views/PageLoadingSpinner";

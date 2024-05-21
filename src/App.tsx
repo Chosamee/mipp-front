@@ -22,7 +22,7 @@ import ProtectedRoute from "components/ProtectedRoute";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import LoginCallbackPage from "pages/Login/Callback";
-import { SearchParamsProvider } from "components/SearchParamsContext";
+import { SearchParamsProvider } from "components/searchUtil/SearchParamsContext";
 
 // 페이지: 애플리케이션의 각 페이지
 // import Home from "pages/Home";
