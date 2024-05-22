@@ -1,4 +1,4 @@
-import { ISearchParams } from "api/utils";
+import { ISearchParams } from "components/searchUtil/utils";
 import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;

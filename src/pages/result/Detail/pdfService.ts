@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
-export const downloadPDF = async (filepath, id, language) => {
+export const downloadPDF = async (filepath: string, id: string, language: string) => {
   const url = `${API_BASE_URL}/download`;
   const formData = new FormData();
   formData.append("filepath", filepath);
@@ -22,7 +22,7 @@ export const downloadPDF = async (filepath, id, language) => {
   }
 };
 
-export const multiDownloadPDF = async (filepaths) => {
+export const multiDownloadPDF = async (filepaths: string[]) => {
   const url = `${API_BASE_URL}/download_multi`;
   const jsonData = JSON.stringify(filepaths);
 

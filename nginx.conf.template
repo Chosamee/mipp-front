@@ -22,6 +22,7 @@ http {
         }
 
         location @prerender {
+            # 주소 일관성 위해 / 없을 경우 달아서 redirect
             if ($request_uri !~ /$) {
                 return 301 $scheme://$host$request_uri/;
             }
