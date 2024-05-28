@@ -15,8 +15,10 @@ const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  useLayoutEffect(() => {
-    alert("Service Under Maintenance \nhttps://aimipp.com/en/notice/15");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      alert("Service Under Maintenance\n https://aimipp.com/en/notice/15");
+    }
   }, []);
 
   useEffect(() => {

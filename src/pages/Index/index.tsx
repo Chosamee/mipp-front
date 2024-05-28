@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import IndexSEOKO from "seo/IndexSEO.ko";
 import IndexSEOEN from "seo/IndexSEO.en";
 import { useTranslation } from "react-i18next";
@@ -15,8 +15,10 @@ const Index = () => {
     ko: <IndexSEOKO />,
   };
 
-  useLayoutEffect(() => {
-    alert("Service Under Maintenance \nhttps://aimipp.com/en/notice/15");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      alert("Service Under Maintenance\n https://aimipp.com/en/notice/15");
+    }
   }, []);
 
   return (
