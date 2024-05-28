@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import FileUploadComp from "./components/FileUploadComp";
 import YoutubeLinkComp from "./components/YoutubeLinkComp";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,10 @@ const Home = () => {
   const [totalNum, setTotalNum] = useState(10); // [임시] 총 사용가능 횟수 [임시]
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    alert("Service Under Maintenance \nhttps://aimipp.com/en/notice/15");
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

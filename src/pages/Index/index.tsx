@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import IndexSEOKO from "seo/IndexSEO.ko";
 import IndexSEOEN from "seo/IndexSEO.en";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,11 @@ const Index = () => {
     en: <IndexSEOEN />,
     ko: <IndexSEOKO />,
   };
+
+  useLayoutEffect(() => {
+    alert("Service Under Maintenance \nhttps://aimipp.com/en/notice/15");
+  }, []);
+
   return (
     <>
       {seoFiles[i18n.language]}
