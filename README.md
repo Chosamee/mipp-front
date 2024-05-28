@@ -1,6 +1,6 @@
 ### Music Plagiarism Checker Front-end
 
-https://aimipp.com
+https://mippia.com
 
 <br/>
 <br/>
