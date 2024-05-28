@@ -7,6 +7,7 @@ import IndexSection1 from "./sections/IndexSection1";
 import IndexSection2 from "./sections/IndexSection2";
 import IndexSection3 from "./sections/IndexSection3";
 import IndexSection4 from "./sections/IndexSection4";
+import MaintenanceModal from "components/MaintenanceModal";
 
 const Index = () => {
   const { i18n } = useTranslation();
@@ -15,15 +16,10 @@ const Index = () => {
     ko: <IndexSEOKO />,
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      alert("Service Under Maintenance\n https://aimipp.com/en/notice/15");
-    }
-  }, []);
-
   return (
     <>
       {seoFiles[i18n.language]}
+      <MaintenanceModal />
       <IndexBanner />
       <IndexSection1 />
       <IndexSection2 />

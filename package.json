@@ -86,6 +86,7 @@
       "/en/faqs",
       "/ko/support/faqs",
       "/en/support/faqs"
-    ]
+    ],
+    "timeout": 60000
   }
 }

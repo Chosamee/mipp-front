@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { getRemain } from "./api";
+import MaintenanceModal from "components/MaintenanceModal";
 
 const Home = () => {
   // 탭 선택
@@ -14,12 +15,6 @@ const Home = () => {
   const [totalNum, setTotalNum] = useState(10); // [임시] 총 사용가능 횟수 [임시]
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      alert("Service Under Maintenance\n https://aimipp.com/en/notice/15");
-    }
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -155,6 +150,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <MaintenanceModal />
     </div>
   );
 };
