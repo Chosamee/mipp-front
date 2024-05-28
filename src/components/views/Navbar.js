@@ -69,7 +69,7 @@ const NavBar = () => {
         {/* GNB 메인*/}
         <div className="flex font-bold gap-[60px] py-3 pl-6 pr-5">
           <Link to={getLangUrl("/")} className="self-center text-[36px] font-bold">
-            MIPP
+            MIPPIA
           </Link>
           <div className="py-3 pr-6 text-[18px] gap-[40px] hidden md:flex">
             <div className="flex gap-[26px] px-2 items-center text-nowrap">
