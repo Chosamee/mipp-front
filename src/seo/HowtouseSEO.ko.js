@@ -4,26 +4,28 @@ import { Helmet } from "react-helmet";
 const HowtouseSEOKO = () => {
   return (
     <Helmet>
-      <title>MIPP 사용 방법</title>
+      <title>MIPPIA 사용 방법</title>
       <meta name="description" content="MIPP로 음악 표절 검사를 하는 방법을 단계별로 알아보세요. 간편한 로그인부터 결과 확인까지의 과정을 안내합니다." />
 
-      <meta property="og:title" content="MIPP 사용 방법" />
+      <meta property="og:title" content="MIPPIA 사용 방법" />
       <meta property="og:description" content="MIPP로 음악 표절 검사를 하는 방법을 단계별로 알아보세요. 간편한 로그인부터 결과 확인까지의 과정을 안내합니다." />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
-      <meta property="og:url" content="https://aimipp.com/ko/howtouse" />
+      <meta property="og:image" content="https://storage.googleapis.com/mippia-domain-bucket/imageog.png" />
+      <meta property="og:url" content="https://mippia.com/ko/howtouse" />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="MIPP 사용 방법" />
+      <meta name="twitter:title" content="MIPPIA 사용 방법" />
       <meta name="twitter:description" content="MIPP로 음악 표절 검사를 하는 방법을 단계별로 알아보세요. 간편한 로그인부터 결과 확인까지의 과정을 안내합니다." />
-      <meta name="twitter:image" content="https://storage.googleapis.com/domainbucket/imageog.png" />
+      <meta name="twitter:image" content="https://storage.googleapis.com/mippia-domain-bucket/imageog.png" />
+
+      <link rel="canonical" href="https://mippia.com/ko/howtouse" />
 
       <script type="application/ld+json">
         {`
             {
               "@context": "http://schema.org",
               "@type": "HowTo",
-              "name": "MIPP 사용 방법",
+              "name": "MIPPIA 사용 방법",
               "description": "MIPP로 음악 표절 검사를 하는 방법을 단계별로 알아보세요.",
               "step": [
                 {
@@ -43,7 +45,7 @@ const HowtouseSEOKO = () => {
                   "text": "검사 결과 확인 및 결과 확인서 다운로드: 전체 표절률, 표절 의심 구간, 구간별 표절률 등의 정보 확인"
                 }
               ],
-              "image": "https://storage.googleapis.com/domainbucket/imageog.png",
+              "image": "https://storage.googleapis.com/mippia-domain-bucket/imageog.png",
               "inLanguage": "ko-KR"
             }
           `}
