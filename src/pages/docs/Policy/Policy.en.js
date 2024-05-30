@@ -30,10 +30,10 @@ const TableCell = ({ children, isHeader = false }) => {
 const PolicyEN = () => {
   return (
     <React.Fragment>
-      <h1 className="font-semibold mb-2">MIPPIA Privacy Policy</h1>
+      <h1 className="font-semibold mb-2">MIPP Privacy Policy</h1>
       <p>
         MIPPIA Ltd. ("the Company") is committed to safeguarding the personal information of users
-        engaging with the MIPPIA service and its associated services (hereafter referred to as "the
+        engaging with the MIPP service and its associated services (hereafter referred to as "the
         Service"), in line with applicable laws. This Privacy Policy outlines the purposes for which
         we process personal information:
       </p>
@@ -290,7 +290,7 @@ const PolicyEN = () => {
         <br />
         Position: CEO
         <br />
-        Email: och@mippia.com
+        Email: mippcomp@gmail.com
       </p>
       <p>
         <br />

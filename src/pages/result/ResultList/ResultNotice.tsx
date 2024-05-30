@@ -13,7 +13,7 @@ const ResultNotice = () => {
       <div className="text-sm leading-6 text-[#4D535B]">
         {i18n.language === "en" ? (
           <>
-            Welcome to beta test version of MIPPIA! The Checking will take about 10 minutes, but it
+            Welcome to beta test version of MIPP! The Checking will take about 10 minutes, but it
             may take longer <br />
             if there are many applicants. If errors persist, please apply through a{" "}
             <Link to={getLangUrl("/support/contact")} className="underline text-blue-600">
@@ -24,7 +24,7 @@ const ResultNotice = () => {
           </>
         ) : (
           <>
-            MIPPIA 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! 검사는 10분 내외, 혹은
+            MIPP 표절 검사 시스템 베타 테스트 버전에 오신 것을 환영합니다! 검사는 10분 내외, 혹은
             신청자가 많다면 더 오래 걸릴 수도 있습니다.
             <br />
             오류가 지속적으로 생긴다면,{" "}

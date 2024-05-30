@@ -29,7 +29,7 @@ const TermsEn = () => {
       </Content>
       <Title>3 Definition of Terms</Title>
       <Content>
-        3-1 "Service": Refers to all services provided to Members through the &lt; MIPPIA &gt;
+        3-1 "Service": Refers to all services provided to Members through the &lt; MIPP &gt;
         platform operated by the Company.
       </Content>
       <Content>3-2 "Member": Refers to all users of the Company's services.</Content>
@@ -71,7 +71,7 @@ const TermsEn = () => {
       </Content>
       <Title>7 Copyright of Posts</Title>
       <Content>
-        7-1 The rights and responsibilities for the inspection sound sources uploaded to the MIPPIA
+        7-1 The rights and responsibilities for the inspection sound sources uploaded to the MIPP
         service by Members belong to the Members. The Company will use them only to the extent
         necessary for service operation.
       </Content>

@@ -67,8 +67,8 @@
     "emailGuide": "Enter email to receive reply"
   },
   "intro": {
-    "mainTitle": "The Standard of\n Music Plagiarism Check, MIPPIA",
-    "mainTitleMobile": "The Standard of \nMusic Plagiarism Check, \nMIPPIA",
+    "mainTitle": "The Standard of\n Music Plagiarism Check, MIPP",
+    "mainTitleMobile": "The Standard of \nMusic Plagiarism Check, \nMIPP",
     "section1": {
       "mainTitle": "Shaping the Future of Music Protection",
       "title1": "Test Process",
@@ -82,7 +82,7 @@
       "content3Mobile": " Through AI music analysis technology, it analyzes the song structure, rhythm, melody, harmony of music to detect plagiarized songs among many other songs."
     },
     "section2": {
-      "mainTitle": "MIPPIA service changes your daily life",
+      "mainTitle": "MIPP service changes your daily life",
       "title1": "Composers",
       "content1": "Before releasing albums or selling musics, plagiarism checks can prepare you for plagiarism risks. AI automatically detects any accidental copy of your songs, protecting your music IP.",
       "content1Mobile": "Before releasing albums or selling musics, plagiarism checks can prepare you for plagiarism risks. AI automatically detects any accidental copy of your songs, protecting your music IP.",
@@ -104,7 +104,7 @@
     "1": {
       "title": "Music IP Protection & \nManagement Solution",
       "subtitle1": "AI Music Plagiarism Test",
-      "content1": "Start a free AI music plagiarism test with MIPPIA's music analysis technology to avoid legal issues before releasing your album.",
+      "content1": "Start a free AI music plagiarism test with MIPP's music analysis technology to avoid legal issues before releasing your album.",
 
       "subtitle2": "Real-time plagiarism monitoring",
       "content2": "We can identify plagiarized music from billions of songs released globally every day. Safeguard your music IP with our real-time plagiarism monitoring service.",
@@ -113,11 +113,11 @@
       "content2ImgContent": "A similar composition to yours has been \nfound. Access the plagiarism report?",
 
       "subtitle3": "Maximize Music IP Revenue",
-      "content3": "Through MIPPIA, protect your copyrights from unknown plagiarism and maximize revenue of your music IP."
+      "content3": "Through MIPP, protect your copyrights from unknown plagiarism and maximize revenue of your music IP."
     },
     "2": {
-      "title": "How to use MIPPIA",
-      "step1": "Login MIPPIA",
+      "title": "How to use MIPP",
+      "step1": "Login MIPP",
       "step2": "Music Upload &\nChoose Option",
       "step3": "Start Music \nPlagiarism Test",
       "step4": "Check Plagiarism \nTest Report"
@@ -132,9 +132,9 @@
       "more": "More Info"
     },
     "4": {
-      "title": "Protect your \n music copyrights \n with MIPPIA.",
-      "content": "MIPPIA protects the original creator's music intellectual property.\n Check for any songs that are suspected of plagiarism using MIPPIA.",
-      "contentmobile": "MIPPIA protects the original creator's music intellectual property.\n Check for any songs that are suspected of plagiarism using MIPPIA.",
+      "title": "Protect your \n music copyrights \n with MIPP.",
+      "content": "MIPP protects the original creator's music intellectual property.\n Check for any songs that are suspected of plagiarism using MIPP.",
+      "contentmobile": "MIPP protects the original creator's music intellectual property.\n Check for any songs that are suspected of plagiarism using MIPP.",
       "subcontent": "Music Intellectual Property Protector"
     }
   },
