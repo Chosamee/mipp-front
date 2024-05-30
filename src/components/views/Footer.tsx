@@ -16,7 +16,7 @@ const Footer = () => {
             MIPPIA
           </div>
           <div className="flex flex-col items-start gap-2 text-[17px] leading-[31px] text-nowrap mb-4">
-            E-mail : mippia@mippia.com
+            E-mail : mippcomp@gmail.com
             <br /> Copyright © 2024. MIPPIA. All Rights Reserved
           </div>
           <div className="w-72 h-px bg-gray-300"></div>
@@ -55,7 +55,7 @@ const Footer = () => {
             MIPPIA
           </div>
           <div className="flex flex-col items-start text-[15px] leading-[24px] text-[#EAECEE]">
-            E-mail : mippia@mippia.com <br /> Copyright © 2024. MIPPIA. <br /> All Rights Reserved
+            E-mail : mippcomp@gmail.com <br /> Copyright © 2024. MIPPIA. <br /> All Rights Reserved
           </div>
         </div>
         <div className="w-72 h-px bg-gray-300 mt-4"></div>

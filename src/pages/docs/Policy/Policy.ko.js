@@ -30,9 +30,9 @@ const TableCell = ({ children, isHeader = false }) => {
 const PolicyKO = () => {
   return (
     <React.Fragment>
-      <h1 className="font-semibold mb-2">MIPPIA 개인정보 처리방침</h1>
+      <h1 className="font-semibold mb-2">MIPP 개인정보 처리방침</h1>
       <p>
-        주식회사 미피아(이하 ‘회사’)는 관련 법령에 따라 MIPPIA 서비스 및 이에 부수하는 제반 서
+        주식회사 미피아(이하 ‘회사’)는 관련 법령에 따라 MIPP 서비스 및 이에 부수하는 제반 서
         비스(통칭하여 이하 ‘서비스’)를 이용하는 회원의 개인정보를 보호하고, 이와 관련한 불편을 신속
         하고 원활하게 처리하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
       </p>
@@ -258,7 +258,7 @@ const PolicyKO = () => {
         <br />
         직책: 대표이사
         <br />
-        메일주소: och@mippia.com
+        메일주소: mippcomp@gmail.com
       </p>
       <p>
         <br />

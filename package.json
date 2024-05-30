@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mippia.com",
+  "homepage": "https://aimipp.com",
   "name": "mipp-front",
   "version": "0.1.0",
   "private": true,
@@ -86,6 +86,7 @@
       "/en/faqs",
       "/ko/support/faqs",
       "/en/support/faqs"
-    ]
+    ],
+    "timeout": 60000
   }
 }

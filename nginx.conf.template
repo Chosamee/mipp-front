@@ -6,7 +6,7 @@ http {
 
     server {
         listen 80;
-        server_name mippia.com;
+        server_name aimipp.com;
         root /usr/share/nginx/html;
         index index.html index.htm;
 
