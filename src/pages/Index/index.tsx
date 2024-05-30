@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import IndexSEOKO from "seo/IndexSEO.ko";
 import IndexSEOEN from "seo/IndexSEO.en";
 import { useTranslation } from "react-i18next";
@@ -7,7 +7,6 @@ import IndexSection1 from "./sections/IndexSection1";
 import IndexSection2 from "./sections/IndexSection2";
 import IndexSection3 from "./sections/IndexSection3";
 import IndexSection4 from "./sections/IndexSection4";
-import MaintenanceModal from "components/MaintenanceModal";
 
 const Index = () => {
   const { i18n } = useTranslation();
@@ -15,11 +14,9 @@ const Index = () => {
     en: <IndexSEOEN />,
     ko: <IndexSEOKO />,
   };
-
   return (
     <>
       {seoFiles[i18n.language]}
-      <MaintenanceModal />
       <IndexBanner />
       <IndexSection1 />
       <IndexSection2 />
