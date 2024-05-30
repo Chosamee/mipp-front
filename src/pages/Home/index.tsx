@@ -1,11 +1,10 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FileUploadComp from "./components/FileUploadComp";
 import YoutubeLinkComp from "./components/YoutubeLinkComp";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { getRemain } from "./api";
-import MaintenanceModal from "components/MaintenanceModal";
 
 const Home = () => {
   // 탭 선택
@@ -150,7 +149,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <MaintenanceModal />
     </div>
   );
 };
