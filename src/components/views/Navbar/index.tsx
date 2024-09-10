@@ -66,7 +66,7 @@ const NavBar = () => {
             to={getLangUrl("/")}
             className="md:self-start text-[36px] font-bold"
             onMouseOver={() => import("pages/Index")}>
-            MIPP
+            MIPPIA
           </Link>
           <div className="hidden xl:flex gap-6 self-start my-auto Navbar-linkHoverEffect">
             <LeftNavItems />
