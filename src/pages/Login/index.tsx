@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import GoogleLoginButton from "../components/auth/GoogleLoginButton";
+import GoogleLoginButton from "./GoogleLoginButton";
 import { useTranslation } from "react-i18next";
 import { getLangUrl } from "locales/utils";
 import { Navigate, useNavigate } from "react-router-dom";

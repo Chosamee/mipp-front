@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css"; // TextLayer 스타일
 import "react-pdf/dist/esm/Page/AnnotationLayer.css"; // AnnotationLayer 스타일
-import { downloadPDF } from "api/pdfService";
-import LoadingSpinner from "./LoadingSpinner";
+import { downloadPDF } from "pages/result/Detail/pdfService";
+import LoadingSpinner from "src/components/views/LoadingSpinner";
 
 // PDF.js에서 사용되는 worker 설정
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;

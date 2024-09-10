@@ -8,21 +8,21 @@ const CommunityEditor = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [contents, setContents] = useState("");
   const [error, setError] = useState("");
   const { i18n } = useTranslation();
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!title || !content) {
+    if (!title || !contents) {
       setError(t("community.create.error"));
       return;
     }
     try {
-      if (isEdit) {
-        await updatePost(id, title, content);
+      if (id && isEdit) {
+        await updatePost({ id, title, contents });
         navigate(getLangUrl(`/community/${id}`));
       } else {
-        await addPost(title, content);
+        await addPost({ title, contents });
         navigate(getLangUrl("/community"));
       }
     } catch (error) {
@@ -34,7 +34,7 @@ const CommunityEditor = () => {
   const [isDirty, setIsDirty] = useState(false);
 
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
+    const handleBeforeUnload = (event: any) => {
       if (isDirty) {
         const message = t("ask.create.confirmExit");
         event.returnValue = message;
@@ -55,16 +55,16 @@ const CommunityEditor = () => {
   const isEdit = location.pathname.includes("/edit"); // 현재 경로가 수정인지 확인
 
   useEffect(() => {
-    if (isEdit) {
+    if (id && isEdit) {
       // 수정 모드일 경우, 기존 포스트 데이터를 불러옵니다.
       const fetchData = async () => {
         try {
-          const data = await fetchSinglePost(id);
+          const data = await fetchSinglePost(Number(id));
           if (data.owner === false) {
             navigate(getLangUrl("/community"));
           }
           setTitle(data.post.title);
-          setContent(data.post.content);
+          setContents(data.post.content);
         } catch (error) {
           console.error("Error fetching post data:", error);
           // setError(t("community.edit.errorFetching"));
@@ -107,12 +107,12 @@ const CommunityEditor = () => {
           <textarea
             id="contents"
             name="contents"
-            rows="4"
+            rows={4}
             className="block p-2.5 w-full h-[300px] text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none"
             placeholder={"contents"}
-            value={content}
+            value={contents}
             onChange={(e) => {
-              setContent(e.target.value);
+              setContents(e.target.value);
               setIsDirty(true);
             }}></textarea>
         </div>

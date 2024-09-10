@@ -1,8 +1,9 @@
+import React from "react";
 import { getLangUrl } from "locales/utils";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-const StartCheckBtn = ({ textColor }) => {
+const StartCheckBtn = ({ textColor }: { textColor: string }) => {
   const { t } = useTranslation();
   return (
     <Link

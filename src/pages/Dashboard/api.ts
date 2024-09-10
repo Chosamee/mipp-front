@@ -76,3 +76,16 @@ export const checkNameDuplicate = async (nickname: string): Promise<boolean> => 
     throw error;
   }
 };
+
+// 유저 삭제 기능 (미구현)
+export const deleteUser = async () => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/user`, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetchProfile Api:", error);
+    throw error;
+  }
+};

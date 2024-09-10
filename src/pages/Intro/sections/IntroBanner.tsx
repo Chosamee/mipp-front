@@ -1,3 +1,4 @@
+import React from "react";
 import bannerImg from "assets/intro/intro_banner.jpg";
 import bannerImgMobile from "assets/intro/intro_banner_mobile.jpg";
 

@@ -2,7 +2,19 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_MIPP_API_URL;
 
-export const fetchPosts = async ({ currentPage, pageSize, searchKeyword, searchType }) => {
+interface IPostFetchRequestForm {
+  currentPage: number;
+  pageSize: number;
+  searchKeyword: string;
+  searchType: string;
+}
+
+export const fetchPosts = async ({
+  currentPage,
+  pageSize,
+  searchKeyword,
+  searchType,
+}: IPostFetchRequestForm) => {
   try {
     const response = await axios.post(
       `${API_BASE_URL}/all_posts/?page=${currentPage}&page_size=${pageSize}&search_query=${encodeURIComponent(
@@ -20,9 +32,9 @@ export const fetchPosts = async ({ currentPage, pageSize, searchKeyword, searchT
   }
 };
 
-export const fetchSinglePost = async (post_id) => {
+export const fetchSinglePost = async (post_id: number) => {
   const formData = new FormData();
-  formData.append("post_id", post_id);
+  formData.append("post_id", String(post_id));
   try {
     const response = await axios.post(`${API_BASE_URL}/view_post`, formData, {
       withCredentials: true,
@@ -34,7 +46,7 @@ export const fetchSinglePost = async (post_id) => {
   }
 };
 
-export const addPost = async (title, contents) => {
+export const addPost = async ({ title, contents }: { title: string; contents: string }) => {
   const formData = new FormData();
   formData.append("title", title);
   formData.append("contents", contents);
@@ -49,9 +61,9 @@ export const addPost = async (title, contents) => {
   }
 };
 
-export const deletePost = async (post_id) => {
+export const deletePost = async (post_id: number) => {
   const formData = new FormData();
-  formData.append("post_id", post_id);
+  formData.append("post_id", String(post_id));
   try {
     const response = await axios.post(`${API_BASE_URL}/delete_posts`, formData, {
       withCredentials: true,
@@ -63,9 +75,15 @@ export const deletePost = async (post_id) => {
   }
 };
 
-export const updatePost = async (post_id, title, contents) => {
+interface IPost {
+  id: string;
+  title: string;
+  contents: string;
+}
+
+export const updatePost = async ({ id, title, contents }: IPost) => {
   const formData = new FormData();
-  formData.append("post_id", post_id);
+  formData.append("post_id", String(id));
   formData.append("title", title);
   formData.append("contents", contents);
   try {
@@ -79,10 +97,10 @@ export const updatePost = async (post_id, title, contents) => {
   }
 };
 
-export const updateServerLikeStatus = async (post_id, like) => {
+export const updateServerLikeStatus = async (post_id: number, like: boolean) => {
   const formData = new FormData();
-  formData.append("post_id", post_id);
-  formData.append("like", like);
+  formData.append("post_id", String(post_id));
+  formData.append("like", String(like));
   try {
     const response = await axios.post(`${API_BASE_URL}/like_post`, formData, {
       withCredentials: true,
@@ -94,11 +112,17 @@ export const updateServerLikeStatus = async (post_id, like) => {
   }
 };
 
-export const addComment = async (post_id, content, parent_id) => {
+interface ICommentRequestForm {
+  post_id: number;
+  content: string;
+  parent_id?: number;
+}
+
+export const addComment = async ({ post_id, content, parent_id }: ICommentRequestForm) => {
   const formData = new FormData();
-  formData.append("post_id", post_id);
+  formData.append("post_id", String(post_id));
   formData.append("content", content);
-  if (parent_id) formData.append("parent_id", parent_id);
+  if (parent_id) formData.append("parent_id", String(parent_id));
   try {
     const response = await axios.post(`${API_BASE_URL}/create_comment`, formData, {
       withCredentials: true,
@@ -110,9 +134,9 @@ export const addComment = async (post_id, content, parent_id) => {
   }
 };
 
-export const deleteComment = async (comment_id) => {
+export const deleteComment = async (comment_id: number) => {
   const formData = new FormData();
-  formData.append("comment_id", comment_id);
+  formData.append("comment_id", String(comment_id));
   try {
     const response = await axios.post(`${API_BASE_URL}/delete_comment`, formData, {
       withCredentials: true,
@@ -124,9 +148,9 @@ export const deleteComment = async (comment_id) => {
   }
 };
 
-export const updateComment = async (comment_id, contents) => {
+export const updateComment = async (comment_id: number, contents: string) => {
   const formData = new FormData();
-  formData.append("comment_id", comment_id);
+  formData.append("comment_id", String(comment_id));
   formData.append("contents", contents);
   try {
     const response = await axios.post(`${API_BASE_URL}/update_comment`, formData, {

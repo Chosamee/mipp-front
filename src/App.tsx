@@ -16,13 +16,13 @@ import Footer from "components/views/Footer";
 import ScrollToTop from "components/utils/ScrollToTop";
 
 // 인증 관련 컴포넌트: 보호된 라우트, 인증 컨텍스트
-import ProtectedRoute from "components/auth/ProtectedRoute";
+import ProtectedRoute from "components/ProtectedRoute";
 
 // 국제화 및 번역 관련
 import "./i18n";
 import { useTranslation } from "react-i18next";
-import LoginCallbackPage from "components/auth/LoginCallbackPage";
-import { SearchParamsProvider } from "components/SearchParamsContext";
+import LoginCallbackPage from "pages/Login/Callback";
+import { SearchParamsProvider } from "components/searchUtil/SearchParamsContext";
 
 import PaymentForm from "pages/Payment";
 import PaymentComplete from "pages/Payment/Complete";
@@ -103,9 +103,7 @@ const App = () => {
         <Navbar />
         <Suspense
           fallback={
-            showFallback ? (
-              <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
-            ) : null
+            <div className="flex flex-col min-h-screen min-w-72 font-['Pretendard-Regular']" />
           }>
           <div className="flex-grow mt-20 ">
             <Routes>
@@ -216,8 +214,8 @@ const App = () => {
             </Routes>
           </div>
         </Suspense>
-        <Footer />
       </div>
+      <Footer />
     </Router>
   );
 };

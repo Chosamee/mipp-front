@@ -6,10 +6,10 @@ import Pagination from "components/Pagination";
 import { useTranslation } from "react-i18next";
 import NoticeSEOEN from "seo/NoticeSEO.en";
 import NoticeSEOKO from "seo/NoticeSEO.ko";
-import SearchForm from "components/SearchForm.tsx";
-import { useSearchParamsContext } from "components/SearchParamsContext";
+import SearchForm from "components/searchUtil/SearchForm";
+import { useSearchParamsContext } from "components/searchUtil/SearchParamsContext";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { ISearchParams, getSearchQueryKey } from "api/utils";
+import { ISearchParams, getSearchQueryKey } from "components/searchUtil/utils";
 
 const NoticeList = () => {
   const { searchParams, setSearchParams } = useSearchParamsContext();

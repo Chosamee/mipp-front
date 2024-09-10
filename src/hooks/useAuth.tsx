@@ -1,6 +1,6 @@
 // hooks/useAuth.ts
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { verifyToken, handleLogout, handleOauthLogin } from "../api/authService";
+import { verifyToken, handleLogout, handleOauthLogin } from "../pages/Login/api";
 import { useNavigate } from "react-router-dom";
 import { getLangUrl } from "locales/utils";
 import { updateProfile } from "pages/Dashboard/api";

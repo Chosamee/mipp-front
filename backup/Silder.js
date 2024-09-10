@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const ImageSlider = ({ images }) => {
-  // react-slick의 설정 예시입니다. 원하는 대로 수정할 수 있습니다.
   const settings = {
     dots: true,
     infinite: true,

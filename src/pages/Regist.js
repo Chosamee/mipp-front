@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { handleCheckNicknameDuplicate, handleRegist } from "api/authService";
+import { handleCheckNicknameDuplicate, handleRegist } from "pages/Login/api";
 import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
